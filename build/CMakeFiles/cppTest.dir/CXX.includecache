@@ -7,44 +7,12 @@
 #IncludeRegexTransform: 
 
 /Users/zjz/work/cpp/cpp_test/src/acceptor.h
-boost/beast/core.hpp
--
-boost/beast/http.hpp
--
-boost/beast/version.hpp
--
-boost/asio/bind_executor.hpp
--
-boost/asio/ip/tcp.hpp
--
-boost/asio/strand.hpp
--
-boost/config.hpp
--
-algorithm
--
-cstdlib
--
-functional
--
-iostream
--
-memory
--
-string
--
-thread
--
-vector
--
-regex
--
 common.h
 /Users/zjz/work/cpp/cpp_test/src/common.h
 http_utils.h
 /Users/zjz/work/cpp/cpp_test/src/http_utils.h
-session.h
-/Users/zjz/work/cpp/cpp_test/src/session.h
+http_session.h
+/Users/zjz/work/cpp/cpp_test/src/http_session.h
 
 /Users/zjz/work/cpp/cpp_test/src/common.h
 boost/beast/core.hpp
@@ -81,20 +49,18 @@ regex
 -
 
 /Users/zjz/work/cpp/cpp_test/src/http_server.h
-memory
--
-string
--
-thread
--
-vector
--
 common.h
 /Users/zjz/work/cpp/cpp_test/src/common.h
 http_utils.h
 /Users/zjz/work/cpp/cpp_test/src/http_utils.h
 acceptor.h
 /Users/zjz/work/cpp/cpp_test/src/acceptor.h
+
+/Users/zjz/work/cpp/cpp_test/src/http_session.h
+common.h
+/Users/zjz/work/cpp/cpp_test/src/common.h
+http_utils.h
+/Users/zjz/work/cpp/cpp_test/src/http_utils.h
 
 /Users/zjz/work/cpp/cpp_test/src/http_test.cpp
 http_server.h
@@ -109,12 +75,6 @@ unordered_map
 -
 boost/beast/core.hpp
 -
-
-/Users/zjz/work/cpp/cpp_test/src/session.h
-common.h
-/Users/zjz/work/cpp/cpp_test/src/common.h
-http_utils.h
-/Users/zjz/work/cpp/cpp_test/src/http_utils.h
 
 /usr/local/include/boost/array.hpp
 boost/detail/workaround.hpp

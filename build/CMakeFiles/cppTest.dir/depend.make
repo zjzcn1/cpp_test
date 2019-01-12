@@ -4,9 +4,9 @@
 CMakeFiles/cppTest.dir/src/http_test.cpp.o: ../src/acceptor.h
 CMakeFiles/cppTest.dir/src/http_test.cpp.o: ../src/common.h
 CMakeFiles/cppTest.dir/src/http_test.cpp.o: ../src/http_server.h
+CMakeFiles/cppTest.dir/src/http_test.cpp.o: ../src/http_session.h
 CMakeFiles/cppTest.dir/src/http_test.cpp.o: ../src/http_test.cpp
 CMakeFiles/cppTest.dir/src/http_test.cpp.o: ../src/http_utils.h
-CMakeFiles/cppTest.dir/src/http_test.cpp.o: ../src/session.h
 CMakeFiles/cppTest.dir/src/http_test.cpp.o: /usr/local/include/boost/array.hpp
 CMakeFiles/cppTest.dir/src/http_test.cpp.o: /usr/local/include/boost/asio/associated_allocator.hpp
 CMakeFiles/cppTest.dir/src/http_test.cpp.o: /usr/local/include/boost/asio/associated_executor.hpp

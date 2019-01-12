@@ -57,7 +57,8 @@ namespace http_server {
 
         HttpServer &start() {
             // Create and launch a listening port;
-            AcceptorPtr acceptor = AcceptorPtr(new Acceptor(ioc_, tcp::endpoint{asio::ip::make_address(host_),port_}, attr_));
+            AcceptorPtr acceptor = std::make_shared<Acceptor>(ioc_, tcp::endpoint{asio::ip::make_address(host_), port_},
+                                                              attr_);
             acceptor->run();
 
             // Run the I/O service on the requested number of threads

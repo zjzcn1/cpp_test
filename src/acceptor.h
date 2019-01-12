@@ -2,11 +2,11 @@
 
 #include "common.h"
 #include "http_utils.h"
-#include "session.h"
+#include "http_session.h"
 
 namespace http_server {
 
-// Accepts incoming connections and launches the Sessions
+// Accepts incoming connections and launches the HttpSessions
     class Acceptor : public std::enable_shared_from_this<Acceptor> {
     public:
         Acceptor(asio::io_context &ioc, tcp::endpoint endpoint, Attr &attr)
@@ -62,8 +62,8 @@ namespace http_server {
             if (ec) {
                 fail_log(ec, "accept");
             } else {
-                // Create the Session and run it
-                SessionPtr session = SessionPtr(new Session(std::move(socket_), attr_));
+                // Create the HttpSession and run it
+                HttpSessionPtr session = std::make_shared<HttpSession>(std::move(socket_), attr_);
                 session->run();
             }
 
