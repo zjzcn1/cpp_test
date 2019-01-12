@@ -1,0 +1,9 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/zjz/work/cpp/cpp_test
+-- protobuf library found
+-- Boost version: 1.68.0
+-- Found the following Boost libraries:
+--   system
+-- Boost library found
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/zjz/work/cpp/cpp_test/build
