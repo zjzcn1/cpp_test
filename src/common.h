@@ -2,6 +2,7 @@
 
 #include <boost/beast/core.hpp>
 #include <boost/beast/http.hpp>
+#include <boost/beast/websocket.hpp>
 #include <boost/beast/version.hpp>
 #include <boost/asio/bind_executor.hpp>
 #include <boost/asio/ip/tcp.hpp>
@@ -16,11 +17,13 @@
 #include <thread>
 #include <vector>
 #include <regex>
+#include <unordered_set>
 
 namespace http_server {
     namespace beast = boost::beast;
     namespace http = boost::beast::http;
     namespace asio = boost::asio;
+    namespace websocket = boost::beast::websocket;
 
     using tcp = boost::asio::ip::tcp;
 
@@ -36,9 +39,16 @@ namespace http_server {
     using FileResponsePtr = std::shared_ptr<FileResponse>;
 
     using HttpHandler = std::function<void(HttpRequest &, HttpResponsePtr &)>;
-//    using WebsocketHandler = std::function<void(Websocket_Ctx&)>;
 
     using HttpRoutes = std::unordered_map<std::string, std::unordered_map<int, HttpHandler>>;
+
+    class WebsocketSession;
+    using WebsocketHandler = std::function<void(std::string &, WebsocketSession&)>;
+    using WebsocketRoutes = std::vector<std::pair<std::string, WebsocketHandler>>;
+
+    class Channel;
+
+    using Channels = std::unordered_map<std::string, Channel>;
 
     struct Attr {
         std::string web_dir{"."};
@@ -53,6 +63,10 @@ namespace http_server {
         Headers http_headers{};
 
         HttpRoutes http_routes{};
+
+        WebsocketRoutes websocket_routes{};
+
+        Channels channels{};
     };
 
     void fail_log(beast::error_code ec, char const *what) {

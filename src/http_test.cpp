@@ -1,7 +1,8 @@
 #include "http_server.h"
+
 using namespace http_server;
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
     // Check command line arguments.
 //    if (argc != 5) {
 //        std::cerr <<
@@ -17,9 +18,15 @@ int main(int argc, char* argv[]) {
 
     HttpServer *server = new HttpServer("0.0.0.0", 8084);
     server->register_handler("/hehe", Method::get, [](HttpRequest req, HttpResponsePtr res) {
-        std::cout<<"hehe"<<std::endl;
+        std::cout << "hehe" << std::endl;
         res->body() = "hehe";
     });
+
+    server->register_ws_handler("/ws", [](std::string res, WebsocketSession &session) {
+        std::cout << res << std::endl;
+        session.send(res);
+    });
+
     server->start().sync();
 ////     The io_context is required for all I/O
 //    asio::io_context ioc{threads};

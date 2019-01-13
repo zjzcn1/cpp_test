@@ -8,6 +8,29 @@ CMakeFiles/cppTest.dir/src/http_test.cpp.o
  /Users/zjz/work/cpp/cpp_test/src/http_session.h
  /Users/zjz/work/cpp/cpp_test/src/http_test.cpp
  /Users/zjz/work/cpp/cpp_test/src/http_utils.h
+ /Users/zjz/work/cpp/cpp_test/src/websocket_session.h
+ /usr/local/include/boost/align/align.hpp
+ /usr/local/include/boost/align/aligned_alloc.hpp
+ /usr/local/include/boost/align/alignment_of.hpp
+ /usr/local/include/boost/align/alignment_of_forward.hpp
+ /usr/local/include/boost/align/detail/align.hpp
+ /usr/local/include/boost/align/detail/align_cxx11.hpp
+ /usr/local/include/boost/align/detail/aligned_alloc.hpp
+ /usr/local/include/boost/align/detail/aligned_alloc_android.hpp
+ /usr/local/include/boost/align/detail/aligned_alloc_macos.hpp
+ /usr/local/include/boost/align/detail/aligned_alloc_msvc.hpp
+ /usr/local/include/boost/align/detail/aligned_alloc_posix.hpp
+ /usr/local/include/boost/align/detail/aligned_alloc_sunos.hpp
+ /usr/local/include/boost/align/detail/alignment_of.hpp
+ /usr/local/include/boost/align/detail/alignment_of_clang.hpp
+ /usr/local/include/boost/align/detail/alignment_of_codegear.hpp
+ /usr/local/include/boost/align/detail/alignment_of_cxx11.hpp
+ /usr/local/include/boost/align/detail/alignment_of_gcc.hpp
+ /usr/local/include/boost/align/detail/alignment_of_msvc.hpp
+ /usr/local/include/boost/align/detail/element_type.hpp
+ /usr/local/include/boost/align/detail/integral_constant.hpp
+ /usr/local/include/boost/align/detail/is_alignment.hpp
+ /usr/local/include/boost/align/detail/min_size.hpp
  /usr/local/include/boost/array.hpp
  /usr/local/include/boost/asio/associated_allocator.hpp
  /usr/local/include/boost/asio/associated_executor.hpp
@@ -314,14 +337,17 @@ CMakeFiles/cppTest.dir/src/http_test.cpp.o
  /usr/local/include/boost/beast/core/buffers_suffix.hpp
  /usr/local/include/boost/beast/core/buffers_to_string.hpp
  /usr/local/include/boost/beast/core/detail/allocator.hpp
+ /usr/local/include/boost/beast/core/detail/base64.hpp
  /usr/local/include/boost/beast/core/detail/bind_handler.hpp
  /usr/local/include/boost/beast/core/detail/buffers_ref.hpp
+ /usr/local/include/boost/beast/core/detail/chacha.hpp
  /usr/local/include/boost/beast/core/detail/clamp.hpp
  /usr/local/include/boost/beast/core/detail/config.hpp
  /usr/local/include/boost/beast/core/detail/cpu_info.hpp
  /usr/local/include/boost/beast/core/detail/empty_base_optimization.hpp
  /usr/local/include/boost/beast/core/detail/integer_sequence.hpp
  /usr/local/include/boost/beast/core/detail/ostream.hpp
+ /usr/local/include/boost/beast/core/detail/sha1.hpp
  /usr/local/include/boost/beast/core/detail/static_ostream.hpp
  /usr/local/include/boost/beast/core/detail/static_string.hpp
  /usr/local/include/boost/beast/core/detail/type_traits.hpp
@@ -405,6 +431,43 @@ CMakeFiles/cppTest.dir/src/http_test.cpp.o
  /usr/local/include/boost/beast/http/verb.hpp
  /usr/local/include/boost/beast/http/write.hpp
  /usr/local/include/boost/beast/version.hpp
+ /usr/local/include/boost/beast/websocket.hpp
+ /usr/local/include/boost/beast/websocket/detail/error.hpp
+ /usr/local/include/boost/beast/websocket/detail/frame.hpp
+ /usr/local/include/boost/beast/websocket/detail/hybi13.hpp
+ /usr/local/include/boost/beast/websocket/detail/mask.hpp
+ /usr/local/include/boost/beast/websocket/detail/pausation.hpp
+ /usr/local/include/boost/beast/websocket/detail/pmd_extension.hpp
+ /usr/local/include/boost/beast/websocket/detail/stream_base.hpp
+ /usr/local/include/boost/beast/websocket/detail/type_traits.hpp
+ /usr/local/include/boost/beast/websocket/detail/utf8_checker.hpp
+ /usr/local/include/boost/beast/websocket/error.hpp
+ /usr/local/include/boost/beast/websocket/impl/accept.ipp
+ /usr/local/include/boost/beast/websocket/impl/close.ipp
+ /usr/local/include/boost/beast/websocket/impl/error.ipp
+ /usr/local/include/boost/beast/websocket/impl/handshake.ipp
+ /usr/local/include/boost/beast/websocket/impl/ping.ipp
+ /usr/local/include/boost/beast/websocket/impl/read.ipp
+ /usr/local/include/boost/beast/websocket/impl/rfc6455.ipp
+ /usr/local/include/boost/beast/websocket/impl/stream.ipp
+ /usr/local/include/boost/beast/websocket/impl/teardown.ipp
+ /usr/local/include/boost/beast/websocket/impl/write.ipp
+ /usr/local/include/boost/beast/websocket/option.hpp
+ /usr/local/include/boost/beast/websocket/rfc6455.hpp
+ /usr/local/include/boost/beast/websocket/role.hpp
+ /usr/local/include/boost/beast/websocket/stream.hpp
+ /usr/local/include/boost/beast/websocket/stream_fwd.hpp
+ /usr/local/include/boost/beast/websocket/teardown.hpp
+ /usr/local/include/boost/beast/zlib/deflate_stream.hpp
+ /usr/local/include/boost/beast/zlib/detail/bitstream.hpp
+ /usr/local/include/boost/beast/zlib/detail/deflate_stream.hpp
+ /usr/local/include/boost/beast/zlib/detail/inflate_stream.hpp
+ /usr/local/include/boost/beast/zlib/detail/ranges.hpp
+ /usr/local/include/boost/beast/zlib/detail/window.hpp
+ /usr/local/include/boost/beast/zlib/error.hpp
+ /usr/local/include/boost/beast/zlib/impl/error.ipp
+ /usr/local/include/boost/beast/zlib/inflate_stream.hpp
+ /usr/local/include/boost/beast/zlib/zlib.hpp
  /usr/local/include/boost/bind/mem_fn.hpp
  /usr/local/include/boost/bind/mem_fn_cc.hpp
  /usr/local/include/boost/bind/mem_fn_template.hpp
@@ -521,6 +584,7 @@ CMakeFiles/cppTest.dir/src/http_test.cpp.o
  /usr/local/include/boost/core/no_exceptions_support.hpp
  /usr/local/include/boost/core/noncopyable.hpp
  /usr/local/include/boost/core/ref.hpp
+ /usr/local/include/boost/core/scoped_enum.hpp
  /usr/local/include/boost/core/swap.hpp
  /usr/local/include/boost/core/typeinfo.hpp
  /usr/local/include/boost/cstdint.hpp
@@ -584,6 +648,9 @@ CMakeFiles/cppTest.dir/src/http_test.cpp.o
  /usr/local/include/boost/detail/winapi/time.hpp
  /usr/local/include/boost/detail/winapi/timers.hpp
  /usr/local/include/boost/detail/workaround.hpp
+ /usr/local/include/boost/endian/buffers.hpp
+ /usr/local/include/boost/endian/conversion.hpp
+ /usr/local/include/boost/endian/detail/intrinsic.hpp
  /usr/local/include/boost/exception/exception.hpp
  /usr/local/include/boost/function.hpp
  /usr/local/include/boost/function/detail/maybe_include.hpp
@@ -874,6 +941,7 @@ CMakeFiles/cppTest.dir/src/http_test.cpp.o
  /usr/local/include/boost/predef/detail/_cassert.h
  /usr/local/include/boost/predef/detail/_exception.h
  /usr/local/include/boost/predef/detail/comp_detected.h
+ /usr/local/include/boost/predef/detail/endian_compat.h
  /usr/local/include/boost/predef/detail/os_detected.h
  /usr/local/include/boost/predef/detail/platform_detected.h
  /usr/local/include/boost/predef/detail/test.h

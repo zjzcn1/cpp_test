@@ -2,6 +2,7 @@
 
 #include "common.h"
 #include "http_utils.h"
+#include "websocket_session.h"
 
 namespace http_server {
 
@@ -11,12 +12,16 @@ namespace http_server {
     public:
         // Take ownership of the socket
         HttpSession(tcp::socket socket, Attr &attr)
-                : socket_(std::move(socket)), strand_(socket_.get_executor()), attr_(attr) {
+                : socket_(std::move(socket)),
+                  timer_(socket.get_executor().context(), (std::chrono::steady_clock::time_point::max)()),
+                  strand_(socket_.get_executor()),
+                  attr_(attr) {
         }
 
         // Start the asynchronous operation
         void run() {
-            do_read();
+            this->do_timer();
+            this->do_read();
         }
 
         void send_http(HttpResponsePtr res) {
@@ -48,6 +53,7 @@ namespace http_server {
                                     std::placeholders::_2,
                                     res->need_eof())));
         }
+
         Status handle_static() {
             if (attr_.web_dir.empty()) {
                 return Status::not_found;
@@ -58,7 +64,7 @@ namespace http_server {
             }
 
             std::string path = HttpUtils::path_cat(attr_.web_dir, req_.target().to_string());
-            if(req_.target().back() == '/') {
+            if (req_.target().back() == '/') {
                 path.append(attr_.index_file);
             }
 
@@ -186,10 +192,11 @@ namespace http_server {
         }
 
         void do_read() {
+            timer_.expires_after(attr_.timeout);
+
             // Make the request empty before reading,
             // otherwise the operation behavior is undefined.
             req_ = {};
-
             // Read a request
             http::async_read(socket_, buffer_, req_,
                              asio::bind_executor(
@@ -210,11 +217,29 @@ namespace http_server {
             if (ec == http::error::end_of_stream)
                 return do_close();
 
-            if (ec)
+            if (ec) {
                 return fail_log(ec, "read");
+            }
 
             // Send the response
             handle_request();
+
+            // check for websocket upgrade
+            if (websocket::is_upgrade(req_)) {
+                if (!attr_.support_websocket || attr_.websocket_routes.empty()) {
+                    this->do_shutdown();
+                    return;
+                }
+
+                // upgrade to websocket
+                if (handle_websocket()) {
+                    this->cancel_timer();
+                    return;
+                } else {
+                    this->do_shutdown();
+                    return;
+                }
+            }
         }
 
         void on_write(
@@ -244,10 +269,90 @@ namespace http_server {
             // At this point the connection is closed gracefully
         }
 
+        //////////////////////////////////websocket/////////////////////////////////////
+        bool handle_websocket() {
+            // the request path
+            std::string path{req_.target().to_string()};
+
+            // separate the query parameters
+            auto params = HttpUtils::split(path, "?", 1);
+            path = params.at(0);
+
+            // regex variables
+            std::smatch rx_match{};
+            std::regex_constants::syntax_option_type const rx_opts{std::regex::ECMAScript};
+            std::regex_constants::match_flag_type const rx_flgs{std::regex_constants::match_not_null};
+
+            // check for matching route
+            for (auto const &route_item : attr_.websocket_routes) {
+                std::regex rx_str{route_item.first, rx_opts};
+
+                if (std::regex_match(path, rx_match, rx_str, rx_flgs)) {
+                    // create websocket
+                    WebsocketSessionPtr ws_session = std::make_shared<WebsocketSession>
+                            (std::move(socket_), attr_, req_, route_item.second);
+                    ws_session->run();
+
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        void cancel_timer() {
+            // set the timer to expire immediately
+            timer_.expires_at((std::chrono::steady_clock::time_point::min) ());
+        }
+
+        void do_timer() {
+            // wait on the timer
+            timer_.async_wait(
+                    asio::bind_executor(strand_,
+                                        std::bind(&HttpSession::on_timer, shared_from_this(), std::placeholders::_1)));
+        }
+
+        void on_timer(beast::error_code ec_ = {}) {
+            if (ec_ && ec_ != asio::error::operation_aborted) {
+                // TODO log here
+                return;
+            }
+
+            // check if socket has been upgraded or closed
+            if (timer_.expires_at() == (std::chrono::steady_clock::time_point::min) ()) {
+                return;
+            }
+
+            // check expiry
+            if (timer_.expiry() <= std::chrono::steady_clock::now()) {
+                this->do_timeout();
+                return;
+            }
+        }
+
+        void do_timeout() {
+            this->do_shutdown();
+        }
+
+        void do_shutdown() {
+            beast::error_code ec;
+
+            // send a tcp shutdown
+            socket_.shutdown(tcp::socket::shutdown_send, ec);
+
+            this->cancel_timer();
+
+            if (ec) {
+                // TODO log here
+                return;
+            }
+        }
+
     private:
         tcp::socket socket_;
-        asio::strand <asio::io_context::executor_type> strand_;
+        asio::strand<asio::io_context::executor_type> strand_;
         beast::flat_buffer buffer_;
+        asio::steady_timer timer_;
         Attr &attr_;
         HttpRequest req_;
         std::shared_ptr<void> res_;

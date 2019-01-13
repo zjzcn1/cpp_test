@@ -55,6 +55,12 @@ namespace http_server {
             return *this;
         }
 
+        HttpServer &register_ws_handler(std::string url_regx, WebsocketHandler handler) {
+            attr_.websocket_routes.emplace_back(std::make_pair(url_regx, handler));
+
+            return *this;
+        }
+
         HttpServer &start() {
             // Create and launch a listening port;
             AcceptorPtr acceptor = std::make_shared<Acceptor>(ioc_, tcp::endpoint{asio::ip::make_address(host_), port_},
