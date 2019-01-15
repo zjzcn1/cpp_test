@@ -15,7 +15,6 @@ namespace http_server {
         beast::flat_buffer buffer_;
         Attr &attr_;
         HttpRequest req_;
-//        queue queue_;
         std::shared_ptr<void> res_;
 
     public:
@@ -39,9 +38,8 @@ namespace http_server {
 
             // Run the timer. The timer is operated
             // continuously, this simplifies the code.
-            on_timer({});
-
-            do_read();
+            this->do_timer();
+            this->do_read();
         }
 
         void do_read() {
@@ -62,45 +60,20 @@ namespace http_server {
                                              std::placeholders::_1)));
         }
 
-        // Called when the timer expires.
-        void on_timer(beast::error_code ec) {
-            if (ec && ec != asio::error::operation_aborted)
-                return fail_log(ec, "timer");
-
-            // Check if this has been upgraded to Websocket
-            if (timer_.expiry() == (std::chrono::steady_clock::time_point::min) ())
-                return;
-
-            // Verify that the timer really expired since the deadline may have moved.
-            if (timer_.expiry() <= std::chrono::steady_clock::now()) {
-                // Closing the socket cancels all outstanding operations. They
-                // will complete with asio::error::operation_aborted
-                socket_.shutdown(tcp::socket::shutdown_both, ec);
-                socket_.close(ec);
+        void on_read(beast::error_code ec) {
+            // happens when the timer closes the socket
+            if (ec == asio::error::operation_aborted) {
                 return;
             }
-
-            // Wait on the timer
-            timer_.async_wait(
-                    asio::bind_executor(
-                            strand_,
-                            std::bind(
-                                    &HttpSession::on_timer,
-                                    shared_from_this(),
-                                    std::placeholders::_1)));
-        }
-
-        void on_read(beast::error_code ec) {
-            // Happens when the timer closes the socket
-            if (ec == asio::error::operation_aborted)
-                return;
-
             // This means they closed the connection
-            if (ec == http::error::end_of_stream)
-                return do_close();
+            if (ec == http::error::end_of_stream) {
+                do_close();
+            }
 
-            if (ec)
-                return fail_log(ec, "read");
+            if (ec){
+                Logger::error("HttpSession on_read error, error_message: {}.", ec.message());
+                return;
+            }
 
             // See if it is a WebSocket Upgrade
             if (websocket::is_upgrade(req_)) {
@@ -109,13 +82,16 @@ namespace http_server {
                 timer_.expires_at((std::chrono::steady_clock::time_point::min) ());
 
                 // Create a WebSocket websocket_session by transferring the socket
-//                std::make_shared<WebsocketSession>(std::move(socket_))->do_accept(std::move(req_));
-                handle_websocket();
-                return;
+                if (handle_websocket()) {
+                    this->cancel_timer();
+                    return;
+                } else {
+                    this->do_shutdown();
+                    return;
+                }
             }
 
             // Send the response
-//            handle_request(attr_.web_dir, std::move(req_), queue_);
             handle_http_request();
 
             do_read();
@@ -123,11 +99,14 @@ namespace http_server {
 
         void on_write(beast::error_code ec, bool close) {
             // Happens when the timer closes the socket
-            if (ec == asio::error::operation_aborted)
+            if (ec == asio::error::operation_aborted) {
                 return;
+            }
 
-            if (ec)
-                return fail_log(ec, "write");
+            if (ec) {
+                Logger::error("HttpSession on_write error, error_message: {}.", ec.message());
+                return;
+            }
 
             if (close) {
                 // This means we should close the connection, usually because
@@ -141,6 +120,55 @@ namespace http_server {
             beast::error_code ec;
             socket_.shutdown(tcp::socket::shutdown_send, ec);
             // At this point the connection is closed gracefully
+        }
+
+
+        void cancel_timer() {
+            // set the timer to expire immediately
+            timer_.expires_at((std::chrono::steady_clock::time_point::min) ());
+        }
+
+        void do_timer() {
+            // wait on the timer
+            timer_.async_wait(
+                    asio::bind_executor(strand_,
+                                        std::bind(&HttpSession::on_timer, shared_from_this(), std::placeholders::_1)));
+        }
+
+        void on_timer(beast::error_code ec_ = {}) {
+            if (ec_ && ec_ != asio::error::operation_aborted) {
+                // TODO log here
+                return;
+            }
+
+            // check if socket has been upgraded or closed
+            if (timer_.expires_at() == (std::chrono::steady_clock::time_point::min) ()) {
+                return;
+            }
+
+            // check expiry
+            if (timer_.expiry() <= std::chrono::steady_clock::now()) {
+                this->do_timeout();
+                return;
+            }
+        }
+
+        void do_timeout() {
+            this->do_shutdown();
+        }
+
+        void do_shutdown() {
+            beast::error_code ec;
+
+            // send a tcp shutdown
+            socket_.shutdown(tcp::socket::shutdown_send, ec);
+
+            this->cancel_timer();
+
+            if (ec) {
+                // TODO log here
+                return;
+            }
         }
 
         void send_http(HttpResponsePtr res) {
@@ -258,7 +286,8 @@ namespace http_server {
 
                             return HttpStatus::ok;
                         }
-                        catch (...) {
+                        catch (std::exception &e) {
+                            Logger::error("HttpSession handle http error, error_message: {}.", e.what());
                             return HttpStatus::internal_server_error;
                         }
                     }

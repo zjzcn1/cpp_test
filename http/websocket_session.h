@@ -14,7 +14,7 @@ namespace http_server {
         Attr &attr_;
         WebsocketHandler const &ws_handler_;
         HttpRequest req_;
-        std::deque<std::shared_ptr<std::string const>> que_ {};
+        std::deque<std::shared_ptr<std::string const>> que_{};
 
     public:
         // Take ownership of the socket
@@ -31,12 +31,12 @@ namespace http_server {
             // leave channel
             attr_.websocket_channels[req_.path].remove(*this);
         }
+
         void send(std::string const &str) {
             auto const pstr = std::make_shared<std::string const>(std::move(str));
             que_.emplace_back(pstr);
 
-            if (que_.size() > 1)
-            {
+            if (que_.size() > 1) {
                 return;
             }
 
@@ -51,22 +51,19 @@ namespace http_server {
             boost::ignore_unused(bytes_transferred);
 
             // happens when the timer closes the socket
-            if (ec == asio::error::operation_aborted)
-            {
+            if (ec == asio::error::operation_aborted) {
                 return;
             }
 
-            if (ec)
-            {
-                // TODO log here
+            if (ec) {
+                Logger::error("WebsocketSession on_write error, error_message: {}.", ec.message());
                 return;
             }
 
             // remove sent message from the queue
             que_.pop_front();
 
-            if (que_.empty())
-            {
+            if (que_.empty()) {
                 return;
             }
 
@@ -75,7 +72,7 @@ namespace http_server {
                                       std::placeholders::_2));
         }
 
-// Start the asynchronous operation
+        // Start the asynchronous operation
         void do_accept() {
             // Set the control callback. This will be called
             // on every incoming ping, pong, and close frame.
@@ -106,26 +103,31 @@ namespace http_server {
 
         void on_accept(beast::error_code ec) {
             // Happens when the timer closes the socket
-            if (ec == asio::error::operation_aborted)
+            if (ec == asio::error::operation_aborted) {
                 return;
+            }
 
-            if (ec)
-                return fail_log(ec, "accept");
+            if (ec) {
+                Logger::error("WebsocketSession on_accept error, error_message: {}.", ec.message());
+                return;
+            }
 
             // join channel
             if (attr_.websocket_channels.find(req_.path) == attr_.websocket_channels.end()) {
                 attr_.websocket_channels[req_.path] = WebsocketChannel();
             }
             attr_.websocket_channels[req_.path].insert(*this);
-
+            Logger::info("WebsocketSession session insert to channel[{}].", req_.path);
             // Read a message
             do_read();
         }
 
-// Called when the timer expires.
+        // Called when the timer expires.
         void on_timer(beast::error_code ec) {
-            if (ec && ec != asio::error::operation_aborted)
-                return fail_log(ec, "timer");
+            if (ec && ec != asio::error::operation_aborted) {
+                Logger::error("WebsocketSession on_timer error, error_message: {}.", ec.message());
+                return;
+            }
 
             // See if the timer really expired since the deadline may have moved.
             if (timer_.expiry() <= std::chrono::steady_clock::now()) {
@@ -169,7 +171,7 @@ namespace http_server {
                                     std::placeholders::_1)));
         }
 
-// Called to indicate set_active from the remote peer
+        // Called to indicate set_active from the remote peer
         void set_active() {
             // Note that the connection is alive
             ping_state_ = 0;
@@ -178,14 +180,16 @@ namespace http_server {
             timer_.expires_after(std::chrono::seconds(attr_.timeout));
         }
 
-// Called after a ping is sent.
+        // Called after a ping is sent.
         void on_ping(beast::error_code ec) {
             // Happens when the timer closes the socket
             if (ec == asio::error::operation_aborted)
                 return;
 
-            if (ec)
-                return fail_log(ec, "ping");
+            if (ec) {
+                Logger::error("WebsocketSession on_ping error, error_message: {}.", ec.message());
+                return;
+            }
 
             // Note that the ping was sent.
             if (ping_state_ == 1) {
@@ -222,15 +226,19 @@ namespace http_server {
             boost::ignore_unused(bytes_transferred);
 
             // Happens when the timer closes the socket
-            if (ec == asio::error::operation_aborted)
+            if (ec == asio::error::operation_aborted) {
                 return;
+            }
 
             // This indicates that the WebsocketSession was closed
-            if (ec == websocket::error::closed)
+            if (ec == websocket::error::closed) {
                 return;
+            }
 
-            if (ec)
-                fail_log(ec, "read");
+            if (ec) {
+                Logger::error("WebsocketSession on_read error, error_message: {}.", ec.message());
+                return;
+            }
 
             // Note that there is set_active
             set_active();
@@ -240,7 +248,7 @@ namespace http_server {
                 // run user function
                 ws_handler_(msg, *this);
             } catch (std::exception &e) {
-                fail_log(ec, e.what());
+                Logger::error("WebsocketSession handle websocket error, error_message: {}.", e.what());
             }
 
             // clear the buffers

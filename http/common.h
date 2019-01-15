@@ -93,8 +93,4 @@ namespace http_server {
         WebsocketChannels websocket_channels{};
     };
 
-    void fail_log(beast::error_code ec, char const *what) {
-        std::cerr << what << ": " << ec.message() << "\n";
-    }
-
 }

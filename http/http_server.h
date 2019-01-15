@@ -8,7 +8,7 @@ namespace http_server {
 
     class HttpServer {
     public:
-        HttpServer(std::string host, unsigned short port, int threads = 1)
+        HttpServer(std::string host = "0.0.0.0", unsigned short port = 8080, int threads = 1)
                 : host_(std::move(host)), port_(port), threads_(threads) {
         }
 
@@ -69,6 +69,7 @@ namespace http_server {
                     ioc_.run();
                 });
             }
+            Logger::info("HttpServer started, host=\"{}\", port={}.", host_, port_);
             return *this;
         }
 

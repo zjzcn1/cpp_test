@@ -20,21 +20,21 @@ namespace http_server {
             // Open the acceptor
             acceptor_.open(endpoint.protocol(), ec);
             if (ec) {
-                fail_log(ec, "open");
+                Logger::error("Acceptor open error, error_message: {}.", ec.message());
                 return;
             }
 
             // Allow address reuse
             acceptor_.set_option(asio::socket_base::reuse_address(true), ec);
             if (ec) {
-                fail_log(ec, "set_option");
+                Logger::error("Acceptor set_option error, error_message: {}.", ec.message());
                 return;
             }
 
             // Bind to the server address
             acceptor_.bind(endpoint, ec);
             if (ec) {
-                fail_log(ec, "bind");
+                Logger::error("Acceptor bind error, error_message: {}.", ec.message());
                 return;
             }
 
@@ -42,15 +42,17 @@ namespace http_server {
             acceptor_.listen(
                     asio::socket_base::max_listen_connections, ec);
             if (ec) {
-                fail_log(ec, "listen");
+                Logger::error("Acceptor listen error, error_message: {}.", ec.message());
                 return;
             }
         }
 
         // Start accepting incoming connections
         void run() {
-            if (!acceptor_.is_open())
+            if (!acceptor_.is_open()) {
+                Logger::error("Acceptor not opened.");
                 return;
+            }
             do_accept();
         }
 
@@ -65,7 +67,7 @@ namespace http_server {
 
         void on_accept(beast::error_code ec) {
             if (ec) {
-                fail_log(ec, "accept");
+                Logger::error("Acceptor on_accept error, error_message: {}.", ec.message());
             } else {
                 // Create the http_session and run it
                 std::make_shared<HttpSession>(
