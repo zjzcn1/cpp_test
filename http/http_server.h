@@ -23,19 +23,13 @@ namespace http_server {
             return *this;
         }
 
-        // get websocket upgrade
-        HttpServer &support_websocket(bool support_websocket) {
-            attr_.support_websocket = support_websocket;
-            return *this;
-        }
-
         // set the socket timeout
         HttpServer &timeout(std::chrono::seconds timeout) {
             attr_.timeout = timeout;
             return *this;
         }
 
-        HttpServer &register_http_handler(std::string url_regx, Method method, HttpHandler handler) {
+        HttpServer &register_http_handler(std::string url_regx, HttpMethod method, HttpHandler handler) {
             if (attr_.http_routes.find(url_regx) == attr_.http_routes.end()) {
                 attr_.http_routes[url_regx] = {{static_cast<int>(method), handler}};
             } else {
@@ -47,9 +41,9 @@ namespace http_server {
 
         HttpServer &register_http_handler(std::string url_regx, HttpHandler handler) {
             if (attr_.http_routes.find(url_regx) == attr_.http_routes.end()) {
-                attr_.http_routes[url_regx] = {{static_cast<int>(Method::unknown), handler}};
+                attr_.http_routes[url_regx] = {{static_cast<int>(HttpMethod::unknown), handler}};
             } else {
-                attr_.http_routes.at(url_regx)[static_cast<int>(Method::unknown)] = handler;
+                attr_.http_routes.at(url_regx)[static_cast<int>(HttpMethod::unknown)] = handler;
             }
 
             return *this;
@@ -81,6 +75,12 @@ namespace http_server {
         void sync() {
             for (std::thread &t : io_threads_) {
                 t.join();
+            }
+        }
+
+        void broadcast(std::string path, std::string msg) {
+            for (auto const e : attr_.websocket_channels.at(path).sessions) {
+                e->send(msg);
             }
         }
 

@@ -7,43 +7,76 @@ namespace http_server {
     class WebsocketSession : public std::enable_shared_from_this<WebsocketSession> {
     private:
         websocket::stream <tcp::socket> ws_;
-        asio::strand <
-        asio::io_context::executor_type> strand_;
+        asio::strand <asio::io_context::executor_type> strand_;
         asio::steady_timer timer_;
         beast::multi_buffer buffer_;
         char ping_state_ = 0;
+        Attr &attr_;
+        WebsocketHandler const &ws_handler_;
+        HttpRequest req_;
+        std::deque<std::shared_ptr<std::string const>> que_ {};
 
     public:
         // Take ownership of the socket
-        explicit
-        WebsocketSession(tcp::socket
-                          socket)
-                :
-                ws_(std::move(socket)
-                ),
-                strand_(ws_
-                                .
+        explicit WebsocketSession(tcp::socket socket, Attr &attr, HttpRequest &&req, WebsocketHandler const &ws_handler)
+                : ws_(std::move(socket)),
+                  strand_(ws_.get_executor()),
+                  timer_(ws_.get_executor().context(), (std::chrono::steady_clock::time_point::max) ()),
+                  attr_(attr),
+                  req_(std::move(req)),
+                  ws_handler_(ws_handler) {
+        }
 
-                                        get_executor()
+        ~WebsocketSession() {
+            // leave channel
+            attr_.websocket_channels[req_.path].remove(*this);
+        }
+        void send(std::string const &str) {
+            auto const pstr = std::make_shared<std::string const>(std::move(str));
+            que_.emplace_back(pstr);
 
-                ),
-                timer_(ws_
-                               .
+            if (que_.size() > 1)
+            {
+                return;
+            }
 
-                                       get_executor()
+            ws_.async_write(asio::buffer(*que_.front()),
+                            std::bind(&WebsocketSession::on_write, shared_from_this(), std::placeholders::_1,
+                                      std::placeholders::_2));
+        }
 
-                               .
+        void on_write(
+                beast::error_code ec,
+                std::size_t bytes_transferred) {
+            boost::ignore_unused(bytes_transferred);
 
-                                       context(),
-                       (std::chrono::steady_clock::time_point::max) ()
+            // happens when the timer closes the socket
+            if (ec == asio::error::operation_aborted)
+            {
+                return;
+            }
 
-                ) {
+            if (ec)
+            {
+                // TODO log here
+                return;
+            }
+
+            // remove sent message from the queue
+            que_.pop_front();
+
+            if (que_.empty())
+            {
+                return;
+            }
+
+            ws_.async_write(asio::buffer(*que_.front()),
+                            std::bind(&WebsocketSession::on_write, shared_from_this(), std::placeholders::_1,
+                                      std::placeholders::_2));
         }
 
 // Start the asynchronous operation
-        template<class Body, class Allocator>
-        void
-        do_accept(http::request <Body, http::basic_fields<Allocator>> req) {
+        void do_accept() {
             // Set the control callback. This will be called
             // on every incoming ping, pong, and close frame.
             ws_.control_callback(
@@ -58,11 +91,11 @@ namespace http_server {
             on_timer({});
 
             // Set the timer
-            timer_.expires_after(std::chrono::seconds(15));
+            timer_.expires_after(std::chrono::seconds(attr_.timeout));
 
             // Accept the websocket handshake
             ws_.async_accept(
-                    req,
+                    req_,
                     asio::bind_executor(
                             strand_,
                             std::bind(
@@ -71,8 +104,7 @@ namespace http_server {
                                     std::placeholders::_1)));
         }
 
-        void
-        on_accept(beast::error_code ec) {
+        void on_accept(beast::error_code ec) {
             // Happens when the timer closes the socket
             if (ec == asio::error::operation_aborted)
                 return;
@@ -80,13 +112,18 @@ namespace http_server {
             if (ec)
                 return fail_log(ec, "accept");
 
+            // join channel
+            if (attr_.websocket_channels.find(req_.path) == attr_.websocket_channels.end()) {
+                attr_.websocket_channels[req_.path] = WebsocketChannel();
+            }
+            attr_.websocket_channels[req_.path].insert(*this);
+
             // Read a message
             do_read();
         }
 
 // Called when the timer expires.
-        void
-        on_timer(beast::error_code ec) {
+        void on_timer(beast::error_code ec) {
             if (ec && ec != asio::error::operation_aborted)
                 return fail_log(ec, "timer");
 
@@ -132,19 +169,17 @@ namespace http_server {
                                     std::placeholders::_1)));
         }
 
-// Called to indicate activity from the remote peer
-        void
-        activity() {
+// Called to indicate set_active from the remote peer
+        void set_active() {
             // Note that the connection is alive
             ping_state_ = 0;
 
             // Set the timer
-            timer_.expires_after(std::chrono::seconds(15));
+            timer_.expires_after(std::chrono::seconds(attr_.timeout));
         }
 
 // Called after a ping is sent.
-        void
-        on_ping(beast::error_code ec) {
+        void on_ping(beast::error_code ec) {
             // Happens when the timer closes the socket
             if (ec == asio::error::operation_aborted)
                 return;
@@ -163,18 +198,14 @@ namespace http_server {
             }
         }
 
-        void
-        on_control_callback(
-                websocket::frame_type kind,
-                beast::string_view payload) {
+        void on_control_callback(websocket::frame_type kind, beast::string_view payload) {
             boost::ignore_unused(kind, payload);
 
-            // Note that there is activity
-            activity();
+            // Note that there is set_active
+            set_active();
         }
 
-        void
-        do_read() {
+        void do_read() {
             // Read a message into our buffer
             ws_.async_read(
                     buffer_,
@@ -187,10 +218,7 @@ namespace http_server {
                                     std::placeholders::_2)));
         }
 
-        void
-        on_read(
-                beast::error_code ec,
-                std::size_t bytes_transferred) {
+        void on_read(beast::error_code ec, std::size_t bytes_transferred) {
             boost::ignore_unused(bytes_transferred);
 
             // Happens when the timer closes the socket
@@ -204,41 +232,23 @@ namespace http_server {
             if (ec)
                 fail_log(ec, "read");
 
-            // Note that there is activity
-            activity();
+            // Note that there is set_active
+            set_active();
 
-            // Echo the message
-            ws_.text(ws_.got_text());
-            ws_.async_write(
-                    buffer_.data(),
-                    asio::bind_executor(
-                            strand_,
-                            std::bind(
-                                    &WebsocketSession::on_write,
-                                    shared_from_this(),
-                                    std::placeholders::_1,
-                                    std::placeholders::_2)));
-        }
+            try {
+                std::string msg = beast::buffers_to_string(buffer_.data());
+                // run user function
+                ws_handler_(msg, *this);
+            } catch (std::exception &e) {
+                fail_log(ec, e.what());
+            }
 
-        void
-        on_write(
-                beast::error_code ec,
-                std::size_t bytes_transferred) {
-            boost::ignore_unused(bytes_transferred);
-
-            // Happens when the timer closes the socket
-            if (ec == asio::error::operation_aborted)
-                return;
-
-            if (ec)
-                return fail_log(ec, "write");
-
-            // Clear the buffer
+            // clear the buffers
             buffer_.consume(buffer_.size());
 
-            // Do another read
-            do_read();
+            this->do_read();
         }
+
     };
 
 }

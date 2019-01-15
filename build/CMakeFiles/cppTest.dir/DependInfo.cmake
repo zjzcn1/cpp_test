@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/zjz/work/cpp/cpp_test/http/http_test.cpp" "/Users/zjz/work/cpp/cpp_test/build/CMakeFiles/cppTest.dir/http/http_test.cpp.o"
+  "/Users/zjz/work/cpp/cpp_test/http_test.cpp" "/Users/zjz/work/cpp/cpp_test/build/CMakeFiles/cppTest.dir/http_test.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
@@ -12,7 +12,8 @@ set(CMAKE_CXX_COMPILER_ID "AppleClang")
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/local/include"
   "/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/OpenGL.framework"
-  "../src"
+  "../http"
+  "../third_party"
   )
 
 # Targets to which this target links.

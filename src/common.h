@@ -66,7 +66,7 @@ namespace http_server {
 
         WsRoutes websocket_routes{};
 
-        Channels channels{};
+        std::unordered_map<std::string, Channel> channels{};
     };
 
     void fail_log(beast::error_code ec, char const *what) {

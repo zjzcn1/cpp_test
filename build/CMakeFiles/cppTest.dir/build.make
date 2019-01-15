@@ -57,27 +57,27 @@ include CMakeFiles/cppTest.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/cppTest.dir/flags.make
 
-CMakeFiles/cppTest.dir/http/http_test.cpp.o: CMakeFiles/cppTest.dir/flags.make
-CMakeFiles/cppTest.dir/http/http_test.cpp.o: ../http/http_test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zjz/work/cpp/cpp_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cppTest.dir/http/http_test.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cppTest.dir/http/http_test.cpp.o -c /Users/zjz/work/cpp/cpp_test/http/http_test.cpp
+CMakeFiles/cppTest.dir/http_test.cpp.o: CMakeFiles/cppTest.dir/flags.make
+CMakeFiles/cppTest.dir/http_test.cpp.o: ../http_test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zjz/work/cpp/cpp_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cppTest.dir/http_test.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cppTest.dir/http_test.cpp.o -c /Users/zjz/work/cpp/cpp_test/http_test.cpp
 
-CMakeFiles/cppTest.dir/http/http_test.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cppTest.dir/http/http_test.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zjz/work/cpp/cpp_test/http/http_test.cpp > CMakeFiles/cppTest.dir/http/http_test.cpp.i
+CMakeFiles/cppTest.dir/http_test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cppTest.dir/http_test.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zjz/work/cpp/cpp_test/http_test.cpp > CMakeFiles/cppTest.dir/http_test.cpp.i
 
-CMakeFiles/cppTest.dir/http/http_test.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cppTest.dir/http/http_test.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zjz/work/cpp/cpp_test/http/http_test.cpp -o CMakeFiles/cppTest.dir/http/http_test.cpp.s
+CMakeFiles/cppTest.dir/http_test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cppTest.dir/http_test.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zjz/work/cpp/cpp_test/http_test.cpp -o CMakeFiles/cppTest.dir/http_test.cpp.s
 
 # Object files for target cppTest
 cppTest_OBJECTS = \
-"CMakeFiles/cppTest.dir/http/http_test.cpp.o"
+"CMakeFiles/cppTest.dir/http_test.cpp.o"
 
 # External object files for target cppTest
 cppTest_EXTERNAL_OBJECTS =
 
-cppTest: CMakeFiles/cppTest.dir/http/http_test.cpp.o
+cppTest: CMakeFiles/cppTest.dir/http_test.cpp.o
 cppTest: CMakeFiles/cppTest.dir/build.make
 cppTest: /usr/local/lib/libboost_system-mt.dylib
 cppTest: /usr/local/lib/libfltk_images.dylib

@@ -26,10 +26,11 @@ find_package( FLTK REQUIRED )
 include_directories(
         ${Boost_INCLUDE_DIRS}
         ${FLTK_INCLUDE_DIR}
-        src
+        http
+        third_party
 )
 #SET(SRC_LIST ws_async.cpp)
-SET(SRC_LIST http/http_test.cpp)
+SET(SRC_LIST http_test.cpp)
 #SET(SRC_LIST http_ws_async.cpp)
 ADD_EXECUTABLE(cppTest ${SRC_LIST})
 

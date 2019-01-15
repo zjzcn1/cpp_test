@@ -17,7 +17,6 @@ namespace http_server {
         Acceptor(asio::io_context &ioc, tcp::endpoint endpoint, Attr &attr)
                 : acceptor_(ioc), socket_(ioc), attr_(attr) {
             beast::error_code ec;
-
             // Open the acceptor
             acceptor_.open(endpoint.protocol(), ec);
             if (ec) {
@@ -49,15 +48,13 @@ namespace http_server {
         }
 
         // Start accepting incoming connections
-        void
-        run() {
+        void run() {
             if (!acceptor_.is_open())
                 return;
             do_accept();
         }
 
-        void
-        do_accept() {
+        void do_accept() {
             acceptor_.async_accept(
                     socket_,
                     std::bind(
@@ -66,8 +63,7 @@ namespace http_server {
                             std::placeholders::_1));
         }
 
-        void
-        on_accept(beast::error_code ec) {
+        void on_accept(beast::error_code ec) {
             if (ec) {
                 fail_log(ec, "accept");
             } else {

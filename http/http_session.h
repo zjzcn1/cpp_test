@@ -8,112 +8,26 @@ namespace http_server {
 
 // Handles an HTTP server connection
     class HttpSession : public std::enable_shared_from_this<HttpSession> {
-        // This queue is used for HTTP pipelining.
-        class queue {
-            enum {
-                // Maximum number of responses we will queue
-                        limit = 8
-            };
-
-            // The type-erased, saved work item
-            struct work {
-                virtual ~work() = default;
-
-                virtual void operator()() = 0;
-            };
-
-            HttpSession &self_;
-            std::vector<std::unique_ptr<work>> items_;
-
-        public:
-            explicit
-            queue(HttpSession &self)
-                    : self_(self) {
-                static_assert(limit > 0, "queue limit must be positive");
-                items_.reserve(limit);
-            }
-
-            // Returns `true` if we have reached the queue limit
-            bool
-            is_full() const {
-                return items_.size() >= limit;
-            }
-
-            // Called when a message finishes sending
-            // Returns `true` if the caller should initiate a read
-            bool
-            on_write() {
-                BOOST_ASSERT(!items_.empty());
-                auto const was_full = is_full();
-                items_.erase(items_.begin());
-                if (!items_.empty())
-                    (*items_.front())();
-                return was_full;
-            }
-
-            // Called by the HTTP handler to send a response.
-            template<bool isRequest, class Body, class Fields>
-            void
-            operator()(http::message<isRequest, Body, Fields> &&msg) {
-                // This holds a work item
-                struct work_impl : work {
-                    HttpSession &self_;
-                    http::message<isRequest, Body, Fields> msg_;
-
-                    work_impl(
-                            HttpSession &self,
-                            http::message<isRequest, Body, Fields> &&msg)
-                            : self_(self), msg_(std::move(msg)) {
-                    }
-
-                    void
-                    operator()() {
-                        http::async_write(
-                                self_.socket_,
-                                msg_,
-                                asio::bind_executor(
-                                        self_.strand_,
-                                        std::bind(
-                                                &HttpSession::on_write,
-                                                self_.shared_from_this(),
-                                                std::placeholders::_1,
-                                                msg_.need_eof())));
-                    }
-                };
-
-                // Allocate and store the work
-                items_.push_back(
-                        boost::make_unique<work_impl>(self_, std::move(msg)));
-
-                // If there was no previous work, start this one
-                if (items_.size() == 1)
-                    (*items_.front())();
-            }
-        };
-
+    private:
         tcp::socket socket_;
-        asio::strand <
-        asio::io_context::executor_type> strand_;
+        asio::strand<asio::io_context::executor_type> strand_;
         asio::steady_timer timer_;
         beast::flat_buffer buffer_;
         Attr &attr_;
-        http::request<http::string_body> req_;
-        queue queue_;
+        HttpRequest req_;
+//        queue queue_;
+        std::shared_ptr<void> res_;
 
     public:
         // Take ownership of the socket
-        explicit
-        HttpSession(
-                tcp::socket socket,
-                Attr &attr)
-                : socket_(std::move(socket)), strand_(socket_.get_executor()), timer_(socket_.get_executor().context(),
-                                                                                      (std::chrono::steady_clock::time_point::max) ()),
-                  attr_(attr), queue_(*this) {
+        explicit HttpSession(tcp::socket socket, Attr &attr)
+                : socket_(std::move(socket)), strand_(socket_.get_executor()),
+                  timer_(socket_.get_executor().context(), (std::chrono::steady_clock::time_point::max) ()),
+                  attr_(attr) {
         }
 
         // Start the asynchronous operation
-        void
-        run() {
+        void run() {
             // Make sure we run on the strand
             if (!strand_.running_in_this_thread())
                 return asio::post(
@@ -130,10 +44,9 @@ namespace http_server {
             do_read();
         }
 
-        void
-        do_read() {
+        void do_read() {
             // Set the timer
-            timer_.expires_after(std::chrono::seconds(15));
+            timer_.expires_after(std::chrono::seconds(attr_.timeout));
 
             // Make the request empty before reading,
             // otherwise the operation behavior is undefined.
@@ -150,8 +63,7 @@ namespace http_server {
         }
 
         // Called when the timer expires.
-        void
-        on_timer(beast::error_code ec) {
+        void on_timer(beast::error_code ec) {
             if (ec && ec != asio::error::operation_aborted)
                 return fail_log(ec, "timer");
 
@@ -178,8 +90,7 @@ namespace http_server {
                                     std::placeholders::_1)));
         }
 
-        void
-        on_read(beast::error_code ec) {
+        void on_read(beast::error_code ec) {
             // Happens when the timer closes the socket
             if (ec == asio::error::operation_aborted)
                 return;
@@ -198,21 +109,19 @@ namespace http_server {
                 timer_.expires_at((std::chrono::steady_clock::time_point::min) ());
 
                 // Create a WebSocket websocket_session by transferring the socket
-                std::make_shared<WebsocketSession>(
-                        std::move(socket_))->do_accept(std::move(req_));
+//                std::make_shared<WebsocketSession>(std::move(socket_))->do_accept(std::move(req_));
+                handle_websocket();
                 return;
             }
 
             // Send the response
 //            handle_request(attr_.web_dir, std::move(req_), queue_);
+            handle_http_request();
 
-            // If we aren't at the queue limit, try to pipeline another request
-            if (!queue_.is_full())
-                do_read();
+            do_read();
         }
 
-        void
-        on_write(beast::error_code ec, bool close) {
+        void on_write(beast::error_code ec, bool close) {
             // Happens when the timer closes the socket
             if (ec == asio::error::operation_aborted)
                 return;
@@ -225,21 +134,208 @@ namespace http_server {
                 // the response indicated the "Connection: close" semantic.
                 return do_close();
             }
-
-            // Inform the queue that a write completed
-            if (queue_.on_write()) {
-                // Read another request
-                do_read();
-            }
         }
 
-        void
-        do_close() {
+        void do_close() {
             // Send a TCP shutdown
             beast::error_code ec;
             socket_.shutdown(tcp::socket::shutdown_send, ec);
-
             // At this point the connection is closed gracefully
+        }
+
+        void send_http(HttpResponsePtr res) {
+            this->res_ = res;
+            http::async_write(
+                    socket_,
+                    *res,
+                    asio::bind_executor(
+                            strand_,
+                            std::bind(
+                                    &HttpSession::on_write,
+                                    shared_from_this(),
+                                    std::placeholders::_1,
+                                    res->need_eof())));
+        }
+
+        void send_file(FileResponsePtr res) {
+            this->res_ = res;
+            http::async_write(
+                    socket_,
+                    *res,
+                    asio::bind_executor(
+                            strand_,
+                            std::bind(
+                                    &HttpSession::on_write,
+                                    shared_from_this(),
+                                    std::placeholders::_1,
+                                    res->need_eof())));
+        }
+
+        HttpStatus handle_static() {
+            if (attr_.web_dir.empty()) {
+                return HttpStatus::not_found;
+            }
+
+            if ((req_.method() != http::verb::get) && (req_.method() != http::verb::head)) {
+                return HttpStatus::not_found;
+            }
+
+            std::string path = HttpUtils::path_cat(attr_.web_dir, req_.target().to_string());
+            if (req_.target().back() == '/') {
+                path.append(attr_.index_file);
+            }
+
+            boost::system::error_code ec;
+            http::file_body::value_type body;
+            body.open(path.data(), beast::file_mode::scan, ec);
+            if (ec) {
+                return HttpStatus::not_found;
+            }
+
+            auto const size = body.size();
+            FileResponsePtr res = FileResponsePtr(new FileResponse{
+                    std::piecewise_construct,
+                    std::make_tuple(std::move(body)),
+                    std::make_tuple(attr_.http_headers)
+            });
+            res->version(req_.version());
+            res->keep_alive(req_.keep_alive());
+            res->content_length(size);
+            res->set(HttpHeader::content_type, HttpUtils::mime_type(path));
+            send_file(res);
+            return HttpStatus::ok;
+        }
+
+        HttpStatus handle_dynamic() {
+            if (attr_.http_routes.empty()) {
+                return HttpStatus::not_found;
+            }
+
+            // regex variables
+            std::smatch rx_match{};
+            std::regex_constants::syntax_option_type const rx_opts{std::regex::ECMAScript};
+            std::regex_constants::match_flag_type const rx_flgs{std::regex_constants::match_not_null};
+
+            // the request path
+            std::string path{req_.target().to_string()};
+
+            // separate the query parameters
+            auto params = HttpUtils::split(path, "?", 1);
+            path = params.at(0);
+            req_.path = path;
+            HttpUtils::params_parse(path, req_.params);
+
+            // iterate over routes
+            for (auto const &regex_method : attr_.http_routes) {
+                bool method_match{false};
+                auto match = regex_method.second.find(static_cast<int>(HttpMethod::unknown));
+
+                if (match != regex_method.second.end()) {
+                    method_match = true;
+                } else {
+                    match = regex_method.second.find(static_cast<int>(req_.method()));
+
+                    if (match != regex_method.second.end()) {
+                        method_match = true;
+                    }
+                }
+
+                if (method_match) {
+                    std::regex rx_str{regex_method.first, rx_opts};
+                    if (std::regex_match(path, rx_match, rx_str, rx_flgs)) {
+                        // set callback function
+                        HttpResponsePtr res = HttpResponsePtr(new HttpResponse());
+                        try {
+                            HttpHandler const &http_handler = match->second;
+                            // handle biz
+                            http_handler(req_, *res);
+
+                            res->version(req_.version());
+                            res->keep_alive(req_.keep_alive());
+                            res->content_length(res->body().size());
+
+                            send_http(std::move(res));
+
+                            return HttpStatus::ok;
+                        }
+                        catch (...) {
+                            return HttpStatus::internal_server_error;
+                        }
+                    }
+                }
+            }
+
+            return HttpStatus::not_found;
+        }
+
+        void handle_error(HttpStatus err) {
+            HttpResponsePtr res = HttpResponsePtr(new HttpResponse());
+            res->version(req_.version());
+            res->keep_alive(req_.keep_alive());
+            res->result(err);
+            res->set(HttpHeader::content_type, "text/plain");
+            res->body() = "Error: " + std::to_string(res->result_int());
+            res->content_length(res->body().size());
+            send_http(res);
+        };
+
+        void handle_http_request() {
+            if (req_.target().empty()) {
+                req_.target() = "/";
+            }
+
+            if (req_.target().at(0) != '/' ||
+                req_.target().find("..") != boost::beast::string_view::npos) {
+                this->handle_error(HttpStatus::not_found);
+                return;
+            }
+
+            // serve dynamic content
+            auto dyna = this->handle_dynamic();
+            // success
+            if (dyna == HttpStatus::ok) {
+                return;
+            }
+            // error
+            if (dyna != HttpStatus::not_found) {
+                this->handle_error(dyna);
+                return;
+            }
+
+            // serve static content
+            HttpStatus status = this->handle_static();
+            if (status != HttpStatus::ok) {
+                this->handle_error(status);
+                return;
+            }
+        }
+
+        bool handle_websocket() {
+            // the request path
+            std::string path{req_.target().to_string()};
+
+            // separate the query parameters
+            std::vector<std::string> params = HttpUtils::split(path, "?", 1);
+            path = params.at(0);
+            req_.path = path;
+
+            // regex variables
+            std::smatch rx_match{};
+            std::regex_constants::syntax_option_type const rx_opts{std::regex::ECMAScript};
+            std::regex_constants::match_flag_type const rx_flgs{std::regex_constants::match_not_null};
+
+            // check for matching route
+            for (auto const &route_item : attr_.websocket_routes) {
+                std::regex rx_str{route_item.first, rx_opts};
+
+                if (std::regex_match(path, rx_match, rx_str, rx_flgs)) {
+                    std::make_shared<WebsocketSession>(std::move(socket_), attr_, std::move(req_),route_item.second)
+                            ->do_accept();
+                    return true;
+                }
+            }
+
+            return false;
         }
     };
 }

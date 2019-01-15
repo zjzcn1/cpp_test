@@ -253,6 +253,8 @@ namespace http_server {
 
             // Send the response
             this->handle_request();
+
+            this->do_read()
         }
 
         void on_write(

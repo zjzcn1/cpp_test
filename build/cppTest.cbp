@@ -46,7 +46,8 @@
 				<Compiler>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/OpenGL.framework"/>
-					<Add directory="/Users/zjz/work/cpp/cpp_test/src"/>
+					<Add directory="/Users/zjz/work/cpp/cpp_test/http"/>
+					<Add directory="/Users/zjz/work/cpp/cpp_test/third_party"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.0/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
@@ -69,7 +70,8 @@
 				<Compiler>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/OpenGL.framework"/>
-					<Add directory="/Users/zjz/work/cpp/cpp_test/src"/>
+					<Add directory="/Users/zjz/work/cpp/cpp_test/http"/>
+					<Add directory="/Users/zjz/work/cpp/cpp_test/third_party"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.0/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
@@ -84,7 +86,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/zjz/work/cpp/cpp_test/http/http_test.cpp">
+		<Unit filename="/Users/zjz/work/cpp/cpp_test/http_test.cpp">
 			<Option target="cppTest"/>
 		</Unit>
 		<Unit filename="/Users/zjz/work/cpp/cpp_test/CMakeLists.txt">

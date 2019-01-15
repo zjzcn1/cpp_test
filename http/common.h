@@ -18,6 +18,7 @@
 #include <vector>
 #include <regex>
 #include <unordered_set>
+#include "logger.h"
 
 namespace http_server {
     namespace beast = boost::beast;
@@ -27,12 +28,18 @@ namespace http_server {
 
     using tcp = boost::asio::ip::tcp;
 
-    using Method = boost::beast::http::verb;
-    using Status = boost::beast::http::status;
-    using Header = boost::beast::http::field;
-    using Headers = boost::beast::http::fields;
+    using HttpMethod = boost::beast::http::verb;
+    using HttpStatus = boost::beast::http::status;
+    using HttpHeader = boost::beast::http::field;
+    using HttpHeaders = boost::beast::http::fields;
 
-    using HttpRequest = http::request<http::string_body>;
+//    using HttpRequest = http::request<http::string_body>;
+
+    struct HttpRequest : public http::request<http::string_body> {
+        std::string path;
+        std::unordered_multimap<std::string, std::string> params;
+    };
+
     using HttpResponse = http::response<http::string_body>;
     using HttpResponsePtr = std::shared_ptr<HttpResponse>;
     using FileResponse = http::response<http::file_body>;
@@ -46,6 +53,28 @@ namespace http_server {
     using WebsocketHandler = std::function<void(std::string &, WebsocketSession&)>;
     using WebsocketRoutes = std::vector<std::pair<std::string, WebsocketHandler>>;
 
+    class WebsocketChannel {
+    public:
+
+        WebsocketChannel() = default;
+
+        void insert(WebsocketSession &session) {
+            sessions.insert(&session);
+        }
+
+        void remove(WebsocketSession &session) {
+            sessions.erase(&session);
+        }
+
+        std::size_t size() const {
+            return sessions.size();
+        }
+
+    public:
+        std::unordered_set<WebsocketSession *> sessions;
+    };
+
+    using WebsocketChannels = std::unordered_map<std::string, WebsocketChannel>;
 
     struct Attr {
         std::string web_dir{"."};
@@ -54,15 +83,14 @@ namespace http_server {
 
         std::chrono::seconds timeout{10};
 
-        bool support_websocket{true};
-
         // default http headers
-        Headers http_headers{};
+        HttpHeaders http_headers{};
 
         HttpRoutes http_routes{};
 
         WebsocketRoutes websocket_routes{};
 
+        WebsocketChannels websocket_channels{};
     };
 
     void fail_log(beast::error_code ec, char const *what) {

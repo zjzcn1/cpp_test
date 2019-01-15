@@ -57,11 +57,10 @@ namespace http_server {
             return path;
         }
 
-        static std::unordered_multimap<std::string, std::string> params_parse(std::string &path) {
+        static void params_parse(std::string &path, std::unordered_multimap<std::string, std::string> params) {
             // separate the query params
             auto param_split = split(path, "?", 1);
 
-            std::unordered_multimap<std::string, std::string> params;
             // set params
             if (param_split.size() == 2) {
                 auto kv = split(param_split.at(1), "&");
@@ -79,7 +78,6 @@ namespace http_server {
                     }
                 }
             }
-            return params;
         }
 
         static std::string path_cat(std::string &base, std::basic_string<char, std::char_traits<char>, std::allocator<char>> path) {
