@@ -28,6 +28,12 @@ int main(int argc, char *argv[]) {
         server->broadcast("/ws", msg + "-----");
     });
 
+    server->register_ws_handler("/ws1", [&](std::string msg, WebsocketSession &session) {
+        std::cout << msg << std::endl;
+//        session.send(msg);
+        server->broadcast("/ws1", msg + "-----");
+    });
+
     server->start().sync();
 ////     The io_context is required for all I/O
 //    asio::io_context ioc{threads};

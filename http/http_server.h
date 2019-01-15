@@ -35,7 +35,7 @@ namespace http_server {
             } else {
                 attr_.http_routes.at(url_regx)[static_cast<int>(method)] = handler;
             }
-
+            Logger::info("HttpServer register http handler, http_method={}, url={}", static_cast<int>(method), url_regx);
             return *this;
         }
 
@@ -45,13 +45,13 @@ namespace http_server {
             } else {
                 attr_.http_routes.at(url_regx)[static_cast<int>(HttpMethod::unknown)] = handler;
             }
-
+            Logger::info("HttpServer register http handler, http_method=unknown, url={}", url_regx);
             return *this;
         }
 
         HttpServer &register_ws_handler(std::string url_regx, WebsocketHandler handler) {
             attr_.websocket_routes.emplace_back(std::make_pair(url_regx, handler));
-
+            Logger::info("HttpServer register websocket handler, url={}", url_regx);
             return *this;
         }
 
