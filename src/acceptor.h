@@ -34,8 +34,7 @@ namespace http_server {
             }
 
             // Start listening for connections
-            acceptor_.listen(
-                    asio::socket_base::max_listen_connections, ec);
+            acceptor_.listen(asio::socket_base::max_listen_connections, ec);
             if (ec) {
                 fail_log(ec, "listen");
                 return;

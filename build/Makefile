@@ -123,32 +123,32 @@ cppTest/fast:
 	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/build
 .PHONY : cppTest/fast
 
-src/http_test.o: src/http_test.cpp.o
+http/http_test.o: http/http_test.cpp.o
 
-.PHONY : src/http_test.o
+.PHONY : http/http_test.o
 
 # target to build an object file
-src/http_test.cpp.o:
-	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/src/http_test.cpp.o
-.PHONY : src/http_test.cpp.o
+http/http_test.cpp.o:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/http/http_test.cpp.o
+.PHONY : http/http_test.cpp.o
 
-src/http_test.i: src/http_test.cpp.i
+http/http_test.i: http/http_test.cpp.i
 
-.PHONY : src/http_test.i
+.PHONY : http/http_test.i
 
 # target to preprocess a source file
-src/http_test.cpp.i:
-	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/src/http_test.cpp.i
-.PHONY : src/http_test.cpp.i
+http/http_test.cpp.i:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/http/http_test.cpp.i
+.PHONY : http/http_test.cpp.i
 
-src/http_test.s: src/http_test.cpp.s
+http/http_test.s: http/http_test.cpp.s
 
-.PHONY : src/http_test.s
+.PHONY : http/http_test.s
 
 # target to generate assembly for a file
-src/http_test.cpp.s:
-	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/src/http_test.cpp.s
-.PHONY : src/http_test.cpp.s
+http/http_test.cpp.s:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/http/http_test.cpp.s
+.PHONY : http/http_test.cpp.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... cppTest"
-	@echo "... src/http_test.o"
-	@echo "... src/http_test.i"
-	@echo "... src/http_test.s"
+	@echo "... http/http_test.o"
+	@echo "... http/http_test.i"
+	@echo "... http/http_test.s"
 .PHONY : help
 
 

@@ -35,7 +35,7 @@ namespace http_server {
             return *this;
         }
 
-        HttpServer &register_handler(std::string url_regx, Method method, HttpHandler handler) {
+        HttpServer &register_http_handler(std::string url_regx, Method method, HttpHandler handler) {
             if (attr_.http_routes.find(url_regx) == attr_.http_routes.end()) {
                 attr_.http_routes[url_regx] = {{static_cast<int>(method), handler}};
             } else {
@@ -45,7 +45,7 @@ namespace http_server {
             return *this;
         }
 
-        HttpServer &register_handler(std::string url_regx, HttpHandler handler) {
+        HttpServer &register_http_handler(std::string url_regx, HttpHandler handler) {
             if (attr_.http_routes.find(url_regx) == attr_.http_routes.end()) {
                 attr_.http_routes[url_regx] = {{static_cast<int>(Method::unknown), handler}};
             } else {
@@ -55,7 +55,7 @@ namespace http_server {
             return *this;
         }
 
-        HttpServer &register_ws_handler(std::string url_regx, WebsocketHandler handler) {
+        HttpServer &register_ws_handler(std::string url_regx, WsHandler handler) {
             attr_.websocket_routes.emplace_back(std::make_pair(url_regx, handler));
 
             return *this;

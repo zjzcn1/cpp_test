@@ -6,15 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/Users/zjz/work/cpp/cpp_test/src/acceptor.h
+/Users/zjz/work/cpp/cpp_test/http/acceptor.h
 common.h
-/Users/zjz/work/cpp/cpp_test/src/common.h
+/Users/zjz/work/cpp/cpp_test/http/common.h
 http_utils.h
-/Users/zjz/work/cpp/cpp_test/src/http_utils.h
+/Users/zjz/work/cpp/cpp_test/http/http_utils.h
 http_session.h
-/Users/zjz/work/cpp/cpp_test/src/http_session.h
+/Users/zjz/work/cpp/cpp_test/http/http_session.h
 
-/Users/zjz/work/cpp/cpp_test/src/common.h
+/Users/zjz/work/cpp/cpp_test/http/common.h
 boost/beast/core.hpp
 -
 boost/beast/http.hpp
@@ -52,27 +52,27 @@ regex
 unordered_set
 -
 
-/Users/zjz/work/cpp/cpp_test/src/http_server.h
+/Users/zjz/work/cpp/cpp_test/http/http_server.h
 common.h
-/Users/zjz/work/cpp/cpp_test/src/common.h
+/Users/zjz/work/cpp/cpp_test/http/common.h
 http_utils.h
-/Users/zjz/work/cpp/cpp_test/src/http_utils.h
+/Users/zjz/work/cpp/cpp_test/http/http_utils.h
 acceptor.h
-/Users/zjz/work/cpp/cpp_test/src/acceptor.h
+/Users/zjz/work/cpp/cpp_test/http/acceptor.h
 
-/Users/zjz/work/cpp/cpp_test/src/http_session.h
+/Users/zjz/work/cpp/cpp_test/http/http_session.h
 common.h
-/Users/zjz/work/cpp/cpp_test/src/common.h
+/Users/zjz/work/cpp/cpp_test/http/common.h
 http_utils.h
-/Users/zjz/work/cpp/cpp_test/src/http_utils.h
+/Users/zjz/work/cpp/cpp_test/http/http_utils.h
 websocket_session.h
-/Users/zjz/work/cpp/cpp_test/src/websocket_session.h
+/Users/zjz/work/cpp/cpp_test/http/websocket_session.h
 
-/Users/zjz/work/cpp/cpp_test/src/http_test.cpp
+/Users/zjz/work/cpp/cpp_test/http/http_test.cpp
 http_server.h
-/Users/zjz/work/cpp/cpp_test/src/http_server.h
+/Users/zjz/work/cpp/cpp_test/http/http_server.h
 
-/Users/zjz/work/cpp/cpp_test/src/http_utils.h
+/Users/zjz/work/cpp/cpp_test/http/http_utils.h
 memory
 -
 string
@@ -82,11 +82,11 @@ unordered_map
 boost/beast/core.hpp
 -
 
-/Users/zjz/work/cpp/cpp_test/src/websocket_session.h
+/Users/zjz/work/cpp/cpp_test/http/websocket_session.h
 common.h
-/Users/zjz/work/cpp/cpp_test/src/common.h
+/Users/zjz/work/cpp/cpp_test/http/common.h
 http_utils.h
-/Users/zjz/work/cpp/cpp_test/src/http_utils.h
+/Users/zjz/work/cpp/cpp_test/http/http_utils.h
 
 /usr/local/include/boost/align/align.hpp
 boost/config.hpp

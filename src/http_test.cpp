@@ -17,14 +17,14 @@ int main(int argc, char *argv[]) {
 //    auto const threads = std::max<int>(1, std::atoi(argv[4]));
 
     HttpServer *server = new HttpServer("0.0.0.0", 8084);
-    server->register_handler("/hehe", Method::get, [](HttpRequest req, HttpResponsePtr res) {
+    server->register_http_handler("/hehe", Method::get, [](HttpRequest &req, HttpResponse &res) {
         std::cout << "hehe" << std::endl;
-        res->body() = "hehe";
+        res.body() = "hehe";
     });
 
-    server->register_ws_handler("/ws", [](std::string res, WebsocketSession &session) {
-        std::cout << res << std::endl;
-        session.send(res);
+    server->register_ws_handler("/ws", [](std::string msg, WsSession &session) {
+        std::cout << msg << std::endl;
+        session.send(msg);
     });
 
     server->start().sync();

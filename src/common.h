@@ -38,13 +38,13 @@ namespace http_server {
     using FileResponse = http::response<http::file_body>;
     using FileResponsePtr = std::shared_ptr<FileResponse>;
 
-    using HttpHandler = std::function<void(HttpRequest &, HttpResponsePtr &)>;
+    using HttpHandler = std::function<void(HttpRequest &, HttpResponse &)>;
 
     using HttpRoutes = std::unordered_map<std::string, std::unordered_map<int, HttpHandler>>;
 
-    class WebsocketSession;
-    using WebsocketHandler = std::function<void(std::string &, WebsocketSession&)>;
-    using WebsocketRoutes = std::vector<std::pair<std::string, WebsocketHandler>>;
+    class WsSession;
+    using WsHandler = std::function<void(std::string &, WsSession&)>;
+    using WsRoutes = std::vector<std::pair<std::string, WsHandler>>;
 
     class Channel;
 
@@ -64,7 +64,7 @@ namespace http_server {
 
         HttpRoutes http_routes{};
 
-        WebsocketRoutes websocket_routes{};
+        WsRoutes websocket_routes{};
 
         Channels channels{};
     };

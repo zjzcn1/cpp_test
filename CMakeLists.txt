@@ -28,7 +28,9 @@ include_directories(
         ${FLTK_INCLUDE_DIR}
         src
 )
-SET(SRC_LIST src/http_test.cpp)
+#SET(SRC_LIST ws_async.cpp)
+SET(SRC_LIST http/http_test.cpp)
+#SET(SRC_LIST http_ws_async.cpp)
 ADD_EXECUTABLE(cppTest ${SRC_LIST})
 
 

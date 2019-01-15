@@ -2,7 +2,7 @@
 
 #include "common.h"
 #include "http_utils.h"
-#include "websocket_session.h"
+#include "ws_session.h"
 
 namespace http_server {
 
@@ -13,13 +13,22 @@ namespace http_server {
         // Take ownership of the socket
         HttpSession(tcp::socket socket, Attr &attr)
                 : socket_(std::move(socket)),
-                  timer_(socket.get_executor().context(), (std::chrono::steady_clock::time_point::max)()),
+                  timer_(socket.get_executor().context(), (std::chrono::steady_clock::time_point::max) ()),
                   strand_(socket_.get_executor()),
                   attr_(attr) {
         }
 
         // Start the asynchronous operation
         void run() {
+            // Make sure we run on the strand
+            if(! strand_.running_in_this_thread())
+                return asio::post(
+                        asio::bind_executor(
+                                strand_,
+                                std::bind(
+                                        &HttpSession::run,
+                                        shared_from_this())));
+
             this->do_timer();
             this->do_read();
         }
@@ -129,7 +138,7 @@ namespace http_server {
                         try {
                             auto const &http_handler = match->second;
                             // handle biz
-                            http_handler(req_, res);
+                            http_handler(req_, *res);
 
                             res->version(req_.version());
                             res->keep_alive(req_.keep_alive());
@@ -208,21 +217,22 @@ namespace http_server {
                                              std::placeholders::_2)));
         }
 
-        void on_read(
-                beast::error_code ec,
-                std::size_t bytes_transferred) {
+        void on_read(beast::error_code ec, std::size_t bytes_transferred) {
             boost::ignore_unused(bytes_transferred);
 
-            // This means they closed the connection
-            if (ec == http::error::end_of_stream)
-                return do_close();
-
-            if (ec) {
-                return fail_log(ec, "read");
+            // the timer has closed the socket
+            if (ec == asio::error::operation_aborted) {
+                return;
             }
 
-            // Send the response
-            handle_request();
+            // This means they closed the connection
+            if (ec == http::error::end_of_stream) {
+                this->do_shutdown();
+            }
+
+            if (ec) {
+                return fail_log(ec, "on_read");
+            }
 
             // check for websocket upgrade
             if (websocket::is_upgrade(req_)) {
@@ -240,6 +250,9 @@ namespace http_server {
                     return;
                 }
             }
+
+            // Send the response
+            this->handle_request();
         }
 
         void on_write(
@@ -289,8 +302,8 @@ namespace http_server {
 
                 if (std::regex_match(path, rx_match, rx_str, rx_flgs)) {
                     // create websocket
-                    WebsocketSessionPtr ws_session = std::make_shared<WebsocketSession>
-                            (std::move(socket_), attr_, req_, route_item.second);
+                    WsSessionPtr ws_session(
+                            new WsSession(std::move(socket_), attr_, std::move(req_), route_item.second));
                     ws_session->run();
 
                     return true;
