@@ -4,3 +4,67 @@
 [2019-01-20 10:25:35.208] [info] [1934632] HttpServer register websocket handler, url=/ws
 [2019-01-20 10:25:35.208] [info] [1934632] HttpServer register websocket handler, url=/ws1
 [2019-01-20 10:25:35.208] [error] [1934632] Acceptor listen[0.0.0.0:8084] error: bind: Address already in use.
+[2019-01-20 18:59:31.372] [warning] [2179946] Mode parameter not set, using default value (trinary)
+[2019-01-20 18:59:31.423] [info] [2179946] width=1750, height=1206
+[2019-01-20 18:59:31.423] [info] [2179946] HttpServer register http handler, http_method=GET, url=/hehe
+[2019-01-20 18:59:31.423] [info] [2179946] HttpServer register websocket handler, url=/ws
+[2019-01-20 18:59:31.423] [info] [2179946] HttpServer register websocket handler, url=/ws1
+[2019-01-20 18:59:31.424] [info] [2179946] HttpServer started, host="0.0.0.0", port=8084.
+[2019-01-20 18:59:32.012] [info] [2179949] WebsocketSession session insert to channel[/ws].
+[2019-01-20 18:59:32.109] [info] [2179949] map size=2110500, compress size=16722
+[2019-01-20 18:59:53.469] [error] [2179949] WebsocketSession on_read error, error_message: Socket is not connected.
+[2019-01-20 18:59:59.034] [info] [2179949] WebsocketSession session insert to channel[/ws].
+[2019-01-20 18:59:59.180] [info] [2179949] map size=2110500, compress size=16722
+[2019-01-20 20:23:43.118] [warning] [2197539] Mode parameter not set, using default value (trinary)
+[2019-01-20 20:23:43.180] [info] [2197539] width=1750, height=1206
+[2019-01-20 20:23:43.180] [info] [2197539] HttpServer register http handler, http_method=GET, url=/hehe
+[2019-01-20 20:23:43.180] [info] [2197539] HttpServer register websocket handler, url=/ws
+[2019-01-20 20:23:43.180] [info] [2197539] HttpServer register websocket handler, url=/ws1
+[2019-01-20 20:23:43.181] [info] [2197539] HttpServer started, host="0.0.0.0", port=8084.
+[2019-01-20 20:23:51.606] [info] [2197543] WebsocketSession session insert to channel[/ws].
+[2019-01-20 20:23:51.707] [info] [2197543] map size=2110500, compress size=16722
+[2019-01-20 20:23:51.708] [info] [2197543] WebsocketSession session insert to channel[/ws].
+[2019-01-20 20:23:51.824] [info] [2197543] map size=2110500, compress size=16722
+[2019-01-20 20:24:01.247] [error] [2197543] WebsocketSession on_read error, error_message: Socket is not connected.
+[2019-01-20 20:24:05.166] [info] [2197543] WebsocketSession session insert to channel[/ws].
+[2019-01-20 20:24:05.280] [info] [2197543] map size=2110500, compress size=16722
+[2019-01-20 20:25:08.494] [info] [2197543] WebsocketSession session insert to channel[/ws].
+[2019-01-20 20:25:08.601] [info] [2197543] map size=2110500, compress size=16722
+[2019-01-20 20:25:09.877] [info] [2197543] WebsocketSession session insert to channel[/ws].
+[2019-01-20 20:25:09.982] [info] [2197543] map size=2110500, compress size=16722
+[2019-01-20 20:25:19.924] [error] [2197543] WebsocketSession on_read error, error_message: Connection reset by peer.
+[2019-01-20 20:25:22.903] [info] [2197543] WebsocketSession session insert to channel[/ws].
+[2019-01-20 20:25:23.011] [info] [2197543] map size=2110500, compress size=16722
+[2019-01-20 20:27:39.653] [info] [2197543] WebsocketSession session insert to channel[/ws].
+[2019-01-20 20:27:39.751] [info] [2197543] map size=2110500, compress size=16722
+[2019-01-20 20:27:41.925] [info] [2197543] WebsocketSession session insert to channel[/ws].
+[2019-01-20 20:27:42.036] [info] [2197543] map size=2110500, compress size=16722
+[2019-01-20 20:27:43.107] [error] [2197543] WebsocketSession on_read error, error_message: Connection reset by peer.
+[2019-01-20 20:27:48.517] [info] [2197543] WebsocketSession session insert to channel[/ws].
+[2019-01-20 20:27:48.634] [info] [2197543] map size=2110500, compress size=16722
+[2019-01-20 20:30:14.957] [warning] [2200025] Mode parameter not set, using default value (trinary)
+[2019-01-20 20:30:15.015] [info] [2200025] width=1750, height=1206
+[2019-01-20 20:30:15.016] [info] [2200025] HttpServer register http handler, http_method=GET, url=/hehe
+[2019-01-20 20:30:15.016] [info] [2200025] HttpServer register websocket handler, url=/ws
+[2019-01-20 20:30:15.016] [info] [2200025] HttpServer register websocket handler, url=/ws1
+[2019-01-20 20:30:15.016] [info] [2200025] HttpServer started, host="0.0.0.0", port=8084.
+[2019-01-20 20:30:17.569] [info] [2200027] WebsocketSession session insert to channel[/ws].
+[2019-01-20 20:30:17.674] [info] [2200027] map size=2110500, compress size=16722
+[2019-01-20 20:30:19.289] [info] [2200027] WebsocketSession session insert to channel[/ws].
+[2019-01-20 20:30:19.385] [info] [2200027] map size=2110500, compress size=16722
+[2019-01-20 20:30:20.220] [info] [2200027] WebsocketSession session insert to channel[/ws].
+[2019-01-20 20:30:20.322] [info] [2200027] map size=2110500, compress size=16722
+[2019-01-20 20:30:21.313] [info] [2200027] WebsocketSession session insert to channel[/ws].
+[2019-01-20 20:30:21.410] [info] [2200027] map size=2110500, compress size=16722
+[2019-01-20 20:30:22.086] [info] [2200027] WebsocketSession session insert to channel[/ws].
+[2019-01-20 20:30:22.193] [info] [2200027] map size=2110500, compress size=16722
+[2019-01-20 20:30:22.445] [info] [2200027] WebsocketSession session insert to channel[/ws].
+[2019-01-20 20:30:22.541] [info] [2200027] map size=2110500, compress size=16722
+[2019-01-20 20:31:00.290] [error] [2200027] WebsocketSession on_read error,  Socket is not connected.
+[2019-01-20 20:31:00.291] [error] [2200027] WebsocketSession on_read error,  Socket is not connected.
+[2019-01-20 20:31:47.933] [error] [2200027] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-20 20:31:47.934] [error] [2200027] WebsocketSession on_read error,  Socket is not connected.
+[2019-01-20 20:31:47.934] [error] [2200027] WebsocketSession on_read error,  Socket is not connected.
+[2019-01-20 20:31:47.934] [error] [2200027] WebsocketSession on_read error,  Socket is not connected.
+[2019-01-20 20:31:51.445] [info] [2200027] WebsocketSession session insert to channel[/ws].
+[2019-01-20 20:31:51.564] [info] [2200027] map size=2110500, compress size=16722

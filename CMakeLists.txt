@@ -26,8 +26,6 @@ find_package(SDL_image REQUIRED)
 
 find_package(yaml-cpp REQUIRED)
 
-#file(GLOB_RECURSE LZ4_INC "lz4/*.h")
-file(GLOB_RECURSE GZIP_INC "gzip/*.h")
 include_directories(
         ${Boost_INCLUDE_DIRS}
         http
@@ -35,12 +33,10 @@ include_directories(
         tests
         ${SDL_image_INCLUDE_DIRS}
         ${YAML_CPP_INCLUDE_DIRS}
-        ${GZIP_INC}
 )
 
 message(STATUS "Boost library found  ${yaml-cpp_LIBRARIES}")
 
-file(GLOB_RECURSE LZ4_SRC "lz4/*.cpp")
 SET(SRC_LIST
         tests/http_test.cpp
         tests/map_loader.cpp

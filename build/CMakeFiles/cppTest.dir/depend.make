@@ -36,7 +36,6 @@ CMakeFiles/cppTest.dir/tests/http_test.cpp.o: ../http/http_utils.h
 CMakeFiles/cppTest.dir/tests/http_test.cpp.o: ../http/json.hpp
 CMakeFiles/cppTest.dir/tests/http_test.cpp.o: ../http/logger.h
 CMakeFiles/cppTest.dir/tests/http_test.cpp.o: ../http/websocket_session.h
-CMakeFiles/cppTest.dir/tests/http_test.cpp.o: ../lz4/lz4.h
 CMakeFiles/cppTest.dir/tests/http_test.cpp.o: ../tests/./MapMetaData.h
 CMakeFiles/cppTest.dir/tests/http_test.cpp.o: ../tests/./OccupancyGrid.h
 CMakeFiles/cppTest.dir/tests/http_test.cpp.o: ../tests/./map_loader.h

@@ -2,7 +2,6 @@
 #include "./map_loader.h"
 #include "../http/base64.h"
 #include "../http/json.hpp"
-#include "../lz4/lz4.h"
 
 #include <boost/iostreams/filter/zlib.hpp>
 #include <boost/iostreams/filtering_streambuf.hpp>

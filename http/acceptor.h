@@ -8,7 +8,7 @@
 
 namespace http_server {
 
-// Accepts incoming connections and launches the HttpSessions
+    // Accepts incoming connections and launches the HttpSessions
     class Acceptor : public std::enable_shared_from_this<Acceptor> {
     private:
         tcp::endpoint endpoint_;
@@ -36,7 +36,7 @@ namespace http_server {
                 // Start listening for connections
                 acceptor_.listen(asio::socket_base::max_listen_connections);
             } catch (std::exception &e) {
-                Logger::error("Acceptor listen[{}:{}] error: {}.", endpoint_.address().to_string(), endpoint_.port(), e.what());
+                Logger::error("Acceptor listen[{}:{}] error, {}.", endpoint_.address().to_string(), endpoint_.port(), e.what());
                 return false;
             }
 
@@ -55,7 +55,7 @@ namespace http_server {
 
         void on_accept(beast::error_code ec) {
             if (ec) {
-                Logger::error("Acceptor on_accept error, error_message: {}.", ec.message());
+                Logger::error("Acceptor on_accept error, {}.", ec.message());
             } else {
                 // Create the http_session and run it
                 std::make_shared<HttpSession>(

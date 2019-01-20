@@ -87,7 +87,7 @@ namespace http_server {
 
             std::string result = base;
 #if BOOST_MSVC
-            char constexpr path_separator = '\\';
+        char constexpr path_separator = '\\';
         if(result.back() == path_separator)
             result.resize(result.size() - 1);
         result.append(path.data(), path.size());

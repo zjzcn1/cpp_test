@@ -808,8 +808,6 @@ common.h
 http_utils.h
 /Users/zjz/work/cpp/cpp_test/http/http_utils.h
 
-/Users/zjz/work/cpp/cpp_test/lz4/lz4.h
-
 /Users/zjz/work/cpp/cpp_test/tests/./MapMetaData.h
 string
 -
@@ -849,8 +847,6 @@ yaml-cpp/yaml.h
 /Users/zjz/work/cpp/cpp_test/http/base64.h
 ../http/json.hpp
 /Users/zjz/work/cpp/cpp_test/http/json.hpp
-../lz4/lz4.h
-/Users/zjz/work/cpp/cpp_test/lz4/lz4.h
 boost/iostreams/filter/zlib.hpp
 -
 boost/iostreams/filtering_streambuf.hpp

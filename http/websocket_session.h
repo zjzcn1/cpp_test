@@ -53,7 +53,7 @@ namespace http_server {
             }
 
             if (ec) {
-                Logger::error("WebsocketSession on_write error, error_message: {}.", ec.message());
+                Logger::error("WebsocketSession on_write error,  {}.", ec.message());
                 return;
             }
 
@@ -105,7 +105,7 @@ namespace http_server {
             }
 
             if (ec) {
-                Logger::error("WebsocketSession on_accept error, error_message: {}.", ec.message());
+                Logger::error("WebsocketSession on_accept error,  {}.", ec.message());
                 return;
             }
 
@@ -122,7 +122,7 @@ namespace http_server {
         // Called when the timer expires.
         void on_timer(beast::error_code ec) {
             if (ec && ec != asio::error::operation_aborted) {
-                Logger::error("WebsocketSession on_timer error, error_message: {}.", ec.message());
+                Logger::error("WebsocketSession on_timer error,  {}.", ec.message());
                 return;
             }
 
@@ -184,7 +184,7 @@ namespace http_server {
                 return;
 
             if (ec) {
-                Logger::error("WebsocketSession on_ping error, error_message: {}.", ec.message());
+                Logger::error("WebsocketSession on_ping error,  {}.", ec.message());
                 return;
             }
 
@@ -233,7 +233,7 @@ namespace http_server {
             }
 
             if (ec) {
-                Logger::error("WebsocketSession on_read error, error_message: {}.", ec.message());
+                Logger::error("WebsocketSession on_read error,  {}.", ec.message());
                 return;
             }
 
@@ -245,7 +245,7 @@ namespace http_server {
                 // run user function
                 ws_handler_(msg, *this);
             } catch (std::exception &e) {
-                Logger::error("WebsocketSession handle websocket error, error_message: {}.", e.what());
+                Logger::error("WebsocketSession handle websocket error,  {}.", e.what());
             }
 
             // clear the buffers

@@ -6,7 +6,7 @@
 
 namespace http_server {
 
-// Handles an HTTP server connection
+    // Handles an HTTP server connection
     class HttpSession : public std::enable_shared_from_this<HttpSession> {
     private:
         tcp::socket socket_;
@@ -71,7 +71,7 @@ namespace http_server {
             }
 
             if (ec){
-                Logger::error("HttpSession on_read error, error_message: {}.", ec.message());
+                Logger::error("HttpSession on_read error,  {}.", ec.message());
                 return;
             }
 
@@ -104,7 +104,7 @@ namespace http_server {
             }
 
             if (ec) {
-                Logger::error("HttpSession on_write error, error_message: {}.", ec.message());
+                Logger::error("HttpSession on_write error,  {}.", ec.message());
                 return;
             }
 
@@ -287,7 +287,7 @@ namespace http_server {
                             return HttpStatus::ok;
                         }
                         catch (std::exception &e) {
-                            Logger::error("HttpSession handle http error, error_message: {}.", e.what());
+                            Logger::error("HttpSession handle http error,  {}.", e.what());
                             return HttpStatus::internal_server_error;
                         }
                     }
