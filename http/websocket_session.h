@@ -32,22 +32,19 @@ namespace http_server {
             attr_.websocket_channels[req_.path].remove(*this);
         }
 
-        void send(std::string const &str) {
-            auto const pstr = std::make_shared<std::string const>(std::move(str));
-            que_.emplace_back(pstr);
+        void send(std::string const &msg) {
+            auto const pmsg = std::make_shared<std::string const>(std::move(msg));
+            que_.emplace_back(pmsg);
 
             if (que_.size() > 1) {
                 return;
             }
-
             ws_.async_write(asio::buffer(*que_.front()),
                             std::bind(&WebsocketSession::on_write, shared_from_this(), std::placeholders::_1,
                                       std::placeholders::_2));
         }
 
-        void on_write(
-                beast::error_code ec,
-                std::size_t bytes_transferred) {
+        void on_write( beast::error_code ec, std::size_t bytes_transferred) {
             boost::ignore_unused(bytes_transferred);
 
             // happens when the timer closes the socket

@@ -10,30 +10,49 @@ else()
     message(FATAL_ERROR "protobuf library is needed but cant be found")
 endif()
 
-find_package(Boost 1.36 REQUIRED system)
+find_package(Boost 1.36 REQUIRED system filesystem iostreams)
 if(Boost_FOUND)
     message(STATUS "Boost library found")
 else()
     message(FATAL_ERROR "Boost library is needed but cant be found")
 endif()
 
-find_package( FLTK REQUIRED )
-
 #include_directories(${PROTOBUF_INCLUDE_DIRS})
 #INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
 #PROTOBUF_GENERATE_CPP(PROTO_SRCS PROTO_HDRS AddressBook.proto)
 
+find_package(SDL REQUIRED)
+find_package(SDL_image REQUIRED)
+
+find_package(yaml-cpp REQUIRED)
+
+#file(GLOB_RECURSE LZ4_INC "lz4/*.h")
+file(GLOB_RECURSE GZIP_INC "gzip/*.h")
 include_directories(
         ${Boost_INCLUDE_DIRS}
-        ${FLTK_INCLUDE_DIR}
         http
         third_party
+        tests
+        ${SDL_image_INCLUDE_DIRS}
+        ${YAML_CPP_INCLUDE_DIRS}
+        ${GZIP_INC}
 )
-#SET(SRC_LIST ws_async.cpp)
-SET(SRC_LIST http_test.cpp)
+
+message(STATUS "Boost library found  ${yaml-cpp_LIBRARIES}")
+
+file(GLOB_RECURSE LZ4_SRC "lz4/*.cpp")
+SET(SRC_LIST
+        tests/http_test.cpp
+        tests/map_loader.cpp
+        )
 #SET(SRC_LIST http_ws_async.cpp)
 ADD_EXECUTABLE(cppTest ${SRC_LIST})
 
 
-target_link_libraries(cppTest ${Boost_LIBRARIES} ${FLTK_LIBRARIES})
+target_link_libraries(cppTest
+        ${Boost_LIBRARIES}
+        ${SDL_LIBRARY}
+        ${SDL_IMAGE_LIBRARIES}
+        ${YAML_CPP_LIBRARIES}
+        )
  

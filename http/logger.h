@@ -2,23 +2,41 @@
 
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
+#include <spdlog/sinks/rotating_file_sink.h>
+#include <boost/filesystem.hpp>
 
 namespace http_server {
-    enum LoggerLevel {
-        DEBUG,
-        INFO,
-        WARN,
-        ERROR
-    };
-
     class Logger {
     private:
-        std::shared_ptr <spdlog::logger> logger_;
-
+        std::shared_ptr<spdlog::logger> logger_;
+        std::shared_ptr<spdlog::sinks::stdout_color_sink_mt> console_sink;
+        std::shared_ptr<spdlog::sinks::rotating_file_sink_mt> file_sink;
     public:
+        enum Level {
+            DEBUG,
+            INFO,
+            WARN,
+            ERROR
+        };
+        enum Sink {
+            CONSOLE,
+            FILE,
+            ALL
+        };
         Logger() {
-            logger_ = spdlog::stdout_color_mt("walle");
-            spdlog::set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%^%l%$] [%t] %v");
+            console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
+            console_sink->set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%^%l%$] [%t] %v");
+
+            boost::filesystem::path dir("logs");
+            if (!boost::filesystem::exists(dir)) {
+                create_directory(dir);
+            }
+            file_sink = std::make_shared<spdlog::sinks::rotating_file_sink_mt>("logs/walle.log", 20*1204*1024, 3);
+            file_sink->set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%^%l%$] [%t] %v");
+            logger_ = std::shared_ptr<spdlog::logger>(new spdlog::logger("multi_sink", {console_sink, file_sink}));
+            spdlog::register_logger(logger_);
+            spdlog::flush_every(std::chrono::seconds(1));
+            logger_->flush_on(spdlog::level::warn);
         }
 
         static Logger *instance() {
@@ -26,24 +44,39 @@ namespace http_server {
             return &instance;
         }
 
-        static void setLevel(LoggerLevel level) {
+        static void setSink(Sink sink) {
+            instance()->logger_->sinks().clear();
+            switch (sink) {
+                case CONSOLE:
+                    instance()->logger_->sinks().push_back(instance()->console_sink);
+                    break;
+                case FILE:
+                    instance()->logger_->sinks().push_back(instance()->file_sink);
+                    break;
+                case ALL:
+                default:
+                    instance()->logger_->sinks().push_back(instance()->console_sink);
+                    instance()->logger_->sinks().push_back(instance()->file_sink);
+            }
+        }
+
+        static void setLevel(Level level) {
             switch (level) {
                 case DEBUG:
-                    spdlog::set_level(spdlog::level::debug);
+                    instance()->logger_->set_level(spdlog::level::debug);
                     break;
                 case INFO:
-                    spdlog::set_level(spdlog::level::info);
+                    instance()->logger_->set_level(spdlog::level::info);
                     break;
                 case WARN:
-                    spdlog::set_level(spdlog::level::warn);
+                    instance()->logger_->set_level(spdlog::level::warn);
                     break;
                 case ERROR:
-                    spdlog::set_level(spdlog::level::err);
+                    instance()->logger_->set_level(spdlog::level::err);
                     break;
                 default:
-                    spdlog::set_level(spdlog::level::info);
+                    instance()->logger_->set_level(spdlog::level::info);
             }
-
         }
 
         template<typename... Args>

@@ -35,7 +35,7 @@ namespace http_server {
             } else {
                 attr_.http_routes.at(url_regx)[static_cast<int>(method)] = handler;
             }
-            Logger::info("HttpServer register http handler, http_method={}, url={}", static_cast<int>(method), url_regx);
+            Logger::info("HttpServer register http handler, http_method={}, url={}", http::to_string(method).to_string(), url_regx);
             return *this;
         }
 
@@ -45,7 +45,7 @@ namespace http_server {
             } else {
                 attr_.http_routes.at(url_regx)[static_cast<int>(HttpMethod::unknown)] = handler;
             }
-            Logger::info("HttpServer register http handler, http_method=unknown, url={}", url_regx);
+            Logger::info("HttpServer register http handler, http_method=all, url={}", url_regx);
             return *this;
         }
 
@@ -55,13 +55,16 @@ namespace http_server {
             return *this;
         }
 
-        HttpServer &start() {
+        bool start() {
             // Create and launch a listening port;
-            std::make_shared<Acceptor>(
+            bool success = std::make_shared<Acceptor>(
                     ioc_,
                     tcp::endpoint{asio::ip::make_address(host_), port_},
-                    attr_)->run();
+                    attr_)->listen();
 
+            if (success == false) {
+                return false;
+            }
             // Run the I/O service on the requested number of threads
             io_threads_.reserve(threads_);
             for (int i = 0; i < threads_; i++) {
@@ -70,7 +73,7 @@ namespace http_server {
                 });
             }
             Logger::info("HttpServer started, host=\"{}\", port={}.", host_, port_);
-            return *this;
+            return true;
         }
 
         void sync() {
