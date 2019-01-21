@@ -29,7 +29,8 @@ int main(int argc, char *argv[]) {
         boost::iostreams::filtering_streambuf<boost::iostreams::output> out;
         out.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression, 65536));
         out.push(boost::iostreams::back_inserter(packed));
-        boost::iostreams::copy(boost::iostreams::basic_array_source<char>((char*)&map->data[0], map->data.size()), out);
+        boost::iostreams::copy(boost::iostreams::basic_array_source<char>((char *) &map->data[0], map->data.size()),
+                               out);
 
         Logger::info("map size={}, compress size={}", map->data.size(), packed.size());
 
@@ -80,9 +81,10 @@ int main(int argc, char *argv[]) {
 //        if (!map->data.empty()) {
 //            memcpy(res, &png[0], png.size() * sizeof(uint8_t));
 //        }
-        std::string base64_res = Base64::encode((unsigned char *)&packed[0], packed.size());
+        std::string base64_res = Base64::encode((unsigned char *) &packed[0], packed.size());
 //        Logger::info("base64_res={}", base64_res);
-        json j2 = {{"op", "map"}, {"data", base64_res}};
+        json j2 = {{"op",   "map"},
+                   {"data", base64_res}};
         std::string data = j2.dump();
         session.send(data);
     });
@@ -94,15 +96,19 @@ int main(int argc, char *argv[]) {
     });
 
 
-    std::thread([&]() {
-        int i = 0;
-        while (true) {
-            json j2 = {{"op", "pose"}, {"data", i++ * 0.01}};
-            std::string data = j2.dump();
-            server.broadcast("/ws", data);
-//            std::this_thread::sleep_for(std::chrono::milliseconds(1));
-        }
-    }).detach();
+    for (int j = 0; j < 5; j++) {
+        std::thread([&]() {
+            int i = 0;
+            while (true) {
+                json j2 = {{"op",   "pose"},
+                           {"data", i++ * 0.01}};
+                std::string data = j2.dump();
+                server.broadcast("/ws", data);
+                std::this_thread::sleep_for(std::chrono::milliseconds(1));
+            }
+        }).detach();
+    }
+
 
     if (server.start()) {
         server.sync();

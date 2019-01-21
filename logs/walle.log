@@ -44490,3 +44490,72 @@
 [2019-01-21 09:17:00.934] [info] [2274941] HttpServer started, host="0.0.0.0", port=8084.
 [2019-01-21 09:17:19.133] [info] [2274944] WebsocketSession session insert to channel[/ws].
 [2019-01-21 09:17:19.273] [info] [2274944] map size=2110500, compress size=16722
+[2019-01-21 11:52:36.262] [warning] [2343709] Mode parameter not set, using default value (trinary)
+[2019-01-21 11:52:36.314] [info] [2343709] width=1750, height=1206
+[2019-01-21 11:52:36.314] [info] [2343709] HttpServer register http handler, http_method=GET, url=/hehe
+[2019-01-21 11:52:36.314] [info] [2343709] HttpServer register websocket handler, url=/ws
+[2019-01-21 11:52:36.314] [info] [2343709] HttpServer register websocket handler, url=/ws1
+[2019-01-21 11:52:36.315] [info] [2343709] HttpServer started, host="0.0.0.0", port=8084.
+[2019-01-21 11:52:51.650] [info] [2343712] WebsocketSession session insert to channel[/ws].
+[2019-01-21 11:52:51.882] [info] [2343712] map size=2110500, compress size=16722
+[2019-01-21 12:07:15.626] [warning] [2351425] Mode parameter not set, using default value (trinary)
+[2019-01-21 12:07:15.675] [info] [2351425] width=1750, height=1206
+[2019-01-21 12:07:15.675] [info] [2351425] HttpServer register http handler, http_method=GET, url=/hehe
+[2019-01-21 12:07:15.676] [info] [2351425] HttpServer register websocket handler, url=/ws
+[2019-01-21 12:07:15.676] [info] [2351425] HttpServer register websocket handler, url=/ws1
+[2019-01-21 12:07:15.676] [info] [2351425] HttpServer started, host="0.0.0.0", port=8084.
+[2019-01-21 12:16:39.412] [warning] [2355909] Mode parameter not set, using default value (trinary)
+[2019-01-21 12:16:39.464] [info] [2355909] width=1750, height=1206
+[2019-01-21 12:16:39.464] [info] [2355909] HttpServer register http handler, http_method=GET, url=/hehe
+[2019-01-21 12:16:39.464] [info] [2355909] HttpServer register websocket handler, url=/ws
+[2019-01-21 12:16:39.464] [info] [2355909] HttpServer register websocket handler, url=/ws1
+[2019-01-21 12:16:39.464] [info] [2355909] HttpServer started, host="0.0.0.0", port=8084.
+[2019-01-21 12:16:40.513] [info] [2355912] WebsocketSession session insert to channel[/ws].
+[2019-01-21 12:16:40.659] [info] [2355912] map size=2110500, compress size=16722
+[2019-01-21 12:16:49.753] [info] [2355912] WebsocketSession session insert to channel[/ws].
+[2019-01-21 12:16:49.991] [info] [2355912] map size=2110500, compress size=16722
+[2019-01-21 12:17:00.241] [info] [2355912] WebsocketSession session insert to channel[/ws].
+[2019-01-21 12:17:00.395] [info] [2355912] map size=2110500, compress size=16722
+[2019-01-21 12:17:19.780] [error] [2355912] WebsocketSession on_write error,  Broken pipe.
+[2019-01-21 12:18:41.129] [error] [2355912] WebsocketSession on_write error,  Broken pipe.
+[2019-01-21 12:18:47.611] [info] [2355912] WebsocketSession session insert to channel[/ws].
+[2019-01-21 12:18:47.868] [info] [2355912] map size=2110500, compress size=16722
+[2019-01-21 13:15:12.675] [warning] [2383205] Mode parameter not set, using default value (trinary)
+[2019-01-21 13:15:12.782] [info] [2383205] width=1750, height=1206
+[2019-01-21 13:15:12.783] [info] [2383205] HttpServer register http handler, http_method=GET, url=/hehe
+[2019-01-21 13:15:12.783] [info] [2383205] HttpServer register websocket handler, url=/ws
+[2019-01-21 13:15:12.783] [info] [2383205] HttpServer register websocket handler, url=/ws1
+[2019-01-21 13:15:12.784] [info] [2383205] HttpServer started, host="0.0.0.0", port=8084.
+[2019-01-21 13:15:17.330] [info] [2383209] WebsocketSession session insert to channel[/ws].
+[2019-01-21 13:15:17.472] [info] [2383209] map size=2110500, compress size=16722
+[2019-01-21 13:15:42.958] [error] [2383209] WebsocketSession on_write error,  Broken pipe.
+[2019-01-21 13:15:52.018] [info] [2383209] WebsocketSession session insert to channel[/ws].
+[2019-01-21 13:15:52.225] [info] [2383209] map size=2110500, compress size=16722
+[2019-01-21 13:16:42.268] [info] [2383209] WebsocketSession session insert to channel[/ws].
+[2019-01-21 13:16:42.710] [info] [2383209] map size=2110500, compress size=16722
+[2019-01-21 13:20:06.620] [warning] [2386113] Mode parameter not set, using default value (trinary)
+[2019-01-21 13:20:06.672] [info] [2386113] width=1750, height=1206
+[2019-01-21 13:20:06.672] [info] [2386113] HttpServer register http handler, http_method=GET, url=/hehe
+[2019-01-21 13:20:06.672] [info] [2386113] HttpServer register websocket handler, url=/ws
+[2019-01-21 13:20:06.672] [info] [2386113] HttpServer register websocket handler, url=/ws1
+[2019-01-21 13:20:06.673] [info] [2386113] HttpServer started, host="0.0.0.0", port=8084.
+[2019-01-21 13:20:09.889] [info] [2386120] WebsocketSession session insert to channel[/ws].
+[2019-01-21 13:20:09.983] [info] [2386120] map size=2110500, compress size=16722
+[2019-01-21 13:20:30.440] [error] [2386120] WebsocketSession on_read error,  Socket is not connected.
+[2019-01-21 13:20:35.863] [info] [2386120] WebsocketSession session insert to channel[/ws].
+[2019-01-21 13:20:35.985] [info] [2386120] map size=2110500, compress size=16722
+[2019-01-21 13:24:49.590] [warning] [2388519] Mode parameter not set, using default value (trinary)
+[2019-01-21 13:24:49.661] [info] [2388519] width=1750, height=1206
+[2019-01-21 13:24:49.661] [info] [2388519] HttpServer register http handler, http_method=GET, url=/hehe
+[2019-01-21 13:24:49.661] [info] [2388519] HttpServer register websocket handler, url=/ws
+[2019-01-21 13:24:49.661] [info] [2388519] HttpServer register websocket handler, url=/ws1
+[2019-01-21 13:24:49.662] [info] [2388519] HttpServer started, host="0.0.0.0", port=8084.
+[2019-01-21 13:24:53.902] [info] [2388540] WebsocketSession session insert to channel[/ws].
+[2019-01-21 13:24:54.029] [info] [2388540] map size=2110500, compress size=16722
+[2019-01-21 13:48:22.080] [error] [2388540] HttpSession on_read error,  end of stream.
+[2019-01-21 13:48:22.094] [info] [2388540] WebsocketSession session insert to channel[/ws].
+[2019-01-21 13:48:22.414] [info] [2388540] map size=2110500, compress size=16722
+[2019-01-21 13:49:43.718] [info] [2388540] WebsocketSession session insert to channel[/ws].
+[2019-01-21 13:49:43.900] [info] [2388540] map size=2110500, compress size=16722
+[2019-01-21 13:51:22.033] [info] [2388540] WebsocketSession session insert to channel[/ws].
+[2019-01-21 13:51:22.164] [info] [2388540] map size=2110500, compress size=16722

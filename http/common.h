@@ -18,6 +18,7 @@
 #include <vector>
 #include <regex>
 #include <unordered_set>
+#include <mutex>
 #include "logger.h"
 
 namespace http_server {

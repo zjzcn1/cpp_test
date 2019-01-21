@@ -2,7 +2,6 @@
 
 #include "common.h"
 #include "http_utils.h"
-#include "concurrent_queue.h"
 
 namespace http_server {
     class WebsocketSession : public std::enable_shared_from_this<WebsocketSession> {
@@ -15,7 +14,8 @@ namespace http_server {
         Attr &attr_;
         WebsocketHandler const &ws_handler_;
         HttpRequest req_;
-        ConcurrentQueue<std::shared_ptr<std::string const>> queue_;
+        std::mutex mutex_;
+        std::deque<std::shared_ptr<std::string const>> queue_{};
 
     public:
         // Take ownership of the socket
@@ -25,8 +25,7 @@ namespace http_server {
                   timer_(ws_.get_executor().context(), (std::chrono::steady_clock::time_point::max) ()),
                   attr_(attr),
                   req_(std::move(req)),
-                  ws_handler_(ws_handler),
-                  queue_(1000){
+                  ws_handler_(ws_handler) {
         }
 
         ~WebsocketSession() {
@@ -37,8 +36,9 @@ namespace http_server {
 
         void send(std::string const &msg) {
             auto const pmsg = std::make_shared<std::string const>(std::move(msg));
-            queue_.put(pmsg);
 
+            std::lock_guard<std::mutex> locker(mutex_);
+            queue_.emplace_back(pmsg);
             if (queue_.size() > 1) {
                 return;
             }
@@ -60,10 +60,10 @@ namespace http_server {
                 return;
             }
 
+            std::lock_guard<std::mutex> locker(mutex_);
             // remove sent message from the queue
-            queue_.take();
-
-            if (queue_.isEmpty()) {
+            queue_.pop_front();
+            if (queue_.empty()) {
                 return;
             }
 
