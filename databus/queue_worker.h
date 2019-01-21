@@ -71,15 +71,15 @@ namespace databus {
         }
 
         virtual int getQueueSize() {
-            return queue_.getQueueSize();
+            return queue_.size();
         }
 
         virtual int getMaxQueueSize() {
-            return queue_.getMaxQueueSize();
+            return queue_.max_size();
         }
 
         virtual int getCallbackSize() {
-            std::lock_guard<std::mutex> locker(mutex_);
+            std::unique_lock<std::mutex> locker(mutex_);
             return callback_list_.size();
         }
 

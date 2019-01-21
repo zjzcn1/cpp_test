@@ -62,7 +62,7 @@ namespace http_server {
                     tcp::endpoint{asio::ip::make_address(host_), port_},
                     attr_)->listen();
 
-            if (success == false) {
+            if (!success) {
                 return false;
             }
             // Run the I/O service on the requested number of threads
@@ -83,8 +83,12 @@ namespace http_server {
         }
 
         void broadcast(std::string path, std::string msg) {
-            for (auto const e : attr_.websocket_channels.at(path).sessions) {
-                e->send(msg);
+            std::lock_guard<std::mutex> locker(attr_.channels_mutex);
+            if (attr_.websocket_channels.find(path) == attr_.websocket_channels.end()) {
+                return;
+            }
+            for (auto const session : attr_.websocket_channels[path].sessions) {
+                session->send(msg);
             }
         }
 

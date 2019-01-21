@@ -38,8 +38,9 @@ include_directories(
 message(STATUS "Boost library found  ${yaml-cpp_LIBRARIES}")
 
 SET(SRC_LIST
-        tests/http_test.cpp
-        tests/map_loader.cpp
+#        tests/http_test.cpp
+#        tests/map_loader.cpp
+        tests/databus_test.cpp
         )
 #SET(SRC_LIST http_ws_async.cpp)
 ADD_EXECUTABLE(cppTest ${SRC_LIST})
@@ -47,8 +48,8 @@ ADD_EXECUTABLE(cppTest ${SRC_LIST})
 
 target_link_libraries(cppTest
         ${Boost_LIBRARIES}
-        ${SDL_LIBRARY}
-        ${SDL_IMAGE_LIBRARIES}
-        ${YAML_CPP_LIBRARIES}
+#        ${SDL_LIBRARY}
+#        ${SDL_IMAGE_LIBRARIES}
+#        ${YAML_CPP_LIBRARIES}
         )
  

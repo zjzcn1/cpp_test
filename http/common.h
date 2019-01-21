@@ -88,6 +88,7 @@ namespace http_server {
 
         WebsocketRoutes websocket_routes{};
 
+        std::mutex channels_mutex;
         WebsocketChannels websocket_channels{};
     };
 

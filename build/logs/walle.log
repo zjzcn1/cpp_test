@@ -1,0 +1,15 @@
+[2019-01-20 22:19:11.516] [info] [2243054] HttpServer register http handler, http_method=GET, url=/hehe
+[2019-01-20 22:19:11.516] [info] [2243054] HttpServer register websocket handler, url=/ws
+[2019-01-20 22:19:11.516] [info] [2243054] HttpServer register websocket handler, url=/ws1
+[2019-01-20 22:19:11.516] [info] [2243054] HttpServer started, host="0.0.0.0", port=8084.
+[2019-01-20 22:19:12.918] [info] [2243075] WebsocketSession session insert to channel[/ws].
+[2019-01-20 22:21:51.651] [info] [2244834] HttpServer register http handler, http_method=GET, url=/hehe
+[2019-01-20 22:21:51.652] [info] [2244834] HttpServer register websocket handler, url=/ws
+[2019-01-20 22:21:51.652] [info] [2244834] HttpServer register websocket handler, url=/ws1
+[2019-01-20 22:21:51.652] [info] [2244834] HttpServer started, host="0.0.0.0", port=8084.
+[2019-01-20 22:21:55.639] [info] [2244854] WebsocketSession session insert to channel[/ws].
+[2019-01-20 22:21:55.649] [error] [2244854] WebsocketSession on_write error,  Bad address.
+[2019-01-20 22:22:09.757] [info] [2244854] WebsocketSession session insert to channel[/ws].
+[2019-01-20 22:22:44.410] [error] [2244854] WebsocketSession on_read error,  Socket is not connected.
+[2019-01-20 22:22:47.727] [info] [2244854] WebsocketSession session insert to channel[/ws].
+[2019-01-20 22:22:47.843] [error] [2244854] WebsocketSession on_write error,  Bad address.

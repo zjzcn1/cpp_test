@@ -2,6 +2,7 @@
 
 #include "common.h"
 #include "http_utils.h"
+#include "concurrent_queue.h"
 
 namespace http_server {
     class WebsocketSession : public std::enable_shared_from_this<WebsocketSession> {
@@ -14,7 +15,7 @@ namespace http_server {
         Attr &attr_;
         WebsocketHandler const &ws_handler_;
         HttpRequest req_;
-        std::deque<std::shared_ptr<std::string const>> que_{};
+        ConcurrentQueue<std::shared_ptr<std::string const>> queue_;
 
     public:
         // Take ownership of the socket
@@ -24,22 +25,24 @@ namespace http_server {
                   timer_(ws_.get_executor().context(), (std::chrono::steady_clock::time_point::max) ()),
                   attr_(attr),
                   req_(std::move(req)),
-                  ws_handler_(ws_handler) {
+                  ws_handler_(ws_handler),
+                  queue_(1000){
         }
 
         ~WebsocketSession() {
             // leave channel
+            std::lock_guard<std::mutex> locker(attr_.channels_mutex);
             attr_.websocket_channels[req_.path].remove(*this);
         }
 
         void send(std::string const &msg) {
             auto const pmsg = std::make_shared<std::string const>(std::move(msg));
-            que_.emplace_back(pmsg);
+            queue_.put(pmsg);
 
-            if (que_.size() > 1) {
+            if (queue_.size() > 1) {
                 return;
             }
-            ws_.async_write(asio::buffer(*que_.front()),
+            ws_.async_write(asio::buffer(*queue_.front()),
                             std::bind(&WebsocketSession::on_write, shared_from_this(), std::placeholders::_1,
                                       std::placeholders::_2));
         }
@@ -58,13 +61,13 @@ namespace http_server {
             }
 
             // remove sent message from the queue
-            que_.pop_front();
+            queue_.pop_front();
 
-            if (que_.empty()) {
+            if (queue_.empty()) {
                 return;
             }
 
-            ws_.async_write(asio::buffer(*que_.front()),
+            ws_.async_write(asio::buffer(*queue_.front()),
                             std::bind(&WebsocketSession::on_write, shared_from_this(), std::placeholders::_1,
                                       std::placeholders::_2));
         }
@@ -110,6 +113,7 @@ namespace http_server {
             }
 
             // join channel
+            std::lock_guard<std::mutex> locker(attr_.channels_mutex);
             if (attr_.websocket_channels.find(req_.path) == attr_.websocket_channels.end()) {
                 attr_.websocket_channels[req_.path] = WebsocketChannel();
             }
