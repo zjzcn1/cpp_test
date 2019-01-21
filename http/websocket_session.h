@@ -61,9 +61,9 @@ namespace http_server {
             }
 
             // remove sent message from the queue
-            queue_.pop_front();
+            queue_.take();
 
-            if (queue_.empty()) {
+            if (queue_.isEmpty()) {
                 return;
             }
 

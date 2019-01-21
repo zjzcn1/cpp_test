@@ -16,7 +16,7 @@ namespace databus {
 
         void put(const T data) {
             std::lock_guard<std::mutex> locker(mutex_);
-            if (isFull()) {
+            if (queue_.size() == max_size_) {
                 queue_.pop_front();
             }
             queue_.push_back(data);
@@ -25,7 +25,7 @@ namespace databus {
 
         T take() {
             std::lock_guard<std::mutex> locker(mutex_);
-            while (isEmpty()) {
+            while (queue_.empty()) {
                 not_empty_.wait(mutex_);
             }
 
@@ -39,17 +39,18 @@ namespace databus {
             return queue_.size();
         }
 
-        int max_size() const {
+        int maxSize() const {
             return max_size_;
         }
 
-    private:
-        bool isFull() const {
+        bool isFull() {
+            std::lock_guard<std::mutex> locker(mutex_);
             return queue_.size() == max_size_;
         }
 
-        bool isEmpty() const {
-            return queue_.size() == 0;
+        bool isEmpty() {
+            std::lock_guard<std::mutex> locker(mutex_);
+            return queue_.empty();
         }
 
     private:

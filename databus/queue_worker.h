@@ -75,7 +75,7 @@ namespace databus {
         }
 
         virtual int getMaxQueueSize() {
-            return queue_.max_size();
+            return queue_.maxSize();
         }
 
         virtual int getCallbackSize() {

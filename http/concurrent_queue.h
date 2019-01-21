@@ -13,23 +13,29 @@ public:
     void put(const T x) {
         std::lock_guard<std::mutex> locker(mutex_);
 
-        while (isFull()) {
+        while (queue_.size() == max_size_) {
             not_full_.wait(mutex_);
         }
         queue_.push_back(x);
         not_empty_.notify_one();
     }
 
-    void take(T &x) {
+    T front() {
+        std::lock_guard<std::mutex> locker(mutex_);
+        return queue_.front();
+    }
+
+    T take() {
         std::lock_guard<std::mutex> locker(mutex_);
 
-        while (isEmpty()) {
+        while (queue_.empty()) {
             not_empty_.wait(mutex_);
         }
 
-        x = queue_.front();
+        T data = queue_.front();
         queue_.pop_front();
         not_full_.notify_one();
+        return data;
     }
 
     int size() {
@@ -37,23 +43,23 @@ public:
         return queue_.size();
     }
 
-    int max_size() const {
+    int maxSize() const {
         return max_size_;
     }
 
-private:
-    bool isFull() const {
+    bool isFull() {
+        std::lock_guard<std::mutex> locker(mutex_);
         return queue_.size() == max_size_;
     }
 
-    bool isEmpty() const {
+    bool isEmpty() {
+        std::lock_guard<std::mutex> locker(mutex_);
         return queue_.empty();
     }
 
 private:
     std::list<T> queue_;
     std::mutex mutex_;
-    std::atomic_int queue_size_;
     std::condition_variable_any not_empty_;
     std::condition_variable_any not_full_;
     int max_size_;
