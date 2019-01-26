@@ -96,7 +96,7 @@ int main(int argc, char *argv[]) {
     });
 
 
-    for (int j = 0; j < 5; j++) {
+    for (int j = 0; j < 1; j++) {
         std::thread([&]() {
             int i = 0;
             while (true) {
@@ -104,7 +104,7 @@ int main(int argc, char *argv[]) {
                            {"data", i++ * 0.01}};
                 std::string data = j2.dump();
                 server.broadcast("/ws", data);
-                std::this_thread::sleep_for(std::chrono::milliseconds(1));
+                std::this_thread::sleep_for(std::chrono::milliseconds(100));
             }
         }).detach();
     }

@@ -76,13 +76,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/zjz/work/cpp/cpp_test/tests/http_test.cpp">
-			<Option target="cppTest"/>
-		</Unit>
-		<Unit filename="/Users/zjz/work/cpp/cpp_test/tests/map_loader.cpp">
-			<Option target="cppTest"/>
-		</Unit>
-		<Unit filename="/Users/zjz/work/cpp/cpp_test/tests/map_loader.h">
+		<Unit filename="/Users/zjz/work/cpp/cpp_test/tests/databus_test1.cpp">
 			<Option target="cppTest"/>
 		</Unit>
 		<Unit filename="/Users/zjz/work/cpp/cpp_test/CMakeLists.txt">
