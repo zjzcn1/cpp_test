@@ -38,10 +38,10 @@ include_directories(
 message(STATUS "Boost library found  ${yaml-cpp_LIBRARIES}")
 
 SET(SRC_LIST
-        tests/http_test.cpp
-        tests/map_loader.cpp
+#        tests/http_test.cpp
+#        tests/map_loader.cpp
 #        tests/databus_test.cpp
-#        tests/databus_test1.cpp
+        tests/databus_test1.cpp
         )
 #SET(SRC_LIST http_ws_async.cpp)
 ADD_EXECUTABLE(cppTest ${SRC_LIST})

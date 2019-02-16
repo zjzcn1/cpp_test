@@ -1,9 +1,9 @@
 #include <iostream>
 #include <chrono>
-#include "../data_bus1/data_bus.h"
+#include "../data_bus/data_bus.h"
 #include "../http/logger.h"
 
-using namespace walle;
+using namespace data_bus;
 using namespace http_server;
 
 struct ChatMsg {
@@ -19,13 +19,13 @@ struct ChatMsg {
 void monitorDataBus() {
     std::thread([&]() {
         while (true) {
-            std::list<walle::QueueStatPtr> list = walle::DataBus::getQueueStats();
+            std::list<QueueStatPtr> list = DataBus::getQueueStats();
             Logger::info("------------------------------------------------------------------------------------");
             for (auto stat : list) {
                 Logger::info(
-                        "DataBus: topic={}, max_queue_size={}, queue_size={}, callback_id={}, filter_size={}, "
+                        "DataBus: topic={}, max_queue_size={}, queue_size={}, subscriber_id={}, filter_size={}, "
                         "success_count={}, incomming_count={}, dropped_count={}.",
-                        stat->topic, stat->max_queue_size, stat->queue_size, stat->callback_id, stat->filter_size,
+                        stat->topic, stat->max_queue_size, stat->queue_size, stat->subscriber_id, stat->filter_size,
                         stat->success_count, stat->incoming_count, stat->dropped_count);
             }
             Logger::info("------------------------------------------------------------------------------------");
@@ -36,8 +36,9 @@ void monitorDataBus() {
 
 class TestFilter : public Filter<ChatMsg> {
 
-    void doFilter(ChatMsg::ConstPtr data) override {
+    bool doFilter(ChatMsg::ConstPtr data) override {
         Logger::info("filter out: {}", data->time);
+        return false;
     }
 };
 

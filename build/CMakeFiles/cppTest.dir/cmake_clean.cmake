@@ -1,6 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/cppTest.dir/tests/http_test.cpp.o"
-  "CMakeFiles/cppTest.dir/tests/map_loader.cpp.o"
+  "CMakeFiles/cppTest.dir/tests/databus_test1.cpp.o"
   "cppTest.pdb"
   "cppTest"
 )

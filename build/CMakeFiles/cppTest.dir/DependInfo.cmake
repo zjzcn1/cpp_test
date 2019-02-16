@@ -4,8 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/zjz/work/cpp/cpp_test/tests/http_test.cpp" "/Users/zjz/work/cpp/cpp_test/build/CMakeFiles/cppTest.dir/tests/http_test.cpp.o"
-  "/Users/zjz/work/cpp/cpp_test/tests/map_loader.cpp" "/Users/zjz/work/cpp/cpp_test/build/CMakeFiles/cppTest.dir/tests/map_loader.cpp.o"
+  "/Users/zjz/work/cpp/cpp_test/tests/databus_test1.cpp" "/Users/zjz/work/cpp/cpp_test/build/CMakeFiles/cppTest.dir/tests/databus_test1.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

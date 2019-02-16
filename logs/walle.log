@@ -47265,3 +47265,975 @@
 [2019-01-25 20:10:33.292] [error] [343993] WebsocketSession on_read error,  Connection reset by peer.
 [2019-01-25 20:10:36.072] [info] [343993] WebsocketSession session insert to channel[/ws].
 [2019-01-25 20:10:36.176] [info] [343993] map size=2110500, compress size=16722
+[2019-01-26 20:10:12.407] [error] [343993] WebsocketSession on_read error,  Socket is not connected.
+[2019-01-26 23:35:29.793] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-26 23:35:29.914] [info] [343993] map size=2110500, compress size=16722
+[2019-01-26 23:38:11.865] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-26 23:38:11.963] [info] [343993] map size=2110500, compress size=16722
+[2019-01-26 23:38:15.913] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-26 23:38:16.010] [info] [343993] map size=2110500, compress size=16722
+[2019-01-26 23:43:14.393] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-26 23:43:14.494] [info] [343993] map size=2110500, compress size=16722
+[2019-01-26 23:43:32.515] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-26 23:43:32.630] [info] [343993] map size=2110500, compress size=16722
+[2019-01-26 23:43:41.289] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-26 23:43:41.392] [info] [343993] map size=2110500, compress size=16722
+[2019-01-26 23:49:01.158] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-26 23:49:01.257] [info] [343993] map size=2110500, compress size=16722
+[2019-01-26 23:50:18.089] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-26 23:50:18.190] [info] [343993] map size=2110500, compress size=16722
+[2019-01-26 23:50:22.124] [error] [343993] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-26 23:50:22.164] [error] [343993] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-26 23:50:22.193] [error] [343993] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-26 23:50:22.202] [error] [343993] WebsocketSession on_read error,  Socket is not connected.
+[2019-01-26 23:50:26.442] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-26 23:50:26.555] [info] [343993] map size=2110500, compress size=16722
+[2019-01-26 23:50:46.804] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-26 23:50:46.912] [info] [343993] map size=2110500, compress size=16722
+[2019-01-26 23:50:59.980] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-26 23:51:00.090] [info] [343993] map size=2110500, compress size=16722
+[2019-01-26 23:51:14.570] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-26 23:51:14.681] [info] [343993] map size=2110500, compress size=16722
+[2019-01-26 23:52:02.031] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-26 23:52:02.247] [info] [343993] map size=2110500, compress size=16722
+[2019-01-26 23:54:17.088] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-26 23:54:17.202] [info] [343993] map size=2110500, compress size=16722
+[2019-01-26 23:55:13.884] [error] [343993] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-26 23:55:13.925] [error] [343993] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-26 23:55:18.978] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-26 23:55:19.082] [info] [343993] map size=2110500, compress size=16722
+[2019-01-26 23:57:20.429] [error] [343993] WebsocketSession on_read error,  Socket is not connected.
+[2019-01-26 23:57:25.879] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-26 23:57:25.983] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 00:02:38.139] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 00:02:38.241] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 00:07:00.010] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 00:07:00.105] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 00:07:08.536] [error] [343993] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 00:07:08.552] [error] [343993] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 00:07:11.176] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 00:07:11.277] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 00:07:21.749] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 00:07:21.847] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 00:14:16.735] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 00:14:16.850] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 00:14:17.777] [error] [343993] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 00:14:17.795] [error] [343993] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 00:14:22.966] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 00:14:23.064] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 00:15:20.756] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 00:15:20.841] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 00:15:56.351] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 00:15:56.451] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 00:16:31.742] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 00:16:31.835] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 00:17:09.512] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 00:17:09.614] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 00:22:07.887] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 00:22:07.990] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 00:22:08.843] [error] [343993] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 00:22:08.861] [error] [343993] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 00:22:08.868] [error] [343993] WebsocketSession on_read error,  Socket is not connected.
+[2019-01-27 00:22:08.876] [error] [343993] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 00:22:08.882] [error] [343993] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 00:22:08.882] [error] [343993] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 00:22:11.694] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 00:22:11.797] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 00:23:50.370] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 00:23:50.478] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 00:25:42.422] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 00:25:42.523] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 00:25:43.306] [error] [343993] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 00:25:43.341] [error] [343993] WebsocketSession on_read error,  Socket is not connected.
+[2019-01-27 00:25:43.342] [error] [343993] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 00:25:46.367] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 00:25:46.460] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 00:25:58.957] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 00:25:59.060] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 00:26:01.064] [error] [343993] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 00:26:05.128] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 00:26:05.236] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 00:27:44.292] [error] [343993] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 00:27:47.888] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 00:27:47.990] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 00:28:42.315] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 00:28:42.412] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 00:28:59.150] [error] [343993] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 00:29:01.426] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 00:29:01.532] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 09:41:13.148] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 09:41:13.243] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 09:44:27.402] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 09:44:27.497] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 09:44:35.883] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 09:44:35.982] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 10:17:55.379] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 10:17:55.477] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 10:34:45.133] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 10:34:45.234] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 10:35:24.206] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 10:35:24.296] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 10:38:22.572] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 10:38:22.675] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 10:38:56.579] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 10:38:56.697] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 10:38:58.960] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 10:38:59.065] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 10:42:12.103] [error] [343993] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 10:42:12.111] [error] [343993] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 10:42:12.120] [error] [343993] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 10:42:12.128] [error] [343993] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 10:42:12.136] [error] [343993] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 10:42:12.136] [error] [343993] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 10:42:16.209] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 10:42:16.303] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 10:42:19.878] [error] [343993] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 10:42:25.305] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 10:42:25.410] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 10:45:01.024] [error] [343993] WebsocketSession on_read error,  Socket is not connected.
+[2019-01-27 10:45:03.196] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 10:45:03.291] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 10:46:30.206] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 10:46:30.297] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 10:47:12.822] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 10:47:12.931] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 10:49:28.510] [error] [343993] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 10:49:31.214] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 10:49:31.313] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 10:51:38.864] [info] [343993] WebsocketSession session insert to channel[/ws].
+[2019-01-27 10:51:38.986] [info] [343993] map size=2110500, compress size=16722
+[2019-01-27 11:18:29.480] [warning] [604067] Mode parameter not set, using default value (trinary)
+[2019-01-27 11:18:29.553] [info] [604067] width=1750, height=1206
+[2019-01-27 11:18:29.553] [info] [604067] HttpServer register http handler, http_method=GET, url=/hehe
+[2019-01-27 11:18:29.553] [info] [604067] HttpServer register websocket handler, url=/ws
+[2019-01-27 11:18:29.553] [info] [604067] HttpServer register websocket handler, url=/ws1
+[2019-01-27 11:18:29.553] [info] [604067] HttpServer started, host="0.0.0.0", port=8084.
+[2019-01-27 11:18:42.018] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 11:19:47.163] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 11:19:47.164] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 11:19:47.261] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 11:20:08.991] [error] [604073] WebsocketSession on_read error,  Socket is not connected.
+[2019-01-27 11:20:12.832] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 11:20:12.834] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 11:20:12.937] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 11:24:39.386] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 11:24:39.389] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 11:24:39.490] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 11:32:31.026] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 11:32:31.027] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 11:32:31.177] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 11:33:22.348] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 11:33:22.394] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 11:33:28.149] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 11:33:28.151] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 11:33:28.266] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 11:34:38.256] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 11:34:38.257] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 11:34:38.363] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 11:35:38.518] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 11:35:38.519] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 11:35:38.637] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 11:35:52.686] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 11:35:52.687] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 11:35:55.970] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 11:35:55.971] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 11:35:56.072] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 16:56:22.749] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 16:56:22.754] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 16:56:22.854] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 16:58:32.487] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 16:58:32.492] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 16:58:32.623] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 16:59:24.953] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 16:59:24.955] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 16:59:25.058] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 16:59:44.492] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 16:59:44.537] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 16:59:44.538] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 16:59:47.283] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 16:59:47.284] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 16:59:47.384] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 17:18:21.897] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 17:18:21.899] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 17:18:22.008] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 17:18:23.608] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 17:18:23.608] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 17:18:27.545] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 17:18:27.547] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 17:18:27.652] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 17:31:18.938] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 17:31:18.939] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 17:31:19.042] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 17:31:25.469] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 17:31:25.470] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 17:31:31.674] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 17:31:31.676] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 17:31:31.776] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 17:48:23.179] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 17:48:28.130] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 17:48:28.132] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 17:48:28.374] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 17:49:43.729] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 17:49:43.730] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 17:49:43.831] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:05:38.385] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:05:38.387] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:05:38.493] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:05:40.979] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 18:05:40.979] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 18:05:46.368] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:05:46.371] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:05:46.468] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:08:30.942] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:08:30.945] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:08:31.050] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:11:39.738] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:11:39.743] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:11:39.839] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:13:11.749] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:13:11.749] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:13:11.856] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:14:23.791] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:14:23.792] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:14:23.908] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:14:46.624] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:14:46.624] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:14:46.732] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:16:25.327] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:16:25.328] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:16:25.444] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:17:05.588] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:17:05.588] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:17:05.705] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:17:07.839] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 18:17:08.841] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 18:17:09.503] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 18:17:09.893] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 18:17:10.103] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 18:17:10.255] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 18:17:10.313] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 18:17:10.313] [error] [604073] WebsocketSession on_read error,  Socket is not connected.
+[2019-01-27 18:17:15.380] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:17:15.382] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:17:15.483] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:18:03.912] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 18:18:06.973] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:18:06.974] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:18:07.069] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:20:21.907] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:20:21.909] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:20:22.005] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:22:17.187] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:22:17.188] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:22:17.289] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:22:30.498] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 18:22:30.572] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 18:22:30.572] [error] [604073] WebsocketSession on_read error,  Socket is not connected.
+[2019-01-27 18:22:35.726] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:22:35.729] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:22:35.820] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:35:47.184] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:35:47.187] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:35:47.315] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:35:53.119] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:35:53.120] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:35:53.219] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:36:04.984] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:36:04.986] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:36:05.080] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:38:39.410] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:38:39.412] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:38:39.510] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:38:54.680] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:38:54.691] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:38:54.861] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:40:08.588] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:40:08.592] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:40:08.688] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:42:40.190] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:42:40.193] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:42:40.294] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:46:19.752] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:46:19.753] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:46:19.867] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:46:47.908] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:46:47.909] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:46:48.018] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:47:15.079] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:47:15.080] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:47:15.208] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:55:13.633] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:55:13.640] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:55:13.747] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:58:15.456] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:58:15.457] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:58:15.597] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:58:53.613] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:58:53.615] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:58:53.740] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:59:33.122] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:59:33.131] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:59:33.245] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 18:59:49.693] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 18:59:49.700] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 18:59:49.820] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:00:20.496] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:00:20.498] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:00:20.683] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:00:45.338] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:00:45.719] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:00:45.840] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:00:46.336] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:01:14.300] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:01:14.304] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:01:14.305] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:01:14.306] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:01:14.306] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:01:14.310] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:01:14.310] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:01:14.320] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:01:14.320] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:01:14.447] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:01:14.447] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:01:14.447] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:01:14.447] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:01:17.695] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:02:01.325] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:02:01.326] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:02:01.427] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:02:35.998] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:02:35.999] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:02:36.097] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:03:37.251] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:03:37.252] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:03:37.353] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:04:15.731] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:04:15.732] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:04:15.827] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:04:50.270] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:04:50.271] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:04:50.374] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:05:01.993] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:05:01.994] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:05:02.093] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:09:46.490] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:09:46.492] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:09:46.595] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:09:55.544] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:09:55.561] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:09:56.280] [error] [604073] WebsocketSession on_read error,  Socket is not connected.
+[2019-01-27 19:09:56.896] [error] [604073] WebsocketSession on_read error,  Socket is not connected.
+[2019-01-27 19:09:57.416] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:09:57.788] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:09:57.789] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:10:03.798] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:10:03.800] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:10:03.893] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:10:35.771] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:10:35.772] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:10:35.870] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:11:06.117] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:11:06.118] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:11:06.213] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:11:24.953] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:11:24.954] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:11:25.074] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:11:57.820] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:11:57.822] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:11:57.920] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:25:31.477] [error] [604073] WebsocketSession on_read error,  Socket is not connected.
+[2019-01-27 19:25:35.450] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:25:40.998] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:25:40.999] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:25:47.893] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:25:47.895] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:25:48.031] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:28:03.216] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:28:03.218] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:28:03.317] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:28:36.575] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:28:36.576] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:28:36.675] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:28:39.425] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:28:39.425] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:28:41.959] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:28:41.960] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:28:42.058] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:29:12.902] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:29:12.903] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:29:13.003] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:29:27.003] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:29:27.003] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:29:27.104] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:29:30.919] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:29:37.062] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:29:37.065] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:29:37.163] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:36:11.289] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:36:11.290] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:36:11.394] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:36:11.924] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:36:11.925] [error] [604073] WebsocketSession on_read error,  Socket is not connected.
+[2019-01-27 19:36:15.922] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:36:15.923] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:36:16.015] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:37:08.262] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:37:08.263] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:37:08.367] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:37:20.952] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:37:20.952] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:37:21.084] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:37:31.358] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:37:31.368] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:37:31.368] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:37:37.538] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:37:37.544] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:37:37.643] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:37:51.791] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:37:51.794] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:37:51.898] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:37:52.080] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:37:52.080] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:37:57.014] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:37:57.015] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:37:57.113] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:45:19.978] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:45:19.979] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:45:20.076] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:45:26.504] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:45:29.377] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:45:29.379] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:45:29.470] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:51:31.929] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:51:31.934] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:51:32.031] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:52:08.999] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:52:09.001] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:52:09.100] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:53:50.314] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:53:50.315] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:53:50.419] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:54:09.457] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:54:09.458] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:54:09.575] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:54:37.942] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:54:37.942] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:54:38.050] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:54:45.594] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:54:45.637] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:54:45.637] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 19:54:48.439] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:54:48.440] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:54:48.535] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 19:56:40.244] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 19:56:40.245] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 19:56:40.349] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 20:42:46.577] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 20:42:46.607] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 20:42:46.713] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 20:43:32.061] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 20:43:32.094] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 20:43:32.199] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 20:50:05.061] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 20:50:05.118] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 20:50:05.230] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 20:52:40.352] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 20:52:40.440] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 20:52:40.564] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 20:52:47.173] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 20:52:49.977] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 20:52:51.382] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 20:52:52.640] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 20:52:59.218] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 20:52:59.219] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 20:52:59.320] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 20:53:19.314] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 20:53:19.317] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 20:53:19.415] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 20:53:23.354] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 20:53:23.355] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 20:53:26.618] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 20:53:26.619] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 20:53:26.712] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 21:34:05.983] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 21:34:05.984] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 21:34:06.116] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 21:34:18.790] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 21:34:23.688] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 21:34:23.690] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 21:34:23.797] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 21:37:40.920] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 21:37:40.923] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 21:37:41.029] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 21:40:43.546] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 21:40:48.880] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 21:40:48.884] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 21:40:48.995] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 21:40:56.944] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 21:40:56.945] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 21:40:57.040] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 21:47:51.952] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 21:47:55.773] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 21:47:55.773] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 21:47:55.871] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 21:50:19.256] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 21:50:19.258] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 21:50:19.353] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 21:50:27.154] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 21:50:27.157] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 21:50:27.277] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 21:55:36.603] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 21:55:36.606] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 21:55:36.708] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 21:55:44.975] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 21:55:44.976] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 21:55:45.072] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 21:55:48.242] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 21:55:48.242] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 21:55:48.344] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 21:56:14.490] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 21:56:14.491] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 21:56:14.606] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 21:56:20.529] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 21:56:20.572] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 21:56:20.614] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 21:56:20.634] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 21:56:23.590] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 21:56:23.592] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 21:56:23.689] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 21:56:28.542] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 21:56:28.543] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 21:56:28.637] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 21:57:32.157] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 21:57:34.856] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 21:57:34.859] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 21:57:34.968] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 21:58:09.240] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 21:58:09.241] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 21:58:09.363] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 21:58:45.913] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 21:58:45.914] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 21:58:46.018] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 22:03:05.178] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 22:03:05.181] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 22:03:05.298] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 22:03:13.111] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 22:03:13.112] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 22:03:13.225] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 22:03:56.532] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 22:03:56.752] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 22:03:56.945] [error] [604073] WebsocketSession on_read error,  Socket is not connected.
+[2019-01-27 22:03:57.024] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 22:04:01.366] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 22:04:01.372] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 22:04:01.471] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 22:04:05.829] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 22:04:05.829] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 22:04:05.947] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 22:04:07.492] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 22:04:07.493] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 22:04:07.613] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 22:04:09.809] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 22:04:09.810] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 22:04:09.931] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 22:07:48.909] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 22:07:48.991] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 22:07:49.015] [error] [604073] WebsocketSession on_read error,  Socket is not connected.
+[2019-01-27 22:07:49.027] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 22:07:52.197] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 22:07:52.199] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 22:07:52.309] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 22:11:26.073] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 22:11:26.076] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 22:11:26.218] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 22:12:11.495] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 22:46:34.655] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 22:46:34.658] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 22:46:34.796] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 22:46:35.850] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 22:46:39.234] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 22:46:39.237] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 22:46:39.334] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 22:46:46.461] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 22:46:46.462] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 22:46:46.567] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 22:46:59.726] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 22:46:59.727] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 22:46:59.848] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 22:47:24.280] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 22:47:24.331] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 22:47:26.901] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 22:47:26.905] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 22:47:27.010] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 22:47:33.122] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 22:47:37.251] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 22:47:37.253] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 22:47:37.350] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 22:47:42.309] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 22:47:42.309] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 22:47:42.413] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 22:47:44.009] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 22:47:44.011] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 22:47:44.107] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 22:48:14.842] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 22:48:14.844] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 22:48:14.978] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 22:48:17.674] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 22:48:17.675] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 22:48:17.773] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 22:48:52.643] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 22:48:52.643] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 22:48:52.740] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 23:02:40.596] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 23:02:45.015] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 23:02:45.016] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 23:02:48.882] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 23:02:54.649] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 23:02:54.650] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 23:02:54.765] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 23:04:29.210] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 23:04:29.211] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 23:04:29.303] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 23:04:51.296] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 23:04:51.299] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 23:04:51.399] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 23:07:42.158] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 23:07:42.275] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 23:07:42.275] [error] [604073] WebsocketSession on_read error,  Socket is not connected.
+[2019-01-27 23:07:45.610] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 23:07:45.611] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 23:07:45.707] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 23:10:08.365] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 23:10:08.366] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 23:10:08.463] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 23:12:19.969] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 23:12:19.985] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 23:12:20.087] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 23:12:27.129] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 23:12:39.501] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 23:12:39.502] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 23:12:39.594] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 23:15:39.758] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 23:15:39.760] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 23:15:39.849] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 23:16:40.449] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 23:16:40.450] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 23:16:40.565] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 23:24:28.027] [error] [604073] WebsocketSession on_read error,  Connection reset by peer.
+[2019-01-27 23:24:34.863] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 23:24:34.864] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 23:24:34.967] [info] [604073] map size=2110500, compress size=16722
+[2019-01-27 23:26:18.130] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-27 23:26:18.131] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-27 23:26:18.232] [info] [604073] map size=2110500, compress size=16722
+[2019-01-28 17:11:57.112] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-28 17:11:57.118] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-28 17:11:57.226] [info] [604073] map size=2110500, compress size=16722
+[2019-01-28 17:12:21.190] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-28 17:12:21.191] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-28 17:12:21.293] [info] [604073] map size=2110500, compress size=16722
+[2019-01-28 20:01:31.567] [info] [604073] WebsocketSession session insert to channel[/ws].
+[2019-01-28 20:01:31.570] [info] [604073] path={"data":[{"x":-8,"y":-10,"z":0},{"x":-5,"y":-3,"z":0},{"x":0,"y":0,"z":0},{"x":5,"y":5,"z":0}],"op":"path"}
+[2019-01-28 20:01:31.671] [info] [604073] map size=2110500, compress size=16722
+[2019-02-16 23:05:24.043] [info] [7134818] ------------------------------------------------------------------------------------
+[2019-02-16 23:05:24.043] [info] [7134818] ------------------------------------------------------------------------------------
+[2019-02-16 23:05:25.046] [info] [7134819] topic=chat, id=1
+[2019-02-16 23:05:25.047] [info] [7134819] topic=chat1, id=2
+[2019-02-16 23:05:25.061] [info] [7134844] filter out: 1550329525061217
+[2019-02-16 23:05:26.062] [info] [7134844] filter out: 1550329525889520
+[2019-02-16 23:05:27.065] [info] [7134844] filter out: 1550329526914665
+[2019-02-16 23:05:28.067] [info] [7134844] filter out: 1550329527945599
+[2019-02-16 23:05:29.045] [info] [7134818] ------------------------------------------------------------------------------------
+[2019-02-16 23:05:29.045] [info] [7134818] DataBus: topic=chat, max_queue_size=2, queue_size=2, subscriber_id=1, filter_size=1, success_count=3, incomming_count=39, dropped_count=33.
+[2019-02-16 23:05:29.045] [info] [7134818] DataBus: topic=chat1, max_queue_size=100, queue_size=0, subscriber_id=2, filter_size=0, success_count=39, incomming_count=39, dropped_count=0.
+[2019-02-16 23:05:29.045] [info] [7134818] ------------------------------------------------------------------------------------
+[2019-02-16 23:05:29.069] [info] [7134844] filter out: 1550329528875963
+[2019-02-16 23:06:46.592] [info] [7135402] ------------------------------------------------------------------------------------
+[2019-02-16 23:06:46.593] [info] [7135402] ------------------------------------------------------------------------------------
+[2019-02-16 23:06:47.596] [info] [7135403] topic=chat, id=1
+[2019-02-16 23:06:47.598] [info] [7135403] topic=chat1, id=2
+[2019-02-16 23:06:47.612] [info] [7135417] filter out: 1550329607612646
+[2019-02-16 23:06:47.717] [info] [7135417] filter out: 1550329607717527
+[2019-02-16 23:06:47.822] [info] [7135417] filter out: 1550329607822165
+[2019-02-16 23:06:47.924] [info] [7135417] filter out: 1550329607924221
+[2019-02-16 23:06:48.026] [info] [7135417] filter out: 1550329608026383
+[2019-02-16 23:06:48.130] [info] [7135417] filter out: 1550329608130223
+[2019-02-16 23:06:48.232] [info] [7135417] filter out: 1550329608232680
+[2019-02-16 23:06:48.335] [info] [7135417] filter out: 1550329608335340
+[2019-02-16 23:06:48.437] [info] [7135417] filter out: 1550329608437088
+[2019-02-16 23:06:48.539] [info] [7135417] filter out: 1550329608539044
+[2019-02-16 23:06:48.642] [info] [7135417] filter out: 1550329608642838
+[2019-02-16 23:06:48.747] [info] [7135417] filter out: 1550329608747658
+[2019-02-16 23:06:48.850] [info] [7135417] filter out: 1550329608850282
+[2019-02-16 23:06:48.953] [info] [7135417] filter out: 1550329608953124
+[2019-02-16 23:06:49.058] [info] [7135417] filter out: 1550329609058363
+[2019-02-16 23:06:49.161] [info] [7135417] filter out: 1550329609161848
+[2019-02-16 23:06:49.266] [info] [7135417] filter out: 1550329609266496
+[2019-02-16 23:06:49.370] [info] [7135417] filter out: 1550329609370719
+[2019-02-16 23:06:49.476] [info] [7135417] filter out: 1550329609475902
+[2019-02-16 23:06:49.580] [info] [7135417] filter out: 1550329609580673
+[2019-02-16 23:06:49.683] [info] [7135417] filter out: 1550329609683865
+[2019-02-16 23:06:49.789] [info] [7135417] filter out: 1550329609789088
+[2019-02-16 23:06:49.891] [info] [7135417] filter out: 1550329609891370
+[2019-02-16 23:06:49.996] [info] [7135417] filter out: 1550329609996633
+[2019-02-16 23:06:50.096] [info] [7135417] filter out: 1550329610096776
+[2019-02-16 23:06:50.199] [info] [7135417] filter out: 1550329610199353
+[2019-02-16 23:06:50.300] [info] [7135417] filter out: 1550329610300538
+[2019-02-16 23:06:50.405] [info] [7135417] filter out: 1550329610405310
+[2019-02-16 23:06:50.505] [info] [7135417] filter out: 1550329610505555
+[2019-02-16 23:06:50.607] [info] [7135417] filter out: 1550329610607849
+[2019-02-16 23:06:50.709] [info] [7135417] filter out: 1550329610709044
+[2019-02-16 23:06:50.813] [info] [7135417] filter out: 1550329610813330
+[2019-02-16 23:06:50.918] [info] [7135417] filter out: 1550329610918020
+[2019-02-16 23:06:51.019] [info] [7135417] filter out: 1550329611018531
+[2019-02-16 23:06:51.123] [info] [7135417] filter out: 1550329611123747
+[2019-02-16 23:06:51.229] [info] [7135417] filter out: 1550329611229002
+[2019-02-16 23:06:51.332] [info] [7135417] filter out: 1550329611332886
+[2019-02-16 23:06:51.433] [info] [7135417] filter out: 1550329611433682
+[2019-02-16 23:06:51.534] [info] [7135417] filter out: 1550329611534865
+[2019-02-16 23:06:51.598] [info] [7135402] ------------------------------------------------------------------------------------
+[2019-02-16 23:06:51.598] [info] [7135402] DataBus: topic=chat, max_queue_size=2, queue_size=0, subscriber_id=1, filter_size=1, success_count=39, incomming_count=39, dropped_count=0.
+[2019-02-16 23:06:51.598] [info] [7135402] DataBus: topic=chat1, max_queue_size=100, queue_size=0, subscriber_id=2, filter_size=0, success_count=39, incomming_count=39, dropped_count=0.
+[2019-02-16 23:06:51.598] [info] [7135402] ------------------------------------------------------------------------------------
+[2019-02-16 23:06:51.637] [info] [7135417] filter out: 1550329611637520
+[2019-02-16 23:06:51.739] [info] [7135417] filter out: 1550329611739556
+[2019-02-16 23:06:51.844] [info] [7135417] filter out: 1550329611844816
+[2019-02-16 23:06:51.945] [info] [7135417] filter out: 1550329611945271
+[2019-02-16 23:06:52.047] [info] [7135417] filter out: 1550329612047894
+[2019-02-16 23:06:52.148] [info] [7135417] filter out: 1550329612148484
+[2019-02-16 23:06:52.251] [info] [7135417] filter out: 1550329612250985
+[2019-02-16 23:06:52.351] [info] [7135417] filter out: 1550329612351058
+[2019-02-16 23:06:52.452] [info] [7135417] filter out: 1550329612452364
+[2019-02-16 23:06:52.552] [info] [7135417] filter out: 1550329612552559
+[2019-02-16 23:06:52.654] [info] [7135417] filter out: 1550329612654424
+[2019-02-16 23:06:52.754] [info] [7135417] filter out: 1550329612754862
+[2019-02-16 23:06:52.856] [info] [7135417] filter out: 1550329612856552
+[2019-02-16 23:06:52.962] [info] [7135417] filter out: 1550329612962111
+[2019-02-16 23:06:53.066] [info] [7135417] filter out: 1550329613066817
+[2019-02-16 23:06:53.167] [info] [7135417] filter out: 1550329613167488
+[2019-02-16 23:06:53.269] [info] [7135417] filter out: 1550329613268989
+[2019-02-16 23:06:53.369] [info] [7135417] filter out: 1550329613369114
+[2019-02-16 23:06:53.470] [info] [7135417] filter out: 1550329613470482
+[2019-02-16 23:06:53.573] [info] [7135417] filter out: 1550329613573643
+[2019-02-16 23:06:53.678] [info] [7135417] filter out: 1550329613677920
+[2019-02-16 23:06:53.782] [info] [7135417] filter out: 1550329613782704
+[2019-02-16 23:06:53.882] [info] [7135417] filter out: 1550329613882944
+[2019-02-16 23:06:53.986] [info] [7135417] filter out: 1550329613986823
+[2019-02-16 23:06:54.088] [info] [7135417] filter out: 1550329614088662
+[2019-02-16 23:06:54.189] [info] [7135417] filter out: 1550329614189047
+[2019-02-16 23:06:54.290] [info] [7135417] filter out: 1550329614290144
+[2019-02-16 23:06:54.390] [info] [7135417] filter out: 1550329614390494
+[2019-02-16 23:06:54.491] [info] [7135417] filter out: 1550329614491181
+[2019-02-16 23:06:54.591] [info] [7135417] filter out: 1550329614591419
+[2019-02-16 23:06:54.696] [info] [7135417] filter out: 1550329614696464
+[2019-02-16 23:06:54.799] [info] [7135417] filter out: 1550329614799469
+[2019-02-16 23:06:54.904] [info] [7135417] filter out: 1550329614904098
+[2019-02-16 23:06:55.008] [info] [7135417] filter out: 1550329615008477
+[2019-02-16 23:06:55.113] [info] [7135417] filter out: 1550329615113829
+[2019-02-16 23:06:55.216] [info] [7135417] filter out: 1550329615216446
+[2019-02-16 23:06:55.317] [info] [7135417] filter out: 1550329615317569
+[2019-02-16 23:06:55.420] [info] [7135417] filter out: 1550329615420607
+[2019-02-16 23:06:55.523] [info] [7135417] filter out: 1550329615523836
+[2019-02-16 23:06:55.624] [info] [7135417] filter out: 1550329615624370
+[2019-02-16 23:06:55.724] [info] [7135417] filter out: 1550329615724509
+[2019-02-16 23:06:55.826] [info] [7135417] filter out: 1550329615826131
+[2019-02-16 23:06:55.931] [info] [7135417] filter out: 1550329615930706
+[2019-02-16 23:06:56.033] [info] [7135417] filter out: 1550329616033588
+[2019-02-16 23:06:56.138] [info] [7135417] filter out: 1550329616138853
+[2019-02-16 23:06:56.242] [info] [7135417] filter out: 1550329616242346
+[2019-02-16 23:06:56.342] [info] [7135417] filter out: 1550329616342419
+[2019-02-16 23:06:56.444] [info] [7135417] filter out: 1550329616444597
+[2019-02-16 23:06:56.549] [info] [7135417] filter out: 1550329616549933
+[2019-02-16 23:06:56.600] [info] [7135402] ------------------------------------------------------------------------------------
+[2019-02-16 23:06:56.600] [info] [7135402] DataBus: topic=chat, max_queue_size=2, queue_size=0, subscriber_id=1, filter_size=1, success_count=88, incomming_count=88, dropped_count=0.
+[2019-02-16 23:06:56.600] [info] [7135402] DataBus: topic=chat1, max_queue_size=100, queue_size=0, subscriber_id=2, filter_size=0, success_count=88, incomming_count=88, dropped_count=0.
+[2019-02-16 23:06:56.600] [info] [7135402] ------------------------------------------------------------------------------------
+[2019-02-16 23:06:56.655] [info] [7135417] filter out: 1550329616655107
+[2019-02-16 23:06:56.755] [info] [7135417] filter out: 1550329616755433
+[2019-02-16 23:06:56.858] [info] [7135417] filter out: 1550329616858223
+[2019-02-16 23:06:56.961] [info] [7135417] filter out: 1550329616961149
+[2019-02-16 23:06:57.065] [info] [7135417] filter out: 1550329617065130
+[2019-02-16 23:06:57.168] [info] [7135417] filter out: 1550329617168172
+[2019-02-16 23:06:57.269] [info] [7135417] filter out: 1550329617269144
+[2019-02-16 23:06:57.374] [info] [7135417] filter out: 1550329617374257
+[2019-02-16 23:06:57.476] [info] [7135417] filter out: 1550329617476383
+[2019-02-16 23:06:57.576] [info] [7135417] filter out: 1550329617576630
+[2019-02-16 23:06:57.679] [info] [7135417] filter out: 1550329617679319
+[2019-02-16 23:06:57.781] [info] [7135417] filter out: 1550329617781662
+[2019-02-16 23:06:57.882] [info] [7135417] filter out: 1550329617882481
+[2019-02-16 23:06:57.987] [info] [7135417] filter out: 1550329617987351
+[2019-02-16 23:06:58.089] [info] [7135417] filter out: 1550329618089101
+[2019-02-16 23:06:58.189] [info] [7135417] filter out: 1550329618189515
+[2019-02-16 23:06:58.292] [info] [7135417] filter out: 1550329618292923
+[2019-02-16 23:06:58.398] [info] [7135417] filter out: 1550329618398161
+[2019-02-16 23:06:58.500] [info] [7135417] filter out: 1550329618500380
+[2019-02-16 23:06:58.601] [info] [7135417] filter out: 1550329618601273
+[2019-02-16 23:06:58.704] [info] [7135417] filter out: 1550329618704929
+[2019-02-16 23:06:58.808] [info] [7135417] filter out: 1550329618808317
+[2019-02-16 23:06:58.908] [info] [7135417] filter out: 1550329618908653
+[2019-02-16 23:06:59.008] [info] [7135417] filter out: 1550329619008958
+[2019-02-16 23:06:59.110] [info] [7135417] filter out: 1550329619110734
+[2019-02-16 23:06:59.213] [info] [7135417] filter out: 1550329619213601
+[2019-02-16 23:06:59.313] [info] [7135417] filter out: 1550329619313685
+[2019-02-16 23:06:59.416] [info] [7135417] filter out: 1550329619416923
+[2019-02-16 23:06:59.519] [info] [7135417] filter out: 1550329619519571
+[2019-02-16 23:06:59.620] [info] [7135417] filter out: 1550329619620531
+[2019-02-16 23:06:59.721] [info] [7135417] filter out: 1550329619721038
+[2019-02-16 23:06:59.821] [info] [7135417] filter out: 1550329619821357
+[2019-02-16 23:06:59.922] [info] [7135417] filter out: 1550329619922638
+[2019-02-16 23:07:00.024] [info] [7135417] filter out: 1550329620024596
+[2019-02-16 23:07:00.125] [info] [7135417] filter out: 1550329620125022
+[2019-02-16 23:07:00.225] [info] [7135417] filter out: 1550329620225576
+[2019-02-16 23:07:00.330] [info] [7135417] filter out: 1550329620330037
+[2019-02-16 23:07:00.430] [info] [7135417] filter out: 1550329620430491
+[2019-02-16 23:07:00.532] [info] [7135417] filter out: 1550329620532282
+[2019-02-16 23:07:00.638] [info] [7135417] filter out: 1550329620638080
+[2019-02-16 23:07:00.741] [info] [7135417] filter out: 1550329620741909
+[2019-02-16 23:07:00.842] [info] [7135417] filter out: 1550329620842030
+[2019-02-16 23:07:00.944] [info] [7135417] filter out: 1550329620944960
+[2019-02-16 23:07:01.046] [info] [7135417] filter out: 1550329621046122
+[2019-02-16 23:07:01.146] [info] [7135417] filter out: 1550329621146438
+[2019-02-16 23:07:01.250] [info] [7135417] filter out: 1550329621250514
+[2019-02-16 23:07:01.355] [info] [7135417] filter out: 1550329621355820
+[2019-02-16 23:07:01.457] [info] [7135417] filter out: 1550329621457573
+[2019-02-16 23:07:01.558] [info] [7135417] filter out: 1550329621558130
+[2019-02-16 23:07:01.603] [info] [7135402] ------------------------------------------------------------------------------------
+[2019-02-16 23:07:01.603] [info] [7135402] DataBus: topic=chat, max_queue_size=2, queue_size=0, subscriber_id=1, filter_size=1, success_count=137, incomming_count=137, dropped_count=0.
+[2019-02-16 23:07:01.603] [info] [7135402] DataBus: topic=chat1, max_queue_size=100, queue_size=0, subscriber_id=2, filter_size=0, success_count=137, incomming_count=137, dropped_count=0.
+[2019-02-16 23:07:01.603] [info] [7135402] ------------------------------------------------------------------------------------
+[2019-02-16 23:07:01.658] [info] [7135417] filter out: 1550329621658642
+[2019-02-16 23:07:01.760] [info] [7135417] filter out: 1550329621760465
+[2019-02-16 23:07:01.860] [info] [7135417] filter out: 1550329621860659
+[2019-02-16 23:07:01.964] [info] [7135417] filter out: 1550329621963996
+[2019-02-16 23:07:02.065] [info] [7135417] filter out: 1550329622065361
+[2019-02-16 23:07:02.169] [info] [7135417] filter out: 1550329622169185
+[2019-02-16 23:07:02.270] [info] [7135417] filter out: 1550329622270707
+[2019-02-16 23:07:02.371] [info] [7135417] filter out: 1550329622371488
+[2019-02-16 23:07:02.472] [info] [7135417] filter out: 1550329622472486
+[2019-02-16 23:07:02.574] [info] [7135417] filter out: 1550329622574834
+[2019-02-16 23:07:02.675] [info] [7135417] filter out: 1550329622675629
+[2019-02-16 23:07:02.775] [info] [7135417] filter out: 1550329622775743
+[2019-02-16 23:07:02.876] [info] [7135417] filter out: 1550329622876941
+[2019-02-16 23:07:02.977] [info] [7135417] filter out: 1550329622977172
+[2019-02-16 23:07:03.077] [info] [7135417] filter out: 1550329623077836
+[2019-02-16 23:07:03.178] [info] [7135417] filter out: 1550329623178359
+[2019-02-16 23:07:03.278] [info] [7135417] filter out: 1550329623278560
+[2019-02-16 23:07:03.379] [info] [7135417] filter out: 1550329623379375
+[2019-02-16 23:07:03.483] [info] [7135417] filter out: 1550329623483862
+[2019-02-16 23:07:03.588] [info] [7135417] filter out: 1550329623588353
+[2019-02-16 23:07:03.690] [info] [7135417] filter out: 1550329623690118
+[2019-02-16 23:07:03.790] [info] [7135417] filter out: 1550329623790906
+[2019-02-16 23:07:03.896] [info] [7135417] filter out: 1550329623896168
+[2019-02-16 23:07:03.996] [info] [7135417] filter out: 1550329623996262
+[2019-02-16 23:07:04.097] [info] [7135417] filter out: 1550329624097723
+[2019-02-16 23:07:04.201] [info] [7135417] filter out: 1550329624201034
+[2019-02-16 23:07:04.306] [info] [7135417] filter out: 1550329624306313
+[2019-02-16 23:07:04.407] [info] [7135417] filter out: 1550329624407354
+[2019-02-16 23:07:04.507] [info] [7135417] filter out: 1550329624507859
+[2019-02-16 23:07:04.609] [info] [7135417] filter out: 1550329624609387
+[2019-02-16 23:07:04.709] [info] [7135417] filter out: 1550329624709937
+[2019-02-16 23:07:04.813] [info] [7135417] filter out: 1550329624813326
+[2019-02-16 23:07:04.916] [info] [7135417] filter out: 1550329624916539
+[2019-02-16 23:07:05.016] [info] [7135417] filter out: 1550329625016605
+[2019-02-16 23:07:05.116] [info] [7135417] filter out: 1550329625116720
+[2019-02-16 23:07:05.218] [info] [7135417] filter out: 1550329625218190
+[2019-02-16 23:07:05.318] [info] [7135417] filter out: 1550329625318257
+[2019-02-16 23:07:05.418] [info] [7135417] filter out: 1550329625418420
+[2019-02-16 23:07:05.521] [info] [7135417] filter out: 1550329625521584
+[2019-02-16 23:07:05.621] [info] [7135417] filter out: 1550329625621769
+[2019-02-16 23:07:05.725] [info] [7135417] filter out: 1550329625724990
+[2019-02-16 23:07:05.826] [info] [7135417] filter out: 1550329625826438
+[2019-02-16 23:07:05.931] [info] [7135417] filter out: 1550329625931495
+[2019-02-16 23:07:06.035] [info] [7135417] filter out: 1550329626035863
+[2019-02-16 23:07:06.136] [info] [7135417] filter out: 1550329626135968
+[2019-02-16 23:07:06.236] [info] [7135417] filter out: 1550329626236565
+[2019-02-16 23:07:06.336] [info] [7135417] filter out: 1550329626336866
+[2019-02-16 23:07:06.439] [info] [7135417] filter out: 1550329626439810
+[2019-02-16 23:07:06.544] [info] [7135417] filter out: 1550329626544813
+[2019-02-16 23:07:06.604] [info] [7135402] ------------------------------------------------------------------------------------
+[2019-02-16 23:07:06.604] [info] [7135402] DataBus: topic=chat, max_queue_size=2, queue_size=0, subscriber_id=1, filter_size=1, success_count=186, incomming_count=186, dropped_count=0.
+[2019-02-16 23:07:06.604] [info] [7135402] DataBus: topic=chat1, max_queue_size=100, queue_size=0, subscriber_id=2, filter_size=0, success_count=186, incomming_count=186, dropped_count=0.
+[2019-02-16 23:07:06.604] [info] [7135402] ------------------------------------------------------------------------------------
+[2019-02-16 23:07:06.647] [info] [7135417] filter out: 1550329626647875
+[2019-02-16 23:07:06.748] [info] [7135417] filter out: 1550329626748085
+[2019-02-16 23:07:06.848] [info] [7135417] filter out: 1550329626848729
+[2019-02-16 23:07:06.951] [info] [7135417] filter out: 1550329626951779
+[2019-02-16 23:07:07.054] [info] [7135417] filter out: 1550329627054724
+[2019-02-16 23:07:07.158] [info] [7135417] filter out: 1550329627158692
+[2019-02-16 23:07:07.263] [info] [7135417] filter out: 1550329627263546
+[2019-02-16 23:07:07.368] [info] [7135417] filter out: 1550329627368146
+[2019-02-16 23:07:07.468] [info] [7135417] filter out: 1550329627468716
+[2019-02-16 23:07:07.571] [info] [7135417] filter out: 1550329627571199
+[2019-02-16 23:07:07.671] [info] [7135417] filter out: 1550329627671249
+[2019-02-16 23:07:07.774] [info] [7135417] filter out: 1550329627774050
+[2019-02-16 23:07:07.876] [info] [7135417] filter out: 1550329627876364
+[2019-02-16 23:07:07.978] [info] [7135417] filter out: 1550329627978413
+[2019-02-16 23:07:08.079] [info] [7135417] filter out: 1550329628079591
+[2019-02-16 23:07:08.181] [info] [7135417] filter out: 1550329628181624
+[2019-02-16 23:07:08.282] [info] [7135417] filter out: 1550329628282071
+[2019-02-16 23:07:08.386] [info] [7135417] filter out: 1550329628386205
+[2019-02-16 23:07:08.491] [info] [7135417] filter out: 1550329628490988
+[2019-02-16 23:07:08.596] [info] [7135417] filter out: 1550329628596273
+[2019-02-16 23:07:08.701] [info] [7135417] filter out: 1550329628701349
+[2019-02-16 23:07:08.802] [info] [7135417] filter out: 1550329628802796
+[2019-02-16 23:07:08.907] [info] [7135417] filter out: 1550329628906972
+[2019-02-16 23:07:09.008] [info] [7135417] filter out: 1550329629008294
+[2019-02-16 23:07:09.108] [info] [7135417] filter out: 1550329629108606
+[2019-02-16 23:07:09.211] [info] [7135417] filter out: 1550329629211782
+[2019-02-16 23:07:09.316] [info] [7135417] filter out: 1550329629316061
+[2019-02-16 23:07:09.416] [info] [7135417] filter out: 1550329629416384
+[2019-02-16 23:07:09.516] [info] [7135417] filter out: 1550329629516735
+[2019-02-16 23:07:09.619] [info] [7135417] filter out: 1550329629618868
+[2019-02-16 23:07:09.721] [info] [7135417] filter out: 1550329629720024
+[2019-02-16 23:07:09.821] [info] [7135417] filter out: 1550329629821871
+[2019-02-16 23:07:09.922] [info] [7135417] filter out: 1550329629922281
+[2019-02-16 23:07:10.022] [info] [7135417] filter out: 1550329630022439
+[2019-02-16 23:07:10.122] [info] [7135417] filter out: 1550329630122907
+[2019-02-16 23:07:10.225] [info] [7135417] filter out: 1550329630225858
+[2019-02-16 23:07:10.327] [info] [7135417] filter out: 1550329630327028
+[2019-02-16 23:07:10.431] [info] [7135417] filter out: 1550329630431729
+[2019-02-16 23:07:10.532] [info] [7135417] filter out: 1550329630532034
+[2019-02-16 23:07:10.636] [info] [7135417] filter out: 1550329630636395
+[2019-02-16 23:07:10.738] [info] [7135417] filter out: 1550329630738793
+[2019-02-16 23:07:10.843] [info] [7135417] filter out: 1550329630843782
+[2019-02-16 23:07:10.947] [info] [7135417] filter out: 1550329630947446
+[2019-02-16 23:07:11.047] [info] [7135417] filter out: 1550329631047746
+[2019-02-16 23:07:11.152] [info] [7135417] filter out: 1550329631152296
+[2019-02-16 23:07:11.256] [info] [7135417] filter out: 1550329631255944
+[2019-02-16 23:07:11.356] [info] [7135417] filter out: 1550329631356064
+[2019-02-16 23:07:11.458] [info] [7135417] filter out: 1550329631458499
+[2019-02-16 23:07:11.563] [info] [7135417] filter out: 1550329631563416
+[2019-02-16 23:07:11.605] [info] [7135402] ------------------------------------------------------------------------------------
+[2019-02-16 23:07:11.605] [info] [7135402] DataBus: topic=chat, max_queue_size=2, queue_size=0, subscriber_id=1, filter_size=1, success_count=235, incomming_count=235, dropped_count=0.
+[2019-02-16 23:07:11.605] [info] [7135402] DataBus: topic=chat1, max_queue_size=100, queue_size=0, subscriber_id=2, filter_size=0, success_count=235, incomming_count=235, dropped_count=0.
+[2019-02-16 23:07:11.605] [info] [7135402] ------------------------------------------------------------------------------------
+[2019-02-16 23:07:11.667] [info] [7135417] filter out: 1550329631667012
+[2019-02-16 23:07:11.767] [info] [7135417] filter out: 1550329631767065
+[2019-02-16 23:07:11.871] [info] [7135417] filter out: 1550329631871140
+[2019-02-16 23:07:11.972] [info] [7135417] filter out: 1550329631972341
+[2019-02-16 23:07:12.074] [info] [7135417] filter out: 1550329632074171
+[2019-02-16 23:07:12.175] [info] [7135417] filter out: 1550329632175024
+[2019-02-16 23:07:12.275] [info] [7135417] filter out: 1550329632275474
+[2019-02-16 23:07:12.380] [info] [7135417] filter out: 1550329632380431
+[2019-02-16 23:07:12.482] [info] [7135417] filter out: 1550329632482441
+[2019-02-16 23:07:12.582] [info] [7135417] filter out: 1550329632582697
+[2019-02-16 23:07:12.683] [info] [7135417] filter out: 1550329632683093
+[2019-02-16 23:07:12.787] [info] [7135417] filter out: 1550329632787004
+[2019-02-16 23:07:12.889] [info] [7135417] filter out: 1550329632889168
+[2019-02-16 23:07:12.993] [info] [7135417] filter out: 1550329632993842
+[2019-02-16 23:07:13.096] [info] [7135417] filter out: 1550329633096576
+[2019-02-16 23:07:13.200] [info] [7135417] filter out: 1550329633200793
+[2019-02-16 23:07:13.303] [info] [7135417] filter out: 1550329633303330
+[2019-02-16 23:07:13.404] [info] [7135417] filter out: 1550329633404270
+[2019-02-16 23:07:13.506] [info] [7135417] filter out: 1550329633506144
+[2019-02-16 23:07:13.608] [info] [7135417] filter out: 1550329633608364
+[2019-02-16 23:07:13.709] [info] [7135417] filter out: 1550329633709184
+[2019-02-16 23:07:13.810] [info] [7135417] filter out: 1550329633810954
+[2019-02-16 23:07:13.916] [info] [7135417] filter out: 1550329633916016
+[2019-02-16 23:07:14.020] [info] [7135417] filter out: 1550329634020457
+[2019-02-16 23:07:14.122] [info] [7135417] filter out: 1550329634122880
+[2019-02-16 23:07:14.224] [info] [7135417] filter out: 1550329634224055
+[2019-02-16 23:07:14.324] [info] [7135417] filter out: 1550329634324256
+[2019-02-16 23:07:14.427] [info] [7135417] filter out: 1550329634427368
+[2019-02-16 23:07:14.528] [info] [7135417] filter out: 1550329634528155
+[2019-02-16 23:07:14.628] [info] [7135417] filter out: 1550329634628561
