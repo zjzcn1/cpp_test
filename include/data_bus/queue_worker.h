@@ -6,6 +6,7 @@
 #include "ring_queue.h"
 #include "queue_stat.h"
 #include "filter.h"
+#include "util/logger.h"
 
 namespace data_bus {
 
@@ -55,8 +56,8 @@ namespace data_bus {
                                 break;
                             }
                         } catch (std::exception &e) {
-                            std::cerr << "Data bus filter error, topic=" << this->topic_ << ", subscriber_id="
-                                      << subscriber_id_ << ", " << e.what() << std::endl;
+                            Logger::error("Data bus filter error, topic={}, subscriber_id={}, error: ", this->topic_,
+                                          subscriber_id_, e.what());
                         }
                     }
 
@@ -66,8 +67,8 @@ namespace data_bus {
                         }
                         success_count_++;
                     } catch (std::exception &e) {
-                        std::cerr << "Data bus callback error, topic=" << this->topic_ << ", subscriber_id="
-                                  << subscriber_id_ << ", " << e.what() << std::endl;
+                        Logger::error("Data bus callback error, topic={}, subscriber_id={}, error: ", this->topic_,
+                                      subscriber_id_, e.what());
                     }
                 }
             });

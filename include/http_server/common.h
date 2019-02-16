@@ -19,7 +19,7 @@
 #include <regex>
 #include <unordered_set>
 #include <mutex>
-#include "./util/logger.h"
+#include "util/logger.h"
 
 namespace http_server {
     namespace beast = boost::beast;

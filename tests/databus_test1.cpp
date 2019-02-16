@@ -1,10 +1,9 @@
 #include <iostream>
 #include <chrono>
-#include "../data_bus/data_bus.h"
-#include "../http/logger.h"
+#include "data_bus/data_bus.h"
+#include "util/logger.h"
 
 using namespace data_bus;
-using namespace http_server;
 
 struct ChatMsg {
     explicit ChatMsg() {
@@ -83,6 +82,8 @@ struct Test {
 };
 
 int main() {
+    Logger::setLevel(Logger::Level::DEBUG);
+    Logger::setSink(Logger::Sink::CONSOLE_AND_DAILY);
     Test t;
     t.start();
 }

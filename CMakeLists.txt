@@ -28,7 +28,7 @@ find_package(yaml-cpp REQUIRED)
 
 include_directories(
         ${Boost_INCLUDE_DIRS}
-        http
+        include
         third_party
         tests
         ${SDL_image_INCLUDE_DIRS}
