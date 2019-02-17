@@ -123,32 +123,59 @@ cppTest/fast:
 	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/build
 .PHONY : cppTest/fast
 
-tests/databus_test1.o: tests/databus_test1.cpp.o
+game.pb.o: game.pb.cc.o
 
-.PHONY : tests/databus_test1.o
+.PHONY : game.pb.o
 
 # target to build an object file
-tests/databus_test1.cpp.o:
-	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/tests/databus_test1.cpp.o
-.PHONY : tests/databus_test1.cpp.o
+game.pb.cc.o:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/game.pb.cc.o
+.PHONY : game.pb.cc.o
 
-tests/databus_test1.i: tests/databus_test1.cpp.i
+game.pb.i: game.pb.cc.i
 
-.PHONY : tests/databus_test1.i
+.PHONY : game.pb.i
 
 # target to preprocess a source file
-tests/databus_test1.cpp.i:
-	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/tests/databus_test1.cpp.i
-.PHONY : tests/databus_test1.cpp.i
+game.pb.cc.i:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/game.pb.cc.i
+.PHONY : game.pb.cc.i
 
-tests/databus_test1.s: tests/databus_test1.cpp.s
+game.pb.s: game.pb.cc.s
 
-.PHONY : tests/databus_test1.s
+.PHONY : game.pb.s
 
 # target to generate assembly for a file
-tests/databus_test1.cpp.s:
-	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/tests/databus_test1.cpp.s
-.PHONY : tests/databus_test1.cpp.s
+game.pb.cc.s:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/game.pb.cc.s
+.PHONY : game.pb.cc.s
+
+protobuf/protobuf_test.o: protobuf/protobuf_test.cpp.o
+
+.PHONY : protobuf/protobuf_test.o
+
+# target to build an object file
+protobuf/protobuf_test.cpp.o:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/protobuf/protobuf_test.cpp.o
+.PHONY : protobuf/protobuf_test.cpp.o
+
+protobuf/protobuf_test.i: protobuf/protobuf_test.cpp.i
+
+.PHONY : protobuf/protobuf_test.i
+
+# target to preprocess a source file
+protobuf/protobuf_test.cpp.i:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/protobuf/protobuf_test.cpp.i
+.PHONY : protobuf/protobuf_test.cpp.i
+
+protobuf/protobuf_test.s: protobuf/protobuf_test.cpp.s
+
+.PHONY : protobuf/protobuf_test.s
+
+# target to generate assembly for a file
+protobuf/protobuf_test.cpp.s:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/protobuf/protobuf_test.cpp.s
+.PHONY : protobuf/protobuf_test.cpp.s
 
 # Help Target
 help:
@@ -159,9 +186,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... cppTest"
-	@echo "... tests/databus_test1.o"
-	@echo "... tests/databus_test1.i"
-	@echo "... tests/databus_test1.s"
+	@echo "... game.pb.o"
+	@echo "... game.pb.i"
+	@echo "... game.pb.s"
+	@echo "... protobuf/protobuf_test.o"
+	@echo "... protobuf/protobuf_test.i"
+	@echo "... protobuf/protobuf_test.s"
 .PHONY : help
 
 

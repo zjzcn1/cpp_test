@@ -57,27 +57,50 @@ include CMakeFiles/cppTest.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/cppTest.dir/flags.make
 
-CMakeFiles/cppTest.dir/tests/databus_test1.cpp.o: CMakeFiles/cppTest.dir/flags.make
-CMakeFiles/cppTest.dir/tests/databus_test1.cpp.o: ../tests/databus_test1.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zjz/work/cpp/cpp_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cppTest.dir/tests/databus_test1.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cppTest.dir/tests/databus_test1.cpp.o -c /Users/zjz/work/cpp/cpp_test/tests/databus_test1.cpp
+game.pb.h: ../protobuf/game.proto
+game.pb.h: /usr/local/bin/protoc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/zjz/work/cpp/cpp_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running cpp protocol buffer compiler on protobuf/game.proto"
+	/usr/local/bin/protoc --cpp_out /Users/zjz/work/cpp/cpp_test/build -I /Users/zjz/work/cpp/cpp_test/protobuf /Users/zjz/work/cpp/cpp_test/protobuf/game.proto
 
-CMakeFiles/cppTest.dir/tests/databus_test1.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cppTest.dir/tests/databus_test1.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zjz/work/cpp/cpp_test/tests/databus_test1.cpp > CMakeFiles/cppTest.dir/tests/databus_test1.cpp.i
+game.pb.cc: game.pb.h
+	@$(CMAKE_COMMAND) -E touch_nocreate game.pb.cc
 
-CMakeFiles/cppTest.dir/tests/databus_test1.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cppTest.dir/tests/databus_test1.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zjz/work/cpp/cpp_test/tests/databus_test1.cpp -o CMakeFiles/cppTest.dir/tests/databus_test1.cpp.s
+CMakeFiles/cppTest.dir/game.pb.cc.o: CMakeFiles/cppTest.dir/flags.make
+CMakeFiles/cppTest.dir/game.pb.cc.o: game.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zjz/work/cpp/cpp_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/cppTest.dir/game.pb.cc.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cppTest.dir/game.pb.cc.o -c /Users/zjz/work/cpp/cpp_test/build/game.pb.cc
+
+CMakeFiles/cppTest.dir/game.pb.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cppTest.dir/game.pb.cc.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zjz/work/cpp/cpp_test/build/game.pb.cc > CMakeFiles/cppTest.dir/game.pb.cc.i
+
+CMakeFiles/cppTest.dir/game.pb.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cppTest.dir/game.pb.cc.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zjz/work/cpp/cpp_test/build/game.pb.cc -o CMakeFiles/cppTest.dir/game.pb.cc.s
+
+CMakeFiles/cppTest.dir/protobuf/protobuf_test.cpp.o: CMakeFiles/cppTest.dir/flags.make
+CMakeFiles/cppTest.dir/protobuf/protobuf_test.cpp.o: ../protobuf/protobuf_test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zjz/work/cpp/cpp_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/cppTest.dir/protobuf/protobuf_test.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cppTest.dir/protobuf/protobuf_test.cpp.o -c /Users/zjz/work/cpp/cpp_test/protobuf/protobuf_test.cpp
+
+CMakeFiles/cppTest.dir/protobuf/protobuf_test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cppTest.dir/protobuf/protobuf_test.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zjz/work/cpp/cpp_test/protobuf/protobuf_test.cpp > CMakeFiles/cppTest.dir/protobuf/protobuf_test.cpp.i
+
+CMakeFiles/cppTest.dir/protobuf/protobuf_test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cppTest.dir/protobuf/protobuf_test.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zjz/work/cpp/cpp_test/protobuf/protobuf_test.cpp -o CMakeFiles/cppTest.dir/protobuf/protobuf_test.cpp.s
 
 # Object files for target cppTest
 cppTest_OBJECTS = \
-"CMakeFiles/cppTest.dir/tests/databus_test1.cpp.o"
+"CMakeFiles/cppTest.dir/game.pb.cc.o" \
+"CMakeFiles/cppTest.dir/protobuf/protobuf_test.cpp.o"
 
 # External object files for target cppTest
 cppTest_EXTERNAL_OBJECTS =
 
-cppTest: CMakeFiles/cppTest.dir/tests/databus_test1.cpp.o
+cppTest: CMakeFiles/cppTest.dir/game.pb.cc.o
+cppTest: CMakeFiles/cppTest.dir/protobuf/protobuf_test.cpp.o
 cppTest: CMakeFiles/cppTest.dir/build.make
 cppTest: /usr/local/lib/libboost_system-mt.dylib
 cppTest: /usr/local/lib/libboost_filesystem-mt.dylib
@@ -87,8 +110,9 @@ cppTest: /usr/local/lib/libSDLmain.a
 cppTest: /usr/local/lib/libSDL.dylib
 cppTest: /usr/local/lib/libSDL_image.dylib
 cppTest: /usr/local/lib/libyaml-cpp.0.6.2.dylib
+cppTest: /usr/local/lib/libprotobuf.dylib
 cppTest: CMakeFiles/cppTest.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/zjz/work/cpp/cpp_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable cppTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/zjz/work/cpp/cpp_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable cppTest"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cppTest.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -100,7 +124,8 @@ CMakeFiles/cppTest.dir/clean:
 	$(CMAKE_COMMAND) -P CMakeFiles/cppTest.dir/cmake_clean.cmake
 .PHONY : CMakeFiles/cppTest.dir/clean
 
-CMakeFiles/cppTest.dir/depend:
+CMakeFiles/cppTest.dir/depend: game.pb.h
+CMakeFiles/cppTest.dir/depend: game.pb.cc
 	cd /Users/zjz/work/cpp/cpp_test/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/zjz/work/cpp/cpp_test /Users/zjz/work/cpp/cpp_test /Users/zjz/work/cpp/cpp_test/build /Users/zjz/work/cpp/cpp_test/build /Users/zjz/work/cpp/cpp_test/build/CMakeFiles/cppTest.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/cppTest.dir/depend
 

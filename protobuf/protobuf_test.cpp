@@ -1,111 +1,38 @@
 #include <iostream>
-#include <fstream>
-#include <vector>
-#include "AddressBook.pb.h"
- 
-using namespace std;
- 
-// This function fills in a Person message based on user input.
-void PromptForAddress(tutorial::Person* person) 
-{
-    cout << "Enter person ID number: ";
-    int id;
-    cin >> id;
-    person->set_id(id);
-    cin.ignore(256, '\n');
- 
-    cout << "Enter name: ";
-    getline(cin, *person->mutable_name());
- 
-    cout << "Enter email address (blank for none): ";
-    string email;
-    getline(cin, email);
-    if (!email.empty()) 
-    {
-        person->set_email(email);
-    }
- 
-    while (true) 
-    {
-        cout << "Enter a phone number (or leave blank to finish): ";
-        string number;
-        getline(cin, number);
-        if (number.empty()) 
-        {
-            break;
-        }
- 
-        tutorial::Person::PhoneNumber* phone_number = person->add_phone();
-        phone_number->set_number(number);
- 
-        cout << "Is this a mobile, home, or work phone? ";
-        string type;
-        getline(cin, type);
-        if (type == "mobile") 
-        {
-            phone_number->set_type(tutorial::Person::MOBILE);
-        } 
-        else if (type == "home") 
-        {
-            phone_number->set_type(tutorial::Person::HOME);
-        }
-         else if (type == "work") 
-         {
-            phone_number->set_type(tutorial::Person::WORK);
-        }
-        else 
-        {
-            cout << "Unknown phone type.  Using default." << endl;
-        }
-    }
-}
-template<typename T>
-inline std::string to_string(T const& t)
-{
-    std::stringstream ss;
-    ss << t;
+#include <string>
+#include "game.pb.h"
 
-    return ss.str();
-}
- 
-int main(int argc, char *argv[])
+int main()
 {
-    GOOGLE_PROTOBUF_VERIFY_VERSION;
- 
-    if (argc != 2) 
-    {
-        cerr << "Usage:  " << argv[0] << " ADDRESS_BOOK_FILE" << endl;
-        return -1;
-    }
- 
-    tutorial::AddressBook address_book;
+    pt::rsp_login rsp{};
+    rsp.set_ret(pt::rsp_login_RET_SUCCESS);
+    auto user_info = rsp.mutable_user_info();
+    user_info->set_nickname("dsw");
+    user_info->set_icon("345DS55GF34D774S");
+    user_info->set_coin(2000);
+    user_info->set_location("zh");
 
-    std::cout<< to_string<tutorial::AddressBook>(address_book);
-    {
-    // Read the existing address book.
-    fstream input(argv[1], ios::in | ios::binary);
-    if (!input) {
-      cout << argv[1] << ": File not found.  Creating a new file." << endl;
-    } else if (!address_book.ParseFromIstream(&input)) {
-      cerr << "Failed to parse address book." << endl;
-      return -1;
+    for (int i = 0; i < 5; i++) {
+        auto record = rsp.add_record();
+        record->set_time("2017/4/13 12:22:11");
+        record->set_kill(i * 4);
+        record->set_dead(i * 2);
+        record->set_assist(i * 5);
     }
+
+    std::string buff{};
+    rsp.SerializeToString(&buff);
+    //------------------解析----------------------
+    pt::rsp_login rsp2{};
+    if (!rsp2.ParseFromString(buff)) {
+        std::cout << "parse error\n";
     }
- 
-    // Add an address.
-    PromptForAddress(address_book.add_person());
- 
-    {
-    // Write the new address book back to disk.
-    fstream output(argv[1], ios::out | ios::trunc | ios::binary);
-    if (!address_book.SerializeToOstream(&output)) {
-      cerr << "Failed to write address book." << endl;
-      return -1;
+
+    auto temp_user_info = rsp2.user_info();
+    std::cout << "nickname:" << temp_user_info.nickname() << std::endl;
+    std::cout << "coin:" << temp_user_info.coin() << std::endl;
+    for (int m = 0; m < rsp2.record_size(); m++) {
+        auto temp_record = rsp2.record(m);
+        std::cout << "time:" << temp_record.time() << " kill:" << temp_record.kill() << " dead:" << temp_record.dead() << " assist:" << temp_record.assist() << std::endl;
     }
-    }
- 
-    // Optional:  Delete all global objects allocated by libprotobuf.
-    google::protobuf::ShutdownProtobufLibrary();
- 
-    return 0;
 }

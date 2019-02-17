@@ -6,5 +6,5 @@ CXX_FLAGS =  -std=c++11 -O3 -g -isysroot /Library/Developer/CommandLineTools/SDK
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/usr/local/include -I/Users/zjz/work/cpp/cpp_test/include -I/Users/zjz/work/cpp/cpp_test/third_party -I/Users/zjz/work/cpp/cpp_test/tests 
+CXX_INCLUDES = -I/usr/local/include -I/Users/zjz/work/cpp/cpp_test/build -I/Users/zjz/work/cpp/cpp_test/include -I/Users/zjz/work/cpp/cpp_test/third_party -I/Users/zjz/work/cpp/cpp_test/tests -I/Users/zjz/work/cpp/cpp_test/build/game.pb.h 
 
