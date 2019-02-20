@@ -1,0 +1,10 @@
+syntax = "proto3";
+package msg;
+
+option optimize_for = LITE_RUNTIME;
+
+message Message
+{
+    string topic = 1;
+    string data = 2;
+}

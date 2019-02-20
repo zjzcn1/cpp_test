@@ -58,7 +58,7 @@ struct Test {
         std::thread([this]() {
             std::this_thread::sleep_for(std::chrono::seconds(1));
             long id = DataBus::subscribe<ChatMsg>("chat", std::bind(&Test::onEvent, this, std::placeholders::_1));
-            DataBus::addFilter<ChatMsg>(id, FilterPtr<ChatMsg>(new TestFilter));
+            DataBus::addFilter(id, FilterPtr<ChatMsg>(new TestFilter));
             Logger::info("topic={}, id={}", "chat", id);
             long id2 = DataBus::subscribe<ChatMsg>("chat1", std::bind(&Test::onEvent1, this, std::placeholders::_1),
                                                    100);
@@ -69,7 +69,7 @@ struct Test {
             std::thread([]() {
                 while (1) {
                     ChatMsg::ConstPtr chat1(new ChatMsg());
-                    DataBus::publish<ChatMsg>("chat1", chat1);
+                    DataBus::publish("chat1", chat1);
 
                     ChatMsg::ConstPtr chat2(new ChatMsg());
                     DataBus::publish<ChatMsg>("chat", chat2);

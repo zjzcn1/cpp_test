@@ -49,7 +49,8 @@
 					<Add directory="/Users/zjz/work/cpp/cpp_test/include"/>
 					<Add directory="/Users/zjz/work/cpp/cpp_test/third_party"/>
 					<Add directory="/Users/zjz/work/cpp/cpp_test/tests"/>
-					<Add directory="/Users/zjz/work/cpp/cpp_test/build/game.pb.h"/>
+					<Add directory="/Users/zjz/work/cpp/cpp_test/build/Message.pb.h"/>
+					<Add directory="/Users/zjz/work/cpp/cpp_test/build/Pose.pb.h"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.0/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
@@ -75,7 +76,8 @@
 					<Add directory="/Users/zjz/work/cpp/cpp_test/include"/>
 					<Add directory="/Users/zjz/work/cpp/cpp_test/third_party"/>
 					<Add directory="/Users/zjz/work/cpp/cpp_test/tests"/>
-					<Add directory="/Users/zjz/work/cpp/cpp_test/build/game.pb.h"/>
+					<Add directory="/Users/zjz/work/cpp/cpp_test/build/Message.pb.h"/>
+					<Add directory="/Users/zjz/work/cpp/cpp_test/build/Pose.pb.h"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.0/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
@@ -90,13 +92,19 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/zjz/work/cpp/cpp_test/build/game.pb.cc">
+		<Unit filename="/Users/zjz/work/cpp/cpp_test/build/Message.pb.cc">
 			<Option target="cppTest"/>
 		</Unit>
-		<Unit filename="/Users/zjz/work/cpp/cpp_test/build/game.pb.h.rule">
+		<Unit filename="/Users/zjz/work/cpp/cpp_test/build/Message.pb.h.rule">
 			<Option target="cppTest"/>
 		</Unit>
-		<Unit filename="/Users/zjz/work/cpp/cpp_test/protobuf/protobuf_test.cpp">
+		<Unit filename="/Users/zjz/work/cpp/cpp_test/build/Pose.pb.cc">
+			<Option target="cppTest"/>
+		</Unit>
+		<Unit filename="/Users/zjz/work/cpp/cpp_test/build/Pose.pb.h.rule">
+			<Option target="cppTest"/>
+		</Unit>
+		<Unit filename="/Users/zjz/work/cpp/cpp_test/protobuf/mq_test.cpp">
 			<Option target="cppTest"/>
 		</Unit>
 		<Unit filename="/Users/zjz/work/cpp/cpp_test/CMakeLists.txt">

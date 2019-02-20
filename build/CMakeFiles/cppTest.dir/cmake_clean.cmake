@@ -1,8 +1,11 @@
 file(REMOVE_RECURSE
-  "game.pb.h"
-  "game.pb.cc"
-  "CMakeFiles/cppTest.dir/game.pb.cc.o"
-  "CMakeFiles/cppTest.dir/protobuf/protobuf_test.cpp.o"
+  "Message.pb.h"
+  "Message.pb.cc"
+  "Pose.pb.h"
+  "Pose.pb.cc"
+  "CMakeFiles/cppTest.dir/Message.pb.cc.o"
+  "CMakeFiles/cppTest.dir/Pose.pb.cc.o"
+  "CMakeFiles/cppTest.dir/protobuf/mq_test.cpp.o"
   "cppTest.pdb"
   "cppTest"
 )

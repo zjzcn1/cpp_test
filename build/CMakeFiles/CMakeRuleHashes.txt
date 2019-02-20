@@ -1,3 +1,5 @@
 # Hashes of file build rules.
 30e98336432c7038b824eb717eead59e AddressBook.pb.h
+265aabe438ff1092335289e00b72a767 Message.pb.h
+c4ff5634af48987fe3b981cdd5102fca Pose.pb.h
 231def157938f2fc9da50e44a3fdb234 game.pb.h

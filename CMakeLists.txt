@@ -19,7 +19,8 @@ endif()
 
 include_directories(${PROTOBUF_INCLUDE_DIRS})
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
-PROTOBUF_GENERATE_CPP(PROTO_SRCS PROTO_HDRS protobuf/game.proto)
+#PROTOBUF_GENERATE_CPP(PROTO_SRCS PROTO_HDRS protobuf/game.proto)
+PROTOBUF_GENERATE_CPP(PROTO_SRCS PROTO_HDRS protobuf/Message.proto protobuf/Pose.proto)
 
 find_package(SDL REQUIRED)
 find_package(SDL_image REQUIRED)
@@ -44,7 +45,8 @@ SET(SRC_LIST
 #        tests/map_loader.cpp
 #        tests/databus_test.cpp
 #        tests/databus_test1.cpp
-        protobuf/protobuf_test.cpp
+#        protobuf/protobuf_test.cpp
+        protobuf/mq_test.cpp
         )
 #SET(SRC_LIST http_ws_async.cpp)
 ADD_EXECUTABLE(cppTest ${SRC_LIST})

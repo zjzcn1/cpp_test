@@ -123,59 +123,86 @@ cppTest/fast:
 	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/build
 .PHONY : cppTest/fast
 
-game.pb.o: game.pb.cc.o
+Message.pb.o: Message.pb.cc.o
 
-.PHONY : game.pb.o
-
-# target to build an object file
-game.pb.cc.o:
-	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/game.pb.cc.o
-.PHONY : game.pb.cc.o
-
-game.pb.i: game.pb.cc.i
-
-.PHONY : game.pb.i
-
-# target to preprocess a source file
-game.pb.cc.i:
-	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/game.pb.cc.i
-.PHONY : game.pb.cc.i
-
-game.pb.s: game.pb.cc.s
-
-.PHONY : game.pb.s
-
-# target to generate assembly for a file
-game.pb.cc.s:
-	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/game.pb.cc.s
-.PHONY : game.pb.cc.s
-
-protobuf/protobuf_test.o: protobuf/protobuf_test.cpp.o
-
-.PHONY : protobuf/protobuf_test.o
+.PHONY : Message.pb.o
 
 # target to build an object file
-protobuf/protobuf_test.cpp.o:
-	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/protobuf/protobuf_test.cpp.o
-.PHONY : protobuf/protobuf_test.cpp.o
+Message.pb.cc.o:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/Message.pb.cc.o
+.PHONY : Message.pb.cc.o
 
-protobuf/protobuf_test.i: protobuf/protobuf_test.cpp.i
+Message.pb.i: Message.pb.cc.i
 
-.PHONY : protobuf/protobuf_test.i
+.PHONY : Message.pb.i
 
 # target to preprocess a source file
-protobuf/protobuf_test.cpp.i:
-	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/protobuf/protobuf_test.cpp.i
-.PHONY : protobuf/protobuf_test.cpp.i
+Message.pb.cc.i:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/Message.pb.cc.i
+.PHONY : Message.pb.cc.i
 
-protobuf/protobuf_test.s: protobuf/protobuf_test.cpp.s
+Message.pb.s: Message.pb.cc.s
 
-.PHONY : protobuf/protobuf_test.s
+.PHONY : Message.pb.s
 
 # target to generate assembly for a file
-protobuf/protobuf_test.cpp.s:
-	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/protobuf/protobuf_test.cpp.s
-.PHONY : protobuf/protobuf_test.cpp.s
+Message.pb.cc.s:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/Message.pb.cc.s
+.PHONY : Message.pb.cc.s
+
+Pose.pb.o: Pose.pb.cc.o
+
+.PHONY : Pose.pb.o
+
+# target to build an object file
+Pose.pb.cc.o:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/Pose.pb.cc.o
+.PHONY : Pose.pb.cc.o
+
+Pose.pb.i: Pose.pb.cc.i
+
+.PHONY : Pose.pb.i
+
+# target to preprocess a source file
+Pose.pb.cc.i:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/Pose.pb.cc.i
+.PHONY : Pose.pb.cc.i
+
+Pose.pb.s: Pose.pb.cc.s
+
+.PHONY : Pose.pb.s
+
+# target to generate assembly for a file
+Pose.pb.cc.s:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/Pose.pb.cc.s
+.PHONY : Pose.pb.cc.s
+
+protobuf/mq_test.o: protobuf/mq_test.cpp.o
+
+.PHONY : protobuf/mq_test.o
+
+# target to build an object file
+protobuf/mq_test.cpp.o:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/protobuf/mq_test.cpp.o
+.PHONY : protobuf/mq_test.cpp.o
+
+protobuf/mq_test.i: protobuf/mq_test.cpp.i
+
+.PHONY : protobuf/mq_test.i
+
+# target to preprocess a source file
+protobuf/mq_test.cpp.i:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/protobuf/mq_test.cpp.i
+.PHONY : protobuf/mq_test.cpp.i
+
+protobuf/mq_test.s: protobuf/mq_test.cpp.s
+
+.PHONY : protobuf/mq_test.s
+
+# target to generate assembly for a file
+protobuf/mq_test.cpp.s:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/protobuf/mq_test.cpp.s
+.PHONY : protobuf/mq_test.cpp.s
 
 # Help Target
 help:
@@ -186,12 +213,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... cppTest"
-	@echo "... game.pb.o"
-	@echo "... game.pb.i"
-	@echo "... game.pb.s"
-	@echo "... protobuf/protobuf_test.o"
-	@echo "... protobuf/protobuf_test.i"
-	@echo "... protobuf/protobuf_test.s"
+	@echo "... Message.pb.o"
+	@echo "... Message.pb.i"
+	@echo "... Message.pb.s"
+	@echo "... Pose.pb.o"
+	@echo "... Pose.pb.i"
+	@echo "... Pose.pb.s"
+	@echo "... protobuf/mq_test.o"
+	@echo "... protobuf/mq_test.i"
+	@echo "... protobuf/mq_test.s"
 .PHONY : help
 
 
