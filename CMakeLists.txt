@@ -46,7 +46,8 @@ SET(SRC_LIST
 #        tests/databus_test.cpp
 #        tests/databus_test1.cpp
 #        protobuf/protobuf_test.cpp
-        protobuf/mq_test.cpp
+#        protobuf/mq_test.cpp
+        tests/tcp_test.cpp
         )
 #SET(SRC_LIST http_ws_async.cpp)
 ADD_EXECUTABLE(cppTest ${SRC_LIST})

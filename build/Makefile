@@ -177,32 +177,32 @@ Pose.pb.cc.s:
 	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/Pose.pb.cc.s
 .PHONY : Pose.pb.cc.s
 
-protobuf/mq_test.o: protobuf/mq_test.cpp.o
+tests/tcp_test.o: tests/tcp_test.cpp.o
 
-.PHONY : protobuf/mq_test.o
+.PHONY : tests/tcp_test.o
 
 # target to build an object file
-protobuf/mq_test.cpp.o:
-	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/protobuf/mq_test.cpp.o
-.PHONY : protobuf/mq_test.cpp.o
+tests/tcp_test.cpp.o:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/tests/tcp_test.cpp.o
+.PHONY : tests/tcp_test.cpp.o
 
-protobuf/mq_test.i: protobuf/mq_test.cpp.i
+tests/tcp_test.i: tests/tcp_test.cpp.i
 
-.PHONY : protobuf/mq_test.i
+.PHONY : tests/tcp_test.i
 
 # target to preprocess a source file
-protobuf/mq_test.cpp.i:
-	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/protobuf/mq_test.cpp.i
-.PHONY : protobuf/mq_test.cpp.i
+tests/tcp_test.cpp.i:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/tests/tcp_test.cpp.i
+.PHONY : tests/tcp_test.cpp.i
 
-protobuf/mq_test.s: protobuf/mq_test.cpp.s
+tests/tcp_test.s: tests/tcp_test.cpp.s
 
-.PHONY : protobuf/mq_test.s
+.PHONY : tests/tcp_test.s
 
 # target to generate assembly for a file
-protobuf/mq_test.cpp.s:
-	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/protobuf/mq_test.cpp.s
-.PHONY : protobuf/mq_test.cpp.s
+tests/tcp_test.cpp.s:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/tests/tcp_test.cpp.s
+.PHONY : tests/tcp_test.cpp.s
 
 # Help Target
 help:
@@ -219,9 +219,9 @@ help:
 	@echo "... Pose.pb.o"
 	@echo "... Pose.pb.i"
 	@echo "... Pose.pb.s"
-	@echo "... protobuf/mq_test.o"
-	@echo "... protobuf/mq_test.i"
-	@echo "... protobuf/mq_test.s"
+	@echo "... tests/tcp_test.o"
+	@echo "... tests/tcp_test.i"
+	@echo "... tests/tcp_test.s"
 .PHONY : help
 
 

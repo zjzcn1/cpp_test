@@ -6,6 +6,7 @@
 
 #include <google/protobuf/descriptor.h>
 #include <google/protobuf/message.h>
+#include "util/logger.h"
 
 template<typename T>
 using Callback = std::function<void(std::shared_ptr<T>)>;
@@ -86,6 +87,10 @@ struct Test {
 };
 
 int main() {
+    Logger::setLevel(Logger::Level::DEBUG);
+
+    Logger::debug("Test", "hehe {}", 1);
+
     Test t;
     t.start();
 
