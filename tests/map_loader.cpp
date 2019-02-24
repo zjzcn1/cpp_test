@@ -18,10 +18,10 @@
 #include "map_loader.h"
 
 #include "SDL/SDL_image.h"
-#include "../http/logger.h"
+#include "util/logger.h"
 
 #define MAP_IDX(sx, i, j) ((sx) * (j) + (i))
-using namespace http_server;
+using namespace util;
 
 namespace walle {
 
@@ -68,11 +68,11 @@ namespace walle {
             } else if (mode_str == "raw") {
                 mode_ = RAW;
             } else {
-                Logger::warn("Mode parameter not recognized: '{}', using default value (trinary)", mode_str);
+                Logger::warn("MapLoader", "Mode parameter not recognized: '{}', using default value (trinary)", mode_str);
                 mode_ = TRINARY;
             }
         } catch (YAML::Exception &) {
-            Logger::warn("Mode parameter not set, using default value (trinary)");
+            Logger::warn("MapLoader", "Mode parameter not set, using default value (trinary)");
             mode_ = TRINARY;
         }
 
@@ -97,16 +97,16 @@ namespace walle {
             throw std::runtime_error("The map does not contain a image tag or it is invalid");
         }
 
-        Logger::debug("resolution: {}", resolution_);
-        Logger::debug("origin[0]: {}", origin_[0]);
-        Logger::debug("origin[1]: {}", origin_[1]);
-        Logger::debug("origin[2]: {}", origin_[2]);
-        Logger::debug("free_thresh: {}", free_thresh_);
-        Logger::debug("occupied_thresh: {}", occupied_thresh_);
-        Logger::debug("mode_str: {}", mode_str.c_str());
-        Logger::debug("mode: {}", mode_);
-        Logger::debug("negate: {}", negate_);
-        Logger::debug("image: {}", map_filename_);
+        Logger::debug("MapLoader", "resolution: {}", resolution_);
+        Logger::debug("MapLoader", "origin[0]: {}", origin_[0]);
+        Logger::debug("MapLoader", "origin[1]: {}", origin_[1]);
+        Logger::debug("MapLoader", "origin[2]: {}", origin_[2]);
+        Logger::debug("MapLoader", "free_thresh: {}", free_thresh_);
+        Logger::debug("MapLoader", "occupied_thresh: {}", occupied_thresh_);
+        Logger::debug("MapLoader", "mode_str: {}", mode_str.c_str());
+        Logger::debug("MapLoader", "mode: {}", mode_);
+        Logger::debug("MapLoader", "negate: {}", negate_);
+        Logger::debug("MapLoader", "image: {}", map_filename_);
 
         loadMapFromFile(map_filename_);
     }
@@ -227,7 +227,7 @@ namespace walle {
 //        msg_->header.frame_id = frame_id_;
 //        msg_->header.stamp = Time::now();
 
-        Logger::debug("Read map {}: {} X {} map @ {} m/cell, size {}.",
+        Logger::debug("MapLoader", "Read map {}: {} X {} map @ {} m/cell, size {}.",
                       map_name,
                       msg_->info.width,
                       msg_->info.height,

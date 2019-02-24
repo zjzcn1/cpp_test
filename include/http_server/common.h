@@ -19,7 +19,7 @@
 #include <regex>
 #include <unordered_set>
 #include <mutex>
-#include "util/logger.h"
+#include "./util/logger.h"
 
 namespace http_server {
     namespace beast = boost::beast;
@@ -75,7 +75,7 @@ namespace http_server {
 
     using WebsocketChannels = std::unordered_map<std::string, WebsocketChannel>;
 
-    struct Attr {
+    struct HttpConfig {
         std::string webroot{"."};
 
         std::string index_file{"index.html"};

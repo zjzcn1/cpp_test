@@ -13,16 +13,16 @@ namespace http_server {
         asio::strand<asio::io_context::executor_type> strand_;
         asio::steady_timer timer_;
         beast::flat_buffer buffer_;
-        Attr &attr_;
+        HttpConfig &http_config_;
         HttpRequest req_;
         std::shared_ptr<void> res_;
 
     public:
         // Take ownership of the socket
-        explicit HttpSession(tcp::socket socket, Attr &attr)
+        explicit HttpSession(tcp::socket socket, HttpConfig &http_config)
                 : socket_(std::move(socket)), strand_(socket_.get_executor()),
                   timer_(socket_.get_executor().context(), (std::chrono::steady_clock::time_point::max) ()),
-                  attr_(attr) {
+                  http_config_(http_config) {
         }
 
         // Start the asynchronous operation
@@ -44,7 +44,7 @@ namespace http_server {
 
         void do_read() {
             // Set the timer
-            timer_.expires_after(std::chrono::seconds(attr_.timeout));
+            timer_.expires_after(std::chrono::seconds(http_config_.timeout));
 
             // Make the request empty before reading,
             // otherwise the operation behavior is undefined.
@@ -202,7 +202,7 @@ namespace http_server {
         }
 
         HttpStatus handle_static() {
-            if (attr_.webroot.empty()) {
+            if (http_config_.webroot.empty()) {
                 return HttpStatus::not_found;
             }
 
@@ -210,9 +210,9 @@ namespace http_server {
                 return HttpStatus::not_found;
             }
 
-            std::string path = HttpUtils::path_cat(attr_.webroot, req_.target().to_string());
+            std::string path = HttpUtils::path_cat(http_config_.webroot, req_.target().to_string());
             if (req_.target().back() == '/') {
-                path.append(attr_.index_file);
+                path.append(http_config_.index_file);
             }
 
             boost::system::error_code ec;
@@ -226,7 +226,7 @@ namespace http_server {
             FileResponsePtr res = FileResponsePtr(new FileResponse{
                     std::piecewise_construct,
                     std::make_tuple(std::move(body)),
-                    std::make_tuple(attr_.http_headers)
+                    std::make_tuple(http_config_.http_headers)
             });
             res->version(req_.version());
             res->keep_alive(req_.keep_alive());
@@ -237,7 +237,7 @@ namespace http_server {
         }
 
         HttpStatus handle_dynamic() {
-            if (attr_.http_routes.empty()) {
+            if (http_config_.http_routes.empty()) {
                 return HttpStatus::not_found;
             }
 
@@ -256,7 +256,7 @@ namespace http_server {
             HttpUtils::params_parse(path, req_.params);
 
             // iterate over routes
-            for (auto const &regex_method : attr_.http_routes) {
+            for (auto const &regex_method : http_config_.http_routes) {
                 bool method_match{false};
                 auto match = regex_method.second.find(static_cast<int>(HttpMethod::unknown));
 
@@ -356,11 +356,11 @@ namespace http_server {
             std::regex_constants::match_flag_type const rx_flgs{std::regex_constants::match_not_null};
 
             // check for matching route
-            for (auto const &route_item : attr_.websocket_routes) {
+            for (auto const &route_item : http_config_.websocket_routes) {
                 std::regex rx_str{route_item.first, rx_opts};
 
                 if (std::regex_match(path, rx_match, rx_str, rx_flgs)) {
-                    std::make_shared<WebsocketSession>(std::move(socket_), attr_, std::move(req_),route_item.second)
+                    std::make_shared<WebsocketSession>(std::move(socket_), http_config_, std::move(req_),route_item.second)
                             ->do_accept();
                     return true;
                 }

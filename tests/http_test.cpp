@@ -1,7 +1,7 @@
-#include "../http/http_server.h"
+#include "http_server1/http_server.h"
 #include "./map_loader.h"
-#include "../http/base64.h"
-#include "../http/json.hpp"
+#include "util/base64.h"
+#include "json.hpp"
 
 #include <boost/iostreams/filter/zlib.hpp>
 #include <boost/iostreams/filtering_streambuf.hpp>
@@ -13,16 +13,16 @@ using namespace http_server;
 using namespace walle;
 
 int main(int argc, char *argv[]) {
-    MapLoader map_loader("data/map.yaml");
-    OccupancyGridConstPtr map = map_loader.getMap();
-    Logger::info("width={}, height={}", map->info.width, map->info.height);
-    HttpServer server("0.0.0.0", 8084);
-    server.register_http_handler("/hehe", HttpMethod::get, [](HttpRequest &req, HttpResponse &res) {
+//    MapLoader map_loader("data/map.yaml");
+//    OccupancyGridConstPtr map = map_loader.getMap();
+//    Logger::info("main", "width={}, height={}", map->info.width, map->info.height);
+    HttpServer server(8888);
+    server.http("/hehe", HttpMethod::get, [](HttpRequest &req, HttpResponse &res) {
         std::cout << "hehe" << std::endl;
         res.body() = "hehe";
     });
 
-    server.register_ws_handler("/ws", [&](std::string msg, WebsocketSession &session) {
+    server.websocket("/ws", [&](std::string msg, WebsocketSession &session) {
         std::cout << msg << std::endl;
 
         if (msg == "path") {
@@ -34,22 +34,22 @@ int main(int argc, char *argv[]) {
                                           {{"x", 5}, {"y", 5}, {"z", 0}}
                                   }}};
             std::string data = path.dump();
-            Logger::info("path={}", data);
+            Logger::info("xxx", "path={}", data);
             session.send(data);
         } else if (msg == "map") {
-            std::vector<char> packed;
-            boost::iostreams::filtering_streambuf<boost::iostreams::output> out;
-            out.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression, 65536));
-            out.push(boost::iostreams::back_inserter(packed));
-            boost::iostreams::copy(boost::iostreams::basic_array_source<char>((char *) &map->data[0], map->data.size()),
-                                   out);
-
-            Logger::info("map size={}, compress size={}", map->data.size(), packed.size());
-            std::string base64_res = Base64::encode((unsigned char *) &packed[0], packed.size());
-            json j2 = {{"op",   "map"},
-                       {"data", base64_res}};
-            std::string data = j2.dump();
-            session.send(data);
+//            std::vector<char> packed;
+//            boost::iostreams::filtering_streambuf<boost::iostreams::output> out;
+//            out.push(boost::iostreams::zlib_compressor(boost::iostreams::zlib::best_compression, 65536));
+//            out.push(boost::iostreams::back_inserter(packed));
+//            boost::iostreams::copy(boost::iostreams::basic_array_source<char>((char *) &map->data[0], map->data.size()),
+//                                   out);
+//
+//            Logger::info("xxx", "map size={}, compress size={}", map->data.size(), packed.size());
+//            std::string base64_res = Base64::encode((unsigned char *) &packed[0], packed.size());
+//            json j2 = {{"op",   "map"},
+//                       {"data", base64_res}};
+//            std::string data = j2.dump();
+//            session.send(data);
         } else if (msg == "pose") {
 
         } else if (msg == "path1") {
@@ -57,7 +57,7 @@ int main(int argc, char *argv[]) {
         }
     });
 
-    server.register_ws_handler("/ws1", [&](std::string msg, WebsocketSession &session) {
+    server.websocket("/ws1", [&](std::string msg, WebsocketSession &session) {
         std::cout << msg << std::endl;
 //        session.send(msg);
         server.broadcast("/ws1", msg + "-----");
@@ -80,9 +80,7 @@ int main(int argc, char *argv[]) {
     }
 
 
-    if (server.start()) {
-        server.sync();
-    }
+    server.start(true);
 
     return 0;
 }

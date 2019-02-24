@@ -99,31 +99,46 @@ CMakeFiles/cppTest.dir/Pose.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cppTest.dir/Pose.pb.cc.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zjz/work/cpp/cpp_test/build/Pose.pb.cc -o CMakeFiles/cppTest.dir/Pose.pb.cc.s
 
-CMakeFiles/cppTest.dir/tests/databus_test.cpp.o: CMakeFiles/cppTest.dir/flags.make
-CMakeFiles/cppTest.dir/tests/databus_test.cpp.o: ../tests/databus_test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zjz/work/cpp/cpp_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/cppTest.dir/tests/databus_test.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cppTest.dir/tests/databus_test.cpp.o -c /Users/zjz/work/cpp/cpp_test/tests/databus_test.cpp
+CMakeFiles/cppTest.dir/tests/http_test.cpp.o: CMakeFiles/cppTest.dir/flags.make
+CMakeFiles/cppTest.dir/tests/http_test.cpp.o: ../tests/http_test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zjz/work/cpp/cpp_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/cppTest.dir/tests/http_test.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cppTest.dir/tests/http_test.cpp.o -c /Users/zjz/work/cpp/cpp_test/tests/http_test.cpp
 
-CMakeFiles/cppTest.dir/tests/databus_test.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cppTest.dir/tests/databus_test.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zjz/work/cpp/cpp_test/tests/databus_test.cpp > CMakeFiles/cppTest.dir/tests/databus_test.cpp.i
+CMakeFiles/cppTest.dir/tests/http_test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cppTest.dir/tests/http_test.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zjz/work/cpp/cpp_test/tests/http_test.cpp > CMakeFiles/cppTest.dir/tests/http_test.cpp.i
 
-CMakeFiles/cppTest.dir/tests/databus_test.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cppTest.dir/tests/databus_test.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zjz/work/cpp/cpp_test/tests/databus_test.cpp -o CMakeFiles/cppTest.dir/tests/databus_test.cpp.s
+CMakeFiles/cppTest.dir/tests/http_test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cppTest.dir/tests/http_test.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zjz/work/cpp/cpp_test/tests/http_test.cpp -o CMakeFiles/cppTest.dir/tests/http_test.cpp.s
+
+CMakeFiles/cppTest.dir/tests/map_loader.cpp.o: CMakeFiles/cppTest.dir/flags.make
+CMakeFiles/cppTest.dir/tests/map_loader.cpp.o: ../tests/map_loader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zjz/work/cpp/cpp_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/cppTest.dir/tests/map_loader.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cppTest.dir/tests/map_loader.cpp.o -c /Users/zjz/work/cpp/cpp_test/tests/map_loader.cpp
+
+CMakeFiles/cppTest.dir/tests/map_loader.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cppTest.dir/tests/map_loader.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zjz/work/cpp/cpp_test/tests/map_loader.cpp > CMakeFiles/cppTest.dir/tests/map_loader.cpp.i
+
+CMakeFiles/cppTest.dir/tests/map_loader.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cppTest.dir/tests/map_loader.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zjz/work/cpp/cpp_test/tests/map_loader.cpp -o CMakeFiles/cppTest.dir/tests/map_loader.cpp.s
 
 # Object files for target cppTest
 cppTest_OBJECTS = \
 "CMakeFiles/cppTest.dir/Message.pb.cc.o" \
 "CMakeFiles/cppTest.dir/Pose.pb.cc.o" \
-"CMakeFiles/cppTest.dir/tests/databus_test.cpp.o"
+"CMakeFiles/cppTest.dir/tests/http_test.cpp.o" \
+"CMakeFiles/cppTest.dir/tests/map_loader.cpp.o"
 
 # External object files for target cppTest
 cppTest_EXTERNAL_OBJECTS =
 
 cppTest: CMakeFiles/cppTest.dir/Message.pb.cc.o
 cppTest: CMakeFiles/cppTest.dir/Pose.pb.cc.o
-cppTest: CMakeFiles/cppTest.dir/tests/databus_test.cpp.o
+cppTest: CMakeFiles/cppTest.dir/tests/http_test.cpp.o
+cppTest: CMakeFiles/cppTest.dir/tests/map_loader.cpp.o
 cppTest: CMakeFiles/cppTest.dir/build.make
 cppTest: /usr/local/lib/libboost_system-mt.dylib
 cppTest: /usr/local/lib/libboost_filesystem-mt.dylib
@@ -135,7 +150,7 @@ cppTest: /usr/local/lib/libSDL_image.dylib
 cppTest: /usr/local/lib/libyaml-cpp.0.6.2.dylib
 cppTest: /usr/local/lib/libprotobuf.dylib
 cppTest: CMakeFiles/cppTest.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/zjz/work/cpp/cpp_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable cppTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/zjz/work/cpp/cpp_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable cppTest"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cppTest.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -177,32 +177,59 @@ Pose.pb.cc.s:
 	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/Pose.pb.cc.s
 .PHONY : Pose.pb.cc.s
 
-tests/databus_test.o: tests/databus_test.cpp.o
+tests/http_test.o: tests/http_test.cpp.o
 
-.PHONY : tests/databus_test.o
+.PHONY : tests/http_test.o
 
 # target to build an object file
-tests/databus_test.cpp.o:
-	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/tests/databus_test.cpp.o
-.PHONY : tests/databus_test.cpp.o
+tests/http_test.cpp.o:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/tests/http_test.cpp.o
+.PHONY : tests/http_test.cpp.o
 
-tests/databus_test.i: tests/databus_test.cpp.i
+tests/http_test.i: tests/http_test.cpp.i
 
-.PHONY : tests/databus_test.i
+.PHONY : tests/http_test.i
 
 # target to preprocess a source file
-tests/databus_test.cpp.i:
-	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/tests/databus_test.cpp.i
-.PHONY : tests/databus_test.cpp.i
+tests/http_test.cpp.i:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/tests/http_test.cpp.i
+.PHONY : tests/http_test.cpp.i
 
-tests/databus_test.s: tests/databus_test.cpp.s
+tests/http_test.s: tests/http_test.cpp.s
 
-.PHONY : tests/databus_test.s
+.PHONY : tests/http_test.s
 
 # target to generate assembly for a file
-tests/databus_test.cpp.s:
-	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/tests/databus_test.cpp.s
-.PHONY : tests/databus_test.cpp.s
+tests/http_test.cpp.s:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/tests/http_test.cpp.s
+.PHONY : tests/http_test.cpp.s
+
+tests/map_loader.o: tests/map_loader.cpp.o
+
+.PHONY : tests/map_loader.o
+
+# target to build an object file
+tests/map_loader.cpp.o:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/tests/map_loader.cpp.o
+.PHONY : tests/map_loader.cpp.o
+
+tests/map_loader.i: tests/map_loader.cpp.i
+
+.PHONY : tests/map_loader.i
+
+# target to preprocess a source file
+tests/map_loader.cpp.i:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/tests/map_loader.cpp.i
+.PHONY : tests/map_loader.cpp.i
+
+tests/map_loader.s: tests/map_loader.cpp.s
+
+.PHONY : tests/map_loader.s
+
+# target to generate assembly for a file
+tests/map_loader.cpp.s:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/tests/map_loader.cpp.s
+.PHONY : tests/map_loader.cpp.s
 
 # Help Target
 help:
@@ -219,9 +246,12 @@ help:
 	@echo "... Pose.pb.o"
 	@echo "... Pose.pb.i"
 	@echo "... Pose.pb.s"
-	@echo "... tests/databus_test.o"
-	@echo "... tests/databus_test.i"
-	@echo "... tests/databus_test.s"
+	@echo "... tests/http_test.o"
+	@echo "... tests/http_test.i"
+	@echo "... tests/http_test.s"
+	@echo "... tests/map_loader.o"
+	@echo "... tests/map_loader.i"
+	@echo "... tests/map_loader.s"
 .PHONY : help
 
 

@@ -12,7 +12,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="55697497-4bf1-4b1b-8e71-d15b245755fe" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/include/http_server1/acceptor.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/http_server1/common.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/http_server1/http_server.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/http_server1/http_session.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/http_server1/http_utils.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/http_server1/websocket_session.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/include/util/base64.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/tests/databus_test.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/build/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/cppTest" beforeDir="false" afterPath="$PROJECT_DIR$/build/cppTest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/cppTest.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/build/cppTest.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/http_server/acceptor.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/http_server/acceptor.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/http_server/common.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/http_server/common.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/http_server/http_server.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/http_server/http_server.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/http_server/http_session.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/http_server/http_session.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/http_server/websocket_session.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/http_server/websocket_session.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/http_test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/http_test.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/map_loader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/map_loader.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -26,24 +55,100 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/string">
+        <entry file="file://$PROJECT_DIR$/include/http_server1/http_session.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="232">
+              <caret line="133" column="33" lean-forward="true" selection-start-line="133" selection-start-column="33" selection-end-line="133" selection-end-column="33" />
+              <folding>
+                <element signature="e#14#33#0" expanded="true" />
+                <element signature="e#3354#3366#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/http_server1/http_utils.h">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/data_bus2/callback_holder.h">
+        <entry file="file://$PROJECT_DIR$/include/http_server1/acceptor.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-407">
-              <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+            <state relative-caret-position="125">
+              <caret line="45" column="28" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="81" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/memory">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="116">
+              <caret line="5299" selection-start-line="5299" selection-end-line="5299" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/include/http_server/common.h">
+        <entry file="file://$PROJECT_DIR$/tests/http_test.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="77" column="17" lean-forward="true" selection-start-line="77" selection-start-column="17" selection-end-line="77" selection-end-column="17" />
+            <state relative-caret-position="349">
+              <caret line="85" column="1" lean-forward="true" selection-start-line="85" selection-start-column="1" selection-end-line="85" selection-end-column="1" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/map_loader.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
+              <folding>
+                <element signature="e#222#245#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/set">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="142">
+              <caret line="597" column="24" selection-start-line="597" selection-start-column="24" selection-end-line="597" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/http_server1/websocket_session.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="14" column="39" lean-forward="true" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/http_server1/common.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="34" column="20" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
+              <folding>
+                <element signature="e#14#35#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/http_server1/http_server.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-408">
+              <caret line="39" column="19" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -52,44 +157,38 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>error_message:</find>
-      <find>lock</find>
-      <find>websocket_channels</find>
-      <find>isFull</find>
-      <find>isEmpty_</find>
-      <find>not_empty_</find>
-      <find>que_</find>
-      <find>isEmpty</find>
-      <find>queue_worker_map_</find>
-      <find>is_stop_</find>
-      <find>filter_mutex_</find>
-      <find>filters_</find>
-      <find>to_string</find>
-      <find>_read_buf</find>
-      <find>HttpSession</find>
-      <find>async</find>
-      <find>async_read_some</find>
+      <find>send_</find>
+      <find>cancel_timer</find>
       <find>on_write</find>
-      <find>HttpServer</find>
-      <find>SessionManager</find>
+      <find>res_</find>
+      <find>async_read</find>
+      <find>do_read</find>
+      <find>timeout</find>
+      <find>buffer_</find>
+      <find>do_close</find>
+      <find>do_shutdown</find>
+      <find>do_timeout</find>
+      <find>async_wait</find>
+      <find>do_timer</find>
+      <find>read_buffer_</find>
+      <find>threads_</find>
+      <find>expiresp_after</find>
+      <find>size</find>
+      <find>async_write</find>
+      <find>do_write_http</find>
+      <find>do_write</find>
       <find>ioc_</find>
-      <find>endpoint_</find>
-      <find>ServerEncoder</find>
-      <find>ServerDecoder</find>
-      <find>ServerHandler</find>
-      <find>TcpEncoder</find>
-      <find>write_queue_</find>
-      <find>sessions_</find>
-      <find>mutex_</find>
-      <find>queue_</find>
+      <find>socket_</find>
+      <find>on_re</find>
+      <find>bad</find>
+      <find>socket</find>
+      <find>lock</find>
+      <find>config</find>
+      <find>resp_</find>
+      <find>req_</find>
+      <find>ssss</find>
     </findStrings>
     <replaceStrings>
-      <replace>attr_</replace>
-      <replace>ec</replace>
-      <replace>ws_</replace>
-      <replace>session</replace>
-      <replace>WsRoutes</replace>
-      <replace>bytes</replace>
       <replace>WsSession</replace>
       <replace>WsHandler</replace>
       <replace>Websocket</replace>
@@ -114,11 +213,18 @@
       <replace>TcpEncoder</replace>
       <replace>TcpDecoder</replace>
       <replace>TcpHandler</replace>
+      <replace>Attr</replace>
+      <replace>attr</replace>
+      <replace>response_</replace>
+      <replace>resp_</replace>
+      <replace>thread_n_</replace>
+      <replace>read_buffer__</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/http</dir>
       <dir>$PROJECT_DIR$</dir>
       <dir>$PROJECT_DIR$/include/tcp_tool</dir>
+      <dir>$PROJECT_DIR$/include/http_server</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -127,19 +233,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/data_bus1/filter.h" />
-        <option value="$PROJECT_DIR$/data_bus1/data_bus.h" />
-        <option value="$PROJECT_DIR$/data_bus1/queue_stat.h" />
-        <option value="$PROJECT_DIR$/data_bus1/queue_worker.h" />
-        <option value="$PROJECT_DIR$/tests/http_databus_test.cpp" />
-        <option value="$PROJECT_DIR$/tests/http_test.cpp" />
-        <option value="$PROJECT_DIR$/data_bus/data_bus.h" />
-        <option value="$PROJECT_DIR$/include/data_bus/queue_worker.h" />
-        <option value="$PROJECT_DIR$/protobuf/protobuf_test.cpp" />
-        <option value="$PROJECT_DIR$/protobuf/AddressBook.proto" />
-        <option value="$PROJECT_DIR$/protobuf/Message.proto" />
-        <option value="$PROJECT_DIR$/include/data_bus/data_bus.h" />
-        <option value="$PROJECT_DIR$/tests/databus_test1.cpp" />
         <option value="$PROJECT_DIR$/protobuf/Pose.proto" />
         <option value="$PROJECT_DIR$/protobuf/game.proto" />
         <option value="$PROJECT_DIR$/include/data_bus1/callback.h" />
@@ -168,7 +261,6 @@
         <option value="$PROJECT_DIR$/tests/tcp_test.cpp" />
         <option value="$PROJECT_DIR$/include/data_bus1/data_bus_client.h" />
         <option value="$PROJECT_DIR$/include/data_bus1/data_bus.h" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/protobuf/mq_test.cpp" />
         <option value="$PROJECT_DIR$/include/data_bus2/data_bus.h" />
         <option value="$PROJECT_DIR$/tests/databus_test.cpp" />
@@ -177,7 +269,21 @@
         <option value="$PROJECT_DIR$/include/data_bus2/ring_queue.h" />
         <option value="$PROJECT_DIR$/include/data_bus2/queue_stat.h" />
         <option value="$PROJECT_DIR$/include/data_bus2/queue_worker.h" />
+        <option value="$PROJECT_DIR$/include/util/base64.h" />
         <option value="$PROJECT_DIR$/include/http_server/common.h" />
+        <option value="$PROJECT_DIR$/tests/belle.h" />
+        <option value="$PROJECT_DIR$/include/http_server/websocket_session.h" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/tests/map_loader.cpp" />
+        <option value="$PROJECT_DIR$/include/http_server/http_server.h" />
+        <option value="$PROJECT_DIR$/include/http_server/acceptor.h" />
+        <option value="$PROJECT_DIR$/include/http_server/http_session.h" />
+        <option value="$PROJECT_DIR$/tests/http_test.cpp" />
+        <option value="$PROJECT_DIR$/include/http_server1/common.h" />
+        <option value="$PROJECT_DIR$/include/http_server1/acceptor.h" />
+        <option value="$PROJECT_DIR$/include/http_server1/http_server.h" />
+        <option value="$PROJECT_DIR$/include/http_server1/websocket_session.h" />
+        <option value="$PROJECT_DIR$/include/http_server1/http_session.h" />
       </list>
     </option>
   </component>
@@ -209,7 +315,18 @@
               <item name="cppTest" type="b2602c69:ProjectViewProjectNode" />
               <item name="cpp_test" type="462c0819:PsiDirectoryNode" />
               <item name="include" type="462c0819:PsiDirectoryNode" />
-              <item name="http_server" type="462c0819:PsiDirectoryNode" />
+              <item name="http_server1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cppTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cpp_test" type="462c0819:PsiDirectoryNode" />
+              <item name="include" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cppTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cpp_test" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cppTest" type="b2602c69:ProjectViewProjectNode" />
@@ -230,11 +347,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/include/util" />
       <recent name="$PROJECT_DIR$/tests" />
       <recent name="$PROJECT_DIR$/include/tcp_server" />
       <recent name="$PROJECT_DIR$/include" />
       <recent name="$PROJECT_DIR$/protobuf" />
-      <recent name="$PROJECT_DIR$" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/include" />
@@ -282,18 +399,17 @@
       <workItem from="1550212024993" duration="3853000" />
       <workItem from="1550370653342" duration="52830000" />
       <workItem from="1550795796851" duration="411000" />
-      <workItem from="1550800468480" duration="43541000" />
+      <workItem from="1550800468480" duration="69297000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="286970000" />
+    <option name="totallyTimeSpent" value="312726000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="797" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28183118" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28183118" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -304,7 +420,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49928468" visible="true" weight="0.3602837" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49928468" visible="true" weight="0.3602837" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5007153" side_tool="true" weight="0.32907802" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32907802" />
       <window_info anchor="bottom" id="CMake" order="11" weight="0.32907802" />
@@ -379,221 +495,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///usr/local/include/boost/asio/connect.hpp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file:///usr/local/include/boost/asio/ip/impl/address.ipp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="107" selection-start-line="107" selection-end-line="107" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/include/boost/asio/impl/connect.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="509" selection-start-line="509" selection-end-line="509" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/include/boost/asio/detail/impl/throw_error.ipp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/include/boost/asio/detail/throw_error.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="41" selection-start-line="41" selection-end-line="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/vector">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-309">
-          <caret line="489" column="5" lean-forward="true" selection-start-line="489" selection-start-column="5" selection-end-line="489" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/include/boost/asio/basic_socket_acceptor.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="440" column="7" selection-start-line="440" selection-start-column="7" selection-end-line="440" selection-end-column="7" />
-          <folding>
-            <element signature="e#50438#70522#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/include/boost/asio/basic_socket.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="754" column="7" selection-start-line="754" selection-start-column="7" selection-end-line="754" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/map">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file:///Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/sys/socket.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="706" column="4" selection-start-line="706" selection-start-column="4" selection-end-line="706" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/tcp_tool/tcp_client.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="16" column="87" selection-start-line="16" selection-start-column="70" selection-end-line="16" selection-end-column="87" />
-          <folding>
-            <element signature="e#14#31#0" expanded="true" />
-            <element signature="e#143#155#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/include/boost/throw_exception.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="68" selection-start-line="68" selection-end-line="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/tcp_tool/tcp_session.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="57" column="20" selection-start-line="57" selection-start-column="12" selection-end-line="57" selection-end-column="20" />
-          <folding>
-            <element signature="e#14#31#0" expanded="true" />
-            <element signature="e#196#208#0" expanded="true" />
-            <element signature="e#249#261#0" expanded="true" />
-            <element signature="e#335#347#0" expanded="true" />
-            <element signature="e#433#445#0" expanded="true" />
-            <element signature="e#451#463#0" expanded="true" />
-            <element signature="e#537#549#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/tcp_tool/acceptor.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="63" column="63" lean-forward="true" selection-start-line="63" selection-start-column="63" selection-end-line="63" selection-end-column="63" />
-          <folding>
-            <element signature="e#14#38#0" expanded="true" />
-            <element signature="e#103#115#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/tcp_tool/tcp_server.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
-          <folding>
-            <element signature="e#14#35#0" expanded="true" />
-            <element signature="e#114#126#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/data_bus1/transport_server.h">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/data_bus1/queue_stat.h">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/http_server/http_utils.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="181" lean-forward="true" selection-start-line="181" selection-end-line="181" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/http_server/acceptor.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-298">
-          <caret line="23" column="17" lean-forward="true" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/http_server/base64.h">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/http_server/http_server.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-88">
-          <caret line="69" column="29" lean-forward="true" selection-start-line="69" selection-start-column="29" selection-end-line="69" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/http_server/http_session.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3554">
-          <caret line="115" column="16" lean-forward="true" selection-start-line="115" selection-start-column="16" selection-end-line="115" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/http_server/websocket_session.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
-          <folding>
-            <element signature="e#14#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/data_bus1/subscriber.h">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/data_bus1/transport_client.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/data_bus1/proto_codec.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="e#14#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/data_bus1/data_bus_client.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="e#14#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/data_bus1/publisher.h">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/data_bus1/queue_worker.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-204">
-          <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/data_bus1/callback_holder.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="45" column="11" lean-forward="true" selection-start-line="45" selection-start-column="11" selection-end-line="45" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/data_bus1/ring_queue.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -635,13 +536,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="51" column="29" selection-start-line="51" selection-start-column="29" selection-end-line="51" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protobuf/Pose.proto">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -661,9 +555,6 @@
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/memory">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/build/Pose.pb.h">
       <provider selected="true" editor-type-id="text-editor">
@@ -686,16 +577,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-262">
           <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/data_bus2/data_bus.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="43" column="78" selection-start-line="43" selection-start-column="78" selection-end-line="43" selection-end-column="78" />
-          <folding>
-            <element signature="e#14#29#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -736,14 +617,244 @@
     <entry file="file://$PROJECT_DIR$/include/data_bus2/callback_holder.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-407">
-          <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+          <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/util/timer.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-148" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/tcp_tool/tcp_session.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="48" column="9" selection-start-line="48" selection-start-column="9" selection-end-line="57" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/util/base64.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="94" column="1" selection-start-line="94" selection-start-column="1" selection-end-line="94" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/include/boost/beast/core/error.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/include/boost/beast/http/impl/read.ipp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="103" column="28" lean-forward="true" selection-start-line="103" selection-start-column="28" selection-end-line="103" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/include/boost/asio/steady_timer.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="36" column="51" selection-start-line="36" selection-start-column="51" selection-end-line="36" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/util/logger.h">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file:///usr/local/include/boost/beast/http/write.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-612" />
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/include/boost/beast/http/basic_file_body.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="44" column="7" selection-start-line="44" selection-start-column="7" selection-end-line="44" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/include/boost/beast/http/file_body.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/include/boost/beast/http/message.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="816" column="4" selection-start-line="816" selection-start-column="4" selection-end-line="816" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="51" column="32" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/tcp_tool/acceptor.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-824">
+          <caret line="12" column="39" lean-forward="true" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/tcp_tool/tcp_server.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="77" column="8" selection-start-line="77" selection-start-column="8" selection-end-line="77" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/include/boost/asio/detail/deadline_timer_service.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="192" selection-start-line="192" selection-end-line="192" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/include/boost/asio/basic_waitable_timer.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="474" selection-start-line="474" selection-end-line="474" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/belle.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2408">
+          <caret line="576" lean-forward="true" selection-start-line="576" selection-end-line="576" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/include/boost/system/error_code.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="176" column="7" lean-forward="true" selection-start-line="176" selection-start-column="7" selection-end-line="176" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/data_bus2/data_bus.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="60" selection-start-line="60" selection-end-line="60" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/include/http_server/common.h">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/http_server/http_server.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="77" column="17" lean-forward="true" selection-start-line="77" selection-start-column="17" selection-end-line="77" selection-end-column="17" />
+        <state relative-caret-position="117">
+          <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/include/boost/beast.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#349#413#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/http_server/websocket_session.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/http_server/acceptor.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="61" column="13" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/set">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="597" column="24" selection-start-line="597" selection-start-column="24" selection-end-line="597" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/map_loader.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <element signature="e#222#245#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/http_server1/http_utils.h">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/http_server1/http_server.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-408">
+          <caret line="39" column="19" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/memory">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="5299" selection-start-line="5299" selection-end-line="5299" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/http_server1/acceptor.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="45" column="28" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/http_server1/common.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="34" column="20" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
+          <folding>
+            <element signature="e#14#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/http_server1/websocket_session.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="14" column="39" lean-forward="true" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/http_server1/http_session.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="133" column="33" lean-forward="true" selection-start-line="133" selection-start-column="33" selection-end-line="133" selection-end-column="33" />
+          <folding>
+            <element signature="e#14#33#0" expanded="true" />
+            <element signature="e#3354#3366#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/http_test.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="85" column="1" lean-forward="true" selection-start-line="85" selection-start-column="1" selection-end-line="85" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

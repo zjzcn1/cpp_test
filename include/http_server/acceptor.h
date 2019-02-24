@@ -12,11 +12,11 @@ namespace http_server {
         tcp::endpoint endpoint_;
         tcp::acceptor acceptor_;
         tcp::socket socket_;
-        Attr &attr_;
+        HttpConfig &http_config_;
 
     public:
-        Acceptor(asio::io_context &ioc, tcp::endpoint &&endpoint, Attr &attr)
-                : endpoint_(std::move(endpoint)), acceptor_(ioc), socket_(ioc), attr_(attr) {
+        Acceptor(asio::io_context &ioc, tcp::endpoint &&endpoint, HttpConfig &http_config)
+                : endpoint_(std::move(endpoint)), acceptor_(ioc), socket_(ioc), http_config_(http_config) {
         }
 
         // Start accepting incoming connections
@@ -58,7 +58,7 @@ namespace http_server {
                 // Create the http_session and run it
                 std::make_shared<HttpSession>(
                         std::move(socket_),
-                        attr_)->run();
+                        http_config_)->run();
             }
 
             // Accept another connection

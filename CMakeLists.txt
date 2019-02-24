@@ -41,9 +41,9 @@ message(STATUS "Boost library found  ${yaml-cpp_LIBRARIES}")
 
 SET(SRC_LIST
         ${PROTO_SRCS}
-#        tests/http_test.cpp
-#        tests/map_loader.cpp
-        tests/databus_test.cpp
+        tests/http_test.cpp
+        tests/map_loader.cpp
+#        tests/databus_test.cpp
 #        tests/databus_test1.cpp
 #        protobuf/protobuf_test.cpp
 #        protobuf/mq_test.cpp
