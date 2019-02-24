@@ -1,28 +1,9 @@
 #pragma once
 
-#include <google/protobuf/descriptor.h>
-#include <google/protobuf/message.h>
-
+#include "common.h"
 #include "ring_queue.h"
-#include "util/logger.h"
 
 namespace data_bus {
-
-    using namespace util;
-
-    // proto message
-    using ProtoMessage = google::protobuf::Message;
-    using ProtoMessagePtr = std::shared_ptr<google::protobuf::Message>;
-
-    template<typename T>
-    using Ptr = std::shared_ptr<T>;
-
-    template<typename T>
-    using ConstPtr = std::shared_ptr<T const>;
-
-    // callback
-    template<typename T>
-    using Callback = std::function<void(ConstPtr<T>)>;
 
     // base callback
     class CallbackHolder {
@@ -31,7 +12,7 @@ namespace data_bus {
             callback_id_ = generateId();
         }
 
-        virtual void call(ProtoMessagePtr &message) = 0;
+        virtual void call(Ptr<ProtoMessage> &message) = 0;
 
         long getCallbackId() {
             return callback_id_;
@@ -46,8 +27,6 @@ namespace data_bus {
         long callback_id_;
     };
 
-    using CallbackHolderPtr = std::shared_ptr<CallbackHolder>;
-
     // local callback
     template<typename T>
     class CallbackHolderT : public CallbackHolder {
@@ -56,7 +35,7 @@ namespace data_bus {
                 : callback_(callback) {
         }
 
-        void call(ProtoMessagePtr &message) override {
+        void call(Ptr<ProtoMessage> &message) override {
             callback_(std::static_pointer_cast<T>(message));
         }
 

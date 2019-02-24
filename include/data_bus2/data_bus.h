@@ -1,9 +1,6 @@
 #pragma once
 
-#include <list>
-#include <map>
-#include <functional>
-#include "queue_worker.h"
+#include "queue_info.h"
 
 namespace data_bus {
 
@@ -18,43 +15,46 @@ namespace data_bus {
         DataBus &operator=(const DataBus &) = delete;
 
         template<typename T>
-        static long subscribe(const std::string topic, const std::string subscriber_name, const Callback <T> &callback,
-                              int queue_size = DEFAULT_QUEUE_SIZE) {
+        static void publish(const std::string topic, Ptr<T> data) {
             std::lock_guard<std::mutex> locker(instance()->mutex_);
-
-            if (instance()->queue_worker_map_.find(topic) == instance()->queue_worker_map_.end()) {
-                instance()->queue_worker_map_[topic] = std::list<QueueWorkerPtr>();
+            if (instance()->queue_info_map_.find(topic) == instance()->queue_info_map_.end()) {
+                instance()->queue_info_map_[topic] = std::make_shared<QueueInfo>(topic);
             }
 
-            CallbackHolderPtr callback_holder(new CallbackHolderT<T>(callback));
-            QueueWorkerPtr worker_ptr(new QueueWorker(topic, subscriber_name, queue_size, callback_holder));
-            instance()->queue_worker_map_[topic].push_back(worker_ptr);
-
-            return worker_ptr->getCallbackId();
+            Ptr<ProtoMessage> message = std::static_pointer_cast<ProtoMessage>(data);
+            instance()->queue_info_map_[topic]->putData(message);
         }
 
         template<typename T>
-        static void publish(const std::string topic, Ptr<T> data) {
+        static long subscribe(const std::string topic, const std::string callback_name, const Callback<T> &callback,
+                              int max_queue_size = DEFAULT_QUEUE_SIZE) {
             std::lock_guard<std::mutex> locker(instance()->mutex_);
-
-            if (instance()->queue_worker_map_.find(topic) == instance()->queue_worker_map_.end()) {
-                instance()->queue_worker_map_[topic] = std::list<QueueWorkerPtr>();
+            if (instance()->queue_info_map_.find(topic) == instance()->queue_info_map_.end()) {
+                instance()->queue_info_map_[topic] = std::make_shared<QueueInfo>(topic);
             }
 
-            for (const QueueWorkerPtr &worker_ptr : instance()->queue_worker_map_[topic]) {
-                ProtoMessagePtr message = std::static_pointer_cast<ProtoMessage>(data);
-                worker_ptr->putData(message);
-            }
+            Ptr<QueueInfo> queue_info = instance()->queue_info_map_[topic];
+            long callback_id = queue_info->addCallback(callback_name, callback, max_queue_size);
+            return callback_id;
         }
 
-        static std::list<QueueStatPtr> getQueueStats() {
-            std::lock_guard<std::mutex> locker(instance()->mutex_);
 
-            std::list<QueueStatPtr> stats;
-            for (auto &pair : instance()->queue_worker_map_) {
-                for (const QueueWorkerPtr &worker_ptr : pair.second) {
-                    stats.push_back(worker_ptr->getQueueStat());
-                }
+        template<typename T>
+        static bool unsubscribe(const std::string topic, long callback_id) {
+            std::lock_guard<std::mutex> locker(instance()->mutex_);
+            if (instance()->queue_info_map_.find(topic) == instance()->queue_info_map_.end()) {
+                return false;
+            }
+
+            Ptr<QueueInfo> queue_info = instance()->queue_info_map_[topic];
+            return queue_info->removeCallback(callback_id);
+        }
+
+        static std::list<Ptr<QueueStat>> getQueueStats() {
+            std::lock_guard<std::mutex> locker(instance()->mutex_);
+            std::list<Ptr<QueueStat>> stats;
+            for (auto &pair : instance()->queue_info_map_) {
+                stats.push_back(pair.second->getQueueStat());
             }
             return stats;
         }
@@ -67,6 +67,6 @@ namespace data_bus {
 
     private:
         std::mutex mutex_;
-        std::map<std::string, std::list<QueueWorkerPtr>> queue_worker_map_;
+        std::map<std::string, Ptr<QueueInfo>> queue_info_map_;
     };
 }

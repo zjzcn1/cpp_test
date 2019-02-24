@@ -31,9 +31,12 @@ struct Test {
         std::thread([this]() {
             while (!is_stop) {
                 auto t = std::chrono::system_clock::now().time_since_epoch().count()/1000000;
-                std::list<QueueStatPtr> list = DataBus::getQueueStats();
-                for (const QueueStatPtr &stat : list) {
-                    Logger::info("QueueStats", "{}", stat->toString());
+                auto stats = DataBus::getQueueStats();
+                for (const auto &s : stats) {
+                    Logger::info("QueueStats", "{} {}", s->topic, s->publish_count);
+                    for (auto stat : s->callback_stats) {
+                        Logger::info("QueueStats", "{}", stat->toString());
+                    }
                 }
                 std::this_thread::sleep_for(std::chrono::seconds(3));
             }

@@ -6,8 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/zjz/work/cpp/cpp_test/build/Message.pb.cc" "/Users/zjz/work/cpp/cpp_test/build/CMakeFiles/cppTest.dir/Message.pb.cc.o"
   "/Users/zjz/work/cpp/cpp_test/build/Pose.pb.cc" "/Users/zjz/work/cpp/cpp_test/build/CMakeFiles/cppTest.dir/Pose.pb.cc.o"
-  "/Users/zjz/work/cpp/cpp_test/tests/http_test.cpp" "/Users/zjz/work/cpp/cpp_test/build/CMakeFiles/cppTest.dir/tests/http_test.cpp.o"
-  "/Users/zjz/work/cpp/cpp_test/tests/map_loader.cpp" "/Users/zjz/work/cpp/cpp_test/build/CMakeFiles/cppTest.dir/tests/map_loader.cpp.o"
+  "/Users/zjz/work/cpp/cpp_test/tests/databus_test.cpp" "/Users/zjz/work/cpp/cpp_test/build/CMakeFiles/cppTest.dir/tests/databus_test.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

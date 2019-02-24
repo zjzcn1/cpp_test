@@ -1,30 +1,24 @@
 #pragma once
 
-#include <string>
-#include <memory>
+#include "common.h"
 
 namespace data_bus {
 
-    struct QueueStat {
-        QueueStat() : topic(""), subscriber_name(""), callback_id(0), queue_size(0), max_queue_size(0),
-                      incoming_count(0),
-                      dropped_count(0), success_count(0) {
-        }
-
-        std::string topic;
-        std::string subscriber_name;
-        long callback_id;
-        int queue_size;
-        int max_queue_size;
-        std::size_t incoming_count;
-        std::size_t success_count;
-        std::size_t dropped_count;
-        double cost_time_sec;
-        double total_time_sec;
+    struct CallbackStat {
+        std::string topic{};
+        std::string callback_name{};
+        long callback_id{0};
+        int queue_size{0};
+        int max_queue_size{0};
+        std::size_t incoming_count{0};
+        std::size_t success_count{0};
+        std::size_t dropped_count{0};
+        double cost_time_sec{0};
+        double total_time_sec{0};
 
         std::string toString() {
             return "{topic=" + topic +
-                   ", subscriber_name=" + subscriber_name +
+                   ", callback_name=" + callback_name +
                    ", callback_id=" + std::to_string(callback_id) +
                    ", queue_size=" + std::to_string(queue_size) +
                    ", max_queue_size=" + std::to_string(max_queue_size) +
@@ -36,5 +30,11 @@ namespace data_bus {
         }
     };
 
-    typedef std::shared_ptr<QueueStat> QueueStatPtr;
+    struct QueueStat {
+        std::string topic{};
+        std::size_t publish_count{0};
+
+        std::list<Ptr<CallbackStat>> callback_stats;
+    };
+
 }

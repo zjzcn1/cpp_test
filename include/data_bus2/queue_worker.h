@@ -1,25 +1,19 @@
 #pragma once
 
-#include <thread>
-#include <atomic>
-#include <iostream>
 #include "ring_queue.h"
 #include "queue_stat.h"
 #include "callback_holder.h"
-#include "util/time_elapsed.h"
 
 namespace data_bus {
 
     class QueueWorker {
     public:
-        QueueWorker(std::string topic, std::string subscriber_name, int max_queue_size,
-                    CallbackHolderPtr callback_holder)
-                : topic_(topic), subscriber_name_(subscriber_name), queue_(max_queue_size),
-                  callback_holder_(std::move(callback_holder)), success_count_(0), cost_time_sec_(0),
-                  total_time_sec_(0), is_stop_(false) {
+        QueueWorker(std::string topic, std::string callback_name, Ptr<CallbackHolder> callback_holder, int max_queue_size)
+                : topic_(topic), callback_name_(callback_name), callback_holder_(std::move(callback_holder)),
+                  queue_(max_queue_size) {
             worker_thread_ = std::make_shared<std::thread>([this] {
                 while (!this->is_stop_) {
-                    ProtoMessagePtr data = this->queue_.take();
+                    Ptr<ProtoMessage> data = this->queue_.take();
                     try {
                         TimeElapsed time;
                         this->callback_holder_->call(data);
@@ -28,8 +22,8 @@ namespace data_bus {
                         success_count_++;
                     } catch (std::exception &e) {
                         Logger::error("QueueWorker",
-                                      "Data bus callback error, topic={}, subscriber_name={}, callback_id={}, error: ",
-                                      this->topic_, this->subscriber_name_, callback_holder_->getCallbackId(),
+                                      "Data bus callback error, topic={}, callback_name={}, callback_id={}, error: ",
+                                      this->topic_, this->callback_name_, callback_holder_->getCallbackId(),
                                       e.what());
                     }
                 }
@@ -42,7 +36,7 @@ namespace data_bus {
             worker_thread_->join();
         }
 
-        void putData(ProtoMessagePtr data) {
+        void putData(Ptr<ProtoMessage> data) {
             queue_.put(data);
         }
 
@@ -50,10 +44,10 @@ namespace data_bus {
             return callback_holder_->getCallbackId();
         }
 
-        QueueStatPtr getQueueStat() {
-            QueueStatPtr stat(new QueueStat);
+        Ptr<CallbackStat> getCallbackStat() {
+            Ptr<CallbackStat> stat(new CallbackStat);
             stat->topic = topic_;
-            stat->subscriber_name = subscriber_name_;
+            stat->callback_name = callback_name_;
             stat->callback_id = getCallbackId();
             stat->queue_size = queue_.size();
             stat->max_queue_size = queue_.maxSize();
@@ -66,17 +60,16 @@ namespace data_bus {
         }
 
     private:
-        std::atomic_bool is_stop_;
+        std::atomic_bool is_stop_{false};
         std::string topic_;
-        std::string subscriber_name_;
-        RingQueue<ProtoMessagePtr> queue_;
-        CallbackHolderPtr callback_holder_;
-        std::atomic_long success_count_;
+        std::string callback_name_;
+        RingQueue<Ptr<ProtoMessage>> queue_;
+        Ptr<CallbackHolder> callback_holder_;
         std::shared_ptr<std::thread> worker_thread_;
 
-        double cost_time_sec_;
-        double total_time_sec_{};
+        std::atomic_long success_count_{0};
+        double cost_time_sec_{0};
+        double total_time_sec_{0};
     };
 
-    using QueueWorkerPtr = std::shared_ptr<QueueWorker>;
 }
