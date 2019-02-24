@@ -104,7 +104,7 @@
 		<Unit filename="/Users/zjz/work/cpp/cpp_test/build/Pose.pb.h.rule">
 			<Option target="cppTest"/>
 		</Unit>
-		<Unit filename="/Users/zjz/work/cpp/cpp_test/tests/tcp_test.cpp">
+		<Unit filename="/Users/zjz/work/cpp/cpp_test/tests/databus_test.cpp">
 			<Option target="cppTest"/>
 		</Unit>
 		<Unit filename="/Users/zjz/work/cpp/cpp_test/CMakeLists.txt">

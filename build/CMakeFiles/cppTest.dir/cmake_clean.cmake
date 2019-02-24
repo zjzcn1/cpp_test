@@ -5,7 +5,7 @@ file(REMOVE_RECURSE
   "Pose.pb.cc"
   "CMakeFiles/cppTest.dir/Message.pb.cc.o"
   "CMakeFiles/cppTest.dir/Pose.pb.cc.o"
-  "CMakeFiles/cppTest.dir/tests/tcp_test.cpp.o"
+  "CMakeFiles/cppTest.dir/tests/databus_test.cpp.o"
   "cppTest.pdb"
   "cppTest"
 )

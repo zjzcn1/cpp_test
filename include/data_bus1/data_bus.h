@@ -7,18 +7,13 @@
 #include "proto_codec.h"
 
 namespace data_bus {
-    static const int DEFAULT_QUEUE_SIZE = 2;
+    static const int DEFAULT_QUEUE_SIZE = 10;
 
     class DataBus {
     public:
         DataBus() = default;
         DataBus(const DataBus &) = delete;
         DataBus &operator=(const DataBus &) = delete;
-
-        ~DataBus() {
-            std::lock_guard<std::mutex> locker(instance()->mutex_);
-            queue_worker_map_.clear();
-        };
 
         template<typename T>
         static long subscribe(const std::string topic, const Callback<T> &callback, int queue_size = DEFAULT_QUEUE_SIZE) {

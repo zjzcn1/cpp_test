@@ -8,7 +8,7 @@
 namespace data_bus {
 
     template<typename T>
-    class Filter {
+    class DataBusClient {
     public:
         virtual bool doFilter(ConstPtr<T> data);
     };
