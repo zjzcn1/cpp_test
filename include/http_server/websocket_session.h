@@ -11,7 +11,7 @@ namespace http_server {
         asio::steady_timer timer_;
         beast::multi_buffer buffer_;
         char ping_state_ = 0;
-        HttpConfig &http_config_;
+        Attr &attr_;
         WebsocketHandler const &ws_handler_;
         HttpRequest req_;
         std::mutex mutex_;
@@ -19,20 +19,20 @@ namespace http_server {
 
     public:
         // Take ownership of the socket
-        explicit WebsocketSession(tcp::socket socket, HttpConfig &http_config, HttpRequest &&req,
+        explicit WebsocketSession(tcp::socket socket, Attr &attr, HttpRequest &&req,
                                   WebsocketHandler const &ws_handler)
                 : ws_(std::move(socket)),
                   strand_(ws_.get_executor()),
                   timer_(ws_.get_executor().context(), (std::chrono::steady_clock::time_point::max) ()),
-                  http_config_(http_config),
+                  attr_(attr),
                   req_(std::move(req)),
                   ws_handler_(ws_handler) {
         }
 
         ~WebsocketSession() {
             // leave channel
-            std::lock_guard<std::mutex> locker(http_config_.channels_mutex);
-            http_config_.websocket_channels[req_.path].remove(*this);
+            std::lock_guard<std::mutex> locker(attr_.channels_mutex);
+            attr_.websocket_channels[req_.path].remove(*this);
             Logger::info("WebsocketSession session removed from channel[{}].", req_.path);
         }
 
@@ -90,7 +90,7 @@ namespace http_server {
             on_timer({});
 
             // Set the timer
-            timer_.expires_after(std::chrono::seconds(http_config_.timeout));
+            timer_.expires_after(std::chrono::seconds(attr_.timeout));
 
             // Accept the websocket handshake
             ws_.async_accept(
@@ -115,11 +115,11 @@ namespace http_server {
             }
 
             // join channel
-            std::lock_guard<std::mutex> locker(http_config_.channels_mutex);
-            if (http_config_.websocket_channels.find(req_.path) == http_config_.websocket_channels.end()) {
-                http_config_.websocket_channels[req_.path] = WebsocketChannel();
+            std::lock_guard<std::mutex> locker(attr_.channels_mutex);
+            if (attr_.websocket_channels.find(req_.path) == attr_.websocket_channels.end()) {
+                attr_.websocket_channels[req_.path] = WebsocketChannel();
             }
-            http_config_.websocket_channels[req_.path].insert(*this);
+            attr_.websocket_channels[req_.path].insert(*this);
             Logger::info("WebsocketSession session add to channel[{}].", req_.path);
             // Read a message
             do_read();
@@ -180,7 +180,7 @@ namespace http_server {
             ping_state_ = 0;
 
             // Set the timer
-            timer_.expires_after(std::chrono::seconds(http_config_.timeout));
+            timer_.expires_after(std::chrono::seconds(attr_.timeout));
         }
 
         // Called after a ping is sent.

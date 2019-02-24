@@ -75,7 +75,7 @@ namespace http_server {
 
     using WebsocketChannels = std::unordered_map<std::string, WebsocketChannel>;
 
-    struct HttpConfig {
+    struct Attr {
         std::string webroot{"."};
 
         std::string index_file{"index.html"};

@@ -23,38 +23,38 @@ namespace http_server {
             if (webroot.empty()) {
                 webroot = ".";
             }
-            http_config_.webroot = webroot;
+            attr_.webroot = webroot;
             return *this;
         }
 
         // set the socket timeout
         HttpServer &timeout(std::chrono::seconds timeout) {
-            http_config_.timeout = timeout;
+            attr_.timeout = timeout;
             return *this;
         }
 
         HttpServer &http(std::string url_regx, HttpMethod method, HttpHandler handler) {
-            if (http_config_.http_routes.find(url_regx) == http_config_.http_routes.end()) {
-                http_config_.http_routes[url_regx] = {{static_cast<int>(method), handler}};
+            if (attr_.http_routes.find(url_regx) == attr_.http_routes.end()) {
+                attr_.http_routes[url_regx] = {{static_cast<int>(method), handler}};
             } else {
-                http_config_.http_routes.at(url_regx)[static_cast<int>(method)] = handler;
+                attr_.http_routes.at(url_regx)[static_cast<int>(method)] = handler;
             }
             Logger::info("HttpServer register http handler, http_method={}, url={}", http::to_string(method).to_string(), url_regx);
             return *this;
         }
 
         HttpServer &http(std::string url_regx, HttpHandler handler) {
-            if (http_config_.http_routes.find(url_regx) == http_config_.http_routes.end()) {
-                http_config_.http_routes[url_regx] = {{static_cast<int>(HttpMethod::unknown), handler}};
+            if (attr_.http_routes.find(url_regx) == attr_.http_routes.end()) {
+                attr_.http_routes[url_regx] = {{static_cast<int>(HttpMethod::unknown), handler}};
             } else {
-                http_config_.http_routes.at(url_regx)[static_cast<int>(HttpMethod::unknown)] = handler;
+                attr_.http_routes.at(url_regx)[static_cast<int>(HttpMethod::unknown)] = handler;
             }
             Logger::info("HttpServer register http handler, http_method=all, url={}", url_regx);
             return *this;
         }
 
         HttpServer &websocket(std::string url_regx, WebsocketHandler handler) {
-            http_config_.websocket_routes.emplace_back(std::make_pair(url_regx, handler));
+            attr_.websocket_routes.emplace_back(std::make_pair(url_regx, handler));
             Logger::info("HttpServer register websocket handler, url={}", url_regx);
             return *this;
         }
@@ -64,7 +64,7 @@ namespace http_server {
             bool success = std::make_shared<Acceptor>(
                     ioc_,
                     tcp::endpoint{asio::ip::make_address(host_), port_},
-                    http_config_)->listen();
+                    attr_)->listen();
 
             if (!success) {
                 return false;
@@ -87,17 +87,17 @@ namespace http_server {
         }
 
         void broadcast(std::string path, std::string msg) {
-            std::lock_guard<std::mutex> locker(http_config_.channels_mutex);
-            if (http_config_.websocket_channels.find(path) == http_config_.websocket_channels.end()) {
+            std::lock_guard<std::mutex> locker(attr_.channels_mutex);
+            if (attr_.websocket_channels.find(path) == attr_.websocket_channels.end()) {
                 return;
             }
-            for (auto const session : http_config_.websocket_channels[path].sessions) {
+            for (auto const session : attr_.websocket_channels[path].sessions) {
                 session->send(msg);
             }
         }
 
     private:
-        HttpConfig http_config_;
+        Attr attr_;
 
         std::string host_;
         unsigned short port_;
