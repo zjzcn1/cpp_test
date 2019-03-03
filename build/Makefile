@@ -123,33 +123,6 @@ cppTest/fast:
 	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/build
 .PHONY : cppTest/fast
 
-Message.pb.o: Message.pb.cc.o
-
-.PHONY : Message.pb.o
-
-# target to build an object file
-Message.pb.cc.o:
-	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/Message.pb.cc.o
-.PHONY : Message.pb.cc.o
-
-Message.pb.i: Message.pb.cc.i
-
-.PHONY : Message.pb.i
-
-# target to preprocess a source file
-Message.pb.cc.i:
-	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/Message.pb.cc.i
-.PHONY : Message.pb.cc.i
-
-Message.pb.s: Message.pb.cc.s
-
-.PHONY : Message.pb.s
-
-# target to generate assembly for a file
-Message.pb.cc.s:
-	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/Message.pb.cc.s
-.PHONY : Message.pb.cc.s
-
 Pose.pb.o: Pose.pb.cc.o
 
 .PHONY : Pose.pb.o
@@ -177,32 +150,59 @@ Pose.pb.cc.s:
 	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/Pose.pb.cc.s
 .PHONY : Pose.pb.cc.s
 
-tests/databus_test.o: tests/databus_test.cpp.o
+Protocol.pb.o: Protocol.pb.cc.o
 
-.PHONY : tests/databus_test.o
+.PHONY : Protocol.pb.o
 
 # target to build an object file
-tests/databus_test.cpp.o:
-	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/tests/databus_test.cpp.o
-.PHONY : tests/databus_test.cpp.o
+Protocol.pb.cc.o:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/Protocol.pb.cc.o
+.PHONY : Protocol.pb.cc.o
 
-tests/databus_test.i: tests/databus_test.cpp.i
+Protocol.pb.i: Protocol.pb.cc.i
 
-.PHONY : tests/databus_test.i
+.PHONY : Protocol.pb.i
 
 # target to preprocess a source file
-tests/databus_test.cpp.i:
-	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/tests/databus_test.cpp.i
-.PHONY : tests/databus_test.cpp.i
+Protocol.pb.cc.i:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/Protocol.pb.cc.i
+.PHONY : Protocol.pb.cc.i
 
-tests/databus_test.s: tests/databus_test.cpp.s
+Protocol.pb.s: Protocol.pb.cc.s
 
-.PHONY : tests/databus_test.s
+.PHONY : Protocol.pb.s
 
 # target to generate assembly for a file
-tests/databus_test.cpp.s:
-	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/tests/databus_test.cpp.s
-.PHONY : tests/databus_test.cpp.s
+Protocol.pb.cc.s:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/Protocol.pb.cc.s
+.PHONY : Protocol.pb.cc.s
+
+tests/databus_ws_test.o: tests/databus_ws_test.cpp.o
+
+.PHONY : tests/databus_ws_test.o
+
+# target to build an object file
+tests/databus_ws_test.cpp.o:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/tests/databus_ws_test.cpp.o
+.PHONY : tests/databus_ws_test.cpp.o
+
+tests/databus_ws_test.i: tests/databus_ws_test.cpp.i
+
+.PHONY : tests/databus_ws_test.i
+
+# target to preprocess a source file
+tests/databus_ws_test.cpp.i:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/tests/databus_ws_test.cpp.i
+.PHONY : tests/databus_ws_test.cpp.i
+
+tests/databus_ws_test.s: tests/databus_ws_test.cpp.s
+
+.PHONY : tests/databus_ws_test.s
+
+# target to generate assembly for a file
+tests/databus_ws_test.cpp.s:
+	$(MAKE) -f CMakeFiles/cppTest.dir/build.make CMakeFiles/cppTest.dir/tests/databus_ws_test.cpp.s
+.PHONY : tests/databus_ws_test.cpp.s
 
 # Help Target
 help:
@@ -213,15 +213,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... cppTest"
-	@echo "... Message.pb.o"
-	@echo "... Message.pb.i"
-	@echo "... Message.pb.s"
 	@echo "... Pose.pb.o"
 	@echo "... Pose.pb.i"
 	@echo "... Pose.pb.s"
-	@echo "... tests/databus_test.o"
-	@echo "... tests/databus_test.i"
-	@echo "... tests/databus_test.s"
+	@echo "... Protocol.pb.o"
+	@echo "... Protocol.pb.i"
+	@echo "... Protocol.pb.s"
+	@echo "... tests/databus_ws_test.o"
+	@echo "... tests/databus_ws_test.i"
+	@echo "... tests/databus_ws_test.s"
 .PHONY : help
 
 

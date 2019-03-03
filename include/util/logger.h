@@ -10,12 +10,15 @@
 
 namespace util {
 
+    static std::string LOG_DIR = "logs";
+
     class Logger {
     private:
         std::shared_ptr<spdlog::logger> logger_;
         std::shared_ptr<spdlog::sinks::stdout_color_sink_mt> console_sink;
         std::shared_ptr<spdlog::sinks::rotating_file_sink_mt> file_sink;
         std::shared_ptr<spdlog::sinks::daily_file_sink_mt> daily_sink;
+
     public:
         enum Level {
             DEBUG,
@@ -23,27 +26,10 @@ namespace util {
             WARN,
             ERROR
         };
-        enum Sink {
-            CONSOLE,
-            ROTATING_FILE,
-            DAILY_FILE,
-            CONSOLE_AND_ROTATING,
-            CONSOLE_AND_DAILY
-        };
 
         Logger() {
             console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
             console_sink->set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%^%l%$] [%t] %v");
-
-            boost::filesystem::path dir("logs");
-            if (!boost::filesystem::exists(dir)) {
-                create_directory(dir);
-            }
-            file_sink = std::make_shared<spdlog::sinks::rotating_file_sink_mt>("logs/log.txt", 20 * 1204 * 1024, 3);
-            file_sink->set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%^%l%$] [%t] %v");
-
-            daily_sink = std::make_shared<spdlog::sinks::daily_file_sink_mt>("logs/log.txt", 0, 0);
-            daily_sink->set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%^%l%$] [%t] %v");
 
             logger_ = std::shared_ptr<spdlog::logger>(new spdlog::logger("sinks", {console_sink}));
             spdlog::register_logger(logger_);
@@ -56,27 +42,25 @@ namespace util {
             return &instance;
         }
 
-        static void setSink(Sink sink) {
-            instance()->logger_->sinks().clear();
-            switch (sink) {
-                case CONSOLE:
-                    instance()->logger_->sinks().push_back(instance()->console_sink);
-                    break;
-                case ROTATING_FILE:
-                    instance()->logger_->sinks().push_back(instance()->file_sink);
-                    break;
-                case DAILY_FILE:
-                    instance()->logger_->sinks().push_back(instance()->daily_sink);
-                    break;
-                case CONSOLE_AND_ROTATING:
-                    instance()->logger_->sinks().push_back(instance()->console_sink);
-                    instance()->logger_->sinks().push_back(instance()->file_sink);
-                    break;
-                case CONSOLE_AND_DAILY:
-                    instance()->logger_->sinks().push_back(instance()->console_sink);
-                    instance()->logger_->sinks().push_back(instance()->daily_sink);
-                    break;
+        static void setRotatingSink(const std::string &file_name) {
+            boost::filesystem::path dir(LOG_DIR);
+            if (!boost::filesystem::exists(dir)) {
+                create_directory(dir);
             }
+            instance()->file_sink = std::make_shared<spdlog::sinks::rotating_file_sink_mt>(LOG_DIR + "/" + file_name,
+                                                                                           20 * 1204 * 1024, 3);
+            instance()->file_sink->set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%^%l%$] [%t] %v");
+            instance()->logger_->sinks().push_back(instance()->file_sink);
+        }
+
+        static void setDailySink(const std::string &file_name) {
+            boost::filesystem::path dir(LOG_DIR);
+            if (!boost::filesystem::exists(dir)) {
+                create_directory(dir);
+            }
+            instance()->daily_sink = std::make_shared<spdlog::sinks::daily_file_sink_mt>(LOG_DIR + "/" + file_name, 0, 0);
+            instance()->daily_sink->set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%^%l%$] [%t] %v");
+            instance()->logger_->sinks().push_back(instance()->daily_sink);
         }
 
         static void setLevel(Level level) {

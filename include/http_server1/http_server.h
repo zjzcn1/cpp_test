@@ -1,6 +1,8 @@
+#include <utility>
+
 #pragma once
 
-#include "common.h"
+#include "attr.h"
 #include "http_utils.h"
 #include "acceptor.h"
 
@@ -8,7 +10,7 @@ namespace http_server {
 
     class HttpServer {
     public:
-        HttpServer(std::string host, int port, int threads)
+        HttpServer(std::string host, unsigned short port, int threads)
                 : host_(std::move(host)), port_(port), threads_(threads) {
         }
 
@@ -31,7 +33,7 @@ namespace http_server {
             attr_.timeout = timeout;
         }
 
-        void http(std::string url_regx, HttpMethod method, HttpHandler handler) {
+        void on_http(std::string url_regx, HttpMethod method, HttpHandler handler) {
             if (attr_.http_routes.find(url_regx) == attr_.http_routes.end()) {
                 attr_.http_routes[url_regx] = {{static_cast<int>(method), handler}};
             } else {
@@ -41,7 +43,7 @@ namespace http_server {
                          http::to_string(method).to_string(), url_regx);
         }
 
-        void http(std::string url_regx, HttpHandler handler) {
+        void on_http(std::string url_regx, HttpHandler handler) {
             if (attr_.http_routes.find(url_regx) == attr_.http_routes.end()) {
                 attr_.http_routes[url_regx] = {{static_cast<int>(HttpMethod::unknown), handler}};
             } else {
@@ -50,9 +52,14 @@ namespace http_server {
             Logger::info("HttpServer", "Register http handler, http_method=ALL, url={}", url_regx);
         }
 
-        void websocket(std::string url_regx, WebsocketHandler handler) {
-            attr_.websocket_routes.insert(std::make_pair(url_regx, handler));
-            Logger::info("HttpServer", "Register websocket handler, url={}", url_regx);
+        void on_websocket(WebsocketHandler handler) {
+            attr_.websocket_handler = std::move(handler);
+            Logger::info("HttpServer", "Set websocket handler.");
+        }
+
+        void on_websocket_close(WebsocketCloseCallback callback) {
+            attr_.websocket_close_callback = std::move(callback);
+            Logger::info("HttpServer", "Set websocket close callback.");
         }
 
         void start(bool sync = false) {
@@ -82,13 +89,10 @@ namespace http_server {
             }
         }
 
-        void broadcast(std::string path, std::string msg) {
+        void broadcast(std::shared_ptr<std::vector<char>> data) {
             std::lock_guard<std::mutex> locker(attr_.websocket_mutex);
-            if (attr_.websocket_sessions.find(path) == attr_.websocket_sessions.end()) {
-                return;
-            }
-            for (auto const session : attr_.websocket_sessions[path]) {
-                session->send(msg);
+            for (auto const session : attr_.websocket_sessions) {
+                session->send(data);
             }
         }
 

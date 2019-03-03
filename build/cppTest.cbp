@@ -11,30 +11,30 @@
 				<Option working_dir="/Users/zjz/work/cpp/cpp_test/build"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
 				<Option working_dir="/Users/zjz/work/cpp/cpp_test/build"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
 				<Option working_dir="/Users/zjz/work/cpp/cpp_test/build"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="cppTest">
@@ -49,19 +49,14 @@
 					<Add directory="/Users/zjz/work/cpp/cpp_test/include"/>
 					<Add directory="/Users/zjz/work/cpp/cpp_test/third_party"/>
 					<Add directory="/Users/zjz/work/cpp/cpp_test/tests"/>
-					<Add directory="/Users/zjz/work/cpp/cpp_test/build/Message.pb.h"/>
+					<Add directory="/Users/zjz/work/cpp/cpp_test/build/Protocol.pb.h"/>
 					<Add directory="/Users/zjz/work/cpp/cpp_test/build/Pose.pb.h"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.0/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
-					<Add directory="/System/Library/Frameworks"/>
-					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 cppTest"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 cppTest"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="cppTest/fast">
@@ -76,35 +71,30 @@
 					<Add directory="/Users/zjz/work/cpp/cpp_test/include"/>
 					<Add directory="/Users/zjz/work/cpp/cpp_test/third_party"/>
 					<Add directory="/Users/zjz/work/cpp/cpp_test/tests"/>
-					<Add directory="/Users/zjz/work/cpp/cpp_test/build/Message.pb.h"/>
+					<Add directory="/Users/zjz/work/cpp/cpp_test/build/Protocol.pb.h"/>
 					<Add directory="/Users/zjz/work/cpp/cpp_test/build/Pose.pb.h"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.0/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
-					<Add directory="/System/Library/Frameworks"/>
-					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 cppTest/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 cppTest/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/Users/zjz/work/cpp/cpp_test/build/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/zjz/work/cpp/cpp_test/build/Message.pb.cc">
-			<Option target="cppTest"/>
-		</Unit>
-		<Unit filename="/Users/zjz/work/cpp/cpp_test/build/Message.pb.h.rule">
-			<Option target="cppTest"/>
-		</Unit>
 		<Unit filename="/Users/zjz/work/cpp/cpp_test/build/Pose.pb.cc">
 			<Option target="cppTest"/>
 		</Unit>
 		<Unit filename="/Users/zjz/work/cpp/cpp_test/build/Pose.pb.h.rule">
 			<Option target="cppTest"/>
 		</Unit>
-		<Unit filename="/Users/zjz/work/cpp/cpp_test/tests/databus_test.cpp">
+		<Unit filename="/Users/zjz/work/cpp/cpp_test/build/Protocol.pb.cc">
+			<Option target="cppTest"/>
+		</Unit>
+		<Unit filename="/Users/zjz/work/cpp/cpp_test/build/Protocol.pb.h.rule">
+			<Option target="cppTest"/>
+		</Unit>
+		<Unit filename="/Users/zjz/work/cpp/cpp_test/tests/databus_ws_test.cpp">
 			<Option target="cppTest"/>
 		</Unit>
 		<Unit filename="/Users/zjz/work/cpp/cpp_test/CMakeLists.txt">

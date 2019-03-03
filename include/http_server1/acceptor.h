@@ -1,6 +1,6 @@
 #pragma once
 
-#include "common.h"
+#include "attr.h"
 #include "http_utils.h"
 #include "http_session.h"
 
@@ -42,6 +42,8 @@ namespace http_server {
                         if (ec) {
                             Logger::error("Acceptor", "On accept http session error, {}.", ec.message());
                         } else {
+                            Logger::info("HttpSession", "New http session, host={}, port={}.",
+                                         socket.remote_endpoint().address().to_string(), socket.remote_endpoint().port());
                             HttpSessionPtr session(new HttpSession(std::move(socket), attr_));
                             std::lock_guard<std::mutex> locker(attr_.http_mutex);
                             attr_.http_sessions.insert(session);

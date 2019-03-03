@@ -1,11 +1,11 @@
 file(REMOVE_RECURSE
-  "Message.pb.h"
-  "Message.pb.cc"
+  "Protocol.pb.h"
+  "Protocol.pb.cc"
   "Pose.pb.h"
   "Pose.pb.cc"
-  "CMakeFiles/cppTest.dir/Message.pb.cc.o"
+  "CMakeFiles/cppTest.dir/Protocol.pb.cc.o"
   "CMakeFiles/cppTest.dir/Pose.pb.cc.o"
-  "CMakeFiles/cppTest.dir/tests/databus_test.cpp.o"
+  "CMakeFiles/cppTest.dir/tests/databus_ws_test.cpp.o"
   "cppTest.pdb"
   "cppTest"
 )

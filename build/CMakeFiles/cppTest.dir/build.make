@@ -57,13 +57,13 @@ include CMakeFiles/cppTest.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/cppTest.dir/flags.make
 
-Message.pb.h: ../protobuf/Message.proto
-Message.pb.h: /usr/local/bin/protoc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/zjz/work/cpp/cpp_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running cpp protocol buffer compiler on protobuf/Message.proto"
-	/usr/local/bin/protoc --cpp_out /Users/zjz/work/cpp/cpp_test/build -I /Users/zjz/work/cpp/cpp_test/protobuf /Users/zjz/work/cpp/cpp_test/protobuf/Message.proto
+Protocol.pb.h: ../protobuf/Protocol.proto
+Protocol.pb.h: /usr/local/bin/protoc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/zjz/work/cpp/cpp_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running cpp protocol buffer compiler on protobuf/Protocol.proto"
+	/usr/local/bin/protoc --cpp_out /Users/zjz/work/cpp/cpp_test/build -I /Users/zjz/work/cpp/cpp_test/protobuf /Users/zjz/work/cpp/cpp_test/protobuf/Protocol.proto
 
-Message.pb.cc: Message.pb.h
-	@$(CMAKE_COMMAND) -E touch_nocreate Message.pb.cc
+Protocol.pb.cc: Protocol.pb.h
+	@$(CMAKE_COMMAND) -E touch_nocreate Protocol.pb.cc
 
 Pose.pb.h: ../protobuf/Pose.proto
 Pose.pb.h: /usr/local/bin/protoc
@@ -73,18 +73,18 @@ Pose.pb.h: /usr/local/bin/protoc
 Pose.pb.cc: Pose.pb.h
 	@$(CMAKE_COMMAND) -E touch_nocreate Pose.pb.cc
 
-CMakeFiles/cppTest.dir/Message.pb.cc.o: CMakeFiles/cppTest.dir/flags.make
-CMakeFiles/cppTest.dir/Message.pb.cc.o: Message.pb.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zjz/work/cpp/cpp_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/cppTest.dir/Message.pb.cc.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cppTest.dir/Message.pb.cc.o -c /Users/zjz/work/cpp/cpp_test/build/Message.pb.cc
+CMakeFiles/cppTest.dir/Protocol.pb.cc.o: CMakeFiles/cppTest.dir/flags.make
+CMakeFiles/cppTest.dir/Protocol.pb.cc.o: Protocol.pb.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zjz/work/cpp/cpp_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/cppTest.dir/Protocol.pb.cc.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cppTest.dir/Protocol.pb.cc.o -c /Users/zjz/work/cpp/cpp_test/build/Protocol.pb.cc
 
-CMakeFiles/cppTest.dir/Message.pb.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cppTest.dir/Message.pb.cc.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zjz/work/cpp/cpp_test/build/Message.pb.cc > CMakeFiles/cppTest.dir/Message.pb.cc.i
+CMakeFiles/cppTest.dir/Protocol.pb.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cppTest.dir/Protocol.pb.cc.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zjz/work/cpp/cpp_test/build/Protocol.pb.cc > CMakeFiles/cppTest.dir/Protocol.pb.cc.i
 
-CMakeFiles/cppTest.dir/Message.pb.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cppTest.dir/Message.pb.cc.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zjz/work/cpp/cpp_test/build/Message.pb.cc -o CMakeFiles/cppTest.dir/Message.pb.cc.s
+CMakeFiles/cppTest.dir/Protocol.pb.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cppTest.dir/Protocol.pb.cc.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zjz/work/cpp/cpp_test/build/Protocol.pb.cc -o CMakeFiles/cppTest.dir/Protocol.pb.cc.s
 
 CMakeFiles/cppTest.dir/Pose.pb.cc.o: CMakeFiles/cppTest.dir/flags.make
 CMakeFiles/cppTest.dir/Pose.pb.cc.o: Pose.pb.cc
@@ -99,31 +99,31 @@ CMakeFiles/cppTest.dir/Pose.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cppTest.dir/Pose.pb.cc.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zjz/work/cpp/cpp_test/build/Pose.pb.cc -o CMakeFiles/cppTest.dir/Pose.pb.cc.s
 
-CMakeFiles/cppTest.dir/tests/databus_test.cpp.o: CMakeFiles/cppTest.dir/flags.make
-CMakeFiles/cppTest.dir/tests/databus_test.cpp.o: ../tests/databus_test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zjz/work/cpp/cpp_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/cppTest.dir/tests/databus_test.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cppTest.dir/tests/databus_test.cpp.o -c /Users/zjz/work/cpp/cpp_test/tests/databus_test.cpp
+CMakeFiles/cppTest.dir/tests/databus_ws_test.cpp.o: CMakeFiles/cppTest.dir/flags.make
+CMakeFiles/cppTest.dir/tests/databus_ws_test.cpp.o: ../tests/databus_ws_test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zjz/work/cpp/cpp_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/cppTest.dir/tests/databus_ws_test.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cppTest.dir/tests/databus_ws_test.cpp.o -c /Users/zjz/work/cpp/cpp_test/tests/databus_ws_test.cpp
 
-CMakeFiles/cppTest.dir/tests/databus_test.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cppTest.dir/tests/databus_test.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zjz/work/cpp/cpp_test/tests/databus_test.cpp > CMakeFiles/cppTest.dir/tests/databus_test.cpp.i
+CMakeFiles/cppTest.dir/tests/databus_ws_test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cppTest.dir/tests/databus_ws_test.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zjz/work/cpp/cpp_test/tests/databus_ws_test.cpp > CMakeFiles/cppTest.dir/tests/databus_ws_test.cpp.i
 
-CMakeFiles/cppTest.dir/tests/databus_test.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cppTest.dir/tests/databus_test.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zjz/work/cpp/cpp_test/tests/databus_test.cpp -o CMakeFiles/cppTest.dir/tests/databus_test.cpp.s
+CMakeFiles/cppTest.dir/tests/databus_ws_test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cppTest.dir/tests/databus_ws_test.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zjz/work/cpp/cpp_test/tests/databus_ws_test.cpp -o CMakeFiles/cppTest.dir/tests/databus_ws_test.cpp.s
 
 # Object files for target cppTest
 cppTest_OBJECTS = \
-"CMakeFiles/cppTest.dir/Message.pb.cc.o" \
+"CMakeFiles/cppTest.dir/Protocol.pb.cc.o" \
 "CMakeFiles/cppTest.dir/Pose.pb.cc.o" \
-"CMakeFiles/cppTest.dir/tests/databus_test.cpp.o"
+"CMakeFiles/cppTest.dir/tests/databus_ws_test.cpp.o"
 
 # External object files for target cppTest
 cppTest_EXTERNAL_OBJECTS =
 
-cppTest: CMakeFiles/cppTest.dir/Message.pb.cc.o
+cppTest: CMakeFiles/cppTest.dir/Protocol.pb.cc.o
 cppTest: CMakeFiles/cppTest.dir/Pose.pb.cc.o
-cppTest: CMakeFiles/cppTest.dir/tests/databus_test.cpp.o
+cppTest: CMakeFiles/cppTest.dir/tests/databus_ws_test.cpp.o
 cppTest: CMakeFiles/cppTest.dir/build.make
 cppTest: /usr/local/lib/libboost_system-mt.dylib
 cppTest: /usr/local/lib/libboost_filesystem-mt.dylib
@@ -147,8 +147,8 @@ CMakeFiles/cppTest.dir/clean:
 	$(CMAKE_COMMAND) -P CMakeFiles/cppTest.dir/cmake_clean.cmake
 .PHONY : CMakeFiles/cppTest.dir/clean
 
-CMakeFiles/cppTest.dir/depend: Message.pb.h
-CMakeFiles/cppTest.dir/depend: Message.pb.cc
+CMakeFiles/cppTest.dir/depend: Protocol.pb.h
+CMakeFiles/cppTest.dir/depend: Protocol.pb.cc
 CMakeFiles/cppTest.dir/depend: Pose.pb.h
 CMakeFiles/cppTest.dir/depend: Pose.pb.cc
 	cd /Users/zjz/work/cpp/cpp_test/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/zjz/work/cpp/cpp_test /Users/zjz/work/cpp/cpp_test /Users/zjz/work/cpp/cpp_test/build /Users/zjz/work/cpp/cpp_test/build /Users/zjz/work/cpp/cpp_test/build/CMakeFiles/cppTest.dir/DependInfo.cmake --color=$(COLOR)

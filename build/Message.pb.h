@@ -25,10 +25,12 @@
 #include <google/protobuf/generated_message_table_driven.h>
 #include <google/protobuf/generated_message_util.h>
 #include <google/protobuf/inlined_string_field.h>
-#include <google/protobuf/metadata_lite.h>
-#include <google/protobuf/message_lite.h>
+#include <google/protobuf/metadata.h>
+#include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/generated_enum_reflection.h>
+#include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 #define PROTOBUF_INTERNAL_EXPORT_protobuf_Message_2eproto 
 
@@ -42,6 +44,7 @@ struct TableStruct {
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
 };
+void AddDescriptors();
 }  // namespace protobuf_Message_2eproto
 namespace msg {
 class Message;
@@ -55,9 +58,31 @@ template<> ::msg::Message* Arena::CreateMaybeMessage<::msg::Message>(Arena*);
 }  // namespace google
 namespace msg {
 
+enum Message_Type {
+  Message_Type_PUB = 0,
+  Message_Type_SUB = 1,
+  Message_Type_UNSUB = 2,
+  Message_Type_Message_Type_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  Message_Type_Message_Type_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool Message_Type_IsValid(int value);
+const Message_Type Message_Type_Type_MIN = Message_Type_PUB;
+const Message_Type Message_Type_Type_MAX = Message_Type_UNSUB;
+const int Message_Type_Type_ARRAYSIZE = Message_Type_Type_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* Message_Type_descriptor();
+inline const ::std::string& Message_Type_Name(Message_Type value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    Message_Type_descriptor(), value);
+}
+inline bool Message_Type_Parse(
+    const ::std::string& name, Message_Type* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<Message_Type>(
+    Message_Type_descriptor(), name, value);
+}
 // ===================================================================
 
-class Message : public ::google::protobuf::MessageLite /* @@protoc_insertion_point(class_definition:msg.Message) */ {
+class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:msg.Message) */ {
  public:
   Message();
   virtual ~Message();
@@ -83,6 +108,7 @@ class Message : public ::google::protobuf::MessageLite /* @@protoc_insertion_poi
     return *this;
   }
   #endif
+  static const ::google::protobuf::Descriptor* descriptor();
   static const Message& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
@@ -107,8 +133,8 @@ class Message : public ::google::protobuf::MessageLite /* @@protoc_insertion_poi
   Message* New(::google::protobuf::Arena* arena) const final {
     return CreateMaybeMessage<Message>(arena);
   }
-  void CheckTypeAndMergeFrom(const ::google::protobuf::MessageLite& from)
-    final;
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
   void CopyFrom(const Message& from);
   void MergeFrom(const Message& from);
   void Clear() final;
@@ -119,13 +145,14 @@ class Message : public ::google::protobuf::MessageLite /* @@protoc_insertion_poi
       ::google::protobuf::io::CodedInputStream* input) final;
   void SerializeWithCachedSizes(
       ::google::protobuf::io::CodedOutputStream* output) const final;
-  void DiscardUnknownFields();
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
   int GetCachedSize() const final { return _cached_size_.Get(); }
 
   private:
   void SharedCtor();
   void SharedDtor();
-  void SetCachedSize(int size) const;
+  void SetCachedSize(int size) const final;
   void InternalSwap(Message* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
@@ -136,15 +163,43 @@ class Message : public ::google::protobuf::MessageLite /* @@protoc_insertion_poi
   }
   public:
 
-  ::std::string GetTypeName() const final;
+  ::google::protobuf::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
 
+  typedef Message_Type Type;
+  static const Type PUB =
+    Message_Type_PUB;
+  static const Type SUB =
+    Message_Type_SUB;
+  static const Type UNSUB =
+    Message_Type_UNSUB;
+  static inline bool Type_IsValid(int value) {
+    return Message_Type_IsValid(value);
+  }
+  static const Type Type_MIN =
+    Message_Type_Type_MIN;
+  static const Type Type_MAX =
+    Message_Type_Type_MAX;
+  static const int Type_ARRAYSIZE =
+    Message_Type_Type_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  Type_descriptor() {
+    return Message_Type_descriptor();
+  }
+  static inline const ::std::string& Type_Name(Type value) {
+    return Message_Type_Name(value);
+  }
+  static inline bool Type_Parse(const ::std::string& name,
+      Type* value) {
+    return Message_Type_Parse(name, value);
+  }
+
   // accessors -------------------------------------------------------
 
-  // string topic = 1;
+  // string topic = 3;
   void clear_topic();
-  static const int kTopicFieldNumber = 1;
+  static const int kTopicFieldNumber = 3;
   const ::std::string& topic() const;
   void set_topic(const ::std::string& value);
   #if LANG_CXX11
@@ -156,26 +211,40 @@ class Message : public ::google::protobuf::MessageLite /* @@protoc_insertion_poi
   ::std::string* release_topic();
   void set_allocated_topic(::std::string* topic);
 
-  // string data = 2;
+  // bytes data = 4;
   void clear_data();
-  static const int kDataFieldNumber = 2;
+  static const int kDataFieldNumber = 4;
   const ::std::string& data() const;
   void set_data(const ::std::string& value);
   #if LANG_CXX11
   void set_data(::std::string&& value);
   #endif
   void set_data(const char* value);
-  void set_data(const char* value, size_t size);
+  void set_data(const void* value, size_t size);
   ::std::string* mutable_data();
   ::std::string* release_data();
   void set_allocated_data(::std::string* data);
 
+  // bool gzip = 1;
+  void clear_gzip();
+  static const int kGzipFieldNumber = 1;
+  bool gzip() const;
+  void set_gzip(bool value);
+
+  // .msg.Message.Type type = 2;
+  void clear_type();
+  static const int kTypeFieldNumber = 2;
+  ::msg::Message_Type type() const;
+  void set_type(::msg::Message_Type value);
+
   // @@protoc_insertion_point(class_scope:msg.Message)
  private:
 
-  ::google::protobuf::internal::InternalMetadataWithArenaLite _internal_metadata_;
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr topic_;
   ::google::protobuf::internal::ArenaStringPtr data_;
+  bool gzip_;
+  int type_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_Message_2eproto::TableStruct;
 };
@@ -190,7 +259,35 @@ class Message : public ::google::protobuf::MessageLite /* @@protoc_insertion_poi
 #endif  // __GNUC__
 // Message
 
-// string topic = 1;
+// bool gzip = 1;
+inline void Message::clear_gzip() {
+  gzip_ = false;
+}
+inline bool Message::gzip() const {
+  // @@protoc_insertion_point(field_get:msg.Message.gzip)
+  return gzip_;
+}
+inline void Message::set_gzip(bool value) {
+  
+  gzip_ = value;
+  // @@protoc_insertion_point(field_set:msg.Message.gzip)
+}
+
+// .msg.Message.Type type = 2;
+inline void Message::clear_type() {
+  type_ = 0;
+}
+inline ::msg::Message_Type Message::type() const {
+  // @@protoc_insertion_point(field_get:msg.Message.type)
+  return static_cast< ::msg::Message_Type >(type_);
+}
+inline void Message::set_type(::msg::Message_Type value) {
+  
+  type_ = value;
+  // @@protoc_insertion_point(field_set:msg.Message.type)
+}
+
+// string topic = 3;
 inline void Message::clear_topic() {
   topic_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -243,7 +340,7 @@ inline void Message::set_allocated_topic(::std::string* topic) {
   // @@protoc_insertion_point(field_set_allocated:msg.Message.topic)
 }
 
-// string data = 2;
+// bytes data = 4;
 inline void Message::clear_data() {
   data_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -270,7 +367,7 @@ inline void Message::set_data(const char* value) {
   data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
   // @@protoc_insertion_point(field_set_char:msg.Message.data)
 }
-inline void Message::set_data(const char* value, size_t size) {
+inline void Message::set_data(const void* value, size_t size) {
   
   data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
@@ -303,6 +400,18 @@ inline void Message::set_allocated_data(::std::string* data) {
 // @@protoc_insertion_point(namespace_scope)
 
 }  // namespace msg
+
+namespace google {
+namespace protobuf {
+
+template <> struct is_proto_enum< ::msg::Message_Type> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::msg::Message_Type>() {
+  return ::msg::Message_Type_descriptor();
+}
+
+}  // namespace protobuf
+}  // namespace google
 
 // @@protoc_insertion_point(global_scope)
 

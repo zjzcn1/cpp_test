@@ -1,9 +1,18 @@
 #pragma once
 
-#include "common.h"
+#include <google/protobuf/descriptor.h>
+#include <google/protobuf/message.h>
+
 #include "ring_queue.h"
+#include "util/common.h"
 
 namespace data_bus {
+
+    // proto message
+    using ProtoMessage = google::protobuf::Message;
+    // callback
+    template<typename T>
+    using Callback = std::function<void(ConstPtr<T>)>;
 
     // base callback
     class CallbackHolder {

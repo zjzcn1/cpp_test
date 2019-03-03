@@ -4,7 +4,7 @@
 #include <string>
 #include <unordered_map>
 
-#include <boost/beast/core.hpp>
+#include <boost/beast.hpp>
 
 namespace http_server {
     namespace beast = boost::beast;
@@ -80,20 +80,21 @@ namespace http_server {
             }
         }
 
-        static std::string path_cat(std::string &base, std::basic_string<char, std::char_traits<char>, std::allocator<char>> path) {
+        static std::string
+        path_cat(std::string &base, std::basic_string<char, std::char_traits<char>, std::allocator<char>> path) {
             if (base.empty()) {
                 return path;
             }
 
             std::string result = base;
 #if BOOST_MSVC
-        char constexpr path_separator = '\\';
-        if(result.back() == path_separator)
-            result.resize(result.size() - 1);
-        result.append(path.data(), path.size());
-        for(auto& c : result)
-            if(c == '/')
-                c = path_separator;
+            char constexpr path_separator = '\\';
+            if(result.back() == path_separator)
+                result.resize(result.size() - 1);
+            result.append(path.data(), path.size());
+            for(auto& c : result)
+                if(c == '/')
+                    c = path_separator;
 #else
             char constexpr path_separator = '/';
             if (result.back() == path_separator)
@@ -181,6 +182,17 @@ namespace http_server {
             vtok.emplace_back(str.substr(start, end));
 
             return vtok;
+        }
+
+        template<typename T>
+        static std::shared_ptr<std::vector<char>> buffers_to_vector(T const &buffers) {
+            std::shared_ptr<std::vector<char>> result(new std::vector<char>());
+            result->reserve(boost::asio::buffer_size(buffers));
+            for (boost::asio::const_buffer buffer : beast::detail::buffers_range(buffers)) {
+                result->insert(result->begin(), static_cast<char const*>(buffer.data()),
+                               static_cast<char const*>(buffer.data()) + buffer.size());
+            }
+            return result;
         }
     };
 }

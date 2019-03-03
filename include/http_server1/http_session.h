@@ -1,6 +1,8 @@
+#include <utility>
+
 #pragma once
 
-#include "common.h"
+#include "attr.h"
 #include "http_utils.h"
 #include "websocket_session.h"
 
@@ -11,13 +13,8 @@ namespace http_server {
     public:
         // Take ownership of the socket
         HttpSession(tcp::socket socket, Attr &attr)
-                : socket_(std::move(socket)), strand_(socket_.get_executor()),
-                  timer_(socket_.get_executor().context(), (std::chrono::steady_clock::time_point::max) ()),
-                  attr_(attr) {
-        }
-
-        ~HttpSession() {
-            Logger::error("cccc", "xxxx");
+                : socket_(std::move(socket)), strand_(socket_.get_executor()), attr_(attr),
+                  timer_(socket_.get_executor().context(), (std::chrono::steady_clock::time_point::max) ()) {
         }
 
         // Start the asynchronous operation
@@ -31,15 +28,12 @@ namespace http_server {
                                         &HttpSession::run,
                                         shared_from_this())));
 
-            // Run the timer. The timer is operated
-            // continuously, this simplifies the code.
-            this->do_timer();
             this->do_read();
         }
 
         void do_read() {
             // Set the timer
-            timer_.expires_after(attr_.timeout);
+//            timer_.expires_after(attr_.timeout);
 
             // Make the request empty before reading,
             // otherwise the operation behavior is undefined.
@@ -56,21 +50,18 @@ namespace http_server {
                                          }
                                          // This means they closed the connection
                                          if (ec == http::error::end_of_stream) {
-                                             do_shutdown();
+                                             do_shutdown("read_end_of_stream");
                                              return;
                                          }
                                          if (ec) {
-                                             Logger::error("HttpSession", "On read data error, error_message={}.",
+                                             Logger::error("HttpSession", "Http read data error, error_message={}.",
                                                            ec.message());
                                              return;
                                          }
 
                                          // See if it is a WebSocket Upgrade
                                          if (websocket::is_upgrade(req_)) {
-                                             this->cancel_timer();
-                                             if (!handle_websocket()) {
-                                                 this->do_shutdown();
-                                             }
+                                             handle_websocket();
                                          } else {
                                              // Send the response
                                              handle_http_request();
@@ -95,55 +86,26 @@ namespace http_server {
                                 }
 
                                 if (ec) {
-                                    Logger::error("HttpSession", "On write error,  error_message={}.", ec.message());
+                                    Logger::error("HttpSession", "Http write error,  error_message={}.", ec.message());
                                     return;
                                 }
-
                                 if (resp->need_eof()) {
                                     // This means we should close the connection, usually because
                                     // the response indicated the "Connection: close" semantic.
-                                    do_shutdown();
+                                    do_shutdown("write_eof");
                                 }
                             }));
         }
 
-        void do_shutdown() {
+        void do_shutdown(std::string reason) {
+            Logger::info("HttpSession", "Socket shutdown[{}], and remove http session, host={}, port={}.", reason,
+                         socket_.remote_endpoint().address().to_string(), socket_.remote_endpoint().port());
             // Send a TCP shutdown
             beast::error_code ec;
-            socket_.shutdown(tcp::socket::shutdown_send, ec);
+            socket_.shutdown(tcp::socket::shutdown_both, ec);
             // At this point the connection is closed gracefully
-        }
-
-        void cancel_timer() {
-            // set the timer to expire immediately
-            timer_.expires_at((std::chrono::steady_clock::time_point::min) ());
-        }
-
-        void do_timer() {
-            // wait on the timer
-            timer_.async_wait(
-                    asio::bind_executor(
-                            strand_,
-                            [this](boost::system::error_code ec) {
-                                if (ec && ec != asio::error::operation_aborted) {
-                                    return;
-                                }
-                                // check if socket has been upgraded or closed
-                                if (timer_.expires_at() == (std::chrono::steady_clock::time_point::min) ()) {
-                                    return;
-                                }
-                                Logger::info("xxx", "ssss");
-                                // check expiry
-                                if (timer_.expiry() <= std::chrono::steady_clock::now()) {
-                                    this->do_timeout();
-                                    return;
-                                }
-                            }));
-        }
-
-        void do_timeout() {
-            cancel_timer();
-            this->do_shutdown();
+            std::lock_guard<std::mutex> locker(attr_.http_mutex);
+            attr_.http_sessions.erase(shared_from_this());
         }
 
         HttpStatus handle_static() {
@@ -167,7 +129,7 @@ namespace http_server {
                 return HttpStatus::not_found;
             }
 
-            auto const size = body.size();
+            std::uint64_t const size = body.size();
             FileResponsePtr resp = FileResponsePtr(new FileResponse{
                     std::piecewise_construct,
                     std::make_tuple(std::move(body)),
@@ -286,41 +248,13 @@ namespace http_server {
             }
         }
 
-        bool handle_websocket() {
-            // the request path
-            std::string path{req_.target().to_string()};
+        void handle_websocket() {
+            WebsocketSessionPtr session(new WebsocketSession(std::move(socket_), attr_, std::move(req_)));
+            std::lock_guard<std::mutex> locker(attr_.websocket_mutex);
+            attr_.websocket_sessions.insert(session);
+            Logger::info("HttpSession", "Create new websocket session, session_id={}.", session->session_id());
 
-            // separate the query parameters
-            std::vector<std::string> params = HttpUtils::split(path, "?", 1);
-            path = params.at(0);
-            req_.path = path;
-
-            // regex variables
-            std::smatch rx_match{};
-            std::regex_constants::syntax_option_type const rx_opts{std::regex::ECMAScript};
-            std::regex_constants::match_flag_type const rx_flgs{std::regex_constants::match_not_null};
-
-            // check for matching route
-            for (auto const &route_item : attr_.websocket_routes) {
-                std::regex rx_str{route_item.first, rx_opts};
-
-                if (std::regex_match(path, rx_match, rx_str, rx_flgs)) {
-                    WebsocketSessionPtr session(
-                            new WebsocketSession(std::move(socket_), attr_, std::move(req_), route_item.second));
-                    {
-                        std::lock_guard<std::mutex> locker(attr_.websocket_mutex);
-                        if (attr_.websocket_sessions.find(path) == attr_.websocket_sessions.end()) {
-                            attr_.websocket_sessions[path] = std::set<WebsocketSessionPtr>{};
-                        }
-                        attr_.websocket_sessions[path].insert(session);
-                        Logger::info("HttpSession", "Add new websocket session, path={}.", path);
-                    }
-                    session->do_accept();
-                    return true;
-                }
-            }
-
-            return false;
+            session->do_accept();
         }
 
     private:
@@ -331,6 +265,5 @@ namespace http_server {
         Attr &attr_;
         HttpRequest req_;
         std::shared_ptr<void> resp_;
-
     };
 }

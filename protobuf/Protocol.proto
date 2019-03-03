@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package protocol;
+
+message Message
+{
+    enum Type {
+        PUB = 0;
+        SUB = 1;
+        UNSUB = 2;
+    }
+    bool gzip = 1;
+    Type type = 2;
+    string topic = 3;
+    bytes data = 4;
+}
+
+message SubInfo
+{
+    bool gzip = 1;
+}
+
+message UnSubInfo
+{
+    int64 sub_id = 1;
+}
