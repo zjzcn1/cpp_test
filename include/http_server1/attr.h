@@ -31,10 +31,7 @@ namespace http_server {
     using HttpHeader = boost::beast::http::field;
     using HttpHeaders = boost::beast::http::fields;
 
-    struct HttpRequest : public http::request<http::string_body> {
-        std::string path;
-        std::unordered_multimap<std::string, std::string> params;
-    };
+    using HttpRequest = http::request<http::string_body>;
 
     using HttpResponse = http::response<http::string_body>;
     using HttpResponsePtr = std::shared_ptr<HttpResponse>;

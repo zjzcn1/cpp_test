@@ -159,8 +159,6 @@ namespace http_server {
             // separate the query parameters
             auto params = HttpUtils::split(path, "?", 1);
             path = params.at(0);
-            req_.path = path;
-            HttpUtils::params_parse(path, req_.params);
 
             // iterate over routes
             for (auto const &regex_method : attr_.http_routes) {
@@ -182,23 +180,22 @@ namespace http_server {
                     if (std::regex_match(path, rx_match, rx_str, rx_flgs)) {
                         // set callback function
                         HttpResponsePtr resp = HttpResponsePtr(new HttpResponse());
+                        HttpHandler const &http_handler = match->second;
                         try {
-                            HttpHandler const &http_handler = match->second;
                             // handle biz
                             http_handler(req_, *resp);
-
-                            resp->version(req_.version());
-                            resp->keep_alive(req_.keep_alive());
-                            resp->content_length(resp->body().size());
-
-                            do_write(std::move(resp));
-
-                            return HttpStatus::ok;
                         }
                         catch (std::exception &e) {
-                            Logger::error("HttpSession", "Handle http error,  error_message={}.", e.what());
+                            Logger::error("HttpSession", "Call http_handler error,  error_message={}.", e.what());
                             return HttpStatus::internal_server_error;
                         }
+                        resp->version(req_.version());
+                        resp->keep_alive(req_.keep_alive());
+                        resp->content_length(resp->body().size());
+
+                        do_write(std::move(resp));
+
+                        return HttpStatus::ok;
                     }
                 }
             }
