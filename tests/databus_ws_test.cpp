@@ -15,6 +15,90 @@ using namespace data_bus;
 using namespace http_server;
 using json = nlohmann::json;
 
+
+/**
+ *
+ * import * as ProtoBuf from "protobufjs";
+
+let protoDefine = `
+  syntax = "proto3";
+  package protocol;
+
+  message Message
+  {
+    enum Type {
+        PUB = 0;
+        SUB = 1;
+        UNSUB = 2;
+    }
+    bool gzip = 1;
+    Type type = 2;
+    string topic = 3;
+    bytes data = 4;
+  }
+  message SubInfo
+  {
+    bool gzip = 1;
+  }
+
+  message UnSubInfo
+  {
+    int64 sub_id = 1;
+  }
+
+  message Pose
+  {
+    int32 id = 1;
+    string name = 2;
+  }
+  `;
+
+let builder = ProtoBuf.parse(protoDefine);
+
+let Pose  = builder.root.lookupType("protocol.Pose");
+let Message  = builder.root.lookupType("protocol.Message");
+let SubInfo  = builder.root.lookupType("protocol.SubInfo");
+
+export {Pose, Message, SubInfo};
+
+
+ * / const ws = new ReconnectingWebSocket('ws://127.0.0.1:8084/ws');
+ws.addEventListener('open', () => {
+  console.log('ws opened.')
+  Bus.$emit('ws_connected', true);
+
+  ws.binaryType = 'arraybuffer';
+
+  let sub = SubInfo.create({gzip: true});
+  console.log(sub);
+  let data = Pako.gzip(SubInfo.encode(sub).finish());
+  console.log(data);
+  const msg = Message.create({gzip: true, topic: 'chat', type: Message.Type.SUB, data: data});
+
+  ws.send(Message.encode(msg).finish())
+});
+
+ws.addEventListener('close', () => {
+  console.log('ws closed.')
+  Bus.$emit('ws_connected', false);
+});
+
+ws.addEventListener('message', (event) => {
+  console.log(event);
+  let message = Message.decode(new Uint8Array(event.data));
+  console.log(message)
+  if (message.gzip) {
+    let pose = Pako.inflate(message.data);
+    let p = Pose.decode(new Uint8Array(pose));
+    console.log(p)
+  } else {
+    let p = Pose.decode(new Uint8Array(message.data));
+    console.log(p)
+  }
+
+});
+
+ */
 struct ChatMsg {
     explicit ChatMsg() {
         time = std::chrono::system_clock::now().time_since_epoch().count();

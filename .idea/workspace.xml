@@ -12,70 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="55697497-4bf1-4b1b-8e71-d15b245755fe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/include/data_bus0/data_bus.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/data_bus0/queue_stat.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/data_bus0/queue_worker.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/http_server0/http_server.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/http_server0/http_session.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/http_server0/websocket_session.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/protobuf/PointCloud.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/ndt_test.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/rslidar16_test.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/CMakeRuleHashes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/CMakeRuleHashes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/Message.pb.cc.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/Pose.pb.cc.o" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/Pose.pb.cc.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/Protocol.pb.cc.o" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/Protocol.pb.cc.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/tests/databus_test.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/CMakeFiles/cppTest.dir/tests/databus_ws_test.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/build/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/Message.pb.cc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/Message.pb.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/Protocol.pb.cc" beforeDir="false" afterPath="$PROJECT_DIR$/build/Protocol.pb.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/Protocol.pb.h" beforeDir="false" afterPath="$PROJECT_DIR$/build/Protocol.pb.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/cppTest" beforeDir="false" afterPath="$PROJECT_DIR$/build/cppTest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/cppTest.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/build/cppTest.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/data_bus/data_bus.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/data_bus/data_bus.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/data_bus/filter.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/data_bus0/filter.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/data_bus/queue_stat.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/data_bus/queue_stat.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/data_bus/queue_worker.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/data_bus/queue_worker.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/data_bus/ring_queue.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/data_bus/ring_queue.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/data_bus3/data_bus.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/data_bus3/publisher.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/data_bus/publisher.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/data_bus3/queue_stat.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/data_bus3/queue_worker.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/data_bus3/ring_queue.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/data_bus0/ring_queue.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/data_bus3/subscriber.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/data_bus/subscriber.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/http_server/acceptor.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/http_server/acceptor.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/http_server/base64.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/http_server0/base64.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/http_server/common.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/http_server0/common.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/http_server/http_server.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/http_server/http_server.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/http_server/http_session.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/http_server/http_session.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/http_server/http_utils.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/http_server/http_utils.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/http_server/websocket_session.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/http_server/websocket_session.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/http_server1/acceptor.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/http_server0/acceptor.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/http_server1/attr.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/http_server/attr.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/http_server1/http_server.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/http_server1/http_session.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/http_server1/http_utils.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/http_server0/http_utils.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/http_server1/websocket_session.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/tcp_tool/acceptor.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/tcp_tool/acceptor.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/tcp_tool/tcp_client.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/tcp_tool/tcp_client.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/tcp_tool/tcp_session.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/tcp_tool/tcp_session.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protobuf/Protocol.proto" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/Protocol.proto" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/databus_ws_test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/databus_ws_test.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/tcp_test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tcp_test.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -88,11 +25,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/databus_ws_test.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2175">
-              <caret line="145" selection-start-line="145" selection-end-line="148" selection-end-column="1" />
+            <state relative-caret-position="-238">
+              <caret line="63" column="1" selection-start-line="63" selection-start-column="1" selection-end-line="63" selection-end-column="1" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -136,7 +73,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/ndt_test.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="404">
@@ -300,7 +237,6 @@
         <option value="$PROJECT_DIR$/include/http_server1/attr.h" />
         <option value="$PROJECT_DIR$/include/http_server1/http_session.h" />
         <option value="$PROJECT_DIR$/protobuf/Protocol.proto" />
-        <option value="$PROJECT_DIR$/tests/databus_ws_test.cpp" />
         <option value="$PROJECT_DIR$/tests/socket_test.cpp" />
         <option value="$PROJECT_DIR$/include/tcp_tool/tcp_client.h" />
         <option value="$PROJECT_DIR$/tests/rslidar16_test.cpp" />
@@ -310,6 +246,7 @@
         <option value="$PROJECT_DIR$/include/tcp_tool/tcp_server.h" />
         <option value="$PROJECT_DIR$/tests/tcp_test.cpp" />
         <option value="$PROJECT_DIR$/tests/ndt_test.cpp" />
+        <option value="$PROJECT_DIR$/tests/databus_ws_test.cpp" />
       </list>
     </option>
   </component>
@@ -335,12 +272,6 @@
               <item name="cppTest" type="b2602c69:ProjectViewProjectNode" />
               <item name="cpp_test" type="462c0819:PsiDirectoryNode" />
               <item name="include" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cppTest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cpp_test" type="462c0819:PsiDirectoryNode" />
-              <item name="include" type="462c0819:PsiDirectoryNode" />
-              <item name="tcp_tool" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cppTest" type="b2602c69:ProjectViewProjectNode" />
@@ -421,12 +352,12 @@
       <workItem from="1550795796851" duration="411000" />
       <workItem from="1550800468480" duration="159862000" />
       <workItem from="1551961119123" duration="3398000" />
-      <workItem from="1552027884676" duration="523000" />
+      <workItem from="1552027884676" duration="781000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="407212000" />
+    <option name="totallyTimeSpent" value="407470000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="797" extended-state="0" />
@@ -443,7 +374,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4985694" weight="0.30496454" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4985694" visible="true" weight="0.30496454" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50143063" side_tool="true" weight="0.3602837" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32907802" />
       <window_info anchor="bottom" id="CMake" order="11" weight="0.32907802" />
@@ -808,16 +739,6 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/socket_test.h" />
-    <entry file="file://$PROJECT_DIR$/tests/databus_ws_test.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2175">
-          <caret line="145" selection-start-line="145" selection-end-line="148" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/rslidar16_test.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -874,6 +795,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="404">
           <caret line="743" selection-start-line="743" selection-end-line="743" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/databus_ws_test.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-238">
+          <caret line="63" column="1" selection-start-line="63" selection-start-column="1" selection-end-line="63" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
