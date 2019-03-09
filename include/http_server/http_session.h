@@ -1,6 +1,8 @@
+#include <utility>
+
 #pragma once
 
-#include "common.h"
+#include "attr.h"
 #include "http_utils.h"
 #include "websocket_session.h"
 
@@ -8,21 +10,11 @@ namespace http_server {
 
     // Handles an HTTP server connection
     class HttpSession : public std::enable_shared_from_this<HttpSession> {
-    private:
-        tcp::socket socket_;
-        asio::strand<asio::io_context::executor_type> strand_;
-        asio::steady_timer timer_;
-        beast::flat_buffer buffer_;
-        HttpConfig &http_config_;
-        HttpRequest req_;
-        std::shared_ptr<void> res_;
-
     public:
         // Take ownership of the socket
-        explicit HttpSession(tcp::socket socket, HttpConfig &http_config)
-                : socket_(std::move(socket)), strand_(socket_.get_executor()),
-                  timer_(socket_.get_executor().context(), (std::chrono::steady_clock::time_point::max) ()),
-                  http_config_(http_config) {
+        HttpSession(tcp::socket socket, Attr &attr)
+                : socket_(std::move(socket)), strand_(socket_.get_executor()), attr_(attr),
+                  timer_(socket_.get_executor().context(), (std::chrono::steady_clock::time_point::max) ()) {
         }
 
         // Start the asynchronous operation
@@ -36,173 +28,88 @@ namespace http_server {
                                         &HttpSession::run,
                                         shared_from_this())));
 
-            // Run the timer. The timer is operated
-            // continuously, this simplifies the code.
-            this->do_timer();
             this->do_read();
         }
 
         void do_read() {
             // Set the timer
-            timer_.expires_after(std::chrono::seconds(http_config_.timeout));
+//            timer_.expires_after(attr_.timeout);
 
             // Make the request empty before reading,
             // otherwise the operation behavior is undefined.
             req_ = {};
 
             // Read a request
-            http::async_read(socket_, buffer_, req_,
+            http::async_read(socket_, read_buffer_, req_,
                              asio::bind_executor(
                                      strand_,
-                                     std::bind(
-                                             &HttpSession::on_read,
-                                             shared_from_this(),
-                                             std::placeholders::_1, std::placeholders::_2)));
+                                     [this](boost::system::error_code ec, std::size_t bytes_transferred) {
+                                         // happens when the timer closes the socket
+                                         if (ec == asio::error::operation_aborted) {
+                                             return;
+                                         }
+                                         // This means they closed the connection
+                                         if (ec == http::error::end_of_stream) {
+                                             do_shutdown("read_end_of_stream");
+                                             return;
+                                         }
+                                         if (ec) {
+                                             Logger::error("HttpSession", "Http read data error, error_message={}.",
+                                                           ec.message());
+                                             return;
+                                         }
+
+                                         // See if it is a WebSocket Upgrade
+                                         if (websocket::is_upgrade(req_)) {
+                                             handle_websocket();
+                                         } else {
+                                             // Send the response
+                                             handle_http_request();
+
+                                             do_read();
+                                         }
+                                     }));
         }
 
-        void on_read(beast::error_code ec, std::size_t bytes_) {
-            boost::ignore_unused(bytes_);
-            // happens when the timer closes the socket
-            if (ec == asio::error::operation_aborted) {
-                return;
-            }
-            // This means they closed the connection
-            if (ec == http::error::end_of_stream) {
-                do_close();
-                return;
-            }
+        template<typename T>
+        void do_write(std::shared_ptr<http::response<T>> resp) {
+            this->resp_ = resp;
+            http::async_write(
+                    socket_,
+                    *resp,
+                    asio::bind_executor(
+                            strand_,
+                            [this, resp](boost::system::error_code ec, std::size_t bytes_transferred) {
+                                // Happens when the timer closes the socket
+                                if (ec == asio::error::operation_aborted) {
+                                    return;
+                                }
 
-            if (ec){
-                Logger::error("HttpSession on_read error,  error_message={}.", ec.message());
-                return;
-            }
-
-            // See if it is a WebSocket Upgrade
-            if (websocket::is_upgrade(req_)) {
-                // Make timer expire immediately, by setting expiry to time_point::min we can detect
-                // the upgrade to websocket in the timer handler
-                timer_.expires_at((std::chrono::steady_clock::time_point::min) ());
-
-                // Create a WebSocket websocket_session by transferring the socket
-                if (handle_websocket()) {
-                    this->cancel_timer();
-                    return;
-                } else {
-                    this->do_shutdown();
-                    return;
-                }
-            }
-
-            // Send the response
-            handle_http_request();
-
-            do_read();
+                                if (ec) {
+                                    Logger::error("HttpSession", "Http write error,  error_message={}.", ec.message());
+                                    return;
+                                }
+                                if (resp->need_eof()) {
+                                    // This means we should close the connection, usually because
+                                    // the response indicated the "Connection: close" semantic.
+                                    do_shutdown("write_eof");
+                                }
+                            }));
         }
 
-        void on_write(beast::error_code ec, bool close) {
-            // Happens when the timer closes the socket
-            if (ec == asio::error::operation_aborted) {
-                return;
-            }
-
-            if (ec) {
-                Logger::error("HttpSession on_write error,  error_message={}.", ec.message());
-                return;
-            }
-
-            if (close) {
-                // This means we should close the connection, usually because
-                // the response indicated the "Connection: close" semantic.
-                return do_close();
-            }
-        }
-
-        void do_close() {
+        void do_shutdown(std::string reason) {
+            Logger::info("HttpSession", "Socket shutdown[{}], and remove http session, host={}, port={}.", reason,
+                         socket_.remote_endpoint().address().to_string(), socket_.remote_endpoint().port());
             // Send a TCP shutdown
             beast::error_code ec;
-            socket_.shutdown(tcp::socket::shutdown_send, ec);
+            socket_.shutdown(tcp::socket::shutdown_both, ec);
             // At this point the connection is closed gracefully
-        }
-
-
-        void cancel_timer() {
-            // set the timer to expire immediately
-            timer_.expires_at((std::chrono::steady_clock::time_point::min) ());
-        }
-
-        void do_timer() {
-            // wait on the timer
-            timer_.async_wait(
-                    asio::bind_executor(strand_,
-                                        std::bind(&HttpSession::on_timer, shared_from_this(), std::placeholders::_1)));
-        }
-
-        void on_timer(beast::error_code ec_ = {}) {
-            if (ec_ && ec_ != asio::error::operation_aborted) {
-                // TODO log here
-                return;
-            }
-
-            // check if socket has been upgraded or closed
-            if (timer_.expires_at() == (std::chrono::steady_clock::time_point::min) ()) {
-                return;
-            }
-
-            // check expiry
-            if (timer_.expiry() <= std::chrono::steady_clock::now()) {
-                this->do_timeout();
-                return;
-            }
-        }
-
-        void do_timeout() {
-            this->do_shutdown();
-        }
-
-        void do_shutdown() {
-            beast::error_code ec;
-
-            // send a tcp shutdown
-            socket_.shutdown(tcp::socket::shutdown_send, ec);
-
-            this->cancel_timer();
-
-            if (ec) {
-                // TODO log here
-                return;
-            }
-        }
-
-        void send_http(HttpResponsePtr res) {
-            this->res_ = res;
-            http::async_write(
-                    socket_,
-                    *res,
-                    asio::bind_executor(
-                            strand_,
-                            std::bind(
-                                    &HttpSession::on_write,
-                                    shared_from_this(),
-                                    std::placeholders::_1,
-                                    res->need_eof())));
-        }
-
-        void send_file(FileResponsePtr res) {
-            this->res_ = res;
-            http::async_write(
-                    socket_,
-                    *res,
-                    asio::bind_executor(
-                            strand_,
-                            std::bind(
-                                    &HttpSession::on_write,
-                                    shared_from_this(),
-                                    std::placeholders::_1,
-                                    res->need_eof())));
+            std::lock_guard<std::mutex> locker(attr_.http_mutex);
+            attr_.http_sessions.erase(shared_from_this());
         }
 
         HttpStatus handle_static() {
-            if (http_config_.webroot.empty()) {
+            if (attr_.webroot.empty()) {
                 return HttpStatus::not_found;
             }
 
@@ -210,9 +117,9 @@ namespace http_server {
                 return HttpStatus::not_found;
             }
 
-            std::string path = HttpUtils::path_cat(http_config_.webroot, req_.target().to_string());
+            std::string path = HttpUtils::path_cat(attr_.webroot, req_.target().to_string());
             if (req_.target().back() == '/') {
-                path.append(http_config_.index_file);
+                path.append(attr_.index_file);
             }
 
             boost::system::error_code ec;
@@ -222,22 +129,22 @@ namespace http_server {
                 return HttpStatus::not_found;
             }
 
-            auto const size = body.size();
-            FileResponsePtr res = FileResponsePtr(new FileResponse{
+            std::uint64_t const size = body.size();
+            FileResponsePtr resp = FileResponsePtr(new FileResponse{
                     std::piecewise_construct,
                     std::make_tuple(std::move(body)),
-                    std::make_tuple(http_config_.http_headers)
+                    std::make_tuple(attr_.http_headers)
             });
-            res->version(req_.version());
-            res->keep_alive(req_.keep_alive());
-            res->content_length(size);
-            res->set(HttpHeader::content_type, HttpUtils::mime_type(path));
-            send_file(res);
+            resp->version(req_.version());
+            resp->keep_alive(req_.keep_alive());
+            resp->content_length(size);
+            resp->set(HttpHeader::content_type, HttpUtils::mime_type(path));
+            do_write(resp);
             return HttpStatus::ok;
         }
 
         HttpStatus handle_dynamic() {
-            if (http_config_.http_routes.empty()) {
+            if (attr_.http_routes.empty()) {
                 return HttpStatus::not_found;
             }
 
@@ -252,11 +159,9 @@ namespace http_server {
             // separate the query parameters
             auto params = HttpUtils::split(path, "?", 1);
             path = params.at(0);
-            req_.path = path;
-            HttpUtils::params_parse(path, req_.params);
 
             // iterate over routes
-            for (auto const &regex_method : http_config_.http_routes) {
+            for (auto const &regex_method : attr_.http_routes) {
                 bool method_match{false};
                 auto match = regex_method.second.find(static_cast<int>(HttpMethod::unknown));
 
@@ -274,24 +179,23 @@ namespace http_server {
                     std::regex rx_str{regex_method.first, rx_opts};
                     if (std::regex_match(path, rx_match, rx_str, rx_flgs)) {
                         // set callback function
-                        HttpResponsePtr res = HttpResponsePtr(new HttpResponse());
+                        HttpResponsePtr resp = HttpResponsePtr(new HttpResponse());
+                        HttpHandler const &http_handler = match->second;
                         try {
-                            HttpHandler const &http_handler = match->second;
                             // handle biz
-                            http_handler(req_, *res);
-
-                            res->version(req_.version());
-                            res->keep_alive(req_.keep_alive());
-                            res->content_length(res->body().size());
-
-                            send_http(std::move(res));
-
-                            return HttpStatus::ok;
+                            http_handler(req_, *resp);
                         }
                         catch (std::exception &e) {
-                            Logger::error("HttpSession handle http error,  error_message={}.", e.what());
+                            Logger::error("HttpSession", "Call http_handler error,  error_message={}.", e.what());
                             return HttpStatus::internal_server_error;
                         }
+                        resp->version(req_.version());
+                        resp->keep_alive(req_.keep_alive());
+                        resp->content_length(resp->body().size());
+
+                        do_write(std::move(resp));
+
+                        return HttpStatus::ok;
                     }
                 }
             }
@@ -307,7 +211,7 @@ namespace http_server {
             res->set(HttpHeader::content_type, "text/plain");
             res->body() = "Error: " + std::to_string(res->result_int());
             res->content_length(res->body().size());
-            send_http(res);
+            do_write(res);
         };
 
         void handle_http_request() {
@@ -341,32 +245,22 @@ namespace http_server {
             }
         }
 
-        bool handle_websocket() {
-            // the request path
-            std::string path{req_.target().to_string()};
+        void handle_websocket() {
+            WebsocketSessionPtr session(new WebsocketSession(std::move(socket_), attr_, std::move(req_)));
+            std::lock_guard<std::mutex> locker(attr_.websocket_mutex);
+            attr_.websocket_sessions.insert(session);
+            Logger::info("HttpSession", "Create new websocket session, session_id={}.", session->session_id());
 
-            // separate the query parameters
-            std::vector<std::string> params = HttpUtils::split(path, "?", 1);
-            path = params.at(0);
-            req_.path = path;
-
-            // regex variables
-            std::smatch rx_match{};
-            std::regex_constants::syntax_option_type const rx_opts{std::regex::ECMAScript};
-            std::regex_constants::match_flag_type const rx_flgs{std::regex_constants::match_not_null};
-
-            // check for matching route
-            for (auto const &route_item : http_config_.websocket_routes) {
-                std::regex rx_str{route_item.first, rx_opts};
-
-                if (std::regex_match(path, rx_match, rx_str, rx_flgs)) {
-                    std::make_shared<WebsocketSession>(std::move(socket_), http_config_, std::move(req_),route_item.second)
-                            ->do_accept();
-                    return true;
-                }
-            }
-
-            return false;
+            session->do_accept();
         }
+
+    private:
+        tcp::socket socket_;
+        asio::strand<asio::io_context::executor_type> strand_;
+        asio::steady_timer timer_;
+        beast::flat_buffer read_buffer_;
+        Attr &attr_;
+        HttpRequest req_;
+        std::shared_ptr<void> resp_;
     };
 }

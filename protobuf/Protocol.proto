@@ -2,25 +2,32 @@ syntax = "proto3";
 
 package protocol;
 
-message Message
-{
+message Message {
     enum Type {
         PUB = 0;
         SUB = 1;
-        UNSUB = 2;
+        SUBACK = 2;
+        UNSUB = 3;
     }
-    bool gzip = 1;
-    Type type = 2;
-    string topic = 3;
+    Type type = 1;
+    int64 id = 2;
+    bool compressed = 3;
     bytes data = 4;
 }
 
-message SubInfo
-{
-    bool gzip = 1;
+message SubData {
+    string topic = 1;
+    string subscriber_name = 2;
+    int32 queue_size = 3;
+    int32 throttle_rate = 4;
+    bool compressed = 5;
 }
 
-message UnSubInfo
-{
-    int64 sub_id = 1;
+message SubAckData {
+    int64 subscriber_id = 1;
 }
+
+message UnSubData {
+    int64 subscriber_id = 1;
+}
+

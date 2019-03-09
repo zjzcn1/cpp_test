@@ -1,75 +1,60 @@
 #pragma once
 
-#include <list>
-#include <map>
-#include <functional>
-#include "queue_worker.h"
-#include "filter.h"
+#include "publisher.h"
 
 namespace data_bus {
-    static const int DEFAULT_QUEUE_SIZE = 2;
+
+    static const int DEFAULT_QUEUE_SIZE = 10;
 
     class DataBus {
     public:
         DataBus() = default;
+
         DataBus(const DataBus &) = delete;
+
         DataBus &operator=(const DataBus &) = delete;
 
-        ~DataBus() {
-            std::lock_guard<std::mutex> locker(instance()->mutex_);
-            queue_worker_map_.clear();
-        };
-
         template<typename T>
-        static long subscribe(const std::string topic, const Callback<T> &callback, int queue_size = DEFAULT_QUEUE_SIZE) {
+        static void publish(const std::string topic, Ptr<T> data) {
             std::lock_guard<std::mutex> locker(instance()->mutex_);
-
-            if (instance()->queue_worker_map_.find(topic) == instance()->queue_worker_map_.end()) {
-                instance()->queue_worker_map_[topic] = std::list<QueueWorkerPtr>();
+            if (instance()->publiser_map_.find(topic) == instance()->publiser_map_.end()) {
+                instance()->publiser_map_[topic] = std::make_shared<Publisher>(topic);
             }
 
-            QueueWorkerPtr worker_ptr(new QueueWorkerImpl<T>(topic, callback, queue_size));
-            instance()->queue_worker_map_[topic].push_back(worker_ptr);
-
-            return worker_ptr->getSubscriberId();
+            Ptr<ProtoMessage> message = std::static_pointer_cast<ProtoMessage>(data);
+            instance()->publiser_map_[topic]->putData(message);
         }
 
         template<typename T>
-        static void publish(const std::string topic, ConstPtr<T> data) {
+        static long subscribe(const std::string topic, const std::string subscriber_name, const Callback<T> &callback,
+                              int max_queue_size = DEFAULT_QUEUE_SIZE) {
             std::lock_guard<std::mutex> locker(instance()->mutex_);
-
-            if (instance()->queue_worker_map_.find(topic) == instance()->queue_worker_map_.end()) {
-                instance()->queue_worker_map_[topic] = std::list<QueueWorkerPtr>();
+            if (instance()->publiser_map_.find(topic) == instance()->publiser_map_.end()) {
+                instance()->publiser_map_[topic] = std::make_shared<Publisher>(topic);
             }
 
-            for (QueueWorkerPtr worker_ptr : instance()->queue_worker_map_[topic]) {
-                QueueWorkerImpl<T> *impl = static_cast<QueueWorkerImpl<T> *>(worker_ptr.get());
-                impl->putData(data);
-            }
+            Ptr<Publisher> queue_info = instance()->publiser_map_[topic];
+            long subscriber_id = queue_info->addSubscriber(subscriber_name, callback, max_queue_size);
+            return subscriber_id;
         }
 
-        template<typename T>
-        static void addFilter(long subscriber_id, FilterPtr<T> filter) {
-            std::lock_guard<std::mutex> locker(instance()->mutex_);
 
-            for (auto &pair : instance()->queue_worker_map_) {
-                for (QueueWorkerPtr worker_ptr : pair.second) {
-                    if (worker_ptr->getSubscriberId() == subscriber_id) {
-                        QueueWorkerImpl<T> *impl = static_cast<QueueWorkerImpl<T> *>(worker_ptr.get());
-                        impl->addFilter(filter);
-                    }
+        static bool unsubscribe(long subscriber_id) {
+            std::lock_guard<std::mutex> locker(instance()->mutex_);
+            for (std::pair<std::string, Ptr<Publisher>> pair : instance()->publiser_map_) {
+                bool is_delete = pair.second->removeSubscriber(subscriber_id);
+                if (is_delete) {
+                    return true;
                 }
             }
+            return false;
         }
 
-        static std::list<QueueStatPtr> getQueueStats() {
+        static std::list<Ptr<TopicStat>> getTopicStats() {
             std::lock_guard<std::mutex> locker(instance()->mutex_);
-
-            std::list<QueueStatPtr> stats;
-            for (auto &pair : instance()->queue_worker_map_) {
-                for (const QueueWorkerPtr &worker_ptr : pair.second) {
-                    stats.push_back(worker_ptr->getQueueStat());
-                }
+            std::list<Ptr<TopicStat>> stats;
+            for (auto &pair : instance()->publiser_map_) {
+                stats.push_back(pair.second->getTopicStat());
             }
             return stats;
         }
@@ -82,6 +67,6 @@ namespace data_bus {
 
     private:
         std::mutex mutex_;
-        std::map<std::string, std::list<QueueWorkerPtr>> queue_worker_map_;
+        std::map<std::string, Ptr<Publisher>> publiser_map_;
     };
 }

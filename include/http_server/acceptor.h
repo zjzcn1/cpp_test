@@ -1,6 +1,6 @@
 #pragma once
 
-#include "common.h"
+#include "attr.h"
 #include "http_utils.h"
 #include "http_session.h"
 
@@ -8,19 +8,13 @@ namespace http_server {
 
     // Accepts incoming connections and launches the HttpSessions
     class Acceptor : public std::enable_shared_from_this<Acceptor> {
-    private:
-        tcp::endpoint endpoint_;
-        tcp::acceptor acceptor_;
-        tcp::socket socket_;
-        HttpConfig &http_config_;
-
     public:
-        Acceptor(asio::io_context &ioc, tcp::endpoint &&endpoint, HttpConfig &http_config)
-                : endpoint_(std::move(endpoint)), acceptor_(ioc), socket_(ioc), http_config_(http_config) {
+        Acceptor(asio::io_context &ioc, tcp::endpoint &&endpoint, Attr &attr)
+                : endpoint_(std::move(endpoint)), acceptor_(ioc), attr_(attr) {
         }
 
         // Start accepting incoming connections
-        bool listen() {
+        void listen() {
             try {
                 // Open the acceptor
                 acceptor_.open(endpoint_.protocol());
@@ -34,35 +28,36 @@ namespace http_server {
                 // Start listening for connections
                 acceptor_.listen(asio::socket_base::max_listen_connections);
             } catch (std::exception &e) {
-                Logger::error("Acceptor listen[{}:{}] error, {}.", endpoint_.address().to_string(), endpoint_.port(), e.what());
-                return false;
+                Logger::error("Acceptor", "On listen {}:{} error, {}.", endpoint_.address().to_string(),
+                              endpoint_.port(), e.what());
+                throw e;
             }
 
             do_accept();
-            return true;
         }
 
         void do_accept() {
             acceptor_.async_accept(
-                    socket_,
-                    std::bind(
-                            &Acceptor::on_accept,
-                            shared_from_this(),
-                            std::placeholders::_1));
+                    [this](boost::system::error_code ec, tcp::socket socket) {
+                        if (ec) {
+                            Logger::error("Acceptor", "On accept http session error, {}.", ec.message());
+                        } else {
+                            Logger::info("HttpSession", "New http session, host={}, port={}.",
+                                         socket.remote_endpoint().address().to_string(), socket.remote_endpoint().port());
+                            HttpSessionPtr session(new HttpSession(std::move(socket), attr_));
+                            std::lock_guard<std::mutex> locker(attr_.http_mutex);
+                            attr_.http_sessions.insert(session);
+                            session->run();
+
+                        }
+
+                        do_accept();
+                    });
         }
 
-        void on_accept(beast::error_code ec) {
-            if (ec) {
-                Logger::error("Acceptor on_accept error, {}.", ec.message());
-            } else {
-                // Create the http_session and run it
-                std::make_shared<HttpSession>(
-                        std::move(socket_),
-                        http_config_)->run();
-            }
-
-            // Accept another connection
-            do_accept();
-        }
+    private:
+        tcp::endpoint endpoint_;
+        tcp::acceptor acceptor_;
+        Attr &attr_;
     };
 }

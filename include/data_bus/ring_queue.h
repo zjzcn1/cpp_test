@@ -7,9 +7,6 @@
 namespace data_bus {
 
     template<typename T>
-    using ConstPtr = std::shared_ptr<T const>;
-
-    template<typename T>
     class RingQueue {
     public:
         RingQueue() = delete;
@@ -17,7 +14,7 @@ namespace data_bus {
         explicit RingQueue(int max_size) : max_size_(max_size), incoming_count_(0), dropped_count_(0) {
         }
 
-        void put(const ConstPtr<T> data) {
+        void put(const T data) {
             std::lock_guard<std::mutex> locker(mutex_);
             if (queue_.size() >= max_size_) {
                 queue_.pop_front();
@@ -28,24 +25,24 @@ namespace data_bus {
             not_empty_.notify_one();
         }
 
-        ConstPtr<T> take() {
+        T take() {
             std::lock_guard<std::mutex> locker(mutex_);
             while (queue_.empty()) {
                 not_empty_.wait(mutex_);
             }
 
-            ConstPtr<T> data = queue_.front();
+            T data = queue_.front();
             queue_.pop_front();
             return data;
         }
 
-        ConstPtr<T> front() {
+        T front() {
             std::lock_guard<std::mutex> locker(mutex_);
             if (queue_.empty()) {
                 return nullptr;
             }
 
-            ConstPtr<T> data = queue_.front();
+            T data = queue_.front();
             return data;
         }
 
@@ -84,10 +81,10 @@ namespace data_bus {
         }
 
     private:
-        uint64_t incoming_count_;
-        uint64_t dropped_count_;
+        std::size_t incoming_count_;
+        std::size_t dropped_count_;
         int max_size_;
-        std::list<ConstPtr<T>> queue_;
+        std::list<T> queue_;
         std::mutex mutex_;
         std::condition_variable_any not_empty_;
     };

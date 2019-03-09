@@ -18,7 +18,7 @@ namespace tcp_tool {
                       Logger::warn("TcpClient", "Using default tcp decoder");
                       return true;
                   }),
-                  handler_([](T &t, TcpSession <T> &session) {
+                  handler_([](T &t, TcpSession<T> &session) {
                       Logger::warn("TcpClient", "Using default tcp handler");
                   }) {
         }
@@ -89,10 +89,10 @@ namespace tcp_tool {
         tcp::socket socket_;
         std::shared_ptr<std::thread> io_thread_;
 
-        TcpEncoder <T> encoder_;
-        TcpDecoder <T> decoder_;
-        TcpHandler <T> handler_;
-        std::shared_ptr<TcpSession < T>> session_;
+        TcpEncoder<T> encoder_;
+        TcpDecoder<T> decoder_;
+        TcpHandler<T> handler_;
+        std::shared_ptr<TcpSession<T>> session_;
     };
 
 }

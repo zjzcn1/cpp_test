@@ -39,7 +39,7 @@ namespace protobuf_Protocol_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[3];
+  static const ::google::protobuf::internal::ParseTable schema[4];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -50,18 +50,22 @@ namespace protocol {
 class Message;
 class MessageDefaultTypeInternal;
 extern MessageDefaultTypeInternal _Message_default_instance_;
-class SubInfo;
-class SubInfoDefaultTypeInternal;
-extern SubInfoDefaultTypeInternal _SubInfo_default_instance_;
-class UnSubInfo;
-class UnSubInfoDefaultTypeInternal;
-extern UnSubInfoDefaultTypeInternal _UnSubInfo_default_instance_;
+class SubAckData;
+class SubAckDataDefaultTypeInternal;
+extern SubAckDataDefaultTypeInternal _SubAckData_default_instance_;
+class SubData;
+class SubDataDefaultTypeInternal;
+extern SubDataDefaultTypeInternal _SubData_default_instance_;
+class UnSubData;
+class UnSubDataDefaultTypeInternal;
+extern UnSubDataDefaultTypeInternal _UnSubData_default_instance_;
 }  // namespace protocol
 namespace google {
 namespace protobuf {
 template<> ::protocol::Message* Arena::CreateMaybeMessage<::protocol::Message>(Arena*);
-template<> ::protocol::SubInfo* Arena::CreateMaybeMessage<::protocol::SubInfo>(Arena*);
-template<> ::protocol::UnSubInfo* Arena::CreateMaybeMessage<::protocol::UnSubInfo>(Arena*);
+template<> ::protocol::SubAckData* Arena::CreateMaybeMessage<::protocol::SubAckData>(Arena*);
+template<> ::protocol::SubData* Arena::CreateMaybeMessage<::protocol::SubData>(Arena*);
+template<> ::protocol::UnSubData* Arena::CreateMaybeMessage<::protocol::UnSubData>(Arena*);
 }  // namespace protobuf
 }  // namespace google
 namespace protocol {
@@ -69,7 +73,8 @@ namespace protocol {
 enum Message_Type {
   Message_Type_PUB = 0,
   Message_Type_SUB = 1,
-  Message_Type_UNSUB = 2,
+  Message_Type_SUBACK = 2,
+  Message_Type_UNSUB = 3,
   Message_Type_Message_Type_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   Message_Type_Message_Type_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
@@ -180,6 +185,8 @@ class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(c
     Message_Type_PUB;
   static const Type SUB =
     Message_Type_SUB;
+  static const Type SUBACK =
+    Message_Type_SUBACK;
   static const Type UNSUB =
     Message_Type_UNSUB;
   static inline bool Type_IsValid(int value) {
@@ -205,20 +212,6 @@ class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 
   // accessors -------------------------------------------------------
 
-  // string topic = 3;
-  void clear_topic();
-  static const int kTopicFieldNumber = 3;
-  const ::std::string& topic() const;
-  void set_topic(const ::std::string& value);
-  #if LANG_CXX11
-  void set_topic(::std::string&& value);
-  #endif
-  void set_topic(const char* value);
-  void set_topic(const char* value, size_t size);
-  ::std::string* mutable_topic();
-  ::std::string* release_topic();
-  void set_allocated_topic(::std::string* topic);
-
   // bytes data = 4;
   void clear_data();
   static const int kDataFieldNumber = 4;
@@ -233,49 +226,55 @@ class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::std::string* release_data();
   void set_allocated_data(::std::string* data);
 
-  // bool gzip = 1;
-  void clear_gzip();
-  static const int kGzipFieldNumber = 1;
-  bool gzip() const;
-  void set_gzip(bool value);
+  // int64 id = 2;
+  void clear_id();
+  static const int kIdFieldNumber = 2;
+  ::google::protobuf::int64 id() const;
+  void set_id(::google::protobuf::int64 value);
 
-  // .protocol.Message.Type type = 2;
+  // .protocol.Message.Type type = 1;
   void clear_type();
-  static const int kTypeFieldNumber = 2;
+  static const int kTypeFieldNumber = 1;
   ::protocol::Message_Type type() const;
   void set_type(::protocol::Message_Type value);
+
+  // bool compressed = 3;
+  void clear_compressed();
+  static const int kCompressedFieldNumber = 3;
+  bool compressed() const;
+  void set_compressed(bool value);
 
   // @@protoc_insertion_point(class_scope:protocol.Message)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr topic_;
   ::google::protobuf::internal::ArenaStringPtr data_;
-  bool gzip_;
+  ::google::protobuf::int64 id_;
   int type_;
+  bool compressed_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_Protocol_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
 
-class SubInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:protocol.SubInfo) */ {
+class SubData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:protocol.SubData) */ {
  public:
-  SubInfo();
-  virtual ~SubInfo();
+  SubData();
+  virtual ~SubData();
 
-  SubInfo(const SubInfo& from);
+  SubData(const SubData& from);
 
-  inline SubInfo& operator=(const SubInfo& from) {
+  inline SubData& operator=(const SubData& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  SubInfo(SubInfo&& from) noexcept
-    : SubInfo() {
+  SubData(SubData&& from) noexcept
+    : SubData() {
     *this = ::std::move(from);
   }
 
-  inline SubInfo& operator=(SubInfo&& from) noexcept {
+  inline SubData& operator=(SubData&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -285,34 +284,34 @@ class SubInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const SubInfo& default_instance();
+  static const SubData& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const SubInfo* internal_default_instance() {
-    return reinterpret_cast<const SubInfo*>(
-               &_SubInfo_default_instance_);
+  static inline const SubData* internal_default_instance() {
+    return reinterpret_cast<const SubData*>(
+               &_SubData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     1;
 
-  void Swap(SubInfo* other);
-  friend void swap(SubInfo& a, SubInfo& b) {
+  void Swap(SubData* other);
+  friend void swap(SubData& a, SubData& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline SubInfo* New() const final {
-    return CreateMaybeMessage<SubInfo>(NULL);
+  inline SubData* New() const final {
+    return CreateMaybeMessage<SubData>(NULL);
   }
 
-  SubInfo* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<SubInfo>(arena);
+  SubData* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<SubData>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const SubInfo& from);
-  void MergeFrom(const SubInfo& from);
+  void CopyFrom(const SubData& from);
+  void MergeFrom(const SubData& from);
   void Clear() final;
   bool IsInitialized() const final;
 
@@ -329,7 +328,7 @@ class SubInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(SubInfo* other);
+  void InternalSwap(SubData* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -345,40 +344,84 @@ class SubInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 
   // accessors -------------------------------------------------------
 
-  // bool gzip = 1;
-  void clear_gzip();
-  static const int kGzipFieldNumber = 1;
-  bool gzip() const;
-  void set_gzip(bool value);
+  // string topic = 1;
+  void clear_topic();
+  static const int kTopicFieldNumber = 1;
+  const ::std::string& topic() const;
+  void set_topic(const ::std::string& value);
+  #if LANG_CXX11
+  void set_topic(::std::string&& value);
+  #endif
+  void set_topic(const char* value);
+  void set_topic(const char* value, size_t size);
+  ::std::string* mutable_topic();
+  ::std::string* release_topic();
+  void set_allocated_topic(::std::string* topic);
 
-  // @@protoc_insertion_point(class_scope:protocol.SubInfo)
+  // string subscriber_name = 2;
+  void clear_subscriber_name();
+  static const int kSubscriberNameFieldNumber = 2;
+  const ::std::string& subscriber_name() const;
+  void set_subscriber_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_subscriber_name(::std::string&& value);
+  #endif
+  void set_subscriber_name(const char* value);
+  void set_subscriber_name(const char* value, size_t size);
+  ::std::string* mutable_subscriber_name();
+  ::std::string* release_subscriber_name();
+  void set_allocated_subscriber_name(::std::string* subscriber_name);
+
+  // int32 queue_size = 3;
+  void clear_queue_size();
+  static const int kQueueSizeFieldNumber = 3;
+  ::google::protobuf::int32 queue_size() const;
+  void set_queue_size(::google::protobuf::int32 value);
+
+  // int32 throttle_rate = 4;
+  void clear_throttle_rate();
+  static const int kThrottleRateFieldNumber = 4;
+  ::google::protobuf::int32 throttle_rate() const;
+  void set_throttle_rate(::google::protobuf::int32 value);
+
+  // bool compressed = 5;
+  void clear_compressed();
+  static const int kCompressedFieldNumber = 5;
+  bool compressed() const;
+  void set_compressed(bool value);
+
+  // @@protoc_insertion_point(class_scope:protocol.SubData)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  bool gzip_;
+  ::google::protobuf::internal::ArenaStringPtr topic_;
+  ::google::protobuf::internal::ArenaStringPtr subscriber_name_;
+  ::google::protobuf::int32 queue_size_;
+  ::google::protobuf::int32 throttle_rate_;
+  bool compressed_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_Protocol_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
 
-class UnSubInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:protocol.UnSubInfo) */ {
+class SubAckData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:protocol.SubAckData) */ {
  public:
-  UnSubInfo();
-  virtual ~UnSubInfo();
+  SubAckData();
+  virtual ~SubAckData();
 
-  UnSubInfo(const UnSubInfo& from);
+  SubAckData(const SubAckData& from);
 
-  inline UnSubInfo& operator=(const UnSubInfo& from) {
+  inline SubAckData& operator=(const SubAckData& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  UnSubInfo(UnSubInfo&& from) noexcept
-    : UnSubInfo() {
+  SubAckData(SubAckData&& from) noexcept
+    : SubAckData() {
     *this = ::std::move(from);
   }
 
-  inline UnSubInfo& operator=(UnSubInfo&& from) noexcept {
+  inline SubAckData& operator=(SubAckData&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -388,34 +431,34 @@ class UnSubInfo : public ::google::protobuf::Message /* @@protoc_insertion_point
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const UnSubInfo& default_instance();
+  static const SubAckData& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const UnSubInfo* internal_default_instance() {
-    return reinterpret_cast<const UnSubInfo*>(
-               &_UnSubInfo_default_instance_);
+  static inline const SubAckData* internal_default_instance() {
+    return reinterpret_cast<const SubAckData*>(
+               &_SubAckData_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     2;
 
-  void Swap(UnSubInfo* other);
-  friend void swap(UnSubInfo& a, UnSubInfo& b) {
+  void Swap(SubAckData* other);
+  friend void swap(SubAckData& a, SubAckData& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline UnSubInfo* New() const final {
-    return CreateMaybeMessage<UnSubInfo>(NULL);
+  inline SubAckData* New() const final {
+    return CreateMaybeMessage<SubAckData>(NULL);
   }
 
-  UnSubInfo* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<UnSubInfo>(arena);
+  SubAckData* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<SubAckData>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const UnSubInfo& from);
-  void MergeFrom(const UnSubInfo& from);
+  void CopyFrom(const SubAckData& from);
+  void MergeFrom(const SubAckData& from);
   void Clear() final;
   bool IsInitialized() const final;
 
@@ -432,7 +475,7 @@ class UnSubInfo : public ::google::protobuf::Message /* @@protoc_insertion_point
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(UnSubInfo* other);
+  void InternalSwap(SubAckData* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -448,17 +491,120 @@ class UnSubInfo : public ::google::protobuf::Message /* @@protoc_insertion_point
 
   // accessors -------------------------------------------------------
 
-  // int64 sub_id = 1;
-  void clear_sub_id();
-  static const int kSubIdFieldNumber = 1;
-  ::google::protobuf::int64 sub_id() const;
-  void set_sub_id(::google::protobuf::int64 value);
+  // int64 subscriber_id = 1;
+  void clear_subscriber_id();
+  static const int kSubscriberIdFieldNumber = 1;
+  ::google::protobuf::int64 subscriber_id() const;
+  void set_subscriber_id(::google::protobuf::int64 value);
 
-  // @@protoc_insertion_point(class_scope:protocol.UnSubInfo)
+  // @@protoc_insertion_point(class_scope:protocol.SubAckData)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::int64 sub_id_;
+  ::google::protobuf::int64 subscriber_id_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_Protocol_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class UnSubData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:protocol.UnSubData) */ {
+ public:
+  UnSubData();
+  virtual ~UnSubData();
+
+  UnSubData(const UnSubData& from);
+
+  inline UnSubData& operator=(const UnSubData& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  UnSubData(UnSubData&& from) noexcept
+    : UnSubData() {
+    *this = ::std::move(from);
+  }
+
+  inline UnSubData& operator=(UnSubData&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UnSubData& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const UnSubData* internal_default_instance() {
+    return reinterpret_cast<const UnSubData*>(
+               &_UnSubData_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  void Swap(UnSubData* other);
+  friend void swap(UnSubData& a, UnSubData& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline UnSubData* New() const final {
+    return CreateMaybeMessage<UnSubData>(NULL);
+  }
+
+  UnSubData* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<UnSubData>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const UnSubData& from);
+  void MergeFrom(const UnSubData& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(UnSubData* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // int64 subscriber_id = 1;
+  void clear_subscriber_id();
+  static const int kSubscriberIdFieldNumber = 1;
+  ::google::protobuf::int64 subscriber_id() const;
+  void set_subscriber_id(::google::protobuf::int64 value);
+
+  // @@protoc_insertion_point(class_scope:protocol.UnSubData)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::int64 subscriber_id_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_Protocol_2eproto::TableStruct;
 };
@@ -473,21 +619,7 @@ class UnSubInfo : public ::google::protobuf::Message /* @@protoc_insertion_point
 #endif  // __GNUC__
 // Message
 
-// bool gzip = 1;
-inline void Message::clear_gzip() {
-  gzip_ = false;
-}
-inline bool Message::gzip() const {
-  // @@protoc_insertion_point(field_get:protocol.Message.gzip)
-  return gzip_;
-}
-inline void Message::set_gzip(bool value) {
-  
-  gzip_ = value;
-  // @@protoc_insertion_point(field_set:protocol.Message.gzip)
-}
-
-// .protocol.Message.Type type = 2;
+// .protocol.Message.Type type = 1;
 inline void Message::clear_type() {
   type_ = 0;
 }
@@ -501,57 +633,32 @@ inline void Message::set_type(::protocol::Message_Type value) {
   // @@protoc_insertion_point(field_set:protocol.Message.type)
 }
 
-// string topic = 3;
-inline void Message::clear_topic() {
-  topic_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// int64 id = 2;
+inline void Message::clear_id() {
+  id_ = GOOGLE_LONGLONG(0);
 }
-inline const ::std::string& Message::topic() const {
-  // @@protoc_insertion_point(field_get:protocol.Message.topic)
-  return topic_.GetNoArena();
+inline ::google::protobuf::int64 Message::id() const {
+  // @@protoc_insertion_point(field_get:protocol.Message.id)
+  return id_;
 }
-inline void Message::set_topic(const ::std::string& value) {
+inline void Message::set_id(::google::protobuf::int64 value) {
   
-  topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:protocol.Message.topic)
+  id_ = value;
+  // @@protoc_insertion_point(field_set:protocol.Message.id)
 }
-#if LANG_CXX11
-inline void Message::set_topic(::std::string&& value) {
+
+// bool compressed = 3;
+inline void Message::clear_compressed() {
+  compressed_ = false;
+}
+inline bool Message::compressed() const {
+  // @@protoc_insertion_point(field_get:protocol.Message.compressed)
+  return compressed_;
+}
+inline void Message::set_compressed(bool value) {
   
-  topic_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:protocol.Message.topic)
-}
-#endif
-inline void Message::set_topic(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:protocol.Message.topic)
-}
-inline void Message::set_topic(const char* value, size_t size) {
-  
-  topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:protocol.Message.topic)
-}
-inline ::std::string* Message::mutable_topic() {
-  
-  // @@protoc_insertion_point(field_mutable:protocol.Message.topic)
-  return topic_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* Message::release_topic() {
-  // @@protoc_insertion_point(field_release:protocol.Message.topic)
-  
-  return topic_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void Message::set_allocated_topic(::std::string* topic) {
-  if (topic != NULL) {
-    
-  } else {
-    
-  }
-  topic_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), topic);
-  // @@protoc_insertion_point(field_set_allocated:protocol.Message.topic)
+  compressed_ = value;
+  // @@protoc_insertion_point(field_set:protocol.Message.compressed)
 }
 
 // bytes data = 4;
@@ -609,43 +716,197 @@ inline void Message::set_allocated_data(::std::string* data) {
 
 // -------------------------------------------------------------------
 
-// SubInfo
+// SubData
 
-// bool gzip = 1;
-inline void SubInfo::clear_gzip() {
-  gzip_ = false;
+// string topic = 1;
+inline void SubData::clear_topic() {
+  topic_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline bool SubInfo::gzip() const {
-  // @@protoc_insertion_point(field_get:protocol.SubInfo.gzip)
-  return gzip_;
+inline const ::std::string& SubData::topic() const {
+  // @@protoc_insertion_point(field_get:protocol.SubData.topic)
+  return topic_.GetNoArena();
 }
-inline void SubInfo::set_gzip(bool value) {
+inline void SubData::set_topic(const ::std::string& value) {
   
-  gzip_ = value;
-  // @@protoc_insertion_point(field_set:protocol.SubInfo.gzip)
+  topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:protocol.SubData.topic)
+}
+#if LANG_CXX11
+inline void SubData::set_topic(::std::string&& value) {
+  
+  topic_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:protocol.SubData.topic)
+}
+#endif
+inline void SubData::set_topic(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:protocol.SubData.topic)
+}
+inline void SubData::set_topic(const char* value, size_t size) {
+  
+  topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:protocol.SubData.topic)
+}
+inline ::std::string* SubData::mutable_topic() {
+  
+  // @@protoc_insertion_point(field_mutable:protocol.SubData.topic)
+  return topic_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* SubData::release_topic() {
+  // @@protoc_insertion_point(field_release:protocol.SubData.topic)
+  
+  return topic_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void SubData::set_allocated_topic(::std::string* topic) {
+  if (topic != NULL) {
+    
+  } else {
+    
+  }
+  topic_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), topic);
+  // @@protoc_insertion_point(field_set_allocated:protocol.SubData.topic)
+}
+
+// string subscriber_name = 2;
+inline void SubData::clear_subscriber_name() {
+  subscriber_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& SubData::subscriber_name() const {
+  // @@protoc_insertion_point(field_get:protocol.SubData.subscriber_name)
+  return subscriber_name_.GetNoArena();
+}
+inline void SubData::set_subscriber_name(const ::std::string& value) {
+  
+  subscriber_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:protocol.SubData.subscriber_name)
+}
+#if LANG_CXX11
+inline void SubData::set_subscriber_name(::std::string&& value) {
+  
+  subscriber_name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:protocol.SubData.subscriber_name)
+}
+#endif
+inline void SubData::set_subscriber_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  subscriber_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:protocol.SubData.subscriber_name)
+}
+inline void SubData::set_subscriber_name(const char* value, size_t size) {
+  
+  subscriber_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:protocol.SubData.subscriber_name)
+}
+inline ::std::string* SubData::mutable_subscriber_name() {
+  
+  // @@protoc_insertion_point(field_mutable:protocol.SubData.subscriber_name)
+  return subscriber_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* SubData::release_subscriber_name() {
+  // @@protoc_insertion_point(field_release:protocol.SubData.subscriber_name)
+  
+  return subscriber_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void SubData::set_allocated_subscriber_name(::std::string* subscriber_name) {
+  if (subscriber_name != NULL) {
+    
+  } else {
+    
+  }
+  subscriber_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), subscriber_name);
+  // @@protoc_insertion_point(field_set_allocated:protocol.SubData.subscriber_name)
+}
+
+// int32 queue_size = 3;
+inline void SubData::clear_queue_size() {
+  queue_size_ = 0;
+}
+inline ::google::protobuf::int32 SubData::queue_size() const {
+  // @@protoc_insertion_point(field_get:protocol.SubData.queue_size)
+  return queue_size_;
+}
+inline void SubData::set_queue_size(::google::protobuf::int32 value) {
+  
+  queue_size_ = value;
+  // @@protoc_insertion_point(field_set:protocol.SubData.queue_size)
+}
+
+// int32 throttle_rate = 4;
+inline void SubData::clear_throttle_rate() {
+  throttle_rate_ = 0;
+}
+inline ::google::protobuf::int32 SubData::throttle_rate() const {
+  // @@protoc_insertion_point(field_get:protocol.SubData.throttle_rate)
+  return throttle_rate_;
+}
+inline void SubData::set_throttle_rate(::google::protobuf::int32 value) {
+  
+  throttle_rate_ = value;
+  // @@protoc_insertion_point(field_set:protocol.SubData.throttle_rate)
+}
+
+// bool compressed = 5;
+inline void SubData::clear_compressed() {
+  compressed_ = false;
+}
+inline bool SubData::compressed() const {
+  // @@protoc_insertion_point(field_get:protocol.SubData.compressed)
+  return compressed_;
+}
+inline void SubData::set_compressed(bool value) {
+  
+  compressed_ = value;
+  // @@protoc_insertion_point(field_set:protocol.SubData.compressed)
 }
 
 // -------------------------------------------------------------------
 
-// UnSubInfo
+// SubAckData
 
-// int64 sub_id = 1;
-inline void UnSubInfo::clear_sub_id() {
-  sub_id_ = GOOGLE_LONGLONG(0);
+// int64 subscriber_id = 1;
+inline void SubAckData::clear_subscriber_id() {
+  subscriber_id_ = GOOGLE_LONGLONG(0);
 }
-inline ::google::protobuf::int64 UnSubInfo::sub_id() const {
-  // @@protoc_insertion_point(field_get:protocol.UnSubInfo.sub_id)
-  return sub_id_;
+inline ::google::protobuf::int64 SubAckData::subscriber_id() const {
+  // @@protoc_insertion_point(field_get:protocol.SubAckData.subscriber_id)
+  return subscriber_id_;
 }
-inline void UnSubInfo::set_sub_id(::google::protobuf::int64 value) {
+inline void SubAckData::set_subscriber_id(::google::protobuf::int64 value) {
   
-  sub_id_ = value;
-  // @@protoc_insertion_point(field_set:protocol.UnSubInfo.sub_id)
+  subscriber_id_ = value;
+  // @@protoc_insertion_point(field_set:protocol.SubAckData.subscriber_id)
+}
+
+// -------------------------------------------------------------------
+
+// UnSubData
+
+// int64 subscriber_id = 1;
+inline void UnSubData::clear_subscriber_id() {
+  subscriber_id_ = GOOGLE_LONGLONG(0);
+}
+inline ::google::protobuf::int64 UnSubData::subscriber_id() const {
+  // @@protoc_insertion_point(field_get:protocol.UnSubData.subscriber_id)
+  return subscriber_id_;
+}
+inline void UnSubData::set_subscriber_id(::google::protobuf::int64 value) {
+  
+  subscriber_id_ = value;
+  // @@protoc_insertion_point(field_set:protocol.UnSubData.subscriber_id)
 }
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

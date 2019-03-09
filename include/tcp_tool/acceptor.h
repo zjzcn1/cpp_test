@@ -36,7 +36,6 @@ namespace tcp_tool {
                               e.what());
                 throw e;
             }
-
             do_accept();
         }
 
@@ -46,6 +45,7 @@ namespace tcp_tool {
                 pair.second->send(msg);
             }
         }
+
     private:
         void do_accept() {
             acceptor_.async_accept([this](boost::system::error_code ec, tcp::socket socket) {
@@ -53,21 +53,21 @@ namespace tcp_tool {
                     Logger::info("Acceptor", "Accept tcp new connection, remote_host={}, remote_port={}.",
                                  socket.remote_endpoint().address().to_string(), socket.remote_endpoint().port());
 
+                    ErrorCallback error_callback = [this](long session_id) {
+                        Logger::info("Acceptor", "Remove tcp session, session_id={}.",
+                                     session_id);
+                        std::lock_guard<std::mutex> locker(mutex_);
+                        sessions_.erase(session_id);
+                    };
                     std::shared_ptr<TcpSession<T>> session(
-                            new TcpSession<T>(std::move(socket), encoder_, decoder_, handler_,
-                                              [this](long session_id) {
-                                                  Logger::info("Acceptor", "Remove tcp session, session_id={}.",
-                                                               session_id);
-                                                  std::lock_guard<std::mutex> locker(mutex_);
-                                                  sessions_.erase(session_id);
-                                              }));
+                            new TcpSession<T>(std::move(socket), encoder_, decoder_, handler_, error_callback));
+
                     std::lock_guard<std::mutex> locker(mutex_);
                     sessions_[session->session_id()] = session;
                     session->start();
-                    Logger::info("Acceptor", "Add new tcp session, session_id={}.",
-                                 session->session_id());
+                    Logger::info("Acceptor", "Add new tcp session, session_id={}.", session->session_id());
                 } else {
-                    Logger::error("Acceptor", "Accept error, error_message={}.", ec.message());
+                    Logger::error("Acceptor", "Accept socket error, error_message={}.", ec.message());
                 }
 
                 do_accept();

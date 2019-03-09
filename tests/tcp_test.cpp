@@ -18,7 +18,8 @@ int main(int argc, char *argv[]) {
         data.push_back('b');
     });
     server.decoder([](std::vector<uint8_t> &data, std::size_t bytes_transferred, TestMessage &t) -> bool {
-        Logger::warn("TcpServer", "tcp decoder, {}", bytes_transferred);
+        Logger::warn("TcpServer", "tcp decoder, {} {}", data.size(), bytes_transferred);
+        data.clear();
         return true;
     });
     server.handler([&](TestMessage &msg, TcpSession<TestMessage> &session) {
@@ -29,7 +30,7 @@ int main(int argc, char *argv[]) {
 
     std::list<std::shared_ptr<TcpClient<TestMessage>>> list;
     for (int i = 0; i < 2; i++) {
-        std::shared_ptr<TcpClient<TestMessage>> client = std::make_shared<TcpClient<TestMessage>>("127.0.0.1", 8085);
+        std::shared_ptr<TcpClient<TestMessage>> client(new TcpClient<TestMessage>("127.0.0.1", 8085));
         client->encoder([](TestMessage &t, std::vector<uint8_t> &data) {
             Logger::info("TcpClient", "tcp encoder");
             data.push_back('3');
