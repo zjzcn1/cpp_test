@@ -4,38 +4,44 @@
 #include <google/protobuf/message.h>
 
 #include "ring_queue.h"
+#include "util/common.h"
 
 namespace data_bus {
 
-    template<typename T>
-    using Ptr = std::shared_ptr<T>;
-    template<typename T>
-    using ConstPtr = std::shared_ptr<T const>;
     // proto message
     using ProtoMessage = google::protobuf::Message;
     // callback
     template<typename T>
     using Callback = std::function<void(ConstPtr<T>)>;
 
+    // base callback
     class Subscriber {
     public:
-        explicit Subscriber() {
+        Subscriber() {
+            subscriber_id_ = generateId();
         }
 
         virtual void call(Ptr<ProtoMessage> &message) = 0;
 
-        virtual std::string getSubscriberName() = 0;
+        long getSubscriberId() {
+            return subscriber_id_;
+        }
+
+        static long generateId() {
+            static std::atomic_long id(1);
+            return id++;
+        }
+
+    private:
+        long subscriber_id_;
     };
 
+    // local callback
     template<typename T>
     class SubscriberT : public Subscriber {
     public:
-        explicit SubscriberT(const std::string &subscriber_name, const Callback<T> &callback)
-                : subscriber_name_(subscriber_name), callback_(callback) {
-        }
-
-        std::string getSubscriberName() override {
-            return subscriber_name_;
+        explicit SubscriberT(const Callback<T> &callback)
+                : callback_(callback) {
         }
 
         void call(Ptr<ProtoMessage> &message) override {
@@ -43,7 +49,6 @@ namespace data_bus {
         }
 
     private:
-        std::string subscriber_name_;
         Callback<T> callback_;
     };
 

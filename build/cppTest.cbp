@@ -94,7 +94,7 @@
 		<Unit filename="/Users/zjz/work/cpp/cpp_test/build/Protocol.pb.h.rule">
 			<Option target="cppTest"/>
 		</Unit>
-		<Unit filename="/Users/zjz/work/cpp/cpp_test/tests/tcp_test.cpp">
+		<Unit filename="/Users/zjz/work/cpp/cpp_test/tests/databus_test2.cpp">
 			<Option target="cppTest"/>
 		</Unit>
 		<Unit filename="/Users/zjz/work/cpp/cpp_test/CMakeLists.txt">

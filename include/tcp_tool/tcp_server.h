@@ -8,18 +8,18 @@ namespace tcp_tool {
     template<typename T>
     class TcpServer {
     public:
-        explicit TcpServer(unsigned short port)
-                : port_(port), threads_(2),
-                  encoder_([](T &t, std::vector<uint8_t> &data) {
+        explicit TcpServer()
+                : threads_(1),
+                  encoder_([](T &t, std::vector<char> &data) {
                       Logger::warn("TcpServer", "Using default tcp encoder");
                   }),
-                  decoder_([](std::vector<uint8_t> &data, std::size_t bytes_transferred, T &t) -> bool {
+                  decoder_([](std::vector<char> &data, T &t) -> bool {
                       Logger::warn("TcpServer", "Using default tcp decoder");
                       return true;
                   }),
                   handler_([](T &t, TcpSession<T> &session) {
                       Logger::warn("TcpServer", "Using default tcp handler");
-                  }){
+                  }) {
         }
 
         ~TcpServer() {
@@ -50,8 +50,8 @@ namespace tcp_tool {
             acceptor_->broadcast(msg);
         }
 
-        void start(bool sync = false) {
-            acceptor_ = std::make_shared<Acceptor<T>>(ioc_, port_, encoder_, decoder_, handler_);
+        void listen(unsigned short port, bool sync = false) {
+            acceptor_ = std::make_shared<Acceptor<T>>(ioc_, port, encoder_, decoder_, handler_);
             // listen server
             acceptor_->listen();
 
@@ -62,7 +62,7 @@ namespace tcp_tool {
                     ioc_.run();
                 });
             }
-            Logger::info("TcpServer", "Tcp server started successful, port={}, sync={}.", port_, sync);
+            Logger::info("TcpServer", "Tcp server started successful, port={}, sync={}.", port, sync);
             if (sync) {
                 for (std::thread &t : io_threads_) {
                     t.join();
@@ -76,7 +76,6 @@ namespace tcp_tool {
 
     private:
         std::shared_ptr<Acceptor<T>> acceptor_;
-        unsigned short port_;
         int threads_;
         boost::asio::io_context ioc_;
         std::vector<std::thread> io_threads_;

@@ -9,12 +9,12 @@ namespace tcp_tool {
     template<typename T>
     class TcpClient : public std::enable_shared_from_this<TcpClient<T>> {
     public:
-        TcpClient(std::string host, unsigned short port)
-                : endpoint_(boost::asio::ip::make_address(host), port), socket_(ioc_),
-                  encoder_([](T &t, std::vector<uint8_t> &data) {
+        TcpClient()
+                : socket_(ioc_),
+                  encoder_([](T &t, std::vector<char> &data) {
                       Logger::warn("TcpClient", "Using default tcp encoder");
                   }),
-                  decoder_([](std::vector<uint8_t> &data, std::size_t bytes_transferred, T &t) -> bool {
+                  decoder_([](std::vector<char> &data, T &t) -> bool {
                       Logger::warn("TcpClient", "Using default tcp decoder");
                       return true;
                   }),
@@ -42,8 +42,9 @@ namespace tcp_tool {
             Logger::info("TcpClient", "Set tpc handler.");
         }
 
-        void connect(bool sync = false) {
+        void connect(const std::string &host, unsigned short port, bool sync = false) {
             try {
+                endpoint_ = tcp::endpoint(boost::asio::ip::make_address(host), port);
                 socket_.connect(endpoint_);
 
                 Logger::info("TcpClient", "Tcp client connect successful, "
@@ -55,10 +56,8 @@ namespace tcp_tool {
                              socket_.remote_endpoint().port());
 
                 session_ = std::shared_ptr<TcpSession<T>>(
-                        new TcpSession<T>(std::move(socket_), encoder_, decoder_, handler_,
-                                          [this](long session_id) {
-
-                                          }));
+                        new TcpSession<T>(std::move(socket_), encoder_, decoder_, handler_));
+                session_->start();
             } catch (std::exception &e) {
                 Logger::error("Acceptor", "On connect[{}:{}] error, {}.", endpoint_.address().to_string(),
                               endpoint_.port(),
@@ -77,7 +76,6 @@ namespace tcp_tool {
         void close() {
             boost::asio::post(ioc_, [this]() { socket_.close(); });
         }
-
 
         void send(T &msg) {
             session_->send(msg);

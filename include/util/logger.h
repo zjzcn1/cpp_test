@@ -31,7 +31,7 @@ namespace util {
             console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
             console_sink->set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%^%l%$] [%t] %v");
 
-            logger_ = std::shared_ptr<spdlog::logger>(new spdlog::logger("sinks", {console_sink}));
+            logger_ = std::shared_ptr<spdlog::logger>(new spdlog::logger("Logger", {console_sink}));
             spdlog::register_logger(logger_);
             spdlog::flush_every(std::chrono::seconds(1));
             logger_->flush_on(spdlog::level::warn);

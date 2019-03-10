@@ -1,10 +1,13 @@
 #pragma once
 
+#include "util/common.h"
+
 namespace data_bus {
 
     struct QueueStat {
         std::string topic{};
         std::string subscriber_name{};
+        long subscriber_id{0};
         int queue_size{0};
         int max_queue_size{0};
         std::size_t incoming_count{0};
@@ -16,6 +19,7 @@ namespace data_bus {
         std::string toString() {
             return "{topic=" + topic +
                    ", subscriber_name=" + subscriber_name +
+                   ", subscriber_id=" + std::to_string(subscriber_id) +
                    ", queue_size=" + std::to_string(queue_size) +
                    ", max_queue_size=" + std::to_string(max_queue_size) +
                    ", incoming_count=" + std::to_string(incoming_count) +
@@ -30,7 +34,7 @@ namespace data_bus {
         std::string topic{};
         std::size_t publish_count{0};
 
-        std::list<QueueStat> queue_stats;
+        std::list<Ptr<QueueStat>> callback_stats;
     };
 
 }

@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package protocol;
+
+message Message {
+    enum Type {
+        PUB = 0;
+        SUB = 1;
+        SUB_ACK = 2;
+        UNSUB = 3;
+        UNSUB_ACK = 4;
+    }
+    Type type = 1;
+    int64 id = 2;
+    bool compressed = 3;
+    bytes payload = 4;
+}
+
+enum AckResult {
+    SUCCESS = 0;
+    SUB_REPEATED = 1;
+    UNSUB_NOT_FOUND = 2;
+}
+
+message PubPayload {
+    string topic = 1;
+    string data_type = 2;
+    bytes data = 3;
+}
+
+message SubPayload {
+    string topic = 1;
+    string subscriber_name = 2;
+    int32 max_rate = 3;
+    bool compressed = 4;
+}
+
+message SubAckPayload {
+    AckResult result = 1;
+    string topic = 2;
+    string subscriber_name = 3;
+}
+
+message UnSubPayload {
+    string topic = 1;
+    string subscriber_name = 2;
+}
+
+message UnSubAckPayload {
+    AckResult result = 1;
+    string topic = 2;
+    string subscriber_name = 3;
+}

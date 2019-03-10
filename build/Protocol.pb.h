@@ -39,7 +39,7 @@ namespace protobuf_Protocol_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[4];
+  static const ::google::protobuf::internal::ParseTable schema[6];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -50,22 +50,30 @@ namespace protocol {
 class Message;
 class MessageDefaultTypeInternal;
 extern MessageDefaultTypeInternal _Message_default_instance_;
-class SubAckData;
-class SubAckDataDefaultTypeInternal;
-extern SubAckDataDefaultTypeInternal _SubAckData_default_instance_;
-class SubData;
-class SubDataDefaultTypeInternal;
-extern SubDataDefaultTypeInternal _SubData_default_instance_;
-class UnSubData;
-class UnSubDataDefaultTypeInternal;
-extern UnSubDataDefaultTypeInternal _UnSubData_default_instance_;
+class PubPayload;
+class PubPayloadDefaultTypeInternal;
+extern PubPayloadDefaultTypeInternal _PubPayload_default_instance_;
+class SubAckPayload;
+class SubAckPayloadDefaultTypeInternal;
+extern SubAckPayloadDefaultTypeInternal _SubAckPayload_default_instance_;
+class SubPayload;
+class SubPayloadDefaultTypeInternal;
+extern SubPayloadDefaultTypeInternal _SubPayload_default_instance_;
+class UnSubAckPayload;
+class UnSubAckPayloadDefaultTypeInternal;
+extern UnSubAckPayloadDefaultTypeInternal _UnSubAckPayload_default_instance_;
+class UnSubPayload;
+class UnSubPayloadDefaultTypeInternal;
+extern UnSubPayloadDefaultTypeInternal _UnSubPayload_default_instance_;
 }  // namespace protocol
 namespace google {
 namespace protobuf {
 template<> ::protocol::Message* Arena::CreateMaybeMessage<::protocol::Message>(Arena*);
-template<> ::protocol::SubAckData* Arena::CreateMaybeMessage<::protocol::SubAckData>(Arena*);
-template<> ::protocol::SubData* Arena::CreateMaybeMessage<::protocol::SubData>(Arena*);
-template<> ::protocol::UnSubData* Arena::CreateMaybeMessage<::protocol::UnSubData>(Arena*);
+template<> ::protocol::PubPayload* Arena::CreateMaybeMessage<::protocol::PubPayload>(Arena*);
+template<> ::protocol::SubAckPayload* Arena::CreateMaybeMessage<::protocol::SubAckPayload>(Arena*);
+template<> ::protocol::SubPayload* Arena::CreateMaybeMessage<::protocol::SubPayload>(Arena*);
+template<> ::protocol::UnSubAckPayload* Arena::CreateMaybeMessage<::protocol::UnSubAckPayload>(Arena*);
+template<> ::protocol::UnSubPayload* Arena::CreateMaybeMessage<::protocol::UnSubPayload>(Arena*);
 }  // namespace protobuf
 }  // namespace google
 namespace protocol {
@@ -73,14 +81,15 @@ namespace protocol {
 enum Message_Type {
   Message_Type_PUB = 0,
   Message_Type_SUB = 1,
-  Message_Type_SUBACK = 2,
+  Message_Type_SUB_ACK = 2,
   Message_Type_UNSUB = 3,
+  Message_Type_UNSUB_ACK = 4,
   Message_Type_Message_Type_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   Message_Type_Message_Type_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool Message_Type_IsValid(int value);
 const Message_Type Message_Type_Type_MIN = Message_Type_PUB;
-const Message_Type Message_Type_Type_MAX = Message_Type_UNSUB;
+const Message_Type Message_Type_Type_MAX = Message_Type_UNSUB_ACK;
 const int Message_Type_Type_ARRAYSIZE = Message_Type_Type_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* Message_Type_descriptor();
@@ -92,6 +101,28 @@ inline bool Message_Type_Parse(
     const ::std::string& name, Message_Type* value) {
   return ::google::protobuf::internal::ParseNamedEnum<Message_Type>(
     Message_Type_descriptor(), name, value);
+}
+enum AckResult {
+  SUCCESS = 0,
+  SUB_REPEATED = 1,
+  UNSUB_NOT_FOUND = 2,
+  AckResult_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  AckResult_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+};
+bool AckResult_IsValid(int value);
+const AckResult AckResult_MIN = SUCCESS;
+const AckResult AckResult_MAX = UNSUB_NOT_FOUND;
+const int AckResult_ARRAYSIZE = AckResult_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* AckResult_descriptor();
+inline const ::std::string& AckResult_Name(AckResult value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    AckResult_descriptor(), value);
+}
+inline bool AckResult_Parse(
+    const ::std::string& name, AckResult* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<AckResult>(
+    AckResult_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -185,10 +216,12 @@ class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(c
     Message_Type_PUB;
   static const Type SUB =
     Message_Type_SUB;
-  static const Type SUBACK =
-    Message_Type_SUBACK;
+  static const Type SUB_ACK =
+    Message_Type_SUB_ACK;
   static const Type UNSUB =
     Message_Type_UNSUB;
+  static const Type UNSUB_ACK =
+    Message_Type_UNSUB_ACK;
   static inline bool Type_IsValid(int value) {
     return Message_Type_IsValid(value);
   }
@@ -212,19 +245,19 @@ class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 
   // accessors -------------------------------------------------------
 
-  // bytes data = 4;
-  void clear_data();
-  static const int kDataFieldNumber = 4;
-  const ::std::string& data() const;
-  void set_data(const ::std::string& value);
+  // bytes payload = 4;
+  void clear_payload();
+  static const int kPayloadFieldNumber = 4;
+  const ::std::string& payload() const;
+  void set_payload(const ::std::string& value);
   #if LANG_CXX11
-  void set_data(::std::string&& value);
+  void set_payload(::std::string&& value);
   #endif
-  void set_data(const char* value);
-  void set_data(const void* value, size_t size);
-  ::std::string* mutable_data();
-  ::std::string* release_data();
-  void set_allocated_data(::std::string* data);
+  void set_payload(const char* value);
+  void set_payload(const void* value, size_t size);
+  ::std::string* mutable_payload();
+  ::std::string* release_payload();
+  void set_allocated_payload(::std::string* payload);
 
   // int64 id = 2;
   void clear_id();
@@ -248,7 +281,7 @@ class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(c
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr data_;
+  ::google::protobuf::internal::ArenaStringPtr payload_;
   ::google::protobuf::int64 id_;
   int type_;
   bool compressed_;
@@ -257,24 +290,24 @@ class Message : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 };
 // -------------------------------------------------------------------
 
-class SubData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:protocol.SubData) */ {
+class PubPayload : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:protocol.PubPayload) */ {
  public:
-  SubData();
-  virtual ~SubData();
+  PubPayload();
+  virtual ~PubPayload();
 
-  SubData(const SubData& from);
+  PubPayload(const PubPayload& from);
 
-  inline SubData& operator=(const SubData& from) {
+  inline PubPayload& operator=(const PubPayload& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  SubData(SubData&& from) noexcept
-    : SubData() {
+  PubPayload(PubPayload&& from) noexcept
+    : PubPayload() {
     *this = ::std::move(from);
   }
 
-  inline SubData& operator=(SubData&& from) noexcept {
+  inline PubPayload& operator=(PubPayload&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -284,34 +317,34 @@ class SubData : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const SubData& default_instance();
+  static const PubPayload& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const SubData* internal_default_instance() {
-    return reinterpret_cast<const SubData*>(
-               &_SubData_default_instance_);
+  static inline const PubPayload* internal_default_instance() {
+    return reinterpret_cast<const PubPayload*>(
+               &_PubPayload_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     1;
 
-  void Swap(SubData* other);
-  friend void swap(SubData& a, SubData& b) {
+  void Swap(PubPayload* other);
+  friend void swap(PubPayload& a, PubPayload& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline SubData* New() const final {
-    return CreateMaybeMessage<SubData>(NULL);
+  inline PubPayload* New() const final {
+    return CreateMaybeMessage<PubPayload>(NULL);
   }
 
-  SubData* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<SubData>(arena);
+  PubPayload* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<PubPayload>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const SubData& from);
-  void MergeFrom(const SubData& from);
+  void CopyFrom(const PubPayload& from);
+  void MergeFrom(const PubPayload& from);
   void Clear() final;
   bool IsInitialized() const final;
 
@@ -328,7 +361,148 @@ class SubData : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(SubData* other);
+  void InternalSwap(PubPayload* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string topic = 1;
+  void clear_topic();
+  static const int kTopicFieldNumber = 1;
+  const ::std::string& topic() const;
+  void set_topic(const ::std::string& value);
+  #if LANG_CXX11
+  void set_topic(::std::string&& value);
+  #endif
+  void set_topic(const char* value);
+  void set_topic(const char* value, size_t size);
+  ::std::string* mutable_topic();
+  ::std::string* release_topic();
+  void set_allocated_topic(::std::string* topic);
+
+  // string data_type = 2;
+  void clear_data_type();
+  static const int kDataTypeFieldNumber = 2;
+  const ::std::string& data_type() const;
+  void set_data_type(const ::std::string& value);
+  #if LANG_CXX11
+  void set_data_type(::std::string&& value);
+  #endif
+  void set_data_type(const char* value);
+  void set_data_type(const char* value, size_t size);
+  ::std::string* mutable_data_type();
+  ::std::string* release_data_type();
+  void set_allocated_data_type(::std::string* data_type);
+
+  // bytes data = 3;
+  void clear_data();
+  static const int kDataFieldNumber = 3;
+  const ::std::string& data() const;
+  void set_data(const ::std::string& value);
+  #if LANG_CXX11
+  void set_data(::std::string&& value);
+  #endif
+  void set_data(const char* value);
+  void set_data(const void* value, size_t size);
+  ::std::string* mutable_data();
+  ::std::string* release_data();
+  void set_allocated_data(::std::string* data);
+
+  // @@protoc_insertion_point(class_scope:protocol.PubPayload)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr topic_;
+  ::google::protobuf::internal::ArenaStringPtr data_type_;
+  ::google::protobuf::internal::ArenaStringPtr data_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_Protocol_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class SubPayload : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:protocol.SubPayload) */ {
+ public:
+  SubPayload();
+  virtual ~SubPayload();
+
+  SubPayload(const SubPayload& from);
+
+  inline SubPayload& operator=(const SubPayload& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  SubPayload(SubPayload&& from) noexcept
+    : SubPayload() {
+    *this = ::std::move(from);
+  }
+
+  inline SubPayload& operator=(SubPayload&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SubPayload& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const SubPayload* internal_default_instance() {
+    return reinterpret_cast<const SubPayload*>(
+               &_SubPayload_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  void Swap(SubPayload* other);
+  friend void swap(SubPayload& a, SubPayload& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline SubPayload* New() const final {
+    return CreateMaybeMessage<SubPayload>(NULL);
+  }
+
+  SubPayload* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<SubPayload>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const SubPayload& from);
+  void MergeFrom(const SubPayload& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(SubPayload* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -372,56 +546,49 @@ class SubData : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::std::string* release_subscriber_name();
   void set_allocated_subscriber_name(::std::string* subscriber_name);
 
-  // int32 queue_size = 3;
-  void clear_queue_size();
-  static const int kQueueSizeFieldNumber = 3;
-  ::google::protobuf::int32 queue_size() const;
-  void set_queue_size(::google::protobuf::int32 value);
+  // int32 max_rate = 3;
+  void clear_max_rate();
+  static const int kMaxRateFieldNumber = 3;
+  ::google::protobuf::int32 max_rate() const;
+  void set_max_rate(::google::protobuf::int32 value);
 
-  // int32 throttle_rate = 4;
-  void clear_throttle_rate();
-  static const int kThrottleRateFieldNumber = 4;
-  ::google::protobuf::int32 throttle_rate() const;
-  void set_throttle_rate(::google::protobuf::int32 value);
-
-  // bool compressed = 5;
+  // bool compressed = 4;
   void clear_compressed();
-  static const int kCompressedFieldNumber = 5;
+  static const int kCompressedFieldNumber = 4;
   bool compressed() const;
   void set_compressed(bool value);
 
-  // @@protoc_insertion_point(class_scope:protocol.SubData)
+  // @@protoc_insertion_point(class_scope:protocol.SubPayload)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr topic_;
   ::google::protobuf::internal::ArenaStringPtr subscriber_name_;
-  ::google::protobuf::int32 queue_size_;
-  ::google::protobuf::int32 throttle_rate_;
+  ::google::protobuf::int32 max_rate_;
   bool compressed_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_Protocol_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
 
-class SubAckData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:protocol.SubAckData) */ {
+class SubAckPayload : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:protocol.SubAckPayload) */ {
  public:
-  SubAckData();
-  virtual ~SubAckData();
+  SubAckPayload();
+  virtual ~SubAckPayload();
 
-  SubAckData(const SubAckData& from);
+  SubAckPayload(const SubAckPayload& from);
 
-  inline SubAckData& operator=(const SubAckData& from) {
+  inline SubAckPayload& operator=(const SubAckPayload& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  SubAckData(SubAckData&& from) noexcept
-    : SubAckData() {
+  SubAckPayload(SubAckPayload&& from) noexcept
+    : SubAckPayload() {
     *this = ::std::move(from);
   }
 
-  inline SubAckData& operator=(SubAckData&& from) noexcept {
+  inline SubAckPayload& operator=(SubAckPayload&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -431,34 +598,34 @@ class SubAckData : public ::google::protobuf::Message /* @@protoc_insertion_poin
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const SubAckData& default_instance();
+  static const SubAckPayload& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const SubAckData* internal_default_instance() {
-    return reinterpret_cast<const SubAckData*>(
-               &_SubAckData_default_instance_);
+  static inline const SubAckPayload* internal_default_instance() {
+    return reinterpret_cast<const SubAckPayload*>(
+               &_SubAckPayload_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    3;
 
-  void Swap(SubAckData* other);
-  friend void swap(SubAckData& a, SubAckData& b) {
+  void Swap(SubAckPayload* other);
+  friend void swap(SubAckPayload& a, SubAckPayload& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline SubAckData* New() const final {
-    return CreateMaybeMessage<SubAckData>(NULL);
+  inline SubAckPayload* New() const final {
+    return CreateMaybeMessage<SubAckPayload>(NULL);
   }
 
-  SubAckData* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<SubAckData>(arena);
+  SubAckPayload* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<SubAckPayload>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const SubAckData& from);
-  void MergeFrom(const SubAckData& from);
+  void CopyFrom(const SubAckPayload& from);
+  void MergeFrom(const SubAckPayload& from);
   void Clear() final;
   bool IsInitialized() const final;
 
@@ -475,7 +642,7 @@ class SubAckData : public ::google::protobuf::Message /* @@protoc_insertion_poin
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(SubAckData* other);
+  void InternalSwap(SubAckPayload* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -491,40 +658,70 @@ class SubAckData : public ::google::protobuf::Message /* @@protoc_insertion_poin
 
   // accessors -------------------------------------------------------
 
-  // int64 subscriber_id = 1;
-  void clear_subscriber_id();
-  static const int kSubscriberIdFieldNumber = 1;
-  ::google::protobuf::int64 subscriber_id() const;
-  void set_subscriber_id(::google::protobuf::int64 value);
+  // string topic = 2;
+  void clear_topic();
+  static const int kTopicFieldNumber = 2;
+  const ::std::string& topic() const;
+  void set_topic(const ::std::string& value);
+  #if LANG_CXX11
+  void set_topic(::std::string&& value);
+  #endif
+  void set_topic(const char* value);
+  void set_topic(const char* value, size_t size);
+  ::std::string* mutable_topic();
+  ::std::string* release_topic();
+  void set_allocated_topic(::std::string* topic);
 
-  // @@protoc_insertion_point(class_scope:protocol.SubAckData)
+  // string subscriber_name = 3;
+  void clear_subscriber_name();
+  static const int kSubscriberNameFieldNumber = 3;
+  const ::std::string& subscriber_name() const;
+  void set_subscriber_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_subscriber_name(::std::string&& value);
+  #endif
+  void set_subscriber_name(const char* value);
+  void set_subscriber_name(const char* value, size_t size);
+  ::std::string* mutable_subscriber_name();
+  ::std::string* release_subscriber_name();
+  void set_allocated_subscriber_name(::std::string* subscriber_name);
+
+  // .protocol.AckResult result = 1;
+  void clear_result();
+  static const int kResultFieldNumber = 1;
+  ::protocol::AckResult result() const;
+  void set_result(::protocol::AckResult value);
+
+  // @@protoc_insertion_point(class_scope:protocol.SubAckPayload)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::int64 subscriber_id_;
+  ::google::protobuf::internal::ArenaStringPtr topic_;
+  ::google::protobuf::internal::ArenaStringPtr subscriber_name_;
+  int result_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_Protocol_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
 
-class UnSubData : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:protocol.UnSubData) */ {
+class UnSubPayload : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:protocol.UnSubPayload) */ {
  public:
-  UnSubData();
-  virtual ~UnSubData();
+  UnSubPayload();
+  virtual ~UnSubPayload();
 
-  UnSubData(const UnSubData& from);
+  UnSubPayload(const UnSubPayload& from);
 
-  inline UnSubData& operator=(const UnSubData& from) {
+  inline UnSubPayload& operator=(const UnSubPayload& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  UnSubData(UnSubData&& from) noexcept
-    : UnSubData() {
+  UnSubPayload(UnSubPayload&& from) noexcept
+    : UnSubPayload() {
     *this = ::std::move(from);
   }
 
-  inline UnSubData& operator=(UnSubData&& from) noexcept {
+  inline UnSubPayload& operator=(UnSubPayload&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -534,34 +731,34 @@ class UnSubData : public ::google::protobuf::Message /* @@protoc_insertion_point
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const UnSubData& default_instance();
+  static const UnSubPayload& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const UnSubData* internal_default_instance() {
-    return reinterpret_cast<const UnSubData*>(
-               &_UnSubData_default_instance_);
+  static inline const UnSubPayload* internal_default_instance() {
+    return reinterpret_cast<const UnSubPayload*>(
+               &_UnSubPayload_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    4;
 
-  void Swap(UnSubData* other);
-  friend void swap(UnSubData& a, UnSubData& b) {
+  void Swap(UnSubPayload* other);
+  friend void swap(UnSubPayload& a, UnSubPayload& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline UnSubData* New() const final {
-    return CreateMaybeMessage<UnSubData>(NULL);
+  inline UnSubPayload* New() const final {
+    return CreateMaybeMessage<UnSubPayload>(NULL);
   }
 
-  UnSubData* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<UnSubData>(arena);
+  UnSubPayload* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<UnSubPayload>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const UnSubData& from);
-  void MergeFrom(const UnSubData& from);
+  void CopyFrom(const UnSubPayload& from);
+  void MergeFrom(const UnSubPayload& from);
   void Clear() final;
   bool IsInitialized() const final;
 
@@ -578,7 +775,7 @@ class UnSubData : public ::google::protobuf::Message /* @@protoc_insertion_point
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(UnSubData* other);
+  void InternalSwap(UnSubPayload* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -594,17 +791,173 @@ class UnSubData : public ::google::protobuf::Message /* @@protoc_insertion_point
 
   // accessors -------------------------------------------------------
 
-  // int64 subscriber_id = 1;
-  void clear_subscriber_id();
-  static const int kSubscriberIdFieldNumber = 1;
-  ::google::protobuf::int64 subscriber_id() const;
-  void set_subscriber_id(::google::protobuf::int64 value);
+  // string topic = 1;
+  void clear_topic();
+  static const int kTopicFieldNumber = 1;
+  const ::std::string& topic() const;
+  void set_topic(const ::std::string& value);
+  #if LANG_CXX11
+  void set_topic(::std::string&& value);
+  #endif
+  void set_topic(const char* value);
+  void set_topic(const char* value, size_t size);
+  ::std::string* mutable_topic();
+  ::std::string* release_topic();
+  void set_allocated_topic(::std::string* topic);
 
-  // @@protoc_insertion_point(class_scope:protocol.UnSubData)
+  // string subscriber_name = 2;
+  void clear_subscriber_name();
+  static const int kSubscriberNameFieldNumber = 2;
+  const ::std::string& subscriber_name() const;
+  void set_subscriber_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_subscriber_name(::std::string&& value);
+  #endif
+  void set_subscriber_name(const char* value);
+  void set_subscriber_name(const char* value, size_t size);
+  ::std::string* mutable_subscriber_name();
+  ::std::string* release_subscriber_name();
+  void set_allocated_subscriber_name(::std::string* subscriber_name);
+
+  // @@protoc_insertion_point(class_scope:protocol.UnSubPayload)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::int64 subscriber_id_;
+  ::google::protobuf::internal::ArenaStringPtr topic_;
+  ::google::protobuf::internal::ArenaStringPtr subscriber_name_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::protobuf_Protocol_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class UnSubAckPayload : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:protocol.UnSubAckPayload) */ {
+ public:
+  UnSubAckPayload();
+  virtual ~UnSubAckPayload();
+
+  UnSubAckPayload(const UnSubAckPayload& from);
+
+  inline UnSubAckPayload& operator=(const UnSubAckPayload& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  UnSubAckPayload(UnSubAckPayload&& from) noexcept
+    : UnSubAckPayload() {
+    *this = ::std::move(from);
+  }
+
+  inline UnSubAckPayload& operator=(UnSubAckPayload&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UnSubAckPayload& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const UnSubAckPayload* internal_default_instance() {
+    return reinterpret_cast<const UnSubAckPayload*>(
+               &_UnSubAckPayload_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    5;
+
+  void Swap(UnSubAckPayload* other);
+  friend void swap(UnSubAckPayload& a, UnSubAckPayload& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline UnSubAckPayload* New() const final {
+    return CreateMaybeMessage<UnSubAckPayload>(NULL);
+  }
+
+  UnSubAckPayload* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<UnSubAckPayload>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const UnSubAckPayload& from);
+  void MergeFrom(const UnSubAckPayload& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(UnSubAckPayload* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string topic = 2;
+  void clear_topic();
+  static const int kTopicFieldNumber = 2;
+  const ::std::string& topic() const;
+  void set_topic(const ::std::string& value);
+  #if LANG_CXX11
+  void set_topic(::std::string&& value);
+  #endif
+  void set_topic(const char* value);
+  void set_topic(const char* value, size_t size);
+  ::std::string* mutable_topic();
+  ::std::string* release_topic();
+  void set_allocated_topic(::std::string* topic);
+
+  // string subscriber_name = 3;
+  void clear_subscriber_name();
+  static const int kSubscriberNameFieldNumber = 3;
+  const ::std::string& subscriber_name() const;
+  void set_subscriber_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_subscriber_name(::std::string&& value);
+  #endif
+  void set_subscriber_name(const char* value);
+  void set_subscriber_name(const char* value, size_t size);
+  ::std::string* mutable_subscriber_name();
+  ::std::string* release_subscriber_name();
+  void set_allocated_subscriber_name(::std::string* subscriber_name);
+
+  // .protocol.AckResult result = 1;
+  void clear_result();
+  static const int kResultFieldNumber = 1;
+  ::protocol::AckResult result() const;
+  void set_result(::protocol::AckResult value);
+
+  // @@protoc_insertion_point(class_scope:protocol.UnSubAckPayload)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr topic_;
+  ::google::protobuf::internal::ArenaStringPtr subscriber_name_;
+  int result_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_Protocol_2eproto::TableStruct;
 };
@@ -661,250 +1014,725 @@ inline void Message::set_compressed(bool value) {
   // @@protoc_insertion_point(field_set:protocol.Message.compressed)
 }
 
-// bytes data = 4;
-inline void Message::clear_data() {
-  data_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+// bytes payload = 4;
+inline void Message::clear_payload() {
+  payload_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& Message::data() const {
-  // @@protoc_insertion_point(field_get:protocol.Message.data)
-  return data_.GetNoArena();
+inline const ::std::string& Message::payload() const {
+  // @@protoc_insertion_point(field_get:protocol.Message.payload)
+  return payload_.GetNoArena();
 }
-inline void Message::set_data(const ::std::string& value) {
+inline void Message::set_payload(const ::std::string& value) {
   
-  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:protocol.Message.data)
+  payload_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:protocol.Message.payload)
 }
 #if LANG_CXX11
-inline void Message::set_data(::std::string&& value) {
+inline void Message::set_payload(::std::string&& value) {
   
-  data_.SetNoArena(
+  payload_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:protocol.Message.data)
+  // @@protoc_insertion_point(field_set_rvalue:protocol.Message.payload)
 }
 #endif
-inline void Message::set_data(const char* value) {
+inline void Message::set_payload(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
-  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:protocol.Message.data)
+  payload_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:protocol.Message.payload)
 }
-inline void Message::set_data(const void* value, size_t size) {
+inline void Message::set_payload(const void* value, size_t size) {
   
-  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+  payload_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:protocol.Message.data)
+  // @@protoc_insertion_point(field_set_pointer:protocol.Message.payload)
 }
-inline ::std::string* Message::mutable_data() {
+inline ::std::string* Message::mutable_payload() {
   
-  // @@protoc_insertion_point(field_mutable:protocol.Message.data)
-  return data_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  // @@protoc_insertion_point(field_mutable:protocol.Message.payload)
+  return payload_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* Message::release_data() {
-  // @@protoc_insertion_point(field_release:protocol.Message.data)
+inline ::std::string* Message::release_payload() {
+  // @@protoc_insertion_point(field_release:protocol.Message.payload)
   
-  return data_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  return payload_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void Message::set_allocated_data(::std::string* data) {
-  if (data != NULL) {
+inline void Message::set_allocated_payload(::std::string* payload) {
+  if (payload != NULL) {
     
   } else {
     
   }
-  data_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), data);
-  // @@protoc_insertion_point(field_set_allocated:protocol.Message.data)
+  payload_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), payload);
+  // @@protoc_insertion_point(field_set_allocated:protocol.Message.payload)
 }
 
 // -------------------------------------------------------------------
 
-// SubData
+// PubPayload
 
 // string topic = 1;
-inline void SubData::clear_topic() {
+inline void PubPayload::clear_topic() {
   topic_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& SubData::topic() const {
-  // @@protoc_insertion_point(field_get:protocol.SubData.topic)
+inline const ::std::string& PubPayload::topic() const {
+  // @@protoc_insertion_point(field_get:protocol.PubPayload.topic)
   return topic_.GetNoArena();
 }
-inline void SubData::set_topic(const ::std::string& value) {
+inline void PubPayload::set_topic(const ::std::string& value) {
   
   topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:protocol.SubData.topic)
+  // @@protoc_insertion_point(field_set:protocol.PubPayload.topic)
 }
 #if LANG_CXX11
-inline void SubData::set_topic(::std::string&& value) {
+inline void PubPayload::set_topic(::std::string&& value) {
   
   topic_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:protocol.SubData.topic)
+  // @@protoc_insertion_point(field_set_rvalue:protocol.PubPayload.topic)
 }
 #endif
-inline void SubData::set_topic(const char* value) {
+inline void PubPayload::set_topic(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:protocol.SubData.topic)
+  // @@protoc_insertion_point(field_set_char:protocol.PubPayload.topic)
 }
-inline void SubData::set_topic(const char* value, size_t size) {
+inline void PubPayload::set_topic(const char* value, size_t size) {
   
   topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:protocol.SubData.topic)
+  // @@protoc_insertion_point(field_set_pointer:protocol.PubPayload.topic)
 }
-inline ::std::string* SubData::mutable_topic() {
+inline ::std::string* PubPayload::mutable_topic() {
   
-  // @@protoc_insertion_point(field_mutable:protocol.SubData.topic)
+  // @@protoc_insertion_point(field_mutable:protocol.PubPayload.topic)
   return topic_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* SubData::release_topic() {
-  // @@protoc_insertion_point(field_release:protocol.SubData.topic)
+inline ::std::string* PubPayload::release_topic() {
+  // @@protoc_insertion_point(field_release:protocol.PubPayload.topic)
   
   return topic_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void SubData::set_allocated_topic(::std::string* topic) {
+inline void PubPayload::set_allocated_topic(::std::string* topic) {
   if (topic != NULL) {
     
   } else {
     
   }
   topic_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), topic);
-  // @@protoc_insertion_point(field_set_allocated:protocol.SubData.topic)
+  // @@protoc_insertion_point(field_set_allocated:protocol.PubPayload.topic)
+}
+
+// string data_type = 2;
+inline void PubPayload::clear_data_type() {
+  data_type_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& PubPayload::data_type() const {
+  // @@protoc_insertion_point(field_get:protocol.PubPayload.data_type)
+  return data_type_.GetNoArena();
+}
+inline void PubPayload::set_data_type(const ::std::string& value) {
+  
+  data_type_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:protocol.PubPayload.data_type)
+}
+#if LANG_CXX11
+inline void PubPayload::set_data_type(::std::string&& value) {
+  
+  data_type_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:protocol.PubPayload.data_type)
+}
+#endif
+inline void PubPayload::set_data_type(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  data_type_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:protocol.PubPayload.data_type)
+}
+inline void PubPayload::set_data_type(const char* value, size_t size) {
+  
+  data_type_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:protocol.PubPayload.data_type)
+}
+inline ::std::string* PubPayload::mutable_data_type() {
+  
+  // @@protoc_insertion_point(field_mutable:protocol.PubPayload.data_type)
+  return data_type_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* PubPayload::release_data_type() {
+  // @@protoc_insertion_point(field_release:protocol.PubPayload.data_type)
+  
+  return data_type_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PubPayload::set_allocated_data_type(::std::string* data_type) {
+  if (data_type != NULL) {
+    
+  } else {
+    
+  }
+  data_type_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), data_type);
+  // @@protoc_insertion_point(field_set_allocated:protocol.PubPayload.data_type)
+}
+
+// bytes data = 3;
+inline void PubPayload::clear_data() {
+  data_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& PubPayload::data() const {
+  // @@protoc_insertion_point(field_get:protocol.PubPayload.data)
+  return data_.GetNoArena();
+}
+inline void PubPayload::set_data(const ::std::string& value) {
+  
+  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:protocol.PubPayload.data)
+}
+#if LANG_CXX11
+inline void PubPayload::set_data(::std::string&& value) {
+  
+  data_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:protocol.PubPayload.data)
+}
+#endif
+inline void PubPayload::set_data(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:protocol.PubPayload.data)
+}
+inline void PubPayload::set_data(const void* value, size_t size) {
+  
+  data_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:protocol.PubPayload.data)
+}
+inline ::std::string* PubPayload::mutable_data() {
+  
+  // @@protoc_insertion_point(field_mutable:protocol.PubPayload.data)
+  return data_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* PubPayload::release_data() {
+  // @@protoc_insertion_point(field_release:protocol.PubPayload.data)
+  
+  return data_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PubPayload::set_allocated_data(::std::string* data) {
+  if (data != NULL) {
+    
+  } else {
+    
+  }
+  data_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), data);
+  // @@protoc_insertion_point(field_set_allocated:protocol.PubPayload.data)
+}
+
+// -------------------------------------------------------------------
+
+// SubPayload
+
+// string topic = 1;
+inline void SubPayload::clear_topic() {
+  topic_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& SubPayload::topic() const {
+  // @@protoc_insertion_point(field_get:protocol.SubPayload.topic)
+  return topic_.GetNoArena();
+}
+inline void SubPayload::set_topic(const ::std::string& value) {
+  
+  topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:protocol.SubPayload.topic)
+}
+#if LANG_CXX11
+inline void SubPayload::set_topic(::std::string&& value) {
+  
+  topic_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:protocol.SubPayload.topic)
+}
+#endif
+inline void SubPayload::set_topic(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:protocol.SubPayload.topic)
+}
+inline void SubPayload::set_topic(const char* value, size_t size) {
+  
+  topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:protocol.SubPayload.topic)
+}
+inline ::std::string* SubPayload::mutable_topic() {
+  
+  // @@protoc_insertion_point(field_mutable:protocol.SubPayload.topic)
+  return topic_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* SubPayload::release_topic() {
+  // @@protoc_insertion_point(field_release:protocol.SubPayload.topic)
+  
+  return topic_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void SubPayload::set_allocated_topic(::std::string* topic) {
+  if (topic != NULL) {
+    
+  } else {
+    
+  }
+  topic_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), topic);
+  // @@protoc_insertion_point(field_set_allocated:protocol.SubPayload.topic)
 }
 
 // string subscriber_name = 2;
-inline void SubData::clear_subscriber_name() {
+inline void SubPayload::clear_subscriber_name() {
   subscriber_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& SubData::subscriber_name() const {
-  // @@protoc_insertion_point(field_get:protocol.SubData.subscriber_name)
+inline const ::std::string& SubPayload::subscriber_name() const {
+  // @@protoc_insertion_point(field_get:protocol.SubPayload.subscriber_name)
   return subscriber_name_.GetNoArena();
 }
-inline void SubData::set_subscriber_name(const ::std::string& value) {
+inline void SubPayload::set_subscriber_name(const ::std::string& value) {
   
   subscriber_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:protocol.SubData.subscriber_name)
+  // @@protoc_insertion_point(field_set:protocol.SubPayload.subscriber_name)
 }
 #if LANG_CXX11
-inline void SubData::set_subscriber_name(::std::string&& value) {
+inline void SubPayload::set_subscriber_name(::std::string&& value) {
   
   subscriber_name_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:protocol.SubData.subscriber_name)
+  // @@protoc_insertion_point(field_set_rvalue:protocol.SubPayload.subscriber_name)
 }
 #endif
-inline void SubData::set_subscriber_name(const char* value) {
+inline void SubPayload::set_subscriber_name(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   subscriber_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:protocol.SubData.subscriber_name)
+  // @@protoc_insertion_point(field_set_char:protocol.SubPayload.subscriber_name)
 }
-inline void SubData::set_subscriber_name(const char* value, size_t size) {
+inline void SubPayload::set_subscriber_name(const char* value, size_t size) {
   
   subscriber_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:protocol.SubData.subscriber_name)
+  // @@protoc_insertion_point(field_set_pointer:protocol.SubPayload.subscriber_name)
 }
-inline ::std::string* SubData::mutable_subscriber_name() {
+inline ::std::string* SubPayload::mutable_subscriber_name() {
   
-  // @@protoc_insertion_point(field_mutable:protocol.SubData.subscriber_name)
+  // @@protoc_insertion_point(field_mutable:protocol.SubPayload.subscriber_name)
   return subscriber_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* SubData::release_subscriber_name() {
-  // @@protoc_insertion_point(field_release:protocol.SubData.subscriber_name)
+inline ::std::string* SubPayload::release_subscriber_name() {
+  // @@protoc_insertion_point(field_release:protocol.SubPayload.subscriber_name)
   
   return subscriber_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void SubData::set_allocated_subscriber_name(::std::string* subscriber_name) {
+inline void SubPayload::set_allocated_subscriber_name(::std::string* subscriber_name) {
   if (subscriber_name != NULL) {
     
   } else {
     
   }
   subscriber_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), subscriber_name);
-  // @@protoc_insertion_point(field_set_allocated:protocol.SubData.subscriber_name)
+  // @@protoc_insertion_point(field_set_allocated:protocol.SubPayload.subscriber_name)
 }
 
-// int32 queue_size = 3;
-inline void SubData::clear_queue_size() {
-  queue_size_ = 0;
+// int32 max_rate = 3;
+inline void SubPayload::clear_max_rate() {
+  max_rate_ = 0;
 }
-inline ::google::protobuf::int32 SubData::queue_size() const {
-  // @@protoc_insertion_point(field_get:protocol.SubData.queue_size)
-  return queue_size_;
+inline ::google::protobuf::int32 SubPayload::max_rate() const {
+  // @@protoc_insertion_point(field_get:protocol.SubPayload.max_rate)
+  return max_rate_;
 }
-inline void SubData::set_queue_size(::google::protobuf::int32 value) {
+inline void SubPayload::set_max_rate(::google::protobuf::int32 value) {
   
-  queue_size_ = value;
-  // @@protoc_insertion_point(field_set:protocol.SubData.queue_size)
+  max_rate_ = value;
+  // @@protoc_insertion_point(field_set:protocol.SubPayload.max_rate)
 }
 
-// int32 throttle_rate = 4;
-inline void SubData::clear_throttle_rate() {
-  throttle_rate_ = 0;
-}
-inline ::google::protobuf::int32 SubData::throttle_rate() const {
-  // @@protoc_insertion_point(field_get:protocol.SubData.throttle_rate)
-  return throttle_rate_;
-}
-inline void SubData::set_throttle_rate(::google::protobuf::int32 value) {
-  
-  throttle_rate_ = value;
-  // @@protoc_insertion_point(field_set:protocol.SubData.throttle_rate)
-}
-
-// bool compressed = 5;
-inline void SubData::clear_compressed() {
+// bool compressed = 4;
+inline void SubPayload::clear_compressed() {
   compressed_ = false;
 }
-inline bool SubData::compressed() const {
-  // @@protoc_insertion_point(field_get:protocol.SubData.compressed)
+inline bool SubPayload::compressed() const {
+  // @@protoc_insertion_point(field_get:protocol.SubPayload.compressed)
   return compressed_;
 }
-inline void SubData::set_compressed(bool value) {
+inline void SubPayload::set_compressed(bool value) {
   
   compressed_ = value;
-  // @@protoc_insertion_point(field_set:protocol.SubData.compressed)
+  // @@protoc_insertion_point(field_set:protocol.SubPayload.compressed)
 }
 
 // -------------------------------------------------------------------
 
-// SubAckData
+// SubAckPayload
 
-// int64 subscriber_id = 1;
-inline void SubAckData::clear_subscriber_id() {
-  subscriber_id_ = GOOGLE_LONGLONG(0);
+// .protocol.AckResult result = 1;
+inline void SubAckPayload::clear_result() {
+  result_ = 0;
 }
-inline ::google::protobuf::int64 SubAckData::subscriber_id() const {
-  // @@protoc_insertion_point(field_get:protocol.SubAckData.subscriber_id)
-  return subscriber_id_;
+inline ::protocol::AckResult SubAckPayload::result() const {
+  // @@protoc_insertion_point(field_get:protocol.SubAckPayload.result)
+  return static_cast< ::protocol::AckResult >(result_);
 }
-inline void SubAckData::set_subscriber_id(::google::protobuf::int64 value) {
+inline void SubAckPayload::set_result(::protocol::AckResult value) {
   
-  subscriber_id_ = value;
-  // @@protoc_insertion_point(field_set:protocol.SubAckData.subscriber_id)
+  result_ = value;
+  // @@protoc_insertion_point(field_set:protocol.SubAckPayload.result)
+}
+
+// string topic = 2;
+inline void SubAckPayload::clear_topic() {
+  topic_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& SubAckPayload::topic() const {
+  // @@protoc_insertion_point(field_get:protocol.SubAckPayload.topic)
+  return topic_.GetNoArena();
+}
+inline void SubAckPayload::set_topic(const ::std::string& value) {
+  
+  topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:protocol.SubAckPayload.topic)
+}
+#if LANG_CXX11
+inline void SubAckPayload::set_topic(::std::string&& value) {
+  
+  topic_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:protocol.SubAckPayload.topic)
+}
+#endif
+inline void SubAckPayload::set_topic(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:protocol.SubAckPayload.topic)
+}
+inline void SubAckPayload::set_topic(const char* value, size_t size) {
+  
+  topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:protocol.SubAckPayload.topic)
+}
+inline ::std::string* SubAckPayload::mutable_topic() {
+  
+  // @@protoc_insertion_point(field_mutable:protocol.SubAckPayload.topic)
+  return topic_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* SubAckPayload::release_topic() {
+  // @@protoc_insertion_point(field_release:protocol.SubAckPayload.topic)
+  
+  return topic_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void SubAckPayload::set_allocated_topic(::std::string* topic) {
+  if (topic != NULL) {
+    
+  } else {
+    
+  }
+  topic_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), topic);
+  // @@protoc_insertion_point(field_set_allocated:protocol.SubAckPayload.topic)
+}
+
+// string subscriber_name = 3;
+inline void SubAckPayload::clear_subscriber_name() {
+  subscriber_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& SubAckPayload::subscriber_name() const {
+  // @@protoc_insertion_point(field_get:protocol.SubAckPayload.subscriber_name)
+  return subscriber_name_.GetNoArena();
+}
+inline void SubAckPayload::set_subscriber_name(const ::std::string& value) {
+  
+  subscriber_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:protocol.SubAckPayload.subscriber_name)
+}
+#if LANG_CXX11
+inline void SubAckPayload::set_subscriber_name(::std::string&& value) {
+  
+  subscriber_name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:protocol.SubAckPayload.subscriber_name)
+}
+#endif
+inline void SubAckPayload::set_subscriber_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  subscriber_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:protocol.SubAckPayload.subscriber_name)
+}
+inline void SubAckPayload::set_subscriber_name(const char* value, size_t size) {
+  
+  subscriber_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:protocol.SubAckPayload.subscriber_name)
+}
+inline ::std::string* SubAckPayload::mutable_subscriber_name() {
+  
+  // @@protoc_insertion_point(field_mutable:protocol.SubAckPayload.subscriber_name)
+  return subscriber_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* SubAckPayload::release_subscriber_name() {
+  // @@protoc_insertion_point(field_release:protocol.SubAckPayload.subscriber_name)
+  
+  return subscriber_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void SubAckPayload::set_allocated_subscriber_name(::std::string* subscriber_name) {
+  if (subscriber_name != NULL) {
+    
+  } else {
+    
+  }
+  subscriber_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), subscriber_name);
+  // @@protoc_insertion_point(field_set_allocated:protocol.SubAckPayload.subscriber_name)
 }
 
 // -------------------------------------------------------------------
 
-// UnSubData
+// UnSubPayload
 
-// int64 subscriber_id = 1;
-inline void UnSubData::clear_subscriber_id() {
-  subscriber_id_ = GOOGLE_LONGLONG(0);
+// string topic = 1;
+inline void UnSubPayload::clear_topic() {
+  topic_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::google::protobuf::int64 UnSubData::subscriber_id() const {
-  // @@protoc_insertion_point(field_get:protocol.UnSubData.subscriber_id)
-  return subscriber_id_;
+inline const ::std::string& UnSubPayload::topic() const {
+  // @@protoc_insertion_point(field_get:protocol.UnSubPayload.topic)
+  return topic_.GetNoArena();
 }
-inline void UnSubData::set_subscriber_id(::google::protobuf::int64 value) {
+inline void UnSubPayload::set_topic(const ::std::string& value) {
   
-  subscriber_id_ = value;
-  // @@protoc_insertion_point(field_set:protocol.UnSubData.subscriber_id)
+  topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:protocol.UnSubPayload.topic)
+}
+#if LANG_CXX11
+inline void UnSubPayload::set_topic(::std::string&& value) {
+  
+  topic_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:protocol.UnSubPayload.topic)
+}
+#endif
+inline void UnSubPayload::set_topic(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:protocol.UnSubPayload.topic)
+}
+inline void UnSubPayload::set_topic(const char* value, size_t size) {
+  
+  topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:protocol.UnSubPayload.topic)
+}
+inline ::std::string* UnSubPayload::mutable_topic() {
+  
+  // @@protoc_insertion_point(field_mutable:protocol.UnSubPayload.topic)
+  return topic_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* UnSubPayload::release_topic() {
+  // @@protoc_insertion_point(field_release:protocol.UnSubPayload.topic)
+  
+  return topic_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void UnSubPayload::set_allocated_topic(::std::string* topic) {
+  if (topic != NULL) {
+    
+  } else {
+    
+  }
+  topic_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), topic);
+  // @@protoc_insertion_point(field_set_allocated:protocol.UnSubPayload.topic)
+}
+
+// string subscriber_name = 2;
+inline void UnSubPayload::clear_subscriber_name() {
+  subscriber_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& UnSubPayload::subscriber_name() const {
+  // @@protoc_insertion_point(field_get:protocol.UnSubPayload.subscriber_name)
+  return subscriber_name_.GetNoArena();
+}
+inline void UnSubPayload::set_subscriber_name(const ::std::string& value) {
+  
+  subscriber_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:protocol.UnSubPayload.subscriber_name)
+}
+#if LANG_CXX11
+inline void UnSubPayload::set_subscriber_name(::std::string&& value) {
+  
+  subscriber_name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:protocol.UnSubPayload.subscriber_name)
+}
+#endif
+inline void UnSubPayload::set_subscriber_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  subscriber_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:protocol.UnSubPayload.subscriber_name)
+}
+inline void UnSubPayload::set_subscriber_name(const char* value, size_t size) {
+  
+  subscriber_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:protocol.UnSubPayload.subscriber_name)
+}
+inline ::std::string* UnSubPayload::mutable_subscriber_name() {
+  
+  // @@protoc_insertion_point(field_mutable:protocol.UnSubPayload.subscriber_name)
+  return subscriber_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* UnSubPayload::release_subscriber_name() {
+  // @@protoc_insertion_point(field_release:protocol.UnSubPayload.subscriber_name)
+  
+  return subscriber_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void UnSubPayload::set_allocated_subscriber_name(::std::string* subscriber_name) {
+  if (subscriber_name != NULL) {
+    
+  } else {
+    
+  }
+  subscriber_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), subscriber_name);
+  // @@protoc_insertion_point(field_set_allocated:protocol.UnSubPayload.subscriber_name)
+}
+
+// -------------------------------------------------------------------
+
+// UnSubAckPayload
+
+// .protocol.AckResult result = 1;
+inline void UnSubAckPayload::clear_result() {
+  result_ = 0;
+}
+inline ::protocol::AckResult UnSubAckPayload::result() const {
+  // @@protoc_insertion_point(field_get:protocol.UnSubAckPayload.result)
+  return static_cast< ::protocol::AckResult >(result_);
+}
+inline void UnSubAckPayload::set_result(::protocol::AckResult value) {
+  
+  result_ = value;
+  // @@protoc_insertion_point(field_set:protocol.UnSubAckPayload.result)
+}
+
+// string topic = 2;
+inline void UnSubAckPayload::clear_topic() {
+  topic_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& UnSubAckPayload::topic() const {
+  // @@protoc_insertion_point(field_get:protocol.UnSubAckPayload.topic)
+  return topic_.GetNoArena();
+}
+inline void UnSubAckPayload::set_topic(const ::std::string& value) {
+  
+  topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:protocol.UnSubAckPayload.topic)
+}
+#if LANG_CXX11
+inline void UnSubAckPayload::set_topic(::std::string&& value) {
+  
+  topic_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:protocol.UnSubAckPayload.topic)
+}
+#endif
+inline void UnSubAckPayload::set_topic(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:protocol.UnSubAckPayload.topic)
+}
+inline void UnSubAckPayload::set_topic(const char* value, size_t size) {
+  
+  topic_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:protocol.UnSubAckPayload.topic)
+}
+inline ::std::string* UnSubAckPayload::mutable_topic() {
+  
+  // @@protoc_insertion_point(field_mutable:protocol.UnSubAckPayload.topic)
+  return topic_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* UnSubAckPayload::release_topic() {
+  // @@protoc_insertion_point(field_release:protocol.UnSubAckPayload.topic)
+  
+  return topic_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void UnSubAckPayload::set_allocated_topic(::std::string* topic) {
+  if (topic != NULL) {
+    
+  } else {
+    
+  }
+  topic_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), topic);
+  // @@protoc_insertion_point(field_set_allocated:protocol.UnSubAckPayload.topic)
+}
+
+// string subscriber_name = 3;
+inline void UnSubAckPayload::clear_subscriber_name() {
+  subscriber_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& UnSubAckPayload::subscriber_name() const {
+  // @@protoc_insertion_point(field_get:protocol.UnSubAckPayload.subscriber_name)
+  return subscriber_name_.GetNoArena();
+}
+inline void UnSubAckPayload::set_subscriber_name(const ::std::string& value) {
+  
+  subscriber_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:protocol.UnSubAckPayload.subscriber_name)
+}
+#if LANG_CXX11
+inline void UnSubAckPayload::set_subscriber_name(::std::string&& value) {
+  
+  subscriber_name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:protocol.UnSubAckPayload.subscriber_name)
+}
+#endif
+inline void UnSubAckPayload::set_subscriber_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  subscriber_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:protocol.UnSubAckPayload.subscriber_name)
+}
+inline void UnSubAckPayload::set_subscriber_name(const char* value, size_t size) {
+  
+  subscriber_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:protocol.UnSubAckPayload.subscriber_name)
+}
+inline ::std::string* UnSubAckPayload::mutable_subscriber_name() {
+  
+  // @@protoc_insertion_point(field_mutable:protocol.UnSubAckPayload.subscriber_name)
+  return subscriber_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* UnSubAckPayload::release_subscriber_name() {
+  // @@protoc_insertion_point(field_release:protocol.UnSubAckPayload.subscriber_name)
+  
+  return subscriber_name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void UnSubAckPayload::set_allocated_subscriber_name(::std::string* subscriber_name) {
+  if (subscriber_name != NULL) {
+    
+  } else {
+    
+  }
+  subscriber_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), subscriber_name);
+  // @@protoc_insertion_point(field_set_allocated:protocol.UnSubAckPayload.subscriber_name)
 }
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -923,6 +1751,11 @@ template <> struct is_proto_enum< ::protocol::Message_Type> : ::std::true_type {
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::protocol::Message_Type>() {
   return ::protocol::Message_Type_descriptor();
+}
+template <> struct is_proto_enum< ::protocol::AckResult> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::protocol::AckResult>() {
+  return ::protocol::AckResult_descriptor();
 }
 
 }  // namespace protobuf

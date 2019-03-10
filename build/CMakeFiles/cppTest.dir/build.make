@@ -57,10 +57,10 @@ include CMakeFiles/cppTest.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/cppTest.dir/flags.make
 
-Protocol.pb.h: ../protobuf/Protocol.proto
+Protocol.pb.h: ../include/data_bus/Protocol.proto
 Protocol.pb.h: /usr/local/bin/protoc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/zjz/work/cpp/cpp_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running cpp protocol buffer compiler on protobuf/Protocol.proto"
-	/usr/local/bin/protoc --cpp_out /Users/zjz/work/cpp/cpp_test/build -I /Users/zjz/work/cpp/cpp_test/protobuf /Users/zjz/work/cpp/cpp_test/protobuf/Protocol.proto
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/zjz/work/cpp/cpp_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running cpp protocol buffer compiler on include/data_bus/Protocol.proto"
+	/usr/local/bin/protoc --cpp_out /Users/zjz/work/cpp/cpp_test/build -I /Users/zjz/work/cpp/cpp_test/include/data_bus -I /Users/zjz/work/cpp/cpp_test/protobuf /Users/zjz/work/cpp/cpp_test/include/data_bus/Protocol.proto
 
 Protocol.pb.cc: Protocol.pb.h
 	@$(CMAKE_COMMAND) -E touch_nocreate Protocol.pb.cc
@@ -68,7 +68,7 @@ Protocol.pb.cc: Protocol.pb.h
 Pose.pb.h: ../protobuf/Pose.proto
 Pose.pb.h: /usr/local/bin/protoc
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/Users/zjz/work/cpp/cpp_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Running cpp protocol buffer compiler on protobuf/Pose.proto"
-	/usr/local/bin/protoc --cpp_out /Users/zjz/work/cpp/cpp_test/build -I /Users/zjz/work/cpp/cpp_test/protobuf /Users/zjz/work/cpp/cpp_test/protobuf/Pose.proto
+	/usr/local/bin/protoc --cpp_out /Users/zjz/work/cpp/cpp_test/build -I /Users/zjz/work/cpp/cpp_test/include/data_bus -I /Users/zjz/work/cpp/cpp_test/protobuf /Users/zjz/work/cpp/cpp_test/protobuf/Pose.proto
 
 Pose.pb.cc: Pose.pb.h
 	@$(CMAKE_COMMAND) -E touch_nocreate Pose.pb.cc
@@ -99,31 +99,31 @@ CMakeFiles/cppTest.dir/Pose.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cppTest.dir/Pose.pb.cc.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zjz/work/cpp/cpp_test/build/Pose.pb.cc -o CMakeFiles/cppTest.dir/Pose.pb.cc.s
 
-CMakeFiles/cppTest.dir/tests/tcp_test.cpp.o: CMakeFiles/cppTest.dir/flags.make
-CMakeFiles/cppTest.dir/tests/tcp_test.cpp.o: ../tests/tcp_test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zjz/work/cpp/cpp_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/cppTest.dir/tests/tcp_test.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cppTest.dir/tests/tcp_test.cpp.o -c /Users/zjz/work/cpp/cpp_test/tests/tcp_test.cpp
+CMakeFiles/cppTest.dir/tests/databus_test2.cpp.o: CMakeFiles/cppTest.dir/flags.make
+CMakeFiles/cppTest.dir/tests/databus_test2.cpp.o: ../tests/databus_test2.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zjz/work/cpp/cpp_test/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/cppTest.dir/tests/databus_test2.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cppTest.dir/tests/databus_test2.cpp.o -c /Users/zjz/work/cpp/cpp_test/tests/databus_test2.cpp
 
-CMakeFiles/cppTest.dir/tests/tcp_test.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cppTest.dir/tests/tcp_test.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zjz/work/cpp/cpp_test/tests/tcp_test.cpp > CMakeFiles/cppTest.dir/tests/tcp_test.cpp.i
+CMakeFiles/cppTest.dir/tests/databus_test2.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cppTest.dir/tests/databus_test2.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zjz/work/cpp/cpp_test/tests/databus_test2.cpp > CMakeFiles/cppTest.dir/tests/databus_test2.cpp.i
 
-CMakeFiles/cppTest.dir/tests/tcp_test.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cppTest.dir/tests/tcp_test.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zjz/work/cpp/cpp_test/tests/tcp_test.cpp -o CMakeFiles/cppTest.dir/tests/tcp_test.cpp.s
+CMakeFiles/cppTest.dir/tests/databus_test2.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cppTest.dir/tests/databus_test2.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zjz/work/cpp/cpp_test/tests/databus_test2.cpp -o CMakeFiles/cppTest.dir/tests/databus_test2.cpp.s
 
 # Object files for target cppTest
 cppTest_OBJECTS = \
 "CMakeFiles/cppTest.dir/Protocol.pb.cc.o" \
 "CMakeFiles/cppTest.dir/Pose.pb.cc.o" \
-"CMakeFiles/cppTest.dir/tests/tcp_test.cpp.o"
+"CMakeFiles/cppTest.dir/tests/databus_test2.cpp.o"
 
 # External object files for target cppTest
 cppTest_EXTERNAL_OBJECTS =
 
 cppTest: CMakeFiles/cppTest.dir/Protocol.pb.cc.o
 cppTest: CMakeFiles/cppTest.dir/Pose.pb.cc.o
-cppTest: CMakeFiles/cppTest.dir/tests/tcp_test.cpp.o
+cppTest: CMakeFiles/cppTest.dir/tests/databus_test2.cpp.o
 cppTest: CMakeFiles/cppTest.dir/build.make
 cppTest: /usr/local/lib/libboost_system-mt.dylib
 cppTest: /usr/local/lib/libboost_filesystem-mt.dylib

@@ -17,9 +17,9 @@ namespace tcp_tool {
 
     using ErrorCallback = std::function<void(long)>;
     template<typename T>
-    using TcpEncoder = std::function<void(T &, std::vector<uint8_t> &)>;
+    using TcpEncoder = std::function<void(T &, std::vector<char> &)>;
     template<typename T>
-    using TcpDecoder = std::function<bool(std::vector<uint8_t> &, std::size_t, T &)>;
+    using TcpDecoder = std::function<bool(std::vector<char> &, T &)>;
     template<typename T>
     using TcpHandler = std::function<void(T &, TcpSession<T> &)>;
 
@@ -30,9 +30,9 @@ namespace tcp_tool {
                    TcpEncoder<T> encoder,
                    TcpDecoder<T> decoder,
                    TcpHandler<T> handler,
-                   ErrorCallback error_callback)
+                   ErrorCallback error_callback = [](long session_id) {})
                 : socket_(std::move(socket)), encoder_(encoder), decoder_(decoder),
-                  handler_(handler), error_callback_(error_callback), read_buffer_(max_buffer_length),
+                  handler_(handler), error_callback_(error_callback),
                   session_id_(generate_id()) {
         }
 
@@ -45,11 +45,12 @@ namespace tcp_tool {
         }
 
         void send(T &msg) {
-            std::shared_ptr<std::vector<uint8_t>> data(new std::vector<uint8_t>());
+            std::shared_ptr<std::vector<char>> data(new std::vector<char>());
             encoder_(msg, *data);
 
             std::lock_guard<std::mutex> locker(mutex_);
             write_queue_.emplace_back(data);
+
             if (write_queue_.size() > 1) {
                 return;
             }
@@ -64,7 +65,7 @@ namespace tcp_tool {
         }
 
         void do_read() {
-            socket_.async_read_some(boost::asio::buffer(read_buffer_),
+            socket_.async_read_some(boost::asio::buffer(read_buffer_, max_buffer_length),
                                     [this](boost::system::error_code ec, std::size_t bytes_transferred) {
                                         if (ec) {
                                             Logger::error("TcpSession",
@@ -73,13 +74,23 @@ namespace tcp_tool {
                                             error_callback_(session_id_);
                                             return;
                                         }
-
                                         // decode
+                                        remaining_read_data_.insert(remaining_read_data_.end(), read_buffer_,
+                                                                    read_buffer_ + bytes_transferred);
+
+//                                        std::vector<char> data(read_buffer_, read_buffer_ + bytes_transferred);
                                         T msg;
-                                        bool success = decoder_(read_buffer_, bytes_transferred, msg);
-                                        if (success) {
-                                            handler_(msg, *this);
+                                        bool success = true;
+                                        while (success) {
+                                            success = decoder_(remaining_read_data_, msg);
+                                            if (success) {
+                                                handler_(msg, *this);
+                                            }
+                                            if (remaining_read_data_.size() == 0) {
+                                                break;
+                                            }
                                         }
+
                                         do_read();
                                     });
         }
@@ -87,12 +98,13 @@ namespace tcp_tool {
         void do_write() {
             boost::asio::async_write(socket_,
                                      boost::asio::buffer(*write_queue_.front()),
-                                     [this](boost::system::error_code ec, std::size_t /*length*/) {
+                                     [this](boost::system::error_code ec, std::size_t length) {
                                          if (ec) {
                                              Logger::error("TcpSession",
                                                            "Write data error, session_id={}, error_message={}.",
                                                            session_id_, ec.message());
                                              error_callback_(session_id_);
+                                             return;
                                          }
 
                                          std::lock_guard<std::mutex> locker(mutex_);
@@ -111,9 +123,10 @@ namespace tcp_tool {
         };
         long session_id_;
         tcp::socket socket_;
-        std::vector<uint8_t> read_buffer_;
+        char read_buffer_[max_buffer_length];
+        std::vector<char> remaining_read_data_;
         std::mutex mutex_;
-        std::deque<std::shared_ptr<std::vector<uint8_t>>> write_queue_;
+        std::deque<std::shared_ptr<std::vector<char>>> write_queue_;
         TcpEncoder<T> encoder_;
         TcpDecoder<T> decoder_;
         TcpHandler<T> handler_;

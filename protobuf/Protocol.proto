@@ -6,7 +6,7 @@ message Message {
     enum Type {
         PUB = 0;
         SUB = 1;
-        SUBACK = 2;
+        SUB_ACK = 2;
         UNSUB = 3;
     }
     Type type = 1;
