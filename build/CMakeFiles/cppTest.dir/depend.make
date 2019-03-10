@@ -90,7 +90,6 @@ CMakeFiles/cppTest.dir/Protocol.pb.cc.o: /usr/local/include/google/protobuf/wire
 CMakeFiles/cppTest.dir/tests/databus_test2.cpp.o: ../include/data_bus/data_bus.h
 CMakeFiles/cppTest.dir/tests/databus_test2.cpp.o: ../include/data_bus/data_bus_client.h
 CMakeFiles/cppTest.dir/tests/databus_test2.cpp.o: ../include/data_bus/data_bus_proxy.h
-CMakeFiles/cppTest.dir/tests/databus_test2.cpp.o: ../include/data_bus/proto_utils.h
 CMakeFiles/cppTest.dir/tests/databus_test2.cpp.o: ../include/data_bus/publisher.h
 CMakeFiles/cppTest.dir/tests/databus_test2.cpp.o: ../include/data_bus/queue_stat.h
 CMakeFiles/cppTest.dir/tests/databus_test2.cpp.o: ../include/data_bus/ring_queue.h
@@ -102,7 +101,9 @@ CMakeFiles/cppTest.dir/tests/databus_test2.cpp.o: ../include/tcp_tool/tcp_server
 CMakeFiles/cppTest.dir/tests/databus_test2.cpp.o: ../include/tcp_tool/tcp_session.h
 CMakeFiles/cppTest.dir/tests/databus_test2.cpp.o: ../include/util/./logger.h
 CMakeFiles/cppTest.dir/tests/databus_test2.cpp.o: ../include/util/logger.h
+CMakeFiles/cppTest.dir/tests/databus_test2.cpp.o: ../include/util/proto_utils.h
 CMakeFiles/cppTest.dir/tests/databus_test2.cpp.o: ../include/util/time_elapsed.h
+CMakeFiles/cppTest.dir/tests/databus_test2.cpp.o: ../include/util/zlib_utils.h
 CMakeFiles/cppTest.dir/tests/databus_test2.cpp.o: ../third_party/spdlog/common.h
 CMakeFiles/cppTest.dir/tests/databus_test2.cpp.o: ../third_party/spdlog/details/console_globals.h
 CMakeFiles/cppTest.dir/tests/databus_test2.cpp.o: ../third_party/spdlog/details/file_helper.h

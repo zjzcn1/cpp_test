@@ -7,6 +7,7 @@
 --   iostreams
 --   regex
 -- Boost library found
+-- Found ZLIB: /usr/lib/libz.dylib (found version "1.2.11") 
 -- Boost library found  
 -- Configuring done
 -- Generating done

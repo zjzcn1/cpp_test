@@ -273,6 +273,15 @@ SDL_INCLUDE_DIR:PATH=/usr/local/include/SDL
 //Where the SDL Library can be found
 SDL_LIBRARY:STRING=/usr/local/lib/libSDLmain.a;/usr/local/lib/libSDL.dylib;-framework Cocoa
 
+//Path to a file.
+ZLIB_INCLUDE_DIR:PATH=/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include
+
+//Path to a library.
+ZLIB_LIBRARY_DEBUG:FILEPATH=ZLIB_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+ZLIB_LIBRARY_RELEASE:FILEPATH=/usr/lib/libz.dylib
+
 //Value Computed by CMake
 cppTest_BINARY_DIR:STATIC=/Users/zjz/work/cpp/cpp_test/build
 
@@ -454,6 +463,8 @@ FIND_PACKAGE_MESSAGE_DETAILS_SDL:INTERNAL=[/usr/local/lib/libSDLmain.a;/usr/loca
 FIND_PACKAGE_MESSAGE_DETAILS_SDL_image:INTERNAL=[/usr/local/lib/libSDL_image.dylib][/usr/local/include/SDL][v1.2.12()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
+//Details about finding ZLIB
+FIND_PACKAGE_MESSAGE_DETAILS_ZLIB:INTERNAL=[/usr/lib/libz.dylib][/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include][v1.2.11()]
 //ADVANCED property for variable: Protobuf_INCLUDE_DIR
 Protobuf_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Protobuf_LIBRARY_DEBUG
@@ -476,6 +487,12 @@ SDL_IMAGE_INCLUDE_DIR-ADVANCED:INTERNAL=1
 SDL_IMAGE_LIBRARY-ADVANCED:INTERNAL=1
 //Path to a library.
 SDL_LIBRARY_TEMP:INTERNAL=/usr/local/lib/libSDL.dylib
+//ADVANCED property for variable: ZLIB_INCLUDE_DIR
+ZLIB_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ZLIB_LIBRARY_DEBUG
+ZLIB_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ZLIB_LIBRARY_RELEASE
+ZLIB_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 //Components requested for this build tree.
 _Boost_COMPONENTS_SEARCHED:INTERNAL=filesystem;iostreams;regex;system
 //Last used Boost_INCLUDE_DIR value.

@@ -8,10 +8,13 @@
 #include "data_bus.h"
 #include "tcp_tool/tcp_server.h"
 #include "Protocol.pb.h"
+#include "util/proto_utils.h"
+#include "util/zlib_utils.h"
 
 namespace data_bus {
 
     using namespace tcp_tool;
+    using namespace util;
 
     class DataBusProxy {
     public:
@@ -37,11 +40,7 @@ namespace data_bus {
             instance()->tcp_server_.handler([&](protocol::Message &message, TcpSession<protocol::Message> &session) {
                 std::vector<char> packed;
                 if (message.compressed()) {
-                    boost::iostreams::filtering_streambuf<boost::iostreams::output> out;
-                    out.push(boost::iostreams::gzip_decompressor());
-                    out.push(boost::iostreams::back_inserter(packed));
-                    boost::iostreams::copy(boost::iostreams::basic_array_source<char>(message.payload().data(),
-                                                                                      message.payload().size()), out);
+                    ZlibUtils::decompress(message.payload(), packed);
                 } else {
                     packed.resize(message.payload().size());
                     packed.assign(message.payload().begin(), message.payload().end());
@@ -54,45 +53,35 @@ namespace data_bus {
                     std::string topic = payload.topic();
                     std::string subscriber_name = payload.subscriber_name();
                     bool compressed = payload.compressed();
-                    bool success = DataBus::subscribe<ProtoMessage>(topic, subscriber_name,
-                                                                    [topic, subscriber_name, compressed, &session](
-                                                                            ConstPtr<ProtoMessage> msg) {
-                                                                        int size = msg->ByteSize();
-                                                                        std::vector<char> buf(size);
-                                                                        msg->SerializeToArray(buf.data(), size);
+                    bool success = DataBus::subscribe<ProtoMessage>(
+                            topic,
+                            subscriber_name,
+                            [topic, subscriber_name, compressed, &session](ConstPtr<ProtoMessage> msg) {
+                                int size = msg->ByteSize();
+                                std::vector<char> buf(size);
+                                msg->SerializeToArray(buf.data(), size);
 
-                                                                        protocol::PubPayload pub;
-                                                                        pub.set_topic(topic);
-                                                                        pub.set_data_type(msg->GetTypeName());
-                                                                        pub.set_data(buf.data(), size);
-                                                                        int pub_size = pub.ByteSize();
-                                                                        std::vector<char> pub_buf(pub_size);
-                                                                        pub.SerializeToArray(pub_buf.data(), pub_size);
+                                protocol::PubPayload pub;
+                                pub.set_topic(topic);
+                                pub.set_data_type(msg->GetTypeName());
+                                pub.set_data(buf.data(), size);
+                                int pub_size = pub.ByteSize();
+                                std::vector<char> pub_buf(pub_size);
+                                pub.SerializeToArray(pub_buf.data(), pub_size);
 
-                                                                        protocol::Message message;
-                                                                        message.set_compressed(compressed);
-                                                                        message.set_type(protocol::Message_Type_PUB);
-                                                                        if (compressed) {
-                                                                            std::vector<char> packed;
-                                                                            boost::iostreams::filtering_streambuf<boost::iostreams::output> out;
-                                                                            out.push(boost::iostreams::gzip_compressor(
-                                                                                    boost::iostreams::gzip::best_compression));
-                                                                            out.push(boost::iostreams::back_inserter(
-                                                                                    packed));
-                                                                            boost::iostreams::copy(
-                                                                                    boost::iostreams::basic_array_source<char>(
-                                                                                            &pub_buf[0],
-                                                                                            pub_buf.size()),
-                                                                                    out);
-                                                                            message.set_payload(packed.data(),
-                                                                                                packed.size());
-                                                                        } else {
-                                                                            message.set_payload(pub_buf.data(),
-                                                                                                pub_buf.size());
-                                                                        }
+                                protocol::Message message;
+                                message.set_compressed(compressed);
+                                message.set_type(protocol::Message_Type_PUB);
+                                if (compressed) {
+                                    std::vector<char> packed;
+                                    ZlibUtils::compress(pub_buf, packed);
+                                    message.set_payload(packed.data(), packed.size());
+                                } else {
+                                    message.set_payload(pub_buf.data(),pub_buf.size());
+                                }
 
-                                                                        session.send(message);
-                                                                    });
+                                session.send(message);
+                            });
 
                     protocol::SubAckPayload ack_payload;
                     ack_payload.set_topic(topic);

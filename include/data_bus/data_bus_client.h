@@ -1,21 +1,16 @@
 #pragma once
 
-#include <boost/iostreams/filter/gzip.hpp>
-#include <boost/iostreams/filtering_streambuf.hpp>
-#include <boost/iostreams/device/back_inserter.hpp>
-#include <boost/iostreams/copy.hpp>
-
-#include <mutex>
-#include <condition_variable>
 
 #include "data_bus/subscriber_worker.h"
 #include "tcp_tool/tcp_client.h"
 #include "Protocol.pb.h"
-#include "proto_utils.h"
+#include "util/proto_utils.h"
+#include "util/zlib_utils.h"
 
 namespace data_bus {
 
     using namespace tcp_tool;
+    using namespace util;
 
     class DataBusClient {
     public:
@@ -43,11 +38,7 @@ namespace data_bus {
             instance()->tcp_client_.handler([&](protocol::Message &message, TcpSession<protocol::Message> &session) {
                 std::vector<char> packed;
                 if (message.compressed()) {
-                    boost::iostreams::filtering_streambuf<boost::iostreams::output> out;
-                    out.push(boost::iostreams::gzip_decompressor());
-                    out.push(boost::iostreams::back_inserter(packed));
-                    boost::iostreams::copy(boost::iostreams::basic_array_source<char>(message.payload().data(),
-                                                                                      message.payload().size()), out);
+                    ZlibUtils::decompress(message.payload(), packed);
                 } else {
                     packed.resize(message.payload().size());
                     packed.assign(message.payload().begin(), message.payload().end());
@@ -114,7 +105,14 @@ namespace data_bus {
             protocol::Message message;
             message.set_compressed(compressed);
             message.set_type(protocol::Message_Type_PUB);
-            message.set_payload(payload_buf.data(), payload_size);
+            if (compressed) {
+                std::vector<char> packed;
+                ZlibUtils::compress(payload_buf, packed);
+                message.set_payload(packed.data(), packed.size());
+            } else {
+                message.set_payload(payload_buf.data(), payload_size);
+            }
+
             instance()->tcp_client_.send(message);
         }
 

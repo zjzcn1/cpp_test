@@ -23,6 +23,8 @@ INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
 #PROTOBUF_GENERATE_CPP(PROTO_SRCS PROTO_HDRS protobuf/Protocol.proto protobuf/Pose.proto)
 PROTOBUF_GENERATE_CPP(PROTO_SRCS PROTO_HDRS include/data_bus/Protocol.proto protobuf/Pose.proto)
 
+find_package(ZLIB REQUIRED)
+
 find_package(SDL REQUIRED)
 find_package(SDL_image REQUIRED)
 

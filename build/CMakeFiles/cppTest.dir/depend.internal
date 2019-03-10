@@ -91,7 +91,6 @@ CMakeFiles/cppTest.dir/tests/databus_test2.cpp.o
  ../include/data_bus/data_bus.h
  ../include/data_bus/data_bus_client.h
  ../include/data_bus/data_bus_proxy.h
- ../include/data_bus/proto_utils.h
  ../include/data_bus/publisher.h
  ../include/data_bus/queue_stat.h
  ../include/data_bus/ring_queue.h
@@ -103,7 +102,9 @@ CMakeFiles/cppTest.dir/tests/databus_test2.cpp.o
  ../include/tcp_tool/tcp_session.h
  ../include/util/./logger.h
  ../include/util/logger.h
+ ../include/util/proto_utils.h
  ../include/util/time_elapsed.h
+ ../include/util/zlib_utils.h
  ../third_party/spdlog/common.h
  ../third_party/spdlog/details/console_globals.h
  ../third_party/spdlog/details/file_helper.h

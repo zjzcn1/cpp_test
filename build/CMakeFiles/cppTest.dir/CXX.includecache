@@ -11,26 +11,16 @@ publisher.h
 ../include/data_bus/publisher.h
 
 ../include/data_bus/data_bus_client.h
-boost/iostreams/filter/gzip.hpp
--
-boost/iostreams/filtering_streambuf.hpp
--
-boost/iostreams/device/back_inserter.hpp
--
-boost/iostreams/copy.hpp
--
-mutex
--
-condition_variable
--
 data_bus/subscriber_worker.h
 ../include/data_bus/data_bus/subscriber_worker.h
 tcp_tool/tcp_client.h
 ../include/data_bus/tcp_tool/tcp_client.h
 Protocol.pb.h
 ../include/data_bus/Protocol.pb.h
-proto_utils.h
-../include/data_bus/proto_utils.h
+util/proto_utils.h
+../include/data_bus/util/proto_utils.h
+util/zlib_utils.h
+../include/data_bus/util/zlib_utils.h
 
 ../include/data_bus/data_bus_proxy.h
 boost/iostreams/filter/gzip.hpp
@@ -47,14 +37,10 @@ tcp_tool/tcp_server.h
 ../include/data_bus/tcp_tool/tcp_server.h
 Protocol.pb.h
 ../include/data_bus/Protocol.pb.h
-
-../include/data_bus/proto_utils.h
-google/protobuf/descriptor.h
--
-google/protobuf/message.h
--
-util/logger.h
-../include/data_bus/util/logger.h
+util/proto_utils.h
+../include/data_bus/util/proto_utils.h
+util/zlib_utils.h
+../include/data_bus/util/zlib_utils.h
 
 ../include/data_bus/publisher.h
 subscriber_worker.h
@@ -152,11 +138,29 @@ spdlog/sinks/daily_file_sink.h
 boost/filesystem.hpp
 -
 
+../include/util/proto_utils.h
+google/protobuf/descriptor.h
+-
+google/protobuf/message.h
+-
+util/logger.h
+../include/util/util/logger.h
+
 ../include/util/time_elapsed.h
 chrono
 -
 ./logger.h
 ../include/util/./logger.h
+
+../include/util/zlib_utils.h
+boost/iostreams/filter/zlib.hpp
+-
+boost/iostreams/filtering_streambuf.hpp
+-
+boost/iostreams/device/back_inserter.hpp
+-
+boost/iostreams/copy.hpp
+-
 
 ../third_party/spdlog/common.h
 spdlog/tweakme.h
